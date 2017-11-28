@@ -1,0 +1,81 @@
+<table class="striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>网点名称</th>
+			<th>尾箱数</th>
+			<th>封包入库数</th>
+			<th>申请日期</th>
+			<th>申请状态</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for aplbox in aplboxs%}
+		<tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{aplbox.branch}}</td>
+            <td>{{aplbox.cashboxs.all}}</td>
+            <td>{{aplbox.instock_nu}} </td>
+            <td>{{aplbox.date}}</td>
+            {% if aplbox.apl_status == '1'%}
+            <td>
+                <a class="waves-effect waves-light btn ">待审批</a>
+            </td>
+            {% else %}
+            <td>
+                <a class="waves-effect waves-light btn green">已申请</a>
+            </td>
+            {% endif %}
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+    {% endfor %}
+	</tbody>
+</table>
+<div class="center col s12 fixed-action-btn ">
+	<a class="waves-effect waves-light btn-large" href="aplbox_modal">安排配送路线</a>
+</div>
+
+<!-- Modal Structure -->
+<!--审批-->
+<form class="col s12" id="apl_box_form" method="POST" enctype="multipart/form-data">
+	<div id="aplbox_modal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h5>申请钱箱领用</h5>
+			<div class="row">
+				<div class="border-box border-spacing">
+					<label class="normal-label">选择日期</label>
+					<input class="form-control normal-input" type="text" id="datepicker" />
+				</div>
+				<div class="border-box border-spacing">
+					<label class="normal-label">封包入库数</label>
+					<select class="form-control small-select" id="instock_nu" name="instock_nu">
+						<option value="0" selected>0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="bigger-border-box border-spacing">
+					<label class="normal-label">钱箱领用</label>
+					<select class="form-control bigger-select js-example-basic-multiple" id="cashapl_sel" multiple="multiple" required>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+				<button id="addroute" class="modal-action  waves-effect waves-green btn-flat" type="submit">确定</button>
+				<button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">取消</button>
+			</div>
+	</div>
+</form>

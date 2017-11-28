@@ -1,0 +1,1883 @@
+[26/Jun/2017 15:31:13] "GET /admin/carmanage/ HTTP/1.1" 200 9663
+[26/Jun/2017 15:31:14] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:31:14] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:31:14] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:31:14] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:31:14] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:31:14] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:31:14] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:31:14] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:31:14] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:31:14] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:31:14] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:31:14] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:31:14] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:31:14] "GET /static/images/car/bimg_39844229-e7ed-5449-8c56-3ea100ac15c1.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:31:14] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:31:15] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:31:15] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:31:15] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:31:15] "GET /static/js/model/car/carManagement.js HTTP/1.1" 200 5426
+[26/Jun/2017 15:31:15] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:31:15] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:31:15] "GET /static/images/car/fimg_39844229-e7ed-5449-8c56-3ea100ac15c1.png HTTP/1.1" 200 97574
+[26/Jun/2017 15:31:18] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:31:18] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:31:18] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:31:18] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:31:18] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:31:18] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:31:18] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:31:19] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:31:19] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:31:19] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:31:19] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:31:19] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:31:19] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:31:19] "GET /static/images/right-arrow.png HTTP/1.1" 200 1227
+[26/Jun/2017 15:31:19] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:31:19] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:31:19] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:31:19] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:31:19] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:31:20] "GET /static/images/people-manager.png HTTP/1.1" 200 294879
+[26/Jun/2017 15:31:23] "GET /admin/routemanager/ HTTP/1.1" 200 16794
+[26/Jun/2017 15:31:23] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:31:23] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:31:23] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:31:23] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:31:23] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:31:23] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:31:24] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:31:24] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:31:24] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:31:24] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:31:24] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:31:24] "GET /static/images/routemanage/approval/right-arrow.png HTTP/1.1" 200 1097
+[26/Jun/2017 15:31:24] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:31:24] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:31:24] "GET /static/js/model/routemanage/routemanage.js HTTP/1.1" 200 8578
+[26/Jun/2017 15:31:24] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:31:24] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:31:24] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:31:25] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:34:00] "GET /admin/routemanager/ HTTP/1.1" 200 16782
+[26/Jun/2017 15:34:01] "GET /favicon.ico HTTP/1.1" 301 0
+[26/Jun/2017 15:34:01] "GET /static/favicon.ico HTTP/1.1" 200 1150
+[26/Jun/2017 15:34:02] "GET /admin/routemanager/ HTTP/1.1" 200 16782
+[26/Jun/2017 15:34:02] "GET /favicon.ico HTTP/1.1" 301 0
+[26/Jun/2017 15:34:02] "GET /static/favicon.ico HTTP/1.1" 200 1150
+[26/Jun/2017 15:34:26] "POST /admin/addroute/ HTTP/1.1" 200 20
+[26/Jun/2017 15:34:26] "POST /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 15:34:26] "GET /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 15:34:26] "GET /static/css/materialize.min.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/css/style.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/css/select2.min.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/datepicker/pikaday.css HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/images/logo.png HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/jquery.form.min.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/images/routemanage/approval/right-arrow.png HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/materialize.min.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/jquery.cookie.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/select2.min.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/placeholders.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/datepicker/pikaday.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:26] "GET /static/js/model/routemanage/routemanage.js HTTP/1.1" 304 0
+[26/Jun/2017 15:34:33] code 400, message Bad request syntax ('\xff\xf4\xff\xfd\x06\x04\xff\xf4\xff\xfd\x06\x04\xff\xf4\xff\xfd\x06\x04')
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/logging/__init__.py", line 851, in emit
+    msg = self.format(record)
+  File "/usr/lib64/python2.7/logging/__init__.py", line 724, in format
+    return fmt.format(record)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/log.py", line 192, in format
+    return super(ServerFormatter, self).format(record)
+  File "/usr/lib64/python2.7/logging/__init__.py", line 467, in format
+    s = self._fmt % record.__dict__
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xff in position 1: ordinal not in range(128)
+Logged from file basehttp.py, line 124
+[26/Jun/2017 15:35:52] code 400, message Bad request syntax ('\xff\xf4\xff\xfd\x06\xff\xf6\xff\xf4\xff\xfd\x06\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04')
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/logging/__init__.py", line 851, in emit
+    msg = self.format(record)
+  File "/usr/lib64/python2.7/logging/__init__.py", line 724, in format
+    return fmt.format(record)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/log.py", line 192, in format
+    return super(ServerFormatter, self).format(record)
+  File "/usr/lib64/python2.7/logging/__init__.py", line 467, in format
+    s = self._fmt % record.__dict__
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xff in position 1: ordinal not in range(128)
+Logged from file basehttp.py, line 124
+[26/Jun/2017 15:36:00] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:36:03] "GET /admin/staffmanage/ HTTP/1.1" 200 10334
+[26/Jun/2017 15:36:03] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 304 0
+[26/Jun/2017 15:36:03] "POST /admin/teller_form_check/ HTTP/1.1" 200 21
+[26/Jun/2017 15:36:05] "GET /admin/get_branch_inter/ HTTP/1.1" 200 360
+[26/Jun/2017 15:36:19] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:36:22] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14526
+[26/Jun/2017 15:36:42] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:36:43] "GET /admin/staffmanage/ HTTP/1.1" 200 10334
+[26/Jun/2017 15:36:44] "POST /admin/teller_form_check/ HTTP/1.1" 200 21
+[26/Jun/2017 15:39:27] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 15:40:09] "GET /admin/staffmanage/ HTTP/1.1" 200 10351
+[26/Jun/2017 15:40:10] "GET /favicon.ico HTTP/1.1" 301 0
+[26/Jun/2017 15:40:10] "POST /admin/teller_form_check/ HTTP/1.1" 200 21
+[26/Jun/2017 15:40:10] "GET /static/favicon.ico HTTP/1.1" 200 1150
+[26/Jun/2017 15:41:15] "GET / HTTP/1.1" 200 2426
+[26/Jun/2017 15:41:15] "POST /is_user_exist/ HTTP/1.1" 200 18
+[26/Jun/2017 15:41:21] "GET / HTTP/1.1" 200 2426
+[26/Jun/2017 15:41:21] "POST /is_user_exist/ HTTP/1.1" 200 18
+[26/Jun/2017 15:41:22] "POST /is_user_exist/ HTTP/1.1" 200 37
+[26/Jun/2017 15:41:22] "GET /index/ HTTP/1.1" 200 4005
+[26/Jun/2017 15:41:26] "GET /logout/ HTTP/1.1" 302 0
+[26/Jun/2017 15:41:26] "GET /login/ HTTP/1.1" 200 2426
+[26/Jun/2017 15:41:26] "POST /is_user_exist/ HTTP/1.1" 200 18
+[26/Jun/2017 15:41:29] "POST /is_user_exist/ HTTP/1.1" 200 18
+[26/Jun/2017 15:41:33] "POST /is_user_exist/ HTTP/1.1" 200 37
+[26/Jun/2017 15:41:33] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:41:36] "GET /admin/staffmanage/ HTTP/1.1" 200 10351
+[26/Jun/2017 15:41:36] "POST /admin/teller_form_check/ HTTP/1.1" 200 21
+[26/Jun/2017 15:41:47] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:41:53] "GET /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 15:41:53] "GET /static/js/model/routemanage/routemanage.js HTTP/1.1" 304 0
+[26/Jun/2017 15:41:59] "POST /admin/routeshow/ HTTP/1.1" 200 154
+[26/Jun/2017 15:42:12] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:42:23] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14526
+[26/Jun/2017 15:42:37] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14526
+[26/Jun/2017 15:42:49] "GET /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 15:42:59] "GET /admin/personmanage/ HTTP/1.1" 200 23283
+[26/Jun/2017 15:43:13] "GET /admin/carmanage/ HTTP/1.1" 200 9663
+[26/Jun/2017 15:43:19] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14526
+[26/Jun/2017 15:43:33] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:43:33] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 15:43:40] "GET /admin/personmanage/ HTTP/1.1" 200 23283
+[26/Jun/2017 15:45:43] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:45:43] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:45:43] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:45:43] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:45:43] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:45:43] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:45:43] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:45:43] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:45:43] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:45:43] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:45:43] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:45:43] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:45:43] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:45:43] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:45:43] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:45:43] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:45:43] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:45:43] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:45:43] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:45:43] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:45:43] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:45:44] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:45:44] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:45:44] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:45:44] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:45:44] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:45:44] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:45:44] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:45:44] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:45:44] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:45:44] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:46:50] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:46:50] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:46:50] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:46:50] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:46:50] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:46:50] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:46:50] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:46:50] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:46:50] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:46:50] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:46:50] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:46:50] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:46:50] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:46:50] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:50] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:46:50] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:46:50] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:46:50] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:46:50] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:50] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:46:50] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:46:50] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:46:50] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:46:50] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:46:51] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:46:51] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:46:51] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:46:51] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:46:51] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4893
+[26/Jun/2017 15:46:51] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:46:51] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:46:51] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:46:51] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:46:51] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:46:51] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:46:51] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:46:51] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:46:51] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:46:51] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:46:51] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:51] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:46:51] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:46:51] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:51] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:46:51] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:46:51] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:46:51] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:46:52] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:46:52] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:46:52] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:46:52] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:46:52] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:47:12] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:47:12] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:47:12] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:47:12] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:47:12] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:47:12] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:47:12] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:47:12] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:47:12] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:47:12] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:47:12] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:47:12] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:47:12] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:47:12] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:47:12] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:47:12] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:47:12] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:47:12] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:47:12] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:47:12] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:47:12] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:47:13] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:47:13] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:47:13] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:47:13] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:47:13] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:47:13] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:47:13] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:47:13] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:47:13] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:47:13] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:48:41] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:48:41] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:48:41] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:48:41] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:48:41] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:48:41] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:48:41] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:48:41] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:48:41] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:48:41] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:48:41] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:48:41] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:48:41] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:48:41] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:48:41] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:48:41] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:48:41] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:48:41] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:48:41] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:48:41] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:48:41] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:48:41] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:48:41] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:48:41] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:48:41] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:48:41] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:48:55] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:48:55] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:48:55] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:48:55] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:48:55] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:48:55] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:48:55] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:48:55] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:48:56] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:48:56] "GET /static/images/right-arrow.png HTTP/1.1" 200 1227
+[26/Jun/2017 15:48:56] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:48:56] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:48:56] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:48:56] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:48:56] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:48:56] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:48:56] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:48:56] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:48:56] "GET /static/images/people-manager.png HTTP/1.1" 200 294879
+[26/Jun/2017 15:48:57] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:49:01] "GET /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 15:49:01] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:49:01] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:49:01] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:49:01] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:49:01] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:49:01] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:49:02] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:49:02] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:49:02] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:49:02] "GET /static/images/routemanage/approval/right-arrow.png HTTP/1.1" 200 1097
+[26/Jun/2017 15:49:02] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:49:02] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:49:02] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:49:02] "GET /static/js/model/routemanage/routemanage.js HTTP/1.1" 200 8578
+[26/Jun/2017 15:49:02] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:49:02] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:49:02] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:49:02] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:49:02] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:49:05] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:49:05] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:49:05] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:49:05] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:49:05] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:49:05] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:49:05] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:49:05] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:49:05] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:49:05] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:49:05] "GET /static/images/right-arrow.png HTTP/1.1" 200 1227
+[26/Jun/2017 15:49:05] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:49:06] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:49:06] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:49:06] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:49:06] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:49:06] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:49:06] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:49:06] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:49:06] "GET /static/images/people-manager.png HTTP/1.1" 200 294879
+[26/Jun/2017 15:49:07] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14526
+[26/Jun/2017 15:49:07] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:49:07] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:49:07] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:49:07] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:49:07] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:49:07] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:49:07] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:49:07] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:49:07] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:49:07] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:49:07] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:49:07] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:49:07] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:49:07] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:49:07] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:49:07] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:49:07] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:49:07] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:49:07] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:50:33] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14648
+[26/Jun/2017 15:50:33] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:50:33] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:50:33] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:50:34] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:50:34] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:50:34] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:50:34] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:50:34] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:50:34] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:50:34] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:50:34] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:50:34] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:50:34] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:50:34] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:50:34] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:50:34] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:50:34] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:50:34] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:50:34] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 15:30:45
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+<QuerySet [<Branch: Branch object>, <Branch: Branch object>, <Branch: Branch object>, <Branch: Branch object>]>
+teller_form_check
+teller_form_check
+teller_form_check
+teller_form_check
+[u'\u57ce\u897f\u94f6\u884c', u'\u57ce\u4e1c\u94f6\u884c']
+[26/Jun/2017 15:51:38] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14618
+[26/Jun/2017 15:51:38] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:51:38] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:51:38] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:51:38] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:51:38] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:51:38] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:51:38] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:51:38] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:51:38] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:51:38] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:51:38] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:51:38] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:51:38] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:51:38] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:51:38] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:51:38] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:51:38] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:51:38] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:51:38] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:51:48] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:51:48] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:51:48] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:51:48] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:51:48] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:51:48] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:51:48] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:51:48] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:51:48] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:51:48] "GET /static/images/right-arrow.png HTTP/1.1" 200 1227
+[26/Jun/2017 15:51:48] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:51:48] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:51:48] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:51:48] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:51:48] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:51:48] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:51:48] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:51:48] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:51:49] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:51:49] "GET /static/images/people-manager.png HTTP/1.1" 200 294879
+[26/Jun/2017 15:51:49] "GET /admin/personmanage/ HTTP/1.1" 200 23255
+[26/Jun/2017 15:51:49] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:51:49] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:51:49] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:51:49] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:51:49] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:51:49] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:51:49] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:51:49] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:51:50] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:51:50] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:51:50] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:51:50] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:51:50] "GET /static/images/person/major/img_b2cea025-1bb9-5b8d-8f78-f8411a7899a7.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:51:50] "GET /static/images/person/major/img_cb294743-688c-5cd2-84d5-4785354f5409.png HTTP/1.1" 200 4821
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/fimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3576
+[26/Jun/2017 15:51:50] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:51:50] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:51:50] "GET /static/images/addicon.png HTTP/1.1" 200 4485
+[26/Jun/2017 15:51:50] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/bimg_cbbcef5e-fc6d-5bf4-90b7-1d7379474059.png HTTP/1.1" 200 3594
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/bimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 3588
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/fimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/bimg_255c458d-11dc-5768-9126-2e946e18d8c0.png HTTP/1.1" 200 6637
+[26/Jun/2017 15:51:50] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:51:50] "GET /static/images/person/ambang/fimg_f17fa17c-d923-50f8-b703-8cb2709fa360.png HTTP/1.1" 200 5546
+[26/Jun/2017 15:51:50] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:51:50] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:51:50] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15404
+[26/Jun/2017 15:51:50] "GET /static/images/person/assist/img_37813542-0dca-5a8a-b2a2-b69c2d45583f.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:51:50] "GET /static/images/person/assist/img_d92d4f26-d69b-54a2-a828-1da3e1d23415.png HTTP/1.1" 200 84127
+[26/Jun/2017 15:52:34] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 15:52:34] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:52:34] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:52:34] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:52:34] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:52:34] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:52:34] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:52:34] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:52:34] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:52:34] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:52:34] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:52:34] "GET /static/images/right-arrow.png HTTP/1.1" 200 1227
+[26/Jun/2017 15:52:34] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:52:34] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:52:34] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:52:34] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:52:34] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:52:35] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:52:35] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:52:35] "GET /static/images/people-manager.png HTTP/1.1" 200 294879
+[26/Jun/2017 15:52:36] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14618
+[26/Jun/2017 15:52:36] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:52:36] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:52:36] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:52:36] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:52:36] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:52:36] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:52:36] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:52:36] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:52:36] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:52:36] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:52:36] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:52:36] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:52:36] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:52:36] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:52:36] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:52:36] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:52:36] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:52:36] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:52:36] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:53:03] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14624
+[26/Jun/2017 15:53:03] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:53:03] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:53:03] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:53:03] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:53:03] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:53:03] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:53:04] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:53:04] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:53:04] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:53:04] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:53:04] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:53:04] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:53:04] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:53:04] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:53:04] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:53:04] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:53:04] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:53:04] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:53:05] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:53:48] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14630
+[26/Jun/2017 15:53:48] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:53:48] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:53:48] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:53:48] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:53:48] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:53:48] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:53:48] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:53:48] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:53:48] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:53:48] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:53:48] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:53:48] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:53:48] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:53:49] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:53:49] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:53:49] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:53:49] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:53:49] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:53:49] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+[26/Jun/2017 15:54:01] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14630
+[26/Jun/2017 15:54:01] "GET /static/css/style.css HTTP/1.1" 200 899
+[26/Jun/2017 15:54:01] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 15:54:01] "GET /static/datepicker/pikaday.css HTTP/1.1" 200 4566
+[26/Jun/2017 15:54:01] "GET /static/css/jquery-confirm.min.css HTTP/1.1" 200 21451
+[26/Jun/2017 15:54:01] "GET /static/css/select2.min.css HTTP/1.1" 200 15194
+[26/Jun/2017 15:54:01] "GET /static/iconfont/material-icons.css?family=Material+Icons HTTP/1.1" 200 970
+[26/Jun/2017 15:54:01] "GET /static/css/materialize.min.css HTTP/1.1" 200 124128
+[26/Jun/2017 15:54:01] "GET /static/js/jquery-2.1.1.min.js HTTP/1.1" 200 84245
+[26/Jun/2017 15:54:01] "GET /static/iconfont/MaterialIcons-Regular.woff2 HTTP/1.1" 200 44300
+[26/Jun/2017 15:54:01] "GET /static/js/jquery.cookie.js HTTP/1.1" 200 1966
+[26/Jun/2017 15:54:01] "GET /static/images/logo.png HTTP/1.1" 200 14507
+[26/Jun/2017 15:54:01] "GET /static/js/jquery.form.min.js HTTP/1.1" 200 16598
+[26/Jun/2017 15:54:01] "GET /static/js/jquery-confirm.min.js HTTP/1.1" 200 21363
+[26/Jun/2017 15:54:01] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 15:54:01] "GET /static/js/placeholders.js HTTP/1.1" 200 17776
+[26/Jun/2017 15:54:01] "GET /static/datepicker/pikaday.js HTTP/1.1" 200 40542
+[26/Jun/2017 15:54:01] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 15:54:01] "GET /static/js/select2.min.js HTTP/1.1" 200 66843
+[26/Jun/2017 15:54:01] "GET /static/js/materialize.min.js HTTP/1.1" 200 148768
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 15:51:26
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 15:54:07
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+[26/Jun/2017 16:03:52] "GET / HTTP/1.1" 200 2426
+[26/Jun/2017 16:06:21] "GET /admin/personmanage/ HTTP/1.1" 200 23444
+[26/Jun/2017 16:06:21] "GET /static/css/approvalcss/style.css HTTP/1.1" 200 4924
+[26/Jun/2017 16:06:21] "GET /static/js/model/personmanage/personManage.js HTTP/1.1" 200 15387
+[26/Jun/2017 16:06:21] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:26:21] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 16:26:21] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 16:26:22] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:26:23] "GET /admin/staffmanage/ HTTP/1.1" 200 10351
+[26/Jun/2017 16:26:23] "GET /static/js/model/internalstaff/internalstaff.js HTTP/1.1" 200 3340
+[26/Jun/2017 16:26:23] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:26:26] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:26:27] "GET /admin/routemanager/ HTTP/1.1" 200 17302
+[26/Jun/2017 16:26:27] "GET /static/images/routemanage/approval/right-arrow.png HTTP/1.1" 200 1097
+[26/Jun/2017 16:26:27] "GET /static/js/model/routemanage/routemanage.js HTTP/1.1" 200 8578
+[26/Jun/2017 16:26:27] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:33:04] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 16:33:04] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 16:33:04] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:33:07] "GET /admin/apllist/ HTTP/1.1" 200 9964
+[26/Jun/2017 16:33:07] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:33:08] "GET /admin/apllist/arrage_aplroute HTTP/1.1" 200 9964
+[26/Jun/2017 16:33:08] "GET /admin/arrage_aplroute/?ids=4-5-6-7-8-9-10-11-13-14 HTTP/1.1" 200 17302
+[26/Jun/2017 16:33:09] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 15:54:12
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+[26/Jun/2017 16:33:52] "GET /admin/arrage_aplroute/?ids=4-5-6-7-8-9-10-11-13-14 HTTP/1.1" 200 8969
+[26/Jun/2017 16:33:52] "GET /admin/apllist/arrage_aplroute HTTP/1.1" 200 9964
+[26/Jun/2017 16:33:53] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+[26/Jun/2017 16:34:01] "GET /admin/getroute/?route_id=12 HTTP/1.1" 200 157
+[26/Jun/2017 16:34:45] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 16:34:47] "GET /admin/apllist/ HTTP/1.1" 200 9964
+[26/Jun/2017 16:34:54] "GET /admin/staffmanage/ HTTP/1.1" 200 10351
+[26/Jun/2017 16:34:58] "GET /admin/routemanager/ HTTP/1.1" 200 12246
+[26/Jun/2017 16:35:02] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14630
+[26/Jun/2017 16:35:02] "GET /static/js/model/cashbox/cashbox.js HTTP/1.1" 200 3661
+[26/Jun/2017 16:35:07] "GET /admin/apllist/ HTTP/1.1" 200 9964
+[26/Jun/2017 16:35:10] "GET /admin/arrage_aplroute/?ids=4-5-6-7-8-9-10-11-13-14 HTTP/1.1" 200 8969
+[26/Jun/2017 16:35:10] "GET /admin/apllist/arrage_aplroute HTTP/1.1" 200 9964
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 16:33:41
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x1973aa0>
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 117, in inner_run
+    autoreload.raise_last_exception()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 250, in raise_last_exception
+    six.reraise(*_exception)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/__init__.py", line 27, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/config.py", line 202, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/handover/develop/handover/hoapp/models.py", line 109, in <module>
+    class CboxconfirmInfo(moels.Model):
+NameError: name 'moels' is not defined
+Unhandled exception in thread started by <function wrapper at 0x1973a28>
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 117, in inner_run
+    autoreload.raise_last_exception()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 250, in raise_last_exception
+    six.reraise(*_exception)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/__init__.py", line 27, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/config.py", line 202, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/handover/develop/handover/hoapp/models.py", line 109, in <module>
+    class CboxconfirmInfo(moels.Model):
+NameError: name 'moels' is not defined
+Unhandled exception in thread started by <function wrapper at 0x1aa3230>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+hoapp.CboxconfirmInfo.ambs: (fields.E304) Reverse accessor for 'CboxconfirmInfo.ambs' clashes with reverse accessor for 'CboxconfirmInfo.assists'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.ambs' or 'CboxconfirmInfo.assists'.
+hoapp.CboxconfirmInfo.ambs: (fields.E304) Reverse accessor for 'CboxconfirmInfo.ambs' clashes with reverse accessor for 'CboxconfirmInfo.majors'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.ambs' or 'CboxconfirmInfo.majors'.
+hoapp.CboxconfirmInfo.ambs: (fields.E304) Reverse accessor for 'CboxconfirmInfo.ambs' clashes with reverse accessor for 'CboxconfirmInfo.sites'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.ambs' or 'CboxconfirmInfo.sites'.
+hoapp.CboxconfirmInfo.assists: (fields.E304) Reverse accessor for 'CboxconfirmInfo.assists' clashes with reverse accessor for 'CboxconfirmInfo.ambs'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.assists' or 'CboxconfirmInfo.ambs'.
+hoapp.CboxconfirmInfo.assists: (fields.E304) Reverse accessor for 'CboxconfirmInfo.assists' clashes with reverse accessor for 'CboxconfirmInfo.majors'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.assists' or 'CboxconfirmInfo.majors'.
+hoapp.CboxconfirmInfo.assists: (fields.E304) Reverse accessor for 'CboxconfirmInfo.assists' clashes with reverse accessor for 'CboxconfirmInfo.sites'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.assists' or 'CboxconfirmInfo.sites'.
+hoapp.CboxconfirmInfo.majors: (fields.E304) Reverse accessor for 'CboxconfirmInfo.majors' clashes with reverse accessor for 'CboxconfirmInfo.ambs'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.majors' or 'CboxconfirmInfo.ambs'.
+hoapp.CboxconfirmInfo.majors: (fields.E304) Reverse accessor for 'CboxconfirmInfo.majors' clashes with reverse accessor for 'CboxconfirmInfo.assists'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.majors' or 'CboxconfirmInfo.assists'.
+hoapp.CboxconfirmInfo.majors: (fields.E304) Reverse accessor for 'CboxconfirmInfo.majors' clashes with reverse accessor for 'CboxconfirmInfo.sites'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.majors' or 'CboxconfirmInfo.sites'.
+hoapp.CboxconfirmInfo.sites: (fields.E304) Reverse accessor for 'CboxconfirmInfo.sites' clashes with reverse accessor for 'CboxconfirmInfo.ambs'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.sites' or 'CboxconfirmInfo.ambs'.
+hoapp.CboxconfirmInfo.sites: (fields.E304) Reverse accessor for 'CboxconfirmInfo.sites' clashes with reverse accessor for 'CboxconfirmInfo.assists'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.sites' or 'CboxconfirmInfo.assists'.
+hoapp.CboxconfirmInfo.sites: (fields.E304) Reverse accessor for 'CboxconfirmInfo.sites' clashes with reverse accessor for 'CboxconfirmInfo.majors'.
+	HINT: Add or change a related_name argument to the definition for 'CboxconfirmInfo.sites' or 'CboxconfirmInfo.majors'.
+
+System check identified 12 issues (0 silenced).
+[26/Jun/2017 16:50:53] "GET /index/ HTTP/1.1" 200 5844
+[26/Jun/2017 16:50:53] "GET /static/css/approvalcss/style.css HTTP/1.1" 304 0
+[26/Jun/2017 16:50:56] "GET /admin/staffmanage/ HTTP/1.1" 200 10351
+[26/Jun/2017 16:51:04] "GET /admin/cashboxmanage/ HTTP/1.1" 200 14630
+[26/Jun/2017 16:51:14] "GET /admin/routemanager/ HTTP/1.1" 200 12246
+[26/Jun/2017 16:51:17] "POST /admin/routeshow/ HTTP/1.1" 200 154
+[26/Jun/2017 16:51:21] "POST /admin/routeshow/ HTTP/1.1" 200 154
+[26/Jun/2017 16:51:31] "GET /static/js/jquery.form.min.js.map HTTP/1.1" 404 1694
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 16:39:53
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+[u'\u57ce\u897f\u94f6\u884c', u'\u57ce\u4e1c\u94f6\u884c']
+[u'\u57ce\u897f\u94f6\u884c', u'\u57ce\u4e1c\u94f6\u884c']
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 16:57:38
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x1904f50>
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 117, in inner_run
+    autoreload.raise_last_exception()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 250, in raise_last_exception
+    six.reraise(*_exception)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/__init__.py", line 27, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models()
+  File "/home/handover/venv/lib/python2.7/site-packages/django/apps/config.py", line 202, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/handover/develop/handover/hoapp/models.py", line 128
+    
+    ^
+SyntaxError: EOF while scanning triple-quoted string literal
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:00:06
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:00:14
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:01:45
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:01:48
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:02:54
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:03:46
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:06:28
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:06:40
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:07:39
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:08:24
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:11:08
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:11:58
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:12:06
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:12:24
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:12:49
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:12:52
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:14:41
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:17:32
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:17:56
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:18:00
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:24:38
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:24:52
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:27:41
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:27:44
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2017 - 17:27:52
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 2 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:28:49
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:19
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:22
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:39
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:48
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:55
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:29:59
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:30:02
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:30:17
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:30:55
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:30:57
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:31:00
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:31:33
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:31:49
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:31:53
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:32:20
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:32:35
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:32:38
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:32:52
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:33:06
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:33:20
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:33:28
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:33:49
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:34:00
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:34:07
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:34:11
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:34:15
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:34:30
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:35:31
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x1ad18c0>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+hoapp.RoutePlan.morning_task_: (fields.E001) Field names must not end with an underscore.
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 5 issues (0 silenced).
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:37:08
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:37:56
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:38:05
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:38:58
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:39:07
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:39:39
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:39:42
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:40:10
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:40:14
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:42:35
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:46:18
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:48:08
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:50:45
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:11
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:20
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:34
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:37
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:38
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:41
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:52:45
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:53:01
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:53:05
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:54:43
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:54:45
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:55:21
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+System check identified some issues:
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 4 issues (0 silenced).
+Performing system checks...
+
+June 26, 2017 - 17:55:39
+Django version 1.11.2, using settings 'handover.settings'
+Starting development server at http://0.0.0.0:8888/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x1ad68c0>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+hoapp.RoutePlan.assists: (fields.E304) Reverse accessor for 'RoutePlan.assists' clashes with reverse accessor for 'RoutePlan.majors'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.assists' or 'RoutePlan.majors'.
+hoapp.RoutePlan.majors: (fields.E304) Reverse accessor for 'RoutePlan.majors' clashes with reverse accessor for 'RoutePlan.assists'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.majors' or 'RoutePlan.assists'.
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 6 issues (0 silenced).
+Unhandled exception in thread started by <function wrapper at 0x1ad68c0>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+hoapp.RoutePlan.assists: (fields.E304) Reverse accessor for 'RoutePlan.assists' clashes with reverse accessor for 'RoutePlan.majors'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.assists' or 'RoutePlan.majors'.
+hoapp.RoutePlan.majors: (fields.E304) Reverse accessor for 'RoutePlan.majors' clashes with reverse accessor for 'RoutePlan.assists'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.majors' or 'RoutePlan.assists'.
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 6 issues (0 silenced).
+Unhandled exception in thread started by <function wrapper at 0x1ad68c0>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/home/handover/venv/lib/python2.7/site-packages/django/utils/autoreload.py", line 227, in wrapper
+    fn(*args, **kwargs)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/handover/venv/lib/python2.7/site-packages/django/core/management/base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+hoapp.RoutePlan.assists: (fields.E304) Reverse accessor for 'RoutePlan.assists' clashes with reverse accessor for 'RoutePlan.majors'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.assists' or 'RoutePlan.majors'.
+hoapp.RoutePlan.majors: (fields.E304) Reverse accessor for 'RoutePlan.majors' clashes with reverse accessor for 'RoutePlan.assists'.
+	HINT: Add or change a related_name argument to the definition for 'RoutePlan.majors' or 'RoutePlan.assists'.
+
+WARNINGS:
+hoapp.RoutePlan.ambs: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.assists: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.cinfo: (fields.W340) null has no effect on ManyToManyField.
+hoapp.RoutePlan.majors: (fields.W340) null has no effect on ManyToManyField.
+
+System check identified 6 issues (0 silenced).

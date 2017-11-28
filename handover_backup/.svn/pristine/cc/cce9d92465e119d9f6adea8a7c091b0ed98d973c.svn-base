@@ -1,0 +1,56 @@
+{% load templates_extras %}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>路桥农信联社交接系统</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css"  media="screen,projection"/>
+    <link href="/static/iconfont/material-icons.css?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue darken-4">
+<div class="container">
+<div class="center-vertical">
+<div class="row">
+<div class="col s12 m8 offset-m2">
+    <div class="card horizontal hoverable">
+        <div class="card-image hide-on-small-only">
+            <img src="/static/images/loginLogo.png" width="300" height="300">
+        </div>
+        <div class="card-stacked">
+            <form class="col s12" id="login_form" method="POST">
+                <h4 class="header">登录</h4>
+                <div class="row">
+                    <!-- Username -->
+                    <div class="input-field col s12 m11">
+                        <input id="username" name="username" type="text" class="validate" required>
+                        <label for="username" required>登录名称</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Password -->
+                    <div class="input-field col s12 m11">
+                        <input id="password" name="password" type="password" class="validate" required>
+                        <label for="password" required>登录密码</label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <!-- Button -->
+                    <div class="row">
+                        <button id="submit_btn" class="col s10 offset-s1 offset-m6 m4 waves-effect waves-light btn blue">登录</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+<script type="text/javascript" src="/static/js/login.js"></script>
+<script type="text/javascript" src="/static/js/jquery.form.min.js"></script>
+</body>
+</html>

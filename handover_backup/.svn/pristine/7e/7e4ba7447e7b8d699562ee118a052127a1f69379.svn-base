@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col s6 m4 l3">
+            <div class="card small blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">人员管理</span>
+                    <p>安邦人员信息管理、网点主办人员管理、
+                       协办人员管理</p>
+                </div>
+                <div class="card-action">
+                    <a href="/admin/personmanage/">进入管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l3">
+            <div class="card small blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">车辆信息管理</span>
+                </div>
+                <div class="card-action">
+                    <a href="/admin/carmanage/">进入管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l3">
+            <div class="card small blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">钱箱管理</span>
+                </div>
+                <div class="card-action">
+                    <a href="#">进入管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l3">
+            <div class="card small blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">内部员工管理</span>
+                    <p>柜员信息查看及指纹的录入修改</p>
+                </div>
+                <div class="card-action">
+                    <a href="/admin/staffmanage/">进入管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

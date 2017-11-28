@@ -1,0 +1,98 @@
+{% extends 'layout.html' %} {% block main %}
+
+<div class="row">
+	<div class="col s12">
+		<ul class="tabs">
+			<li class="tab col s3">
+				<a href="#tellerInfo">柜员信息列表</a>
+			</li>
+			<!-- <li class="tab col s3"><a href="#test2">Test 2</a></li> -->
+		</ul>
+	</div>
+	<div id="tellerInfo" class="col s12">
+		{% include 'admin/internalStaff/tellerinfo.html' %}
+	</div>
+	<!-- <div id="test2" class="col s12">Test 2</div> -->
+</div>
+
+<div class="fixed-action-btn horizontal">
+	<a class="btn-floating btn-large red" href="addTeller">
+		<i class="large material-icons">add</i>
+	</a>
+</div>
+
+<!-- Modal Structure -->
+<form class="col s12" id="teller_add_form" method="POST" enctype="multipart/form-data">
+	<div id="addTeller" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<div class="modal-title"><i class="tiny material-icons">add_circle_outline</i>&nbsp;录入柜员信息</div>
+			<div class="row">
+				<div class="border-box border-spacing">
+					<label for="teller_serial" class="normal-label">柜员编号</label>
+					<input id="teller_serial" name="teller_serial" type="text" class="validate form-control normal-input" required>
+
+				</div>
+				<div class="border-box border-spacing">
+					<label for="teller_pwd" class="normal-label">柜员密码</label>
+					<input id="teller_pwd" name="teller_pwd" type="password" class="validate form-control normal-input" required>
+
+				</div>
+				<div class="border-box border-spacing">
+					<label for="teller_pwd2" class="normal-label">请再次输入密码</label>
+					<input id="teller_pwd2" name="teller_pwd2" type="password" class="validate form-control normal-input" required>
+
+				</div>
+				<div class="border-box border-spacing">
+					<label for="teller_name" class="normal-label">柜员姓名</label>
+					<input id="teller_name" name="teller_name" type="text" class="validate form-control normal-input" required>
+
+				</div>
+				<div class="border-box border-spacing">
+					<label class="normal-label">支行信息</label>
+					<select class="form-control small-select" id="teller_branch">
+					</select>
+				</div>
+				<div class="border-box border-spacing">
+					<label for="teller_tel" class="normal-label">电话号码</label>
+					<input id="teller_tel" name="teller_tel" type="tel" class="validate form-control normal-input" required>
+
+				</div>
+				<div class="border-box border-spacing">
+					<label class="normal-label">工作状态</label>
+					<select id="teller_status" name="teller_status" class="form-control small-select"  required>
+
+						<option value="" disabled selected>请选择柜员工作状态</option>
+						<option value="1">在岗</option>
+						<option value="2">离岗</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<textarea id="teller_remark" name="teller_remark" class="materialize-textarea"></textarea>
+					<label for="teller_remark">备注</label>
+				</div>
+			</div>
+			<!-- <div class="row">
+            <div class="input-field col s6">
+                <input id="teller_name" name="teller_name" type="text" class="validate">
+                <label for="teller_name">指纹录入</label>
+            </div>
+        </div> -->
+		</div>
+		<div class="modal-footer">
+			<button id='addteller_btn' class="modal-action waves-effect waves-green btn-flat" type="submit">确定</button>
+			<button class="modal-action modal-close waves-effect waves-yellow btn-flat" type="button">取消</button>
+		</div>
+	</div>
+</form>
+
+{% endblock %} {% block javascript %}
+<script>
+	$(document).ready(function() {
+		$('ul.tabs').tabs();
+		$('.modal').modal();
+	});
+</script>
+<script type='text/javascript' src='/static/js/model/internalstaff/internalstaff.js'></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} {% block main %}
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <!--<input type='hidden' id='index_page'/>-->
+            <li class="tab col s3"><a href="#carmanage">车辆管理</a></li>
+        </ul>
+    </div>
+<div id="carmanage" class="col s12">
+{% include 'admin/car/car_content.html' %}
+</div>
+</div>
+
+{% include "common/loading.html" %} 
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="/static/js/model/car/carManagement.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.modal').modal();
+		$("#loading").hide();
+	})
+</script>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'layout.html' %} {% block main %}
+
+<div class="container">
+	<div class="row">
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">人员管理</span>
+					<p>安邦人员信息管理、网点主办人员管理、 协办人员管理</p>
+				</div>
+				<a class="card-action card-color" href="/admin/personmanage/">					
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">车辆信息管理</span>
+				</div>
+				<a class="card-action card-color" href="/admin/carmanage/">
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">路线配置管理</span>
+					<p>路线配置管理</p>
+				</div>
+				<a class="card-action card-color" href="/admin/routemanager/">
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">内部员工管理</span>
+					<p>柜员信息查看及指纹的录入修改</p>
+				</div>
+				<a class="card-action card-color" href="/admin/staffmanage/">
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">钱箱管理</span>
+				</div>
+				<a class="card-action card-color" href="/admin/cashboxmanage/">
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+		<div class="col s6 m4 l3">
+			<div class="card small card-bg">
+				<div class="card-title-bg">
+					<span class="card-title">网点申请列表</span>
+				</div>
+				<a class="card-action card-color" href="/admin/apllist/">
+					<div class="right-arrow"></div>
+					<div class="choose-title">进入管理</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}

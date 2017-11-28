@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" /><br />
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="UTF-8"></script>
+
+	</head>
+	<body>
+		<div class="first-line">
+			<div class="border-box border-spacing">
+				<label class="normal-label">线路名称</label>
+				<select class="form-control small-select">
+					<option>线路一</option>
+					<option>线路二</option>
+					<option>线路三</option>
+					<option>线路四</option>
+					<option>线路五</option>
+				</select>
+			</div>
+
+			<div class="border-box border-spacing">
+				<label class="normal-label">车辆编号</label>
+				<select class="form-control small-select">
+					<option>01256</option>
+					<option>01257</option>
+					<option>01258</option>
+					<option>01259</option>
+					<option>01260</option>
+				</select>
+			</div>
+
+			<div class="border-spacing-small">
+				<div class="small-border-box">
+					<input class="form-control small-input" />
+				</div>
+				<div class="border-spacing-img">
+					<img src="img/right-arrow.png" />
+				</div>
+			</div>
+
+			<div class="border-spacing-small">
+				<div class="small-border-box">
+					<input class="form-control small-input" />
+				</div>
+				<div class="border-spacing-img">
+					<img src="img/right-arrow.png" />
+				</div>
+			</div>
+
+			<div class="border-spacing-small">
+				<div class="small-border-box">
+					<input class="form-control small-input" />
+				</div>
+				<div class="border-spacing-img">
+					<img src="img/right-arrow.png" />
+				</div>
+			</div>
+
+			<div class="border-spacing-small">
+				<div class="small-border-box">
+					<input class="form-control small-input" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="clear-fix"></div>
+		
+		<div class="second-line">
+			<div class="bigger-border-box border-spacing">
+				<label class="bigger-label">配送网点</label>
+				<select class="form-control bigger-select">
+					<option>线路一</option>
+					<option>线路二</option>
+					<option>线路三</option>
+					<option>线路四</option>
+					<option>线路五</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="clear-fix"></div>
+		<div class="thrid-line">
+			<div class="bigger-border-box border-spacing">
+				<label class="bigger-label">网点主办人员</label>
+				<select class="form-control bigger-select">
+					<option>线路一</option>
+					<option>线路二</option>
+					<option>线路三</option>
+					<option>线路四</option>
+					<option>线路五</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="clear-fix"></div>
+		<div class="four-line">
+			<div class="bigger-border-box border-spacing">
+				<label class="bigger-label">协办人员</label>
+				<select class="form-control bigger-select">
+					<option>线路一</option>
+					<option>线路二</option>
+					<option>线路三</option>
+					<option>线路四</option>
+					<option>线路五</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="clear-fix"></div>
+		<div class="fifth-line">
+			<div class="bigger-border-box border-spacing">
+				<label class="bigger-label">押运员</label>
+				<select class="form-control bigger-select">
+					<option>线路一</option>
+					<option>线路二</option>
+					<option>线路三</option>
+					<option>线路四</option>
+					<option>线路五</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="clear-fix"></div>
+		<div class="sixth-line">
+			<div class="card-box border-spacing">
+				<div class="card-imgbox">
+					
+				</div>
+				<div class="card-content"></div>
+			</div>
+			
+			<div class="card-box border-spacing">
+				<div class="card-imgbox"></div>
+				<div class="card-content"></div>
+			</div>
+			
+			<div class="card-box border-spacing">
+				<div class="card-imgbox"></div>
+				<div class="card-content"></div>
+			</div>
+		</div>
+	</body>
+</html>

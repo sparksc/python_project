@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h5 class="ml-15">网点申请</h5>
+<div class="row">
+<div class="col s12">
+<ul class="tabs">
+	<!--<input type='hidden' id='index_page'/>-->
+<li class="tab col s3"><a href="#setaplbox">网点审批路线</a></li>
+</ul>
+</div>
+<div id="setaplbox" class="col s12">
+{% include 'admin/arrangeroute/setaplbox.html' %}
+</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="/static/js/model/arrangeroute/arrangeroute.js"></script>
+<script>
+$(document).ready(function(){
+    $('ul.tabs').tabs();
+    $('.modal').modal();
+
+});
+</script>
+{% endblock %}
+

@@ -1,0 +1,424 @@
+/*$('.del_btn').click(function(evt) {
+    evt.preventDefault();
+    var carid = $(this).attr('id');
+    $.confirm({
+        title: '删除车辆信息！',
+        content: '确认删除当前车辆信息？',
+        type: 'red',
+        autoClose: 'cancel|10000',
+        buttons: {
+            delCar: {
+                text: '确认删除',
+                btnClass: 'waves-effect waves-light btn red',
+                action: function () {
+                    $.ajax({
+                        url: '/admin/cardel/',
+                        type: "POST",
+                        dataType: 'json',
+                        data: {
+                            'id': carid
+                        },
+                        success: function (data) {
+                            if (data.is_success) {
+                                Materialize.toast('车辆已删除！', 4000);
+                            } else {
+                                Materialize.toast('车辆信息错误！', 4000);
+                            }
+                            location.reload();
+                        }
+                    })
+                }
+            },
+            cancel: function () {
+                // $.alert('Canceled!');
+            }
+        }
+    });
+});
+*/
+
+
+
+
+//押运员管理
+//回显信息
+$('.modify_btn').click(function(evt) {
+    evt.preventDefault();
+    var ampang_id = $(this).attr('id');
+    $.ajax({
+    url : '/admin/showambang/',
+    type : 'POST',
+    dataType : 'json',
+    data : {
+	'ampang_id' : ampang_id
+
+    },
+    success : function (data){
+	console.log('返回成功',data.is_success);
+	if ( data.is_success ){
+		//console.log(data)
+		$("label[for='alter_name']").addClass('active');
+		$('#alter_amb_id').val(data.ambang_id);
+		$('#alter_name').val(data.ambang_name);
+		$('#alterambanginfo').modal('open');	
+		}
+	
+	else{
+		Materialize.toast('人员信息错误！', 4000);
+		$('#alterambanginfo').modal('close');
+		}   
+	}
+
+})
+});
+//添加人员信息
+/*
+$('#add_amb').click(
+	function(evt) {
+		evt.preventDefault();
+		$('#amb_head').html("");
+	    $('#amb_head').text("录入押运人员信息");	
+		$('#ampanginfo').modal('open');
+		}
+							
+							
+);*/
+ 
+
+
+$("#ambang_alter_form").submit(function(){
+	$("#loading").show();
+	var name = $("input[name='name']").val();
+	var ambang_id = $("#alter_amb_id").val();
+	$(this).ajaxSubmit({
+			url : '/admin/alterambang/',
+			type : 'POST',
+			dataType : 'json',
+			data : {
+			'ambang_id' : ambang_id,
+			'name' : name
+			},
+			success : function(data) {
+			if (data.is_success){
+				Materialize.toast('修改成功！', 10000);
+			}
+			else{
+				Materialize.toast('修改失败！', 10000);
+			}
+			location.reload();
+			$("#loading").hide();
+			
+		}
+	  }		
+	)
+});
+
+
+//网点主办人员管理
+$(".del_btn").click(function(){
+	$("#loading").show();
+	var major_id = $(this).attr('id');
+	alert(major_id);
+	$.ajax({
+			url : '/admin/delmajor/',
+		    type : 'POST',	   
+			dataType : 'json',
+			data : {
+			'major_id' : major_id
+			},
+			success : function(data){
+			if ( data.is_success ) {
+			Materialize.toast( '删除成功！', 10000 );
+			}
+			else {
+			
+			Materialize.toast('删除失败！', 10000);
+			}
+			location.reload()
+			$("#loading").hide();
+				
+			
+			
+			
+			}
+	})	
+
+});
+
+//回显主办人员信息
+$(".modify_btn_major").click(function(evt){
+	evt.preventDefault();
+	var major_id = $(this).attr("id");
+	$.ajax({
+		url : '/admin/showmajor/',
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			'major_id' : major_id
+		},
+		success : function(data) {
+			if ( data.is_success ) {
+				$("#alter_major_id").val(data.major_id);
+				$("label[for='alter_name']").addClass('active');
+				$("label[for='alter_serial']").addClass('active');
+				$("input[name='alter_name']").val(data.major_name);
+				$("input[name='alter_serial']").val(data.major_serial);
+				$("#altermajorInfo").modal('open');
+				
+			}
+			else{
+			Materialize.toast('未知错误！', 10000);
+			
+			
+			}	
+		
+		}
+	})
+});
+
+//修改主办人员信息
+$("#major_alter_form").submit(function(){
+	$("#loading").show();
+	var major_name = $( "input[name='alter_name']" ).val();
+	var major_serial = $( "input[name='alter_serial']").val();
+	var major_id = $( "#alter_major_id" ).val();
+	$(this).ajaxSubmit({
+		url : '/admin/altermajor/',
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			'major_id' : major_id,
+			'major_name' : major_name,
+			'major_serial' : major_serial
+		},
+		success : function(data) {
+			if ( data.is_success ){
+				Materialize.toast('修改成功！', 10000);
+			}
+			else {
+				Materialize.toast('修改失败！', 10000);
+			}	
+		}
+	})
+});
+
+
+//网点协办人员管理
+//删除
+$(".del_btn_assist").click(function(){
+	$("#loading").show();
+	var assist_id = $(this).attr('id');
+	$.ajax(
+			{
+				url : '/admin/delassist/',
+				type : 'GET',
+				dataType : 'json',
+				data : {
+					'assist_id' : assist_id
+				},
+				success : function( data ) { 
+					if (data.is_success){
+						Materialize.toast('删除成功！', 10000);
+					}
+					else {
+						Materialize.toast('删除失败！', 10000);
+					}
+				}
+			}
+		);
+});
+//回显信息
+$(".modify_btn_assist").click(function(evt){
+	 evt.preventDefault();
+	 var assist_id = $(this).attr('id');
+	 $.ajax({
+		url : '/admin/showassist/',
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			'assist_id' : assist_id
+		},
+		success : function( data ) {
+			if ( data.is_success ){
+				$("label[for='assist_name']").addClass('active');
+				$("label[for='assist_serial']").addClass('active');
+				$("input[name='assist_name']").val(data.assist_name);
+				$("input[name='assist_serial']").val(data.assist_serial);
+				$("#alter_assist_id").val(data.assist_id);
+				$("#alterassistInfo").modal('open');
+			}
+			else {
+				Materialize.toast('未找到该人员！', 10000);   
+			}
+		}		
+	 }
+ )
+});
+
+//修改
+$("#assist_alter_form").submit(function(){
+	/*
+	$("#loading").show();
+	var assist_id = $("#alter_assist_id");
+	var assist_name = $("#assist_name");
+	var assist_serial = $("#assist_serial");
+	alert(assist_id,assist_name,assist_serial);	
+*/
+	alert('dddddddd');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$("#serial").change(function() {
+    var serial = $(this).val();
+    $.ajax({
+        url: '/admin/car_form_check/',
+        type: "POST",
+        dataType: 'json',
+        data: {
+            'serial': serial
+        },
+        success: function (data) {
+            if (data.is_serial_taken) {
+                Materialize.toast('车辆编号已存在，请检查输入！', 4000);
+                $("#car_submit").addClass("disabled");
+            } else if (!data.is_serial_taken) {
+                $("#car_submit").removeClass("disabled");
+            }
+        }
+    });
+});
+
+$("#number_plate").change(function() {
+    var number_plate = $(this).val();
+    $.ajax({
+        url: '/admin/car_form_check/',
+        type: "POST",
+        dataType: 'json',
+        data: {
+            'number_plate': number_plate
+        },
+        uploadProgress: function() {
+            $("#loading").show();
+        },
+        success: function (data) {
+            if (data.is_number_plate_taken) {
+                Materialize.toast('车牌号已存在！请检查输入！', 4000);
+                $("#car_submit").addClass("disabled");
+            } else if (!data.is_number_plate_taken) {
+                $("#car_submit").removeClass("disabled");
+            }
+        }
+    });
+});
+
+var fileExtension = ['jpeg', 'jpg', 'png'];
+$("#fimg").change(function() {
+    var filename = $("#fimg").val();
+    var extension = filename.replace(/^.*\./, '');
+    if (extension == filename) {
+        extension = '';
+    } else {
+        extension = extension.toLowerCase();
+    }
+    if ($.inArray(extension, fileExtension) == -1) {
+        $("#car_submit").addClass("disabled");
+        Materialize.toast('文件格式错误！请上传JPEG、JPG、PNG格式图片。', 4000);
+    } else {
+        $("#car_submit").removeClass("disabled");
+    }
+});
+
+$("#bimg").change(function() {
+    var filename = $("#fimg").val();
+    var extension = filename.replace(/^.*\./, '');
+    if (extension == filename) {
+        extension = '';
+    } else {
+        extension = extension.toLowerCase();
+    }
+    if ($.inArray(extension, fileExtension) == -1) {
+        $("#car_submit").addClass("disabled");
+        Materialize.toast('文件格式错误！请上传JPEG、JPG、PNG格式图片。', 4000);
+    } else {
+        $("#car_submit").removeClass("disabled");
+    }
+});
+
+
+$("#car_form").submit(function(){
+    $("#loading").show();
+    var serial = $("input[name='serial']").val();
+    var number_plate = $("input[name='number_plate']").val();
+    $(this).ajaxSubmit({
+        url: '/admin/car_save/',
+        type: "POST",
+        dataType: 'json',
+        data: {
+            'serial': serial,
+            'number_plate': number_plate
+        },
+
+        success: function (data) {
+            location.reload();
+            $("#loading").hide();
+        }
+    });
+    return false;   //阻止表单默认提交
+});
+
+$("#car_modify").submit(function(){
+    console.log("qwe123");
+    /*
+    $("#loading").show();
+    var serial = $("input[name='e_serial']").val();
+    var number_plate = $("input[name='e_number_plate']").val();
+    $(this).ajaxSubmit({
+        url: '/admin/car_save/',
+        type: "POST",
+        dataType: 'json',
+        data: {
+            'method': true,
+            'serial': serial,
+            'number_plate': number_plate
+        },
+
+        success: function (data) {
+            location.reload();
+            $("#loading").hide();
+        }
+    });
+    return false;   //阻止表单默认提交
+    */
+});

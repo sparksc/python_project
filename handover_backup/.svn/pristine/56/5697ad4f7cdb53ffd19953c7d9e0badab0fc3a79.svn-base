@@ -1,0 +1,75 @@
+<div class="row">
+<div class="card-panel teal">
+    {% for major in majors %}
+    {% if major.is_active == '1' %}
+    <div class="col s6 m4 l2">
+        <div class="card medium grey lighten-4">
+            <div class="card-image">
+                <img class="materialboxed" src="/static/images/person/major/img_{{ major.img_serial }}.png">
+                <span class="card-title">主办人员信息</span>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value="{{ major.name }}" type="text" class="validate" disabled>
+                        <label for="icon_prefix">姓名</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input value="{{ major.serial }}" type="text" class="validate" disabled>
+                        <label for="icon_telephone">编号</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href="#" class="green-text">修改</a>
+                <a href="#" class="red-text">删除</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="col s6 m4 l2">
+        <div class="card medium center-align grey lighten-2">
+            <div class="card-content blue-text">
+                <p class="wite-text">
+                <i class="material-icons large">add_circle_outline</i>
+                </p>
+                <div class="card-action">
+                    <a href="#majorInfoAdd" class="green-text">录入主办人员信息</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<form class="col s12" action='/admin/addmajor/' method="POST" enctype="multipart/form-data">
+<div id="majorInfoAdd" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h5>录入主办人员信息</h5>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="name" name="name" type="text" class="validate" required>
+                <label for="name">姓名</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="serial" name="serial" type="text" class="validate" required>
+                <label for="serial">工作编号</label>
+            </div>
+        </div>
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>人员大头照</span>
+                <input type="file" id="himg" name="himg" placeholder="">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" type="submit">确定</button>
+    </div>
+</div>
+</form>

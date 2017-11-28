@@ -1,0 +1,35 @@
+{% block main %}
+    <div class="container-box">
+        <form class="form-horizontal" action='' method="POST">
+            <fieldset>
+                <div id="legend" class="mb50">
+                    <legend class="">登录</legend>
+                </div>
+                <div class="control-group">
+                    <!-- Username -->
+                    <label class="control-label" for="username">登录名</label>
+                    <div class="controls">
+                        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                        <p class="help-block">请输入您的用户编号</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <!-- Password -->
+                    <label class="control-label" for="password">密码</label>
+                    <div class="controls">
+                        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                        <p class="help-block">请输入您的密码（不少于6个字符）</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <!-- Button -->
+                    <div class="controls">
+                        <button class="btn btn-success">登录</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

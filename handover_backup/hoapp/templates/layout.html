@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>路桥农村合作银行</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection">
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" media="screen,projection">
+		<link type="text/css" rel="stylesheet" href="/static/css/jquery-confirm.min.css" media="screen,projection">
+		<link type="text/css" rel="stylesheet" href="/static/css/select2.min.css" media="screen,projection">
+		<link type="text/css" rel="stylesheet" href="/static/css/approvalcss/style.css" media="screen,projection">
+		<!--<link type="text/css" rel="stylesheet" href="/static/datepicker/pikaday.css" media="screen,projection">-->
+		
+
+		<link href="/static/iconfont/material-icons.css?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<header>
+			<div class="navbar-fixed">
+				<nav class="nav-extended blue darken-4">
+					<div class="nav-wrapper nav-tabs">
+						<img class="brand-logo" id="logo-container" src="/static/images/logo.png" height="38px" href="/index/" class="brand-logo" alt="">
+						<ul class="right hide-on-med-and-down">
+							{% if flag %}
+							<li>
+								<a>欢迎网点柜员{{ user.id }}</a>
+							</li>
+							{% else %}
+							<li>
+								<a>欢迎金库管理员{{ user.id }}</a>
+							</li>
+							{% endif %}
+							<li>
+								<a href="/index/">主页</a>
+							</li>
+							<li>
+								<a href="/logout/">登出</a>
+							</li>
+						</ul>
+						<ul id="nav-mobile" class="side-nav">
+							<li>
+								<a href="">欢迎</a>
+							</li>
+							<li>
+								<a href="/logout/">登出</a>
+							</li>
+						</ul>
+						<a href="/logout/" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">input</i></a>
+					</div>
+					<div class="nav-content">
+						<ul class="tabs tabs-transparent">
+							{% if flag %}
+							<li class="tab disabled">
+								<a>金库管理员端</a>
+							</li>
+							<li class="tab">
+								<a class="active" href="/index/">网点柜员端</a>
+							</li>
+							{% else %}
+							<li class="tab">
+								<a class="active" href="/index/">金库管理员端</a>
+							</li>
+							<li class="tab disabled">
+								<a>网点柜员端</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			</br>
+			{% block main %}{% endblock %}
+		</main>
+
+		{% include "footer.html" %}
+
+		<script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.form.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-confirm.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+		<script type="text/javascript" src="/static/js/select2.min.js"></script>
+		<script type="text/javascript" src="/static/js/placeholders.js"></script>
+		<!--<script type="text/javascript" src="/static/datepicker/pikaday.js"></script>-->
+		<script type="text/javascript" src="/static/datepicker/m97/WdatePicker.js"></script>
+		{% block javascript %}{% endblock %}
+
+		</div>
+
+		<script type="text/javascript">
+			$(".js-example-basic-multiple").select2();
+			$(".js-example-placeholder-multiple").select2({
+				placeholder: "请在下拉框中选择您所需要的，可多选"
+			});
+		</script>
+		<!--<script>
+			new Pikaday({
+				field: document.getElementById('datepicker'),
+				trigger: document.getElementById('datepicker-button'),
+				minDate: new Date(2000, 0, 1),
+				ariaLabel: 'Custom label',
+				maxDate: new Date(2020, 12, 31),
+				yearRange: [2010, 2020]
+			});
+		</script>-->
+	</body>
+
+</html>

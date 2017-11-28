@@ -1,0 +1,48 @@
+<table class="striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>网点名称</th>
+			<th>尾箱数</th>
+			<th>封包入库数</th>
+			<th>申请日期</th>
+			<th>申请状态</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for aplbox in aplboxs%}
+		<tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{aplbox.branch.name}}</td>
+            <td>{{aplbox.cashboxs.all|length}}</td>
+            <td>{{aplbox.instock_nu}} </td>
+            <td>{{aplbox.date}}</td>
+            {% if aplbox.apl_status == '1'%}
+            <td>
+                <!--待审批id-->
+                <input value = "{{aplbox.id}}" index="aplids" type="hidden"/>
+                <a class="waves-effect waves-light btn blue">待审批</a>
+            </td>
+            {% else %}
+            <td>
+                <!--已经审批线路id-->
+                <input value = "{{aplbox.id}}" index="aplidids" type="hidden"/>
+                <a class="waves-effect waves-light btn green">已审批</a>
+            </td>
+            {% endif %}
+			<td></td>
+            <td><a class="waves-effect waves-light btn green del_apl" id="{{aplbox.id}}">测试环境删除</a></td>
+			<td></td>
+			<td></td>
+		</tr>
+    {% endfor %}
+	</tbody>
+</table>
+<div class="center col s12 ">
+	<a class="waves-effect waves-light btn-large" href="arrage_aplroute">安排配送路线</a>
+</div>
+

@@ -1,0 +1,79 @@
+<div class="row">
+    {% for ambang in ambangs %}
+    {% if ambang.is_active == '1' %}
+    <div class="col s12 m4 l3">
+        <div class="card medium grey lighten-4">
+            <div class="card-image">
+                <div class="col s6 m6 l6">
+                    <img class="materialboxed" src="/static/images/person/ambang/fimg_{{ ambang.img_serial }}.png">
+                </div>
+                <div class="col s6 m6 l6">
+                    <img class="materialboxed" src="/static/images/person/ambang/bimg_{{ ambang.img_serial }}.png">
+                </div>
+            <span class="card-title">押运员信息</span>
+            </div>
+            <div class="card-content">
+                <div class="input-field s12">
+                    <input value="{{ ambang.name }}" name="name" type="text" class="validate" disabled>
+                    <label for="name">姓名</label>
+                </div>
+            </div>
+            <div class="card-action">
+                <a id="{{ambang.id}}" href="" class="green-text modify_btn">修改</a>
+                <a href="/admin/ambangdel/{{ ambang.id }}" class="red-text">删除</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="col s12 m4 l3">
+        <div class="card medium grey lighten-2">
+            <div class="center-align">
+                <img src="/static/images/addicon.png" height="400">
+            </div>
+            <div class="card-action center-align" id="add_amb">
+                <a href="" class="green-text">录入押运员信息</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal Structure -->
+<form id='person_modify_form' class="col s12" action='/admin/addambang/' method="POST" enctype="multipart/form-data">
+<div id="ampanginfo" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h5 id="amb_head"></h5>
+        <div class="row">
+			<input name="modify_amb_id" type="hidden"/>
+            <div class="input-field col s6">
+                <input id="name" name="name" type="text" class="validate" required>
+                <label for="name">姓名</label>
+            </div>
+        </div>
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>人员大头照</span>
+                <input type="file" id="fimg" name="fimg" placeholder="">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>证件照</span>
+                <input type="file" id="bimg" name="bimg" placeholder="">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" type="submit">确定</button>
+		<button  type="button" class="modal-action modal-close waves-effect waves-yellow btn-flat">取消</button>
+    </div>
+</div>
+</form>

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<h5 class="ml-15">人员管理</h5>
+<div class="row ">
+<div class="col s12">
+<ul class="tabs">
+	<!--<input type='hidden' id='index_page'/>-->
+<li class="tab col s3"><a href="#ampangInfo">押运员管理</a></li>
+<li class="tab col s3"><a href="#majorInfo">网点主办人员管理</a></li>
+<li class="tab col s3"><a href="#assistInfo">网点协办人员管理</a></li>
+</ul>
+</div>
+<div id="ampangInfo" class="col s12 mt-15">
+{% include 'admin/personmanage/ampanginfo.html' %}
+</div>
+<div id="majorInfo" class="col s12 mt-15">
+{% include 'admin/personmanage/majorInfo.html' %}
+</div>
+<div id="assistInfo" class="col s12 mt-15">
+{% include 'admin/personmanage/assistInfo.html' %}
+</div>
+</div>
+
+
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    $('ul.tabs').tabs();
+    $('.modal').modal();
+});
+</script>
+<script type="text/javascript" src="/static/js/model/personmanage/personManage.js"></script>
+{% endblock %}

@@ -1,0 +1,118 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+import datetime
+import django.utils.timezone as timezone
+
+# Create your models here.
+class Branch(models.Model):
+    """银行信息"""
+    DEFAULT_ID=1
+    name = models.CharField(max_length=128, null=False, blank=False)
+    serial = models.CharField(max_length=128, null=False, blank=False)
+    is_active = models.CharField(max_length=16, null=False, blank=False)
+class User(AbstractUser):
+    """可登录人员信息表基本信息表 PS:username 为 柜员/管理员 编号"""
+    DEFAULT_ID=1
+    name = models.CharField(max_length=64, null=False, blank=False)
+    branch = models.ForeignKey(Branch, null=False, blank=False, verbose_name="u_bpk",default=Branch.DEFAULT_ID)
+    tel = models.CharField(max_length=64, null=False, blank=False)
+    status = models.CharField(max_length=32, null=False, blank=False)
+    remark = models.TextField()
+    fingerprint = models.CharField(max_length=512, null=True, blank=True)
+    # headimg = models.CharField(max_length=200, null=True, blank=True)
+    # certimg = models.CharField(max_length=200, null=True, blank=True)
+
+
+class BranchInfo(models.Model):
+    """支行列表"""
+    serial = models.CharField(max_length=32, null=False, blank=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+
+
+class CarInfo(models.Model):
+    """车辆信息表"""
+    serial = models.CharField(max_length=128, null=False, blank=False) # 车辆编号
+    number_plate = models.CharField(max_length=32, null=False, blank=False) # 车牌号
+    img_serial = models.CharField(max_length=200, null=True, blank=True) # 车辆图像序号
+    is_active = models.CharField(max_length=16, null=False, blank=False) # 车辆是否存在
+
+
+class AmbangInfo(models.Model):
+    """安邦人员信息表"""
+    name = models.CharField(max_length=128, null=False, blank=False)
+    img_serial = models.CharField(max_length=200, null=True, blank=True) # 图像序号
+    is_active = models.CharField(max_length=16, null=False, blank=False) # 是否存在
+
+
+class MajorInfo(models.Model):
+    """主办人员信息表"""
+    name = models.CharField(max_length=128, null=False, blank=False)
+    serial = models.CharField(max_length=128, null=False, blank=False)
+    img_serial = models.CharField(max_length=200, null=True, blank=True) # 图像序号
+    is_active = models.CharField(max_length=16, null=False, blank=False) # 是否存在
+
+
+class AssistInfo(models.Model):
+    """协办人员信息表"""
+    name = models.CharField(max_length=128, null=False, blank=False)
+    serial = models.CharField(max_length=128, null=False, blank=False)
+    img_serial = models.CharField(max_length=200, null=True, blank=True) # 图像序号
+    is_active = models.CharField(max_length=16, null=False, blank=False) # 是否存在
+
+class RouteInfo(models.Model):
+    """路线信息表"""
+    name = models.CharField(max_length=128, null=False, blank=False)
+    route = models.CharField(max_length=128, null=False, blank=False)#以字符串拼接寻找最优线路
+    routes = models.ManyToManyField(Branch,default=Branch.DEFAULT_ID)#替代route多对多
+    modify_date = models.DateField(auto_now=True) 
+    is_active = models.CharField(max_length=16, null=False, blank=False)    
+
+
+class Cashbox(models.Model):
+    """钱箱列表"""
+    DEFAULT_ID = 1
+    #/0废弃/1在库/2领用/3在途/4使用/
+    ABANDON=0
+    ATSTOCK=1
+    TOKEN=2
+    ONWAY=3
+    USE=4
+    serial = models.CharField(max_length=128, null=False, blank=False)
+    kind = models.CharField(max_length=128, null=False, blank=False)
+    status = models.CharField(max_length=128, null=False, blank=False)#/0废弃/1在库/2领用/3在途/4使用/
+    branch = models.ForeignKey(Branch, null=False, blank=False, verbose_name="the related branch")
+    remark = models.CharField(max_length=128,null=False)
+    is_active = models.CharField(max_length=16, null=False, blank=False)
+
+
+class CashboxaplInfo(models.Model):
+    #申请状态apl_status
+    WCHECK=0 #待复核/teller
+    APPLED=1 #已申请/teller   待审批/admin
+    PASSED=2 #已审批/admin  审批通过/admin 路线已分配   
+
+    """尾箱申请信息列表"""
+    date = models.DateField(default=timezone.now) 
+    branch = models.ForeignKey(Branch, null=False, blank=False, verbose_name="branch_related")
+    cashboxs = models.ManyToManyField( Cashbox, default = Cashbox.DEFAULT_ID )
+    c_id = models.CharField(max_length=128, null=False, blank=False,default=0 )#零用钱箱id组合
+    instock_nu = models.SmallIntegerField( null=False, blank=False, default=0 )
+    apl_status = models.CharField(max_length=128, null=False, blank=False) #申请状态
+    #aplteller = models.CharField(max_length=128, null=False, blank=False, default=0) #申请柜员
+    #confteller = models.CharField(max_length=128, null=False, blank=False, default=0) #复核柜员
+    is_active = models.CharField(max_length=16, null=False, blank=False)
+
+'''
+class CboxconfirmInfo(moels.Model):
+    """管理员钱箱配置信息"""
+    Cinfo = models.ForeignKey(Branch, null=False, blank=False)#申请钱箱界面
+    ambs = models.ForeignKey(AmbangInfo, null=False, blank=False)#押运员
+    
+'''
+    
+
+
+

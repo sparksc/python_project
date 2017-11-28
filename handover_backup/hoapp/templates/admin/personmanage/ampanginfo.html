@@ -1,0 +1,125 @@
+<div class="search-box">
+	<div class="border-box mb-12">
+		<label class="normal-label">姓名检索</label>
+		<input type="text" placeholder="请输入押运员姓名" class="form-control normal-input validate" id="searchname" required>
+	</div>
+	<button class="waves-effect waves-light btn blue search-btn ml-12 ambsearch"><i class="small material-icons">search</i></button>
+</div>
+<div class="row clear-fix">
+	{% for ambang in ambangs %} 
+    {% if ambang.is_active == '1' %}
+    <div class="col s12 m6 l3" tag="ambblock" name="amb_{{forloop.counter}}">
+		<div class="card medium info-box">
+			<div class="card-image person-imgbox">
+				<div class="col s6 m6 l6">
+					<img class="materialboxed" src="/static/images/person/ambang/fimg_{{ ambang.img_serial }}.png">
+				</div>
+				<div class="col s6 m6 l6">
+					<img class="materialboxed"  src="/static/images/person/ambang/bimg_{{ ambang.img_serial }}.png">
+				</div>
+			</div>
+			<div class="name-content">
+				<input value="{{ ambang.name }}" name="name" type="hidden" />
+
+				<h6 class="pull-left">安邦人员姓名:&nbsp;&nbsp;</h6>
+                <div class="pull-left" name="amb_name_{{forloop.counter}}" style="line-height: 30px;">{{ambang.name}}</div>
+
+			</div>
+			<div class="card-action">
+				<div class="pull-right">
+					<a href="" id="{{ ambang.id }}" class="modify_btn waves-effect waves-light btn small-btn"><i class="small material-icons">mode_edit</i></a>
+					<a href="" id="{{ ambang.id }}" class="del_ambang  waves-effect waves-light btn red small-btn"><i class="small material-icons">delete</i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %} {% endfor %}
+
+	<div class="col s12 m6 l3">
+		<div class="card medium info-box">
+			<div class="center-align">
+				<img src="/static/images/addicon.png" height="400">
+			</div>
+			<div class="card-action center-align" id="add_amb">
+				<a href="#ampanginfo" class="waves-effect waves-light btn green">录入押运员信息</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- Modal Structure -->
+<form id='person_modify_form' class="col s12" method="POST" enctype="multipart/form-data">
+	<div id="ampanginfo" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<div id="amb_head" class="modal-title"><i class="tiny material-icons">add_circle_outline</i>&nbsp;录入押运员信息</div>
+			<div class="row">
+				<div class="border-box border-spacing">
+					<label for="name" class="normal-label">姓名</label>
+					<input id="name" name="name" type="text" placeholder="请输入押运员姓名" class="form-control normal-input validate amp_add_name" required>
+				</div>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>人员大头照</span>
+					<input type="file" id="fimg" name="fimg" class='amp_fimg_addinput' placeholder="">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>证件照</span>
+					<input type="file" id="bimg" name="bimg" class='amp_bimg_addinput' placeholder="">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="modal-action  waves-effect waves-green btn-flat add_amp_btn" type="submit">确定</button>
+			<button type="button" class="modal-action modal-close waves-effect waves-yellow btn-flat">取消</button>
+		</div>
+	</div>
+</form>
+
+<!--修改-->
+<form id='ambang_alter_form' class="col s12" method="POST" enctype="multipart/form-data">
+	<div id="alterambanginfo" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<div class="modal-title"><i class="tiny material-icons">mode_edit</i>&nbsp;修改押运员信息</div>
+			<div class="row">
+				<input id="alter_amb_id" type="hidden" />
+				<div class="border-box border-spacing">
+					<label for="alter_name" class="normal-label">姓名</label>
+					<input placeholder="请输入押运员姓名" id="alter_name" name="name" type="text" class="form-control normal-input validate">
+
+				</div>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>人员大头照</span>
+					<input type="file" id="fimg" name="fimg" class='amp_fimg_alterinput' placeholder="" required>
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>证件照</span>
+					<input type="file" id="bimg" name="bimg" class='amp_bimg_alterinput' placeholder="" required>
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="modal-action waves-effect waves-green btn-flat alter_amp_btn" type="submit">确定</button>
+			<button type="button" class="modal-action modal-close waves-effect waves-yellow btn-flat">取消</button>
+		</div>
+	</div>
+</form>

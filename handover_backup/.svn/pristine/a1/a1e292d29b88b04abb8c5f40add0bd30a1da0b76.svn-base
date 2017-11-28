@@ -1,0 +1,133 @@
+
+<div class="first-line">
+    <div class="border-box border-spacing">
+        <label class="normal-label">选择日期</label>
+        <input class="form-control normal-input" type="text" id="datepicker" />
+    </div>
+	<div class="border-box border-spacing">
+		<label class="normal-label">线路名称</label>
+		<select class="form-control small-select" id="route_select" name="route_select">
+			<option value="" disabled selected>请选择线路</option>
+			{% for route in routes%}
+			<option value="{{route.id}}">{{ route.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div class="border-box border-spacing">
+		<label class="normal-label">车辆编号</label>
+		<select class="form-control small-select" id = "car_select">
+			<option value="" disabled selected>请选择车辆</option>
+			{% for car in cars %}
+                <option value="{{ car.id }}">{{car.number_plate}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+    <!--
+	<div class="border-spacing-small">
+		<div class="small-border-box">
+			<input class="form-control small-input" name="route_input" disabled="disabled" />
+		</div>
+		<div class="border-spacing-img">
+			<img src="/static/images/routemanage/approval/right-arrow.png" />
+		</div>
+	</div>
+
+	<div class="border-spacing-small">
+		<div class="small-border-box">
+			<input class="form-control small-input" name="route_input" disabled="disabled" />
+		</div>
+		<div class="border-spacing-img">
+			<img src="/static/images/routemanage/approval/right-arrow.png" />
+		</div>
+	</div>
+
+	<div class="border-spacing-small">
+		<div class="small-border-box">
+			<input class="form-control small-input" name="route_input" disabled="disabled" />
+		</div>
+		<div class="border-spacing-img">
+			<img src="/static/images/routemanage/approval/right-arrow.png" />
+		</div>
+	</div>
+
+	<div class="border-spacing-small">
+		<div class="small-border-box">
+			<input class="form-control small-input" name="route_input" disabled="disabled" />
+		</div>
+	</div>
+    -->
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="clear-fix"></div>
+    <table class="table table-bordered table-input">
+        <thead>
+            <tr>  
+                <td>网点名称</td>
+                <td>主办人员</td>
+                <td>协办人员</td>
+            <tr>  
+        </thead>
+         <tbody id="batch_list">
+            <tr>
+                <td><input type='text'/></td>
+                <td>
+                    <select class="form-control small-select" id="branch_major">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control small-select" id="branch_assist">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+
+                    </select>
+                </td>
+            </tr>
+         </tbody>
+    </table>
+</div>
+
+
+
+<div class="clear-fix"></div>
+<div class="fifth-line">
+	<div class="bigger-border-box border-spacing">
+		<label class="bigger-label">押运员</label>
+		<select class="form-control bigger-select js-example-basic-multiple" id="amb_sel"  multiple="multiple">
+            {% for amb in ambs %}
+            <option value="{{amb.id}}">{{amb.name}}</option>
+            {% endfor %}
+		</select>
+	</div>
+</div>
+
+<div class="clear-fix"></div>
+<div class="sixth-line">
+	<div class="card-box border-spacing">
+		<div class="card-imgbox">
+
+		</div>
+		<div class="idcard-content"></div>
+	</div>
+
+	<div class="card-box border-spacing">
+		<div class="card-imgbox"></div>
+		<div class="idcard-content"></div>
+	</div>
+
+	<div class="card-box border-spacing">
+		<div class="card-imgbox"></div>
+		<div class="idcard-content"></div>
+	</div>
+</div>
+<div class="center col s12 mt-15">
+    <a class="waves-effect waves-light btn-large" id="preview" >配置信息预览</a>
+    <a class="waves-effect waves-light btn-large" id="prconfirm">确认并打印配置信息</a>
+</div>

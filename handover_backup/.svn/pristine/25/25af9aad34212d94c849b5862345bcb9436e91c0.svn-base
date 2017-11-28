@@ -1,0 +1,112 @@
+<table class="striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>线路名称</th>
+			<th>线路规划</th>
+			<th>修改日期</th>
+			<th>操作</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+			<th>--</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for route in routes %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ route.name }}</td>
+			<td>
+				{% for branch in route.routes.all %} {% if forloop.last %} {{branch.name}} {% else%} {{branch.name}}
+				<span>--</span> {% endif %} {% endfor %}
+			</td>
+			<td>{{ route.modify_date }} </td>
+			<td>
+				<div>
+					<a href="" id="{{ route.id }}" count="{{ forloop.counter }}" class='blue-text route_show'>修改</a><span>/</span>
+					<a href="" id="{{ route.id }}" class='red-text route_delete'>删除</a>
+				</div>
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% for b in branchs %}
+<input class="branch_token" value="{{b.name}}" id={{b.id}} type="hidden" /> {% endfor %}
+<div class="center col s12 fixed-action-btn ">
+	<a class="waves-effect waves-light btn-large" href="addroute">增加配送线路</a>
+</div>
+<!-- Modal Structure -->
+<!--addroute-->
+<form class="col s12" id="add_route_form" method="POST" enctype="multipart/form-data">
+	<div id="addroute_modal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<div class="modal-title"><i class="tiny material-icons">add_circle_outline</i>&nbsp;增加配送线路</div>
+			<div class="row">
+				<div class="border-box border-spacing">
+					<label class="normal-label" for="route_name">线路名称</label>
+					<input class="form-control normal-input validate" id="route_name" name="route_name" type="text" required placeholder="请填写线路名称" />
+				</div>
+			</div>
+			<div class="row">
+				<p>添加线路:</p>
+				<div class="chips chips-group-setroute">
+				</div>
+				<a class="btn-floating" id="add_chip"><i class="material-icons">add</i></a>
+			</div>
+			<div id="branch_selector">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="addroute" class="modal-action  waves-effect waves-green btn-flat" type="submit">确定</button>
+			<button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">取消</button>
+		</div>
+	</div>
+</form>
+
+<!-- Modal Structure -->
+<!--alterroute-->
+<form class="col s12" id="alter_route_form" method="POST" enctype="multipart/form-data">
+	<div id="alterroute_modal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<div class="modal-title"><i class="tiny material-icons">mode_edit</i>&nbsp;修改配送线路</div>
+			<input type='hidden' id='alter_route_id' />
+			<div class="row">
+				<div class="border-box border-spacing">
+					<label for="route_count" class="normal-label">线路编号</label>
+					<input id="route_count" name="route_count" type="text" class="form-control normal-input" disabled>
+				</div>
+				<div class="border-box border-spacing">
+					<label for="alter_route_name" class="normal-label">线路名称</label>
+					<input id="alter_route_name" name="alter_route_name" type="text" class="form-control normal-input" required>
+				</div>
+				<div class="border-box border-spacing">
+					<label for="add_date" class="normal-label">修改日期</label>
+					<input id="add_date" name="add_date" type="text" class="form-control normal-input" disabled>
+				</div>
+			</div>
+			
+				
+			
+			<!--显示添加的路线-->
+			<div class="row">
+				<p>线路规划:</p>
+				<div class="chips chips-group-alterroute">
+				</div>
+				<a class="btn-floating" id="alter_chip"><i class="material-icons">add</i></a>
+			</div>
+			<!--可添加的路线-->
+			<div id="alter_branch_selector">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="alterroute" class="modal-action  waves-effect waves-green btn-flat" type="submit">确定</button>
+			<button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">取消</button>
+		</div>
+	</div>
+</form>
