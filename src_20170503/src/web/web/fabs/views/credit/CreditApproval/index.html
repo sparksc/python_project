@@ -1,0 +1,20 @@
+<form  ng-controller='approalController' class="form-horizontal" role="form"  style="overflow-x:yes; overflow-y:yes;">
+    <div class="form-body">
+        <button type="button" ng-click="saveReport()" ng-show = 'activity_status=="审批结束"' class="btn btn-primary" >生成审查审批表</button>
+        <table class = "table table-bordered">
+            <tr class = "info">
+                <th ng-repeat='th in tableHead' ng-bind='th'> </th>
+            </tr>
+            <tr ng-repeat="d in tableData"> 
+                 <td ng-bind="$index+1"></td>
+		 <td ng-bind='d.activity.activity_name'></td>
+                 <td ng-bind='d.role'></td>
+                 <td ng-bind='d.user.user_name'></td>
+                 <td ng-bind='d.comment.comment_type'></td>
+                 <td ng-bind='d.comment.comment'></td>
+                 <td ng-bind='d.comment.comment_date'></td>
+            </tr>
+        </table>
+        <iframe id='approval_report' width='100%' height='600px' style='display:none' scroll="no"></iframe>
+    </div>
+</form>

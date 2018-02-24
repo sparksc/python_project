@@ -1,0 +1,430 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="account_rankController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label label-sm">年份:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm"  type="text"  ng-model="cust_search.SYEAR" placeholder="请输入合法年份，如2016."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-md-offset-1 ">
+                         <div class="form-group">
+                              <label class="col-md-4 control-label label-sm ">机构号:</label>
+                              <div class="col-md-6">
+                                    <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.ORG_CODE" disabled="true">
+                              </div>
+                              <button type="button" class="btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                         </div>
+                         <div name="sameBusiness" ng-include src=Page ></div>
+                              <div class="modal fade " name="loan_type_modal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title">机构信息</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="row" name="for_lt_tree"> </div>
+                                                </form>
+                                            </div> <!-- modal-body -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                            </div> <!-- modal-footer -->
+                                        </div> <!-- modal-content -->
+                                    </div>
+                              </div>
+                         </div>
+                </div>
+                <div class="row">
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label class="col-md-5 control-label label-sm">员工号:</label>
+                                 <div class="col-md-7">
+                                    <div class="input">
+                                        <select type="text" class="form-control" ng-model="cust_search.USER_CODE" ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model2">
+                                             <option></option>
+                                        </select>
+                                    </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4 col-md-offset-1 "> 
+                            <div class="col-md-10 ">
+                                <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />
+                            </div>
+                         </div>
+                    </div>
+
+
+ 
+
+            <div class="row">
+                  <div class="col-md-6 col-md-offset-8">
+                    <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                    <button class="btn btn-primary btn-sm" ng-click="add()">新增</button>
+                    <a href="{{excelurl}}" class="btn btn-primary btn-sm">excel导出</a>
+                    <button type="button" class="btn btn-primary btn-sm"  ng-click="upload_excel()">excel导入</button>
+                  </div>
+             </div>
+            </fieldset>
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header track by $index'  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length-1 == $index"  >
+                                {{d}}
+                                </td>
+                                <td>
+                                     <button class="btn btn-primary btn-sm" ng-click="edit(row)">修改</button>
+                                     <button class="btn btn-primary btn-sm" ng-click="del(row)">删除</button>
+                                </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+       </div>
+        <div class="modal fade" id="account_rank_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">录入</h4>
+                </div>
+                <div class="modal-body">
+                     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">年份:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[0]" type="text" placeholder="请输入合法年份，如2016."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control" ng-model="newstaffdata[1]" ng-options="option.branch_code as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="change_name(newstaffdata[1])" >
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构名称:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-readonly="true" ng-model="newstaffdata[2]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select  class="form-control " ng-model="newstaffdata[3]"  ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model3" ng-change="change_name2(newstaffdata[3])"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工姓名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-readonly="true" ng-model="newstaffdata[4]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">业务差错率排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[5]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计基础等级:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select  class="form-control" ng-model="newstaffdata[6]" ng-change="change_name3(newstaffdata[6])">
+                                    <option>一级</option>
+                                    <option>二级</option>
+                                    <option>三级</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计行龄（年）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[7]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">内勤人均违规积分排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[8]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行替代率完成率排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[9]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计办业务知识技能达标（级）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select  class="form-control" ng-model="newstaffdata[10]" ng-change="change_name3(newstaffdata[10])">
+                                    <option>一级及以上</option>
+                                    <option>二级</option>
+                                    <option>三级</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计工作经验（年）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[11]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">备注:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[12]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="account_rank_new_add_button" class="btn blue" ng-click="add_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>	
+    </div>
+    <div class="modal fade" id="account_rank_edit_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">年份:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[0]" type="text" placeholder="请输入合法年份，如2016." ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control" ng-model="newstaffdata[1]" ng-options="option.branch_code as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="change_name(newstaffdata[1])" >
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构名称:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[2]" type="text" ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select  class="form-control " ng-model="newstaffdata[3]"  ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model3" ng-change="change_name2(newstaffdata[3])"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工姓名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[4]" type="text" ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">业务差错率排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[5]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计基础等级:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select  class="form-control" ng-model="newstaffdata[6]" ng-change="change_name3(newstaffdata[6])">
+                                    <option>一级</option>
+                                    <option>二级</option>
+                                    <option>三级</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计行龄（年）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[7]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">内勤人均违规积分排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[8]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行替代率完成率排名:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[9]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计办业务知识技能达标（级）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select  class="form-control" ng-model="newstaffdata[10]" ng-change="change_name3(newstaffdata[10])">
+                                    <option>一级及以上</option>
+                                    <option>二级</option>
+                                    <option>三级</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">会计工作经验（年）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[11]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">备注:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[12]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="account_rank_new_add_button" class="btn blue" ng-click="edit_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>	
+    </div>
+
+
+</div>

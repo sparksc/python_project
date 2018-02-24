@@ -1,0 +1,35 @@
+<div style="margin: 0px;">
+    <div class="row">
+        <div class="col-md-11"  >
+            <div ng-controller='customerController'>
+                <div class="col-md-2"  style="border-right:5px solid #eeeeee;">
+                    <div ng-include="'views/customer/person/customerSidebar.html'" ></div>
+                </div>
+                <div class="col-md-10">
+                    <div ng-include="'views/customer/person/personalInformation.html'" ng-controller="personalInformationController"></div>
+                    <div ng-if="display_info == 'relatives'" ng-include="'views/customer/person/relatives.html'" ng-controller="relativesController"></div>
+                    <!--
+                    <div ng-include="'views/customer/person/academicRecord.html'" ng-controller="academicRecordController"></div>
+                    <div ng-include="'views/customer/person/bond.html'" ng-controller="bondController"></div>
+                    <div ng-include="'views/customer/person/employmentsRecord.html'" ng-controller="employmentsRecordController"></div>
+                    <div ng-include="'views/customer/person/intangibleAsset.html'" ng-controller="intangibleAssetController"></div>
+                    <div ng-include="'views/customer/person/investmentEnterprise.html'" ng-controller="investmentEnterpriseController"></div>
+                    <div ng-include="'views/customer/person/lifeInsurance.html'" ng-controller="lifeInsuranceController"></div>
+                    <div ng-include="'views/customer/person/otherAsset.html'" ng-controller="otherAssetController"></div>
+                    <div ng-include="'views/customer/person/otherLiabilities.html'" ng-controller="otherLiabilitiesController"></div>
+                    <div ng-include="'views/customer/person/personalDocuments.html'" ng-controller="personalDocumentsController"></div>
+                    <div ng-include="'views/customer/person/personalMemorabilia.html'" ng-controller="personalMemorabiliaController"></div>
+                    <div ng-include="'views/customer/person/propertyInsurance.html'" ng-controller="propertyInsuranceController"></div>
+                    <div ng-include="'views/customer/person/realtyAssets.html'" ng-controller="realtyAssetsController"></div>
+                    <div ng-include="'views/customer/person/socialInsurance.html'" ng-controller="socialInsuranceController"></div>
+                    <div ng-include="'views/customer/person/stock.html'" ng-controller="stockController"></div>
+                    <div ng-include="'views/customer/person/vehicle.html'" ng-controller="vehicleController"></div>
+                    <div ng-include="'views/customer/person/tax.html'" ng-controller="taxController"></div>
+                    <div ng-include="'views/customer/person/associatedPerson.html'" ng-controller="associatedPersonController"></div>
+                    <div ng-include="'views/customer/person/associatedOrg.html'" ng-controller="associatedOrgController"></div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- 对公-最高额贷款 -->
+<div ng-include="'views/credit/loan/baseInformation.html'"/>
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否银团贷款</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">银团贷款总额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">牵头行</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">代理行</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">我行参与角色</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">其它条件和要求</label>
+            <div class="col-md-7">
+               <input type="text" class="form-control"  placeholder="" >
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

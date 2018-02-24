@@ -1,0 +1,1365 @@
+<form name="companyInformation" class="form-horizontal" ng-submit='submit(companyInformation.$valid)'  role="form"  style="overflow-x:yes; overflow-y:yes;">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="save()">保存</button> 
+                <button type="submit" class="btn btn-primary" ng-show="disabled_flag==false" >提交</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="clear()">清除</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==true" ng-click="edit()">修改</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='true'  ng-model="customer.no" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm" >公司中文名称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.company_cn_name" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户习惯称呼</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.company_famous_name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">公司外文名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" name="company_en_name" ng-disabled='disabled_flag' ng-model="customer.company_en_name"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">企业性质<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_type" required >
+                            <option></option>
+                            <option>国有</option>
+                            <option>国有控股</option>
+                            <option>集体</option>
+                            <option>集体控股</option>
+                            <option>私营</option>
+                            <option>联营</option>
+                            <option>个体</option>
+                            <option>股份</option>
+                            <option>港澳台三资</option>
+                            <option>外资</option>
+                            <option>合资</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">企业隶属关系</label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_own_relation">
+                            <option></option>
+                            <option>中央</option>
+                            <option>地方</option>
+                            <option>市</option>
+                            <option>县</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户种类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.cust_kind" required>
+                            <option></option>
+                            <option>工业</option>
+                            <option>商业</option>
+                            <option>建筑业（房地产）</option>
+                            <option>农业</option>
+                            <option>乡镇企业</option>
+                            <option>私营企业</option>
+                            <option>个人</option>
+                            <option>其他</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">企业规模<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_capital" required>
+                            <option></option>
+                            <option>大型企业</option>
+                            <option>中型企业</option>
+                            <option>小型企业</option>
+                            <option>微型企业</option>
+                            <option>其他</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户所属领域<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.cust_field" required>
+                            <option></option>
+                            <option>生产流通</option>
+                            <option>非生产流通</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经营组织形式<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+			 <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_kind" required>
+                            <option></option>
+                            <option>股份有限公司</option>
+                            <option>有限责任公司</option>
+                            <option>国有独资企业</option>
+                            <option>三资企业</option>
+                            <option>民营私营企业</option>
+                            <option>集体企业</option>
+                            <option>事业单位</option>
+                            <option>政府机构</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业门类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input"> 
+                            <select class="form-control input-sm" ng-change="industry_select(industryT_top,'big')" ng-hide="disabled_flag" ng-disabled='disabled_flag'  ng-model="industryT_top" >
+                                <option ng-repeat=" inds_top in industry_topList | orderBy:'industry_d'" value="{{inds_top.industry_d+'-'+inds_top.type_name}}">{{inds_top.industry_d+'-'+inds_top.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="customer.industry_class" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业大类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_big,'mid')"ng-hide="disabled_flag" ng-disabled='disabled_flag' ng-model="industry_big" required>
+                                <option ng-repeat=" inds_big in industry_bigList | orderBy:'industry_d' " value="{{inds_big.industry_d+'-'+inds_big.type_name}}">{{inds_big.industry_d+'-'+inds_big.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="customer.industry_large_class" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业中类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_mid,'small')" ng-hide="disabled_flag" ng-disabled='disabled_flag' ng-model="industry_mid" required >
+                                <option ng-repeat=" inds_mid in industry_midList | orderBy:'industry_d' " value="{{inds_mid.industry_d+'-'+inds_mid.type_name}}">{{inds_mid.industry_d+'-'+inds_mid.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="customer.industry_mid_class" />
+                        </div>
+                    </div>
+                </div>
+           </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业小类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_small,'over')"ng-hide="disabled_flag" ng-disabled='disabled_flag' ng-model="industry_small" required >
+                                <option ng-repeat=" inds_small in industry_smallList | orderBy:'industry_d' " value="{{inds_small.industry_d+'-'+inds_small.type_name}}">{{inds_small.industry_d+'-'+inds_small.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="customer.industry_small_class" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+        <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">社会统一信用代码证号/工商营业执照号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='credit_disabled_flag' ng-model="customer.company_reg_id"  pattern="{{pattern.icc}}" title="工商营业执照格式号错误！" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">法律责任形式</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.law_duty">
+                            <option></option>
+                            <option>有限责任公司</option>
+                            <option>股份有限公司</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+           <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">注册地所在国家地区</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.reg_country">
+				 <option value="">中国</option>
+                            <option>美国</option>
+                            <option>英国</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+         <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3 label-sm">注册地所在行政区域<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.reg_state" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">注册地址<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' placeholder="格式：xx省xx市xx县/区xxxx"  ng-model="customer.reg_address" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">目前办公地址<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.bus_address" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	  <div class="row">
+      <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">注册资本币种</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.reg_cur_type">
+                            <option value="">人民币</option>
+                            <option >英镑</option>
+                            <option >港币</option>
+                            <option >美元</option>
+                            <option >瑞士法郎</option>
+                            <option >日元</option>
+                            <option >加元</option>
+                            <option >澳元</option>
+                            <option >欧元</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label col-md-3 label-sm">注册资本<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.reg_amount" ng-blur="reg_amount(money.reg_amount)"  pattern="{{pattern.amount}}" title="金额错误！" required/>
+                <span class="input-group-addon">万元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 <div class="row">
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">实收资本币种</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.paid_cur_type">
+                            <option></option>
+                            <option value="">人民币</option>
+                            <option >英镑</option>
+                            <option >港币</option>
+                            <option >美元</option>
+                            <option >瑞士法郎</option>
+                            <option >日元</option>
+                            <option >加元</option>
+                            <option >澳元</option>
+                            <option >欧元</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3 label-sm">实收资本</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="money.paid_amount" ng-blur="paid_amount(money.paid_amount)"  pattern="{{pattern.amount}}" title="金额错误！" />
+                                <span class="input-group-addon">万元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3 label-sm">企业成立日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.company_reg_date" ng-blur="company_reg_date()"  pattern="{{pattern.date}}" title="日期格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">最新年检时间<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" name="last_check_date" ng-disabled='disabled_flag' ng-model="customer.last_check_date"   pattern="{{pattern.date}}" title="日期格式错误！"   ng-blur="last_check_date()"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">营业执照年审结果</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.reg_check_result">
+                            <option value="">年审合格</option>
+                            <option>经补证年审不合格</option>
+                            <option>年审不合格</option>
+                            <option>不参加当年年审</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">营业执照到期日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" name="reg_thru_date" ng-disabled='disabled_flag' ng-model="customer.reg_thru_date" ng-blur="reg_thru_date()"  pattern="{{pattern.date}}" title="日期格式错误！"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经营方式</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_fashion">
+                            <option value="">批发</option>
+                            <option>零售</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经营范围<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.opt_scope" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+	     <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">组织机构代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.org_id" pattern="{{pattern.oic}}" title="组织机构代码错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">国税登记证号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='credit_disabled_flag' ng-model="customer.nat_tax_id" pattern="{{pattern.ntrn}}" title="国税登记证号错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">地税登记证号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='credit_disabled_flag' ng-model="customer.loc_tax_id" pattern="{{pattern.ltrn}}" title="地税登记证号错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">开户许可证号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.account_approval_no"  pattern="{{pattern.aol}}" title="开户许可证号错误！" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">基本账户开户行<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.base_bank" required>
+                            <option></option>
+                            <option>我行</option>
+                            <option>工行</option>
+                            <option>农行</option>
+                            <option>建行</option>
+                            <option>中行</option>
+                            <option>交行</option>
+                            <option>招行</option>
+                            <option>浦发行</option>
+                            <option>其他行</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">本行基本账号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-blur="bank_len()"  ng-model="customer.bank_account_no"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">机构信用代码证<font color="#FF0000">*</font>label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-model="customer.org_credit_cert" ng-disabled='disabled_flag' pattern="{{pattern.icc}}" title="机构信用代码错误！" required/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">中征码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" name="loan_card_no" ng-disabled='disabled_flag' ng-model="customer.loan_card_no"  pattern="{{pattern.card}}" title="中征码格式错误！"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">其他证件名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.other_name" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">其他证件号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+
+                            <input class="form-control input-sm " type="text" name="other_card_no" ng-disabled='disabled_flag' ng-model="customer.other_no"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">法定代表人姓名<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.corp_name" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">法人代表证件号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" name="corp_id_num" ng-disabled='disabled_flag' ng-model="customer.corp_id_num"  pattern="{{pattern.idcard}}" title="证件号码格式错误！"   required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">法人类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.crop_type">
+                            <option></option>
+                            <option>企业法人</option>
+                            <option>事业法人</option>
+                            <option>机关法人</option>
+                            <option>其他法人</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">法人是否持有商业信用卡</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.corp_credit_card">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	</div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">联系人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.res_person"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">手机号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.reg_phone" pattern="{{pattern.mobilephone}}" title="手机号码错误！" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职务<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.reg_headship"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.reg_id_num"   pattern="{{pattern.idcard}}" title="证件号码错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+             <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">邮政编码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" name="customer_reg_postcode" ng-disabled='disabled_flag' ng-model="customer.reg_postcode"  pattern="{{pattern.postalcode}}" title="邮政编码错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">办公电话<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.phone"  pattern="{{pattern.telephone}}" title="电话号码错误！"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">传真电话</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  pattern="{{pattern.telephone}}" title="号码错误！"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">土地面积</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-disabled='disabled_flag' ng-model="customer.company_area"  pattern="{{pattern.num}}" title="面积错误！"/>
+                            <span class="input-group-addon">平米</span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">土地所有权</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_opt_owner">
+                            <option>国家</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">土地性质</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_opt_type">
+                            <option></option>
+                            <option>国家出让</option>
+                            <option>国家划拨</option>
+                            <option>集体</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+             </div>
+             <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">房屋面积</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.company_house_area"  pattern="{{pattern.num}}" title="面积格式错误！"/>
+                            <span class="input-group-addon">平米</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">房屋所有权</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag'  ng-model="customer.company_house_owner">
+                            <option></option>
+                            <option>国家</option>
+                            <option>私有</option>
+                            <option>集体</option>
+                            <option>公共</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>-->
+             <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">从业人数<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="customer.total_employee"  pattern="{{pattern.num}}" title="格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">主营业务及主要产品情况<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.opt_field" required/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">主要生产设备</label>
+                    <div class="col-md-7">
+                        <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.prod_equip"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">年生产能力</label>
+                    <div class="col-md-7">
+                        <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.year_prod"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">实际生产能力</label>
+                    <div class="col-md-7">
+                        <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.fact_prod"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">即期信用等级<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.in_credit_class" required>
+                            <option></option>
+                            <option>AAA</option>
+                            <option>AA</option>
+                            <option>A</option>
+                            <option>BBB</option>
+                            <option>BB</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>未评级</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">外部评级结果</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="customer.out_credit_class">
+                            <option></option>
+                            <option>AAA</option>
+                            <option>AA</option>
+                            <option>A</option>
+                            <option>BBB</option>
+                            <option>BB</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>未评级</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+      </div>
+    <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">外部评级日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.out_rating_date" ng-blur="out_rating_date()"  pattern="{{pattern.date}}" title="日期格式错误！"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">外部评级机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.out_org"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">异地企业标志</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.local_field">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">集团管理模式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_manage">
+                                <option></option>
+                                <option>母子公司制集团公司</option>
+                                <option>分制集团公司</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">集团融资形式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_financing">
+                                <option></option>
+                                <option>集团公司统一融资</option>
+                                <option>母子公司单独融资</option>
+                                <option>只有子公司对外融资</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">集团客户标志</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.company_cust">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">进出口权标识</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.import_export">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">何种特业经营</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.special_business"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">特种许可证是否有效</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.special_licence">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">特业经营起始日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.special_start_date" ng-blur="special_start_date()"  pattern="{{pattern.date}}" title="日期格式错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">特业经营到期日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.special_thru_date" ng-blur="special_thru_date()" pattern="{{pattern.date}}" title="日期格式错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">房地产开发企业类别</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.real_type">
+                                <option></option>
+                                <option>综合类房产开发企业</option>
+                                <option>项目公司</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">房地产开发资质</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.real_aptitude">
+                                <option></option>
+                                <option>一级</option>
+                                <option>二级</option>
+                                <option>三级</option>
+                                <option>四级</option>
+                                <option>五级</option>
+                                <option>六级</option>
+                                <option>七级</option>
+                                <option>八级</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">财务报表类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.fin_rep_type">
+                                <option></option>
+                                <option>通用类型</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">通过环评<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.ela_flag" required>
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">信用等级评定分类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.rating_type" required>
+                                <option></option>
+				<option >工业(化工)</option>
+				<option >工业(电子通讯)</option>
+				<option >工业(机械制造)</option>
+				<option >工业(冶金)</option>
+				<option >工业(纺织服装)</option>
+				<option >工业(其他)</option>
+				<option >工业(建材)</option>
+				<option >中介服务业</option>
+				<option >公用事业</option>
+				<option >交通运输业</option>
+				<option >投资管理类</option>
+				<option >事业单位</option>
+				<option >施工业</option>
+				<option >宾馆餐饮业</option>
+				<option >商业(批发)</option>
+				<option >商业(零售)</option>
+				<option >综合</option>
+				<option >房地产业</option>	
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">与我行关联关系<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.relation_desc" required > 
+                                <option></option>
+                                <option>无关联关系</option>
+                                <option>一般关联关系</option>
+                                <option>持股5%以上的股东</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">与我行合作关系<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.relation_corp" required >
+                                <option></option>
+                                <option>非常密切</option>
+                                <option>密切</option>
+                                <option>一般</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">是否持有我行股份<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.hold_stock_flag" required>
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">拥有我行股份金额</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.hold_stock_amount"  ng-blur="hold_stock_amount(money.hold_stock_amount)" pattern="{{pattern.amount}}" title="金额错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">我行客户分类</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.bank_cust_type">
+                                <option></option>
+                                <option>积极支持类</option>
+                                <option>一般支持类</option>
+                                <option>限制支持类</option>
+                                <option>禁止支持类</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">红灯客户标志</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.risk_flag">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">黑名单客户标志</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="customer.blacklist_flag">
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+       	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户资质</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="customer.cust_aptitude" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">开户日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.init_account_date" ng-blur="init_account_date()"   pattern="{{pattern.date}}" title="日期格式错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">基本户状态</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="customer.account_status">
+                            <option></option>
+                            <option>正常</option>
+                            <option>久悬</option>
+                            <option>注销</option>
+                            <option>其他</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="customer.customer_type">
+                            <option></option>
+                            <option>仅是基本户客户</option>
+                            <option>仅是信贷户客户</option>
+                            <option>既是基本户又是信贷户客户</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">组织机构类别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="customer.corp_type" required>
+                            <option></option>
+                            <option>企业</option>
+                            <option>事业单位</option>
+                            <option>机关</option>
+                            <option>社会团体</option>
+                            <option>个体工商户</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">组织机构类别细分<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="customer.corp_type_detail" required>
+                           <option></option>
+			               <option>企业法人</option>
+                           <option>其他企业</option>
+                           <option>农民专业合作社</option>
+                           <option>个人独资、合伙企业</option>
+                           <option>企业的分支机构</option>
+                           <option>事业法人</option>
+                           <option>未登记的事业单位</option>
+                           <option>事业单位的分支机构</option>
+                           <option>机关法人</option>
+                           <option>机关的内设机构</option>
+                           <option>机关的下设机构</option>
+                           <option>社会团体法人</option>
+                           <option>社会团体分支机构</option>
+                           <option>民办非企业</option>
+                           <option>基金会</option>
+                           <option>居委会</option>
+                           <option>村委会</option>
+                           <option>律师事务所、司法鉴定所</option>
+                           <option>宗教活动场所</option>
+                           <option>境外在境内成立的组织机构</option>
+                           <option>个体工商户</option>
+                           <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">企业状态<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="customer.company_status" required>
+                            <option></option>
+                            <option>正常</option>
+                            <option>注销</option>
+                            <option>其他</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">建立信贷关系日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.init_loan_date" ng-blur="init_loan_date()"  pattern="{{pattern.date}}" title="日期格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">资产负债日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="customer.asset_liability_date" placeholder="YYYYMM" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">资产总额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.asset_amount" ng-blur="asset_amount(money.asset_amount)"  pattern="{{pattern.amount}}" title="金额错误！"  required/>
+				<span class="input-group-addon">万元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">负债总额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="money.liability_amount" ng-blur="liability_amount(money.liability_amount)"   pattern="{{pattern.amount}}" title="金额错误！"  required/>
+				<span class="input-group-addon">万元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.register_date" ng-blur="register_date()" pattern="{{pattern.date}}" title="日期格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.register_name" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记机构<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="customer.register_branch" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+</form>
+

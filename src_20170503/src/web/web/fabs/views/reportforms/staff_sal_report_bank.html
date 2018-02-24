@@ -1,0 +1,1315 @@
+<div ng-controller="StaffSalReportController">
+    <div class="row">
+       <div class="col-md-12">
+        <form class="col-horizontal">
+          <div class="form-body">
+          <fieldset name="custQueryCond">
+             
+             <div class="row">
+                 <div class="col-md-4 col-md-offset-1">
+                     <div class=form-group">
+                          <label class="col-md-5 control-label label-sm">统计日期</label>
+                          <div class="col-md-7">
+                              <input  ng-readonly="true" date-range-picker options="date_opts"  type="text" class="form-control input-sm" ng-model="cust_search.DATE_ID">
+                              </input>
+                          </div>
+                     </div>  
+                 </div>
+                <div class="col-md-4 col-md-offset-1" ng-show="flag == true">
+                      <div class="form-group">
+                        <label class="col-md-4 control-label label-sm ">机构号:</label>
+                        <div class="col-md-6"> 
+                            <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.org" disabled="true">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                     </div>
+
+                    <div name="sameBusiness" ng-include src=Page ></div>
+                     <div class="modal fade " name="loan_type_modal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree"> </div>
+                                    </form>
+                                </div> <!-- modal-body -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                </div> <!-- modal-footer -->
+                             </div> <!-- modal-content -->
+                     </div> <!-- modal-dialog -->
+                 </div>
+              </div>
+                 <div class="col-md-4 col-md-offset-1" ng-show="flag == true">
+                     <div class="form-group">
+                         <label class="col-md-5 control-label label-sm">客户经理</label>
+                         <div class="col-md-7">
+                              <div class="input">
+                                  <select type="text" class="form-control" ng-model="cust_search.SALE_CODE" ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model2">
+                                  <option></option>
+                                  </select>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+               <div class="col-md-3 ">
+                <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />
+                </div>
+              </div>
+            
+
+                  <div class="col-md-10">
+                    <div class="form text-right">
+                    <a href="../fabs/static/standing_book/员工薪酬(小项).xlsx" class="btn btn-primary white" >员工薪酬报表下载</a>
+                    <button type="button" ng-click="search()" class="btn btn-primary btn-sm">查询</button>
+                    <button class="btn btn-primary btn-sm" ng-click="add()">添加</button>
+                    <button type="button" class="btn btn-primary btn-sm"  ng-click="upload_excel()">excel导入</button>
+                    <a href="{{excelurl}}" target="_black" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                                 <tr ng-repeat="row in data.rows">
+                                    <td ng-repeat="d in row track by $index" class="text-nowrap">
+                                {{d}}
+                                </td>
+                                <td>
+                                <button class="btn btn-primary btn-sm" ng-click="edit(row)">编辑</button>
+                                <button class="btn btn-primary btn-sm" ng-click="sdelete(row)">删除</button>
+                                </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+
+        <div class="modal fade" id="staffSal_input_edit_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">编辑</h4>
+                    </div><!--header-->
+                    <div class="modal-body">
+                        <form name="edit_form" ng-submit="edit_save()">
+                        <fieldset>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">统计日期</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo.DATE_ID" type="text" disabled='true'>
+                                </div>
+                            </div>
+                                <label class="col-md-2 control-label label-sm">机构编号</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo.ORG_CODE" type="text" disabled='true'>
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">机构名称</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo.ORG_NAME" type="text" disabled='true'>
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">员工编号</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo.SALE_CODE" type="text" disabled='true'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工姓名</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo.SALE_NAME" type="text" disabled='true'>
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">存量日均存款</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="dep.LAST_AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增日均存款</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                            <input class="form-control input-sm" ng-model="dep.ADD_AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">管贷户数效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.TOTAL_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">管贷余额效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">对私增户扩面</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.PRI_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">对公增户扩面效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.PUB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">贷款日均日均增量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.ADD_AVG_ASL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">两卡贷款客户电子渠道办贷率效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.TWO_CARD_LOANRATE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">电子档案信息采集效酬效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan.ELEC_FILE_INFO_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">贷记卡效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="card.SALARY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增手机银行效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.MB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增企业网银</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.CB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增E支付有效户数效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.EPAY_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增高POS</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_HIGH_POS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增低POS</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_LOW_POS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">助农服务点</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.FARM_SERV_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">第三方存管效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_THIRD_DEPO_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增ETC效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_ETC_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">基本工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BASE_PAY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">职位工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.POSITION_PAY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">支行及网点关键绩效效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BRANCH_NET_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">客户经理经营考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.MANAGE_BUS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">工作质量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.WORK_QUALITY_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">优质文明服务效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.HIG_CIV_QUAL_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">工作满意度效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.JOB_SAT_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(核定到人)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.DAY_DEP_COMP_PER" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(存款效酬)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.DAY_DEP_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(二次分配)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.DAY_DEP_SEC_FEN" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">信贷池二次分配</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.CREDIT_POOL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">国际结算效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.INTER_SET_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">结售汇量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.SALE_VOC_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增有效外汇账户效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_EFC_CURSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增福农卡效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ADD_FUNON_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">推荐人保公司办理车险业务效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.PER_CAR_DANERSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增丰收家</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BUM_HOM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他业绩效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_ACHI_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">综合效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.COMPRE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">劳动竞赛效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.LABOR_COMP_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">临时性资金组织效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.PROV_FUND_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">安全防范效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.SAFE_FAN_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">全面风险管理效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.ALL_RISK_SAL" type="text"  text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">不良贷款专项清收效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BAD_LOAN_PERSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">FTP绩效考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.FTP_ACH_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">柜面渠道入口营销专项竞赛效酬(完成率)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.COUNT_COMPLE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">柜面渠道入口营销专项竞赛效酬(佣金)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.COUNT_COP_SSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">普惠金融工程评价考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.HP_FINA_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他专项效酬1</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SPEC_SAL1" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他专项效酬2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SPEC_SAL2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他专项效酬3</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SPEC_SAL3" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他专项效酬4</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SPEC_SAL4" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他专项效酬5</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SPEC_SAL5" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">支行二次分配1</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BRANCH_SECO_FEN1" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">支行二次分配2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BRANCH_SECO_FEN2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">支行二次分配3</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BRANCH_SECO_FEN3" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">支行二次分配4</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.BRANCH_SECO_FEN4" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他绩效工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_ACH_WAGES" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">加班费</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OVER_WORK_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬1:短期合同工扣减效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL1_DUAN" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬3:未达2级员工扣减效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL3_WEI" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬4:客户经理排名奖</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL4_KE" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬5:各类假期计(扣)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL5_GE" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬6</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL6" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬7</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL7" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬8</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.OTHER_SAL8" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                <label class="col-md-2 control-label label-sm">欠旧不良贷款清收效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank.QJ_BAD_LOAN_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                         <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+
+                        </fieldset>
+                        </form>
+                    </div><!--body-->
+                </div><!--content-->
+            </div><!--dialog-->
+        </div> <!--pos_input_edit_modal end-->
+
+
+
+        <div class="modal fade" id="staffSal_input_add_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">添加</h4>
+                    </div><!--header-->
+                    <div class="modal-body">
+                        <form name="edit_form" ng-submit="add_save()">
+                        <fieldset>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">统计日期</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input  ng-readonly="true" date-range-picker options="date_opts"  type="text" class="form-control input-sm" ng-model="custinfo_add.DATE_ID">
+ 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">机构编号</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo_add.ORG_CODE" type="text" required/>
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">机构名称</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo_add.ORG_NAME" type="text" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工编号</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                            <input class="form-control input-sm" ng-model="custinfo_add.SALE_CODE" type="text" required/>
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">员工姓名</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="custinfo_add.SALE_NAME" type="text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">存量日均存款</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="dep_add.LAST_AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增日均存款</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                            <input class="form-control input-sm" ng-model="dep_add.ADD_AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">管贷户数效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.TOTAL_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">管贷余额效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.AVG_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">对私增户扩面</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.PRI_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">对公增户扩面效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.PUB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">贷款日均日均增量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.ADD_AVG_ASL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">两卡贷款客户电子渠道办贷率效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.TWO_CARD_LOANRATE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">电子档案信息采集效酬效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="loan_add.ELEC_FILE_INFO_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">贷记卡效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="card_add.SALARY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增手机银行效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.MB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增企业网银</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.CB_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增E支付有效户数效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.EPAY_ADD_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增高POS</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_HIGH_POS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增低POS</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_LOW_POS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">助农服务点</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.FARM_SERV_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">第三方存管效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_THIRD_DEPO_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增ETC效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_ETC_NUM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">基本工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BASE_PAY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">职位工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.POSITION_PAY" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">支行及网点关键绩效效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BRANCH_NET_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">客户经理经营考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.MANAGE_BUS_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">工作质量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.WORK_QUALITY_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">优质文明服务效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.HIG_CIV_QUAL_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">工作满意度效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.JOB_SAT_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(核定到人)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.DAY_DEP_COMP_PER" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(存款效酬)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.DAY_DEP_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">日均存款完成率(二次分配)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.DAY_DEP_SEC_FEN" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">信贷池二次分配</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.CREDIT_POOL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">国际结算效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.INTER_SET_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">结售汇量效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.SALE_VOC_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">新增有效外汇账户效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_EFC_CURSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增福农卡效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ADD_FUNON_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">推荐人保公司办理车险业务效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.PER_CAR_DANERSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">新增丰收家</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BUM_HOM_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他业绩效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_ACHI_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">综合效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.COMPRE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">劳动竞赛效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.LABOR_COMP_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">临时性资金组织效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.PROV_FUND_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">安全防范效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.SAFE_FAN_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">全面风险管理效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.ALL_RISK_SAL" type="text"  text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">不良贷款专项清收效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BAD_LOAN_PERSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">FTP绩效考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.FTP_ACH_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">柜面渠道入口营销专项竞赛效酬(完成率)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.COUNT_COMPLE_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">柜面渠道入口营销专项竞赛效酬(佣金)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.COUNT_COP_SSAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">普惠金融工程评价考核效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.HP_FINA_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他专项效酬1</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SPEC_SAL1" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他专项效酬2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SPEC_SAL2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他专项效酬3</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SPEC_SAL3" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他专项效酬4</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SPEC_SAL4" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他专项效酬5</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SPEC_SAL5" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">支行二次分配1</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BRANCH_SECO_FEN1" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">支行二次分配2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BRANCH_SECO_FEN2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">支行二次分配3</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BRANCH_SECO_FEN3" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">支行二次分配4</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.BRANCH_SECO_FEN4" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他绩效工资</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_ACH_WAGES" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">加班费</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OVER_WORK_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬1:短期合同工扣减效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL1_DUAN" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬2</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL2" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬3:未达2级员工扣减效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL3_WEI" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬4:客户经理排名奖</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL4_KE" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬5:各类假期计(扣)</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL5_GE" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬6</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL6" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">其他效酬7</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL7" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">其他效酬8</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.OTHER_SAL8" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                <label class="col-md-2 control-label label-sm">欠旧不良贷款清收效酬</label>
+                                    <div class="col-md-4">
+                                       <div class="input">
+                                        <input class="form-control input-sm" ng-model="ebank_add.QJ_BAD_LOAN_SAL" type="text" text-transform="amount">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                         <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+
+                        </fieldset>
+                        </form>
+                    </div><!--body-->
+                </div><!--content-->
+            </div><!--dialog-->
+        </div> <!--pos_input_edit_modal end-->
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="p_i_modal_edit" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    </div>
+</div>
+

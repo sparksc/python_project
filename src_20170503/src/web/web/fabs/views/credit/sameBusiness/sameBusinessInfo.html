@@ -1,0 +1,104 @@
+<div class="form-horizontal" role="form" name="sameBusiness"  ng-controller="sameBusinessApplicationController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSubmit()" ng-show = 'btn_edit_flag' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onCancel()" ng-show = 'btn_edit_flag' class="btn btn-primary" >取消</button>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button class="btn btn-primary" data-toggle="collapse" href="#examineComment" ng-show="approveActivityFlag">签署结果</button>
+                        <div class="collapse" id="examineComment" style="position:absolute;background-color:White;z-index:1024;">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">意见:</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control" rows="6" ng-model="result" ng-disabled="submitedFlag"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">同意</button>
+                                <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right" ng-disabled="submitedFlag">不同意</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- 申请基本信息-->
+         <div name="ApplicationPreForm" ng-include="'views/credit/sameBusiness/preLoan.html'" ></div>
+         
+    <!-- 下一步流程-->
+    <div class="modal fade " name="next_step_modal" role="dialog">
+       <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">下一步流程</h4>
+                </div>
+                <div class="modal-body">
+                     <div ng-repeat = 'next in next_step'>
+                         <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">流程:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.activity.activity_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">岗位:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.role"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="row">
+                                  <div  class='col-md-2'  ng-repeat='user in next.users'>
+                                        <span>{{user.user_name}}{{user.name}}</span>
+                                   </div>
+                           </div>
+                       </div>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >确定</button>
+                </div> <!-- modal-footer -->
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+ 
+
+         <div name="sameBusiness" ng-include src=Page ></div>
+   <div class="modal fade " name="loan_type_modal" role="dialog">
+       <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">业务种类</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="row" name="for_lt_tree">
+                        </div>
+                    </form>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="btmConfirm()">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="btmClose()">取消</button>
+                </div> <!-- modal-footer -->
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal --> 
+   </div>
+</div>

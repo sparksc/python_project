@@ -1,0 +1,231 @@
+<form name="myForm" ng-submit="onSubmit()">
+<div class="row">
+    <input type="submit" class="btn btn-primary"/>
+    <button type="button" ng-click="onSave()" class="btn btn-primary">保存</button>
+    <button type="button" ng-click="onEdit()" class="btn btn-primary">修改</button>
+
+</div>
+</br>
+<div class="row" name="applicationButtonGroup">
+    <div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-3 pull-right">
+                <button class="btn btn-primary" data-toggle="collapse" href="#examineComment"
+                        ng-show='data.adjustment.id'>签署结果
+                </button>
+                <div class="collapse" id="examineComment"
+                     style="position:absolute;background-color:White;z-index:1024;">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">意见:</label>
+
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="6" ng-model="result"
+                                          ng-disabled="submitedFlag"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">
+                                同意
+                            </button>
+                            <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right"
+                                    ng-disabled="submitedFlag">不同意
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">借款人名称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.party.name" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">借款人客户代码<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.party.no" required/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">申请书号<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.app_id" required/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">申请日期<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.app_date"  required/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">通过日期</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.pass_date" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">业务品种<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <select required class="form-control input-sm"
+                        ng-init="  '对私贷款展期'"
+                        ng-model="data.adjustment.biz_type">
+                    <option value="对私贷款展期">对私贷款展期</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">经办机构</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.org_id" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">经办人</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.opt_by" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">转登日期</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.transfer_date" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">展期金额<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.ext_money" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">展期原因<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.ext_msg"  required/>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">借款合同编号<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.cus_number"  required/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">合同币种<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.money_type"  required/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">期限类型</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.date_type" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">合同额度</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.cus_lesmoney" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">贷款起始日</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.adjustment.thru_date" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">贷款终止日</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.end_date" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">原业务品种</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.adjustment.oldtype" />
+            </div>
+        </div>
+    </div>
+</div>
+</form>

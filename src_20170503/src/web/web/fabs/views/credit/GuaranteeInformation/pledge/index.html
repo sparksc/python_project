@@ -1,0 +1,168 @@
+<div class="form-horizontal" role="form" name="mortgageForm" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-5">
+                <button type="button" class="btn btn-primary" ng-show="mortgageInfoEditFlag" ng-click="saveMortgageInfo()">保存</button> 
+                <button type="button" class="btn btn-primary" ng-hide="mortgageInfoEditFlag" ng-click="editMortgageInfo()">修改</button> 
+                <button type="button" class="btn btn-primary" ng-hide="mortgageInfoEditFlag" ng-clikc="deleteMortgageInfo()">删除</button> 
+            </div>
+        </div>
+        <br>
+        <div ng-disabled="true">
+            <!-- 抵押 -->
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-2 control-label label-sm">担保信息编号</label>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-model="data.info_no" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保类型</label>
+                        <div class="col-md-7">
+                            <select class="form-control input-sm" ng-model="data.guaranty_type">
+                                <option value="0">一般担保</option>
+                                <option value="1">最高额担保</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保方式</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text" value="抵押" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label label-sm">抵押人证件类型</label>
+                         <div class="col-md-7">
+                            <select class="form-control input-sm">
+                                <option>组织机构代码</option>
+                                <option>营业执照</option>
+                                <option>其他企业证件</option>
+                                <option>身份证</option>
+                                <option>户口薄</option>
+                                <option>护照</option>
+                                <option>军官证</option>
+                                <option>士兵证</option>
+                                <option>港澳居民来往内地同行证</option>
+                                <option>台湾同胞来往内地通行证</option>
+                                <option>外国人居留证</option>
+                                <option>警官证</option>
+                                <option>其他个人证件</option>
+                                <option>香港身份证</option>
+                                <option>澳门身份证</option>
+                                <option>台湾身份证</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">抵押人证件号码</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-model="data.cert_no"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                     <label class="col-md-4 control-label label-sm">抵押人名称</label>
+                     <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-model="data.name"/>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">抵押人贷款卡编号</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-model="data.loan_card_no"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">币种</label>
+                        <div class="col-md-7">
+                            <select class="form-control input-sm">
+                                <option>人民币</option>
+                                <option>英镑</option>
+                                <option>港币</option>
+                                <option>美元</option>
+                                <option>日元</option>
+                                <option>欧元</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保总金额</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-model="data.amount"/>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">其他特别约定</label>
+                        <div class="col-md-7">
+                            <textarea class="form-control input-sm" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">备注</label>
+                        <div class="col-md-7">
+                            <textarea class="form-control input-sm" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+     </div>
+</div>

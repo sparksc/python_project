@@ -1,0 +1,114 @@
+<div ng-controller="TellerMidController">
+    <div class="row">
+       <div class="col-md-12">
+        <form class="col-horizontal">
+          <div class="form-body">
+          <fieldset name="custQueryCond">
+             
+             <div class="row">
+                 <div class="col-md-4 col-md-offset-1">
+                     <div class=form-group">
+                          <label class="col-md-5 control-label label-sm">统计日期</label>
+                          <div class="col-md-7">
+                              <input date-range-picker options="date_opts"  type="text" class="form-control input-sm" ng-model="cust_search.DATE_ID">
+                              </input>
+                          </div>
+                     </div>  
+                 </div>
+                <div class="col-md-4 col-md-offset-1" ng-show="flag == true">
+                      <div class="form-group">
+                        <label class="col-md-4 control-label label-sm ">机构号:</label>
+                        <div class="col-md-6"> 
+                            <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.org" disabled="true">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                     </div>
+
+                    <div name="sameBusiness" ng-include src=Page ></div>
+                     <div class="modal fade " name="loan_type_modal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree"> </div>
+                                    </form>
+                                </div> <!-- modal-body -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                </div> <!-- modal-footer -->
+                             </div> <!-- modal-content -->
+                     </div> <!-- modal-dialog -->
+                 </div>
+              </div>
+                 <div class="col-md-4 col-md-offset-1" ng-show="flag == true">
+                     <div class="form-group">
+                         <label class="col-md-5 control-label label-sm">客户经理</label>
+                         <div class="col-md-7">
+                              <div class="input">
+                                  <select type="text" class="form-control" ng-model="cust_search.SALE_CODE" ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model2">
+                                  <option></option>
+                                  </select>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+              </div>
+            
+
+                  <div class="col-md-10">
+                    <div class="form text-right">
+                    <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+                    <a href="{{excelurl}}" target="_black" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                                 <tr ng-repeat="row in data.rows">
+                                    <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="$index>=20">
+                                {{d}}
+                                </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+
+<div class="modal fade" id="p_i_modal_edit" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    </div>
+</div>
+

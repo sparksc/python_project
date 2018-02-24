@@ -1,0 +1,242 @@
+<div class="form-horizontal" role="form" id="investmentEnterprise" ng-show="display_info == 'investmentEnterprise'">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#investmentEnterpriseModal">新增</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td>{{data.certificate_number}}</td>
+                            <td>{{data.customer_name}}</td>
+                            <td>{{data.relationship}}</td>
+                            <td>{{data.register_branch}}</td>
+                            <td>{{data.register_teller}}</td>
+                            <td>{{data.register_date}}</td>
+                            <td>{{data.update_date}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#investmentEnterpriseModal" ng-click="view_data(0)">详情</button> 
+                                <button type="button" class="btn btn-primary">清除</button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='investmentEnterpriseModal' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                            <div class="form-group form-inline">
+                                <label class="col-md-4 control-label label-sm">投向企业证件类型</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option>组织机构代码</option>
+                                        <option>营业执照</option>
+                                        <option>其他企业证件</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group form-inline">
+                                <label class="col-md-4 control-label label-sm">投向企业证件号</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group form-inline">
+                                <label class="col-md-4 control-label label-sm">投向企业名称</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">投资方式</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option>资金(投资)</option>
+                                        <option>技术(投资)</option>
+                                        <option>实物(投资)</option>
+                                        <option>权利(投资)</option>
+                                        <option>其他(投资)</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">投向企业法人代表姓名</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">投向企业贷款卡编号</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">出资币种</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option>人民币</option>
+                                        <option>英镑</option>
+                                        <option>港币</option>
+                                        <option>美元</option>
+                                        <option>日元</option>
+                                        <option>欧元</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">应出资金额</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">实际投资金额</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">出资比例</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <input class="form-control  input-sm" type="text"/>
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">第一年投资收益</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">登记人</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">登记单位</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">登记日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label label-sm">更新日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="save_data(modal_data)">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+</div>

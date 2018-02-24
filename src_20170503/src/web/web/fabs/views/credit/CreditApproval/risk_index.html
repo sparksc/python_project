@@ -1,0 +1,284 @@
+<form  ng-controller='riskController' name='risk_form' ng-submit='save(risk_form.$vaild)' class="form-horizontal" role="form"  style="overflow-x:yes; overflow-y:yes;">
+    <div class="form-body">
+    <div ng-show=" flag==false ">
+        <button type="submit" class="btn btn-primary">保存</button>
+        <button type="button" ng-click="edit()" class="btn btn-primary">修改</button>
+        <button type="button" ng-click="saveReport()" ng-show='risk_approve.id' class="btn btn-primary">生成报告</button>
+    </div>
+        <hr/>
+         <div ng-show='customer.type_code=="company"' >
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">证件是否齐全</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.id_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否具有主体资格</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.main_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">产品是否符合产业政策</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.product_policy_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">环评立项是否齐全</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.ela_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否有关联客户</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.customer_rel_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">与我行是否有关联关系</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.relation_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">资产负债率</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.debt_rate" ng-disabled="edit_flag"  >
+                                <option value='偏大'>偏大</option>
+                                <option value='适中'>适中</option>
+                                <option value='偏小'>偏小</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">流动比率</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.current_ratio" ng-disabled="edit_flag"  >
+                                <option value='偏大'>偏大</option>
+                                <option value='适中'>适中</option>
+                                <option value='偏小'>偏小</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">速动比率</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.quick_ratio" ng-disabled="edit_flag"  >
+                                <option value='偏大'>偏大</option>
+                                <option value='适中'>适中</option>
+                                <option value='偏小'>偏小</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <hr/>
+             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">主营业务产生的现金流入对负债的保障程度</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.protection_degree" ng-disabled="edit_flag"  >
+                                <option value='较强'>较强</option>
+                                <option value='一般'>一般</option>
+                                <option value='较差'>较差</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+           </div>
+     </div>  
+     <div ng-show='customer.type_code=="resident"' >
+         <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">户口、身份证是否齐全</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.id_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">借款人年龄是否符合规定</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.age_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">收入是否稳定</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.income_flag" ng-disabled="edit_flag"  > 
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">还款来源是否可靠</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.payment_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">经营实体是否符合产业政策</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.policy_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">与我行是否有关联关系</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.relation_flag" ng-disabled="edit_flag"   >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+        </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款用途是否合规</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.purpose_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">征信情况是否合规</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.credit_inv_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">抵质押物情况是否合规</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.guarantee_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">保证人情况是否合规</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.warr_per_flag" ng-disabled="edit_flag"  >
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">风险评价</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="risk_approve.risk_memo" ng-disabled="edit_flag"  >
+                                <option value='较高'>较高</option>
+                                <option value='一般'>一般</option>
+                                <option value='较低'>较低</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+           <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">结论</label>
+                        <div class="col-md-7">
+                        <textarea class="form-control"  ng-model="risk_approve.remark" rows="3" ng-disabled="edit_flag" ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+         <iframe id='risk_report' width='100%' height='600px' style='display:none' scroll="no"></iframe>
+    </div>
+</form>

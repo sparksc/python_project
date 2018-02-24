@@ -1,0 +1,855 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请书号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.app_id" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">客户代码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.cus_id" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">客户类型</label>
+             <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.cus_type">
+                            <option>对公</option>
+                            <option>对私</option>
+                        </select>
+                    </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">业务品种</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.biz_type">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.app_date">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">经办机构</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.org_id">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">经办人</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.opt_by">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">登记机构</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.reg_org_id">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">登记人</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.reg_by">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">登记日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.reg_date">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">通过日期</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.pass_date">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">转登日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.transfer_date">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">归档日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.archive_date">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请币种</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.app_ct">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请金额</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.app_amount">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款科目</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.loan_item_id">
+                            <option>1-新增</option>
+                            <option>2-借新还旧</option>
+                            <option>3-还旧借新</option>
+                            <option>4-续贷</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款形式</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.loan_type">
+                            <option>1-短期</option>
+                            <option>2-中期</option>
+                            <option>3-长期</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">期限类型</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.due_type" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">期限－月数</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.due_month" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">期限－天数</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.due_day" >
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款起始日</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_start_date" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款终止日</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_end_date" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">基准利率(年)</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.base_ir" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">浮动类型</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.float_ir_type">
+                            <option>0-不浮动</option>
+                            <option>1-按百分比浮动</option>
+                            <option>2-浮动值浮动</option>
+                            <option>3-固定利率</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">利率浮动值(%)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.float_ir_percent">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">月利率(‰)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.month_ir">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">逾期加罚率(%)</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.pass_due_penalty_ir" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">逾期月利率(‰)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.pass_due_month_ir" >
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">挪用加罚率(%)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.other_penalty_ir">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">挪用月利率(‰)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.other_month_ir" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">计息方式</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.caculate_method" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.return_method">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款期数</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.return_terms">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">自动还款帐号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.auto_pay_acc_id">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金比例(%)</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_percent">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金币种</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_ct">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_amount">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金帐号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_account">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">主要担保方式</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.gty_main_method">
+                            <option>1保证</option>
+                            <option>2抵押</option>
+                            <option>3质押</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">有无其他担保方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_other_method">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款用途</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_usage">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款来源</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.return_source">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">备注</label>
+             <div class="col-md-7">
+                <textarea class="form-control" ng-model="form_data.memo" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+	
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">额度合同号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.credit_contract_id">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">额度扣减金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.credit_deduct_amount">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">流程控制币种</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.proc_ctrl_ct">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">流程控制金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.proc_ctrl_amount">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">授权控制币种</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.auth_ctrl_ct">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">授权控制金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.auth_ctrl_amount">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款分类1</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_class1">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款分类2</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_class2">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款分类3</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_class3">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款分类4</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_class4">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款分类5</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_class5">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">审批状态</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.app_status">
+                            <option>0-新增(未发送)</option>
+                            <option>1-调查</option>
+                            <option>2-审核</option>
+                            <option>3-审查</option>
+                            <option>4-审批</option>
+                            <option>5-通过</option>
+                            <option>6-否决</option>
+                            <option>D-已删除</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">审批流程编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.wf_id">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">审批批次</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.ctrl_batch_no">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">转登状态</label>
+			<div class="col-md-7">	
+             <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.transfer_status">
+                            <option>0－未转登</option>
+                            <option>1-已转登</option>
+                            <option>2-转登中</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">过期标识</label>
+			<div class="col-md-7">	
+             <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.over_date_flag">
+                            <option>0-未过期</option>
+                            <option>1-已过期</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">归档状态</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.archive_status">
+                            <option>0-未归档</option>
+                            <option>1-已归档</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">本次贷款开始日</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.this_start_date" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">本次贷款结束日</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.this_end_date">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业门类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.class_1">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业大类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.class_2" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业中类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.class_3">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业小类</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.class_gb">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">营销柜员</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.marketing_user_id">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">营销柜员名称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.marketing_user_name">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">产品利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.product_ir">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">欠息复利上浮比例</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.debit_interest_percent">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">欠息复利利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.debit_interest_ir">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">结息周期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.caculate_period">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">结息周期频率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.caculate_freq">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">首次结息日期</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.first_caculate_date">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款周期</label>
+		<div class="col-md-7">	
+	<select   class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.return_period">
+                            <option>01-按日还款</option>
+                            <option>02-按周还款</option>
+                            <option>03-按月还款</option>
+                            <option>04-按季还款</option>
+                            <option>05-按半年归还</option>
+                            <option>06-按年归还</option>
+                            <option>07-一次性还款</option>
+                            <option>08-不定期(贷款期限内任意时间)</option>
+                            <option>99-其他</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款频率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.return_freq">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">首次还款日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.first_return_date">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">抵押合同号</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_con_id">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">理财产品签约号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.finance_id">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">授信类型</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.credit_type">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">原授信合同编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.credit_con_id">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">抵押方式细分</label>
+             <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_detail_method">
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款性质</label>
+			<div class="col-md-7">	
+          <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.loan_property">
+                            <option>01-流动资金贷款</option>
+                            <option>02-个人经营性贷款</option>
+                            <option>03-个人综合消费贷款</option>
+                            <option>04-住房按揭类贷款</option>
+                            <option>05-商用房按揭类贷款</option>
+                            <option>06-固定资产贷款</option>
+                            <option>07-银团贷款</option>
+                            <option>08-项目贷款</option>
+                            <option>09-在建工程贷款</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款领域</label>
+			<div class="col-md-7">	
+           <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.loan_domain">
+                            <option>01-涉农-农户</option>
+                            <option>02-涉农-农村企业</option>
+                            <option>03-涉农-城市企业</option>
+                            <option>04-微利下岗一次</option>
+                            <option>05-微利下岗二次</option>
+                            <option>06-非微利下岗</option>
+                            <option>07-抵押物在异地的贷款</option>
+                            <option>08-个人消费-汽车</option>
+                            <option>09-个人消费-耐用品</option>
+                            <option>10-个人消费-综合类</option>
+                            <option>11-个人消费-助学贷款</option>
+                            <option>12-地方政府融资平台贷款</option>
+                            <option>13-保障性安居工程贷款</option>
+                            <option>14-地产开发贷款</option>
+                            <option>15-房产开发贷款</option>
+                            <option>16-经营性物业贷款</option>
+                            <option>17-土地承包经营权抵押</option>
+                            <option>18-农村住房财产权抵押</option>
+                            <option>19-林权抵押</option>
+                            <option>99-其他</option>
+                        </select>
+        </div>
+		</div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">战略新型产业类型</label>
+			<div class="col-md-7">	
+           <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.strategy_industry_type">
+                            <option>01-节能环保</option>
+                            <option>02-新一代信息技术</option>
+                            <option>03-生物</option>
+                            <option>04-高端装备制造</option>
+                            <option>05-新能源</option>
+                            <option>06-新材料</option>
+                            <option>07-新能源汽车</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">工业转型升级标识</label>
+			<div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.Industry_transition_Flag">
+                            <option>01-是</option>
+                            <option>02-否</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">步步高账号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.depend_acct" >
+            </div>
+        </div>
+    </div>
+</div>

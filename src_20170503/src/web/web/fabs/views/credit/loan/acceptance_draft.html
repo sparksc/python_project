@@ -1,0 +1,323 @@
+<!-- 银行承兑汇票 -->
+<div ng-include="'views/credit/loan/baseInformation.html'"/>
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贸易合同号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">货物名称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费比例(‰)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费交付方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">合同签定日期</label>
+            <div class="col-md-7">
+               <input type="text" class="form-control"  placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">合同金额</label>
+            <div class="col-md-7">
+            <!-- -->
+                <input type="text" class="form-control"  ng-model="$parent.data.transaction_info.amount" placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否滚动签发</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">客户信用等级</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否我行汇票</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">付款行全称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">出票人开户银行</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">出票人帐号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">到期承付款项来源</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">收款人客户号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">收款人</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">收款人开户银行</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">收款人帐号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">汇票号码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">注销时间</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否垫款</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">垫款经办人编码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">垫款发生额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">垫款返回额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">垫款发生时间</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">垫款返回时间</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金计息方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">保证金比例</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

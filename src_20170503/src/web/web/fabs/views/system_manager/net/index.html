@@ -1,0 +1,186 @@
+﻿<div ng-controller="sysNetController">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form text-right">
+                                <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+				<button type="button" ng-click="add()" class="btn btn-default">添加</button>
+				<button type="button" ng-click="" class="btn btn-default">导入</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        网点编号
+                    </th>
+                    <th>
+                        网点名称
+                    </th>
+                    <th>
+                        网点地址
+                    </th>
+                    <th>
+                        联系电话
+                    </th>
+                     <th>
+                        操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="net in nets">
+                        <td>{{net.net_id}}</td>
+                        <td>{{net.net_name}}</td>
+                        <td>{{net.net_address}}</td>
+                        <td>{{net.net_tel}}</td>
+                        <td><input type="button" value="编辑" ng-click="to_edit(net)"/><input type="button" value="删除" ng-click="del(net)"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="edit_net_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点编号:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_net_id"
+                                          readonly="true"  type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点名称:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_net_name"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点地址:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_net_address"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系电话:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_net_tel"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="edit_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+      <div class="modal fade" id="add_net_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点编号:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_net_id"  
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点名称:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_net_name"  type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网点地址:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <input class="form-control input-sm" ng-model="add_net_address"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系电话:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_net_tel"
+                                            type="text"/>      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="add_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	
+</div>

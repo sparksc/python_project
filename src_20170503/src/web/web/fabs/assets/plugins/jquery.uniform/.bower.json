@@ -1,0 +1,15 @@
+{
+  "name": "jquery.uniform",
+  "homepage": "https://github.com/pixelmatrix/uniform",
+  "version": "2.1.0",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "13d460e91858dc2b6a4e0faee22b2d50337622e8"
+  },
+  "_source": "git://github.com/pixelmatrix/uniform.git",
+  "_target": "2.1.0",
+  "_originalSource": "jquery.uniform",
+  "_direct": true
+}

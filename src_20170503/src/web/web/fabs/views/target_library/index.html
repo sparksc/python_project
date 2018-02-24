@@ -1,0 +1,228 @@
+<div ng-controller="targetController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                  </div>
+			  </div>
+              <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                    <button class="btn btn-primary btn-sm" ng-click="add()">添加</button>
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr>
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th>
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="row.length-1 == $index">
+                                {{d}}
+                                </td>
+                                <td><input type="button" value="编辑" ng-click="to_edit(row)">  <input type="button" value="删除" ng-click="to_delete(row)"></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+    </div>
+
+    <div class="modal fade" id="seim_add_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标周期:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_add_freq" ng-options="option as option for option in model"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标性质:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_add_type" ng-options="option as option for option in model1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标名称:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_add_name" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核对象类型:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_add_objtype" ng-options="option as option for option in model2"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标描述:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_add_desc" type="text" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">数据来源:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_add_src" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="save()">添加</button>
+                    <button type="button" class="btn default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="equip_edit_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标ID:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_edit_id"
+                                            ng-readonly="true"  type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标周期:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_edit_freq" ng-options="option as option for option in model"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标性质:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_edit_type" ng-options="option as option for option in model1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标名称:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_edit_name"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核对象类型:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="modal_edit_objtype" ng-options="option as option for option in model2"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">考核指标描述:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_edit_desc"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">数据来源:</label>
+
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="modal_edit_src"
+                                            type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="edit_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

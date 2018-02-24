@@ -1,0 +1,28 @@
+<div class="col-sm-12"  >
+    <div class="pull-left">
+        共{{totalItems}}条数据{{itemsPerPage}}  &nbsp; 总{{totalPages}}页 &nbsp;当前第 {{page}} 页
+    </div>
+    <div class="pull-right">
+        <ul class="pagination pagination-sm pull-right" style="margin: 0px;">
+            <li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}"><a href ng-click="selectPage(1, $event)">{{getText('first')}}</a>
+            </li>
+            <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}"><a href
+                                                                              ng-click="selectPage(page - 1, $event)">{{getText('previous')}}</a>
+            </li>
+            <!--<li ng-repeat="page in pages track by $index" ng-class="{active: page.active}"><a href ng-click="selectPage(page.number, $event)">{{page.text}}</a></li>-->
+            <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1, $event)">{{getText('next')}}</a>
+            </li>
+            <li ng-if="boundaryLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(totalPages, $event)">{{getText('last')}}</a>
+            </li>
+            <li>
+                <a href="#">
+                    第&nbsp;
+                    <input style="padding:0px;margin:0px;vertical-align: top;width: 38px;height: 16px;text-align: center;"
+                           onclick="javascript:this.select()" value="{{page}}"  ng-model="mPage" />
+                    &nbsp;页
+                </a>
+            </li>
+            <li  ng-class="{disabled: mPage > totalPages || mPage<1 }" ><a href ng-click="selectPage(mPage, $event)">GO </a></li>
+        </ul>
+    </div>
+</div>

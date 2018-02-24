@@ -1,0 +1,86 @@
+﻿<div ng-controller="salaryController">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form text-right">
+                                <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        项目
+                    </th>
+                    <th>
+                        津贴额（元/月）
+                    </th>
+                     <th>
+                        操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.dxmc}}</td>
+                        <td>{{item.money}}</td>
+                        <td><input type="button" value="编辑" ng-click="to_edit(item)"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="salary_edit_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">编辑</h4>
+                </div>
+                <div class="modal-body">
+	            <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">项目:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_salary" type="text"/>
+                                    <input class="form-control input-sm" ng-model="edit_item_id" ng-show="hiddenid.show" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+		      <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">津贴额（元/月）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="edit_money" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="edit_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    
+	
+</div>

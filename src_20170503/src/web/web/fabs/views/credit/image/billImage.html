@@ -1,0 +1,53 @@
+<div class="form-horizontal" role="form" name="billImageForm" id = "billImageInfo" ng-controller="imageController">
+    <div class="form-body">
+        <button class="btn btn-primary " ng-click="queryBillInfo()">查询</button>
+        <table class="table">
+              <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                  <thead style="white-space:nowrap;">
+                      <tr>
+                          <th ng-repeat='th in tableHead' ng-bind='th'> </th>
+                      </tr>
+                  </thead>
+                  <tbody style="white-space:nowrap;">
+                      <tr ng-repeat="d in tableData">
+                          <td style="vertical-align: middle;" ng-bind="d.bill_no"></td>
+                          <td style="vertical-align: middle;"> <input class="form-control input-sm" type="file" id="{{d.bill_no+'front'}}"/> </td>
+                          <td style="vertical-align: middle;"> <input class="form-control input-sm" type="file" id="{{d.bill_no+'back'}}"/> </td>
+                          <td style="vertical-align: middle;"> <input class="form-control input-sm" type="file" id="{{d.bill_no+'check'}}"/> </td>
+                          <td style="vertical-align: middle;"> <input class="form-control input-sm" type="file" id="{{d.bill_no+'cert'}}"/> </td>
+                          <td style="vertical-align: middle;">
+                               <button class="btn btn-primary " ng-click="billUpload(d)">上传 </button>
+                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showBillImage" ng-click="billQuery(d)">查看</button>
+                          </td>
+                          <td style="vertical-align: middle;" >
+                            <label> 状态:{{ d.img_check?d.img_check:'未审核'}} </label>
+                            <br>
+                            意见:<textarea style="height:200dpx;" value = "{{d.img_remark}}" row="6">  </textarea>
+                          </td>
+                      </tr>
+                  </tbody>
+              </div>
+        </table>
+    <div class="modal fade" id ='showBillImage' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">票据影像</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <img style="width:300px;height:200px;" src="{{front_url}}"/>
+                    <img style="width:300px;height:200px;" src="{{back_url}}"/>
+                    <img style="width:300px;height:200px;" src="{{check_url}}"/>
+                    <img style="width:300px;height:200px;" src="{{cert_url}}"/>
+
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+
+    </div>
+</div>

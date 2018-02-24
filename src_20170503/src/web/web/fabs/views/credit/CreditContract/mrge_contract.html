@@ -1,0 +1,824 @@
+<!--贷款申请——担保合同详情抵押-->
+<div>
+    <div class="modal fade" id='a_modal' role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                           <div class="modal-header">
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                      aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">请补全合同信息</h4>
+                           </div>
+                           <div class="modal-body">
+                                批注01(截取下分俩空):<input class="form-control input-sm" type="text" ng-readonly="true" ng-model="guarantee_info.contract_no"/>
+                                批注02:<input class="form-control input-sm" type="text" ng-readonly="true" ng-model="guarantee_info.customer_name"/>
+                                批注03:<input class="form-control input-sm" type="text" ng-readonly="true" ng-model="guarantee_info.cert_no"/>
+                                
+                                        <embed id="ifrom" width="100%"height="500px"name="plugin"src="http://192.168.10.108/static/investigate_report/2.pdf"type="application/pdf"internalinstanceid="46"title>
+                           </div>
+                           <div class="modal-footer">
+                               <button type="submit" class="btn btn-primary" ng-clik="O_K">生成</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                           </div>
+            </div>
+        </div>
+    </div>
+                <button type="button" class="btn btn-primary" ng-hide='!guarantee_info.contract_no'ng-click="PaperContract()">生成纸质合同</button>
+                <button type="button" class="btn btn-primary" ng-hide='!guarantee_info.contract_no' ng-click="Info_Save()">修改</button>
+<fieldset ng-disabled="guarantee_info.contract_no">
+    <form class="form-horizontal" ng-submit="Info_Saves()" ng-init="gt_display=guarantee_info.gty_method">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" >提交</button>
+                <button type="button" class="btn btn-primary" ng-click="Info_Save()">保存</button>
+                <button type="button" class="btn btn-primary" ng-hide='guarantee_info.contract_no' ng-click="onContract()"> 生成合同</button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label label-sm">担保方式</label>
+
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-readonly="true"
+                               ng-model="guarantee_info.gty_method"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="gt_display != null">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">借款人客户代码<span
+                                class="font-red">*</span></label>
+
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text" ng-readonly="true"
+                                       ng-model="guarantee_info.customer_no"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">借款人名称<span
+                                class="font-red">*</span></label>
+
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input required class="form-control input-sm" type="text" ng-readonly="true"
+                                       ng-model="guarantee_info.customer_name"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-hide="true">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保资料编号</label>
+
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input class="form-control input-sm" type="text"
+                                       ng-readonly="true"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保类型<span
+                                class="font-red">*</span></label>
+
+                        <div class="col-md-7">
+                            <select required class="form-control input-sm"
+                                    ng-init="guarantee_info.gty_type = guarantee_info.gty_type || '最高额担保'"
+                                    ng-model="guarantee_info.gty_type"
+                                    required>
+                                <option value="一般担保">一般担保</option>
+                                <option value="最高额担保">最高额担保</option>
+                                <option value="最高额下的单笔">最高额下的单笔</option>
+                                <option value="连带担保">连带担保</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">担保币种<span
+                                class="font-red">*</span></label>
+
+                        <div class="col-md-7">
+                            <select required  class="form-control input-sm"
+                                    ng-init="guarantee_info.gty_ct = guarantee_info.gty_ct || '人民币'"
+                                    ng-model="guarantee_info.gty_ct"
+                                    required>
+                                <option value="人民币">人民币</option>
+                                <option value="美元">美元</option>
+                                <option value="欧元">欧元</option>
+                                <option value="加元">加元</option>
+                                <option value="日元">日元</option>
+                                <option value="澳大利亚元">澳大利亚元</option>
+                                <option value="港元">港元</option>
+                                <option value="新加坡元">新加坡元</option>
+                                <option value="英镑">英镑</option>
+                                <option value="瑞士法郎">瑞士法郎</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START 保证金 -->
+                <div ng-if="gt_display == '保证金'">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保证金金额<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.gty_amount"
+                                           required/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保证金比例<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.scale_value" required/>
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保人客户代码<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <div class="input-group">
+                                        <input required class="form-control input-sm" type="text"
+                                               ng-model="guarantee_info.gty_customer_no"
+                                               ng-readonly="true"
+                                               required/>
+                                                            <span class="input-group-addon"
+                                                                  ng-click="show_customer_model('gty_customer')">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保人名称<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input required class="form-control input-sm" type="text"
+                                           ng-model="guarantee_info.gty_customer_name"
+                                           ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label label-sm">备注</label>
+
+                            <div class="col-md-9">
+                                                <textarea class="form-control input-sm" rows="3"
+                                                          ng-model="guarantee_info.reason"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END 保证金 -->
+
+                <!-- START NOT 保证金 -->
+                <div ng-if="gt_display != '保证金'">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保总金额<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.gty_amount"
+                                           required/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">是否为第一担保</label>
+
+                            <div class="col-md-7">
+                                <select class="form-control input-sm"
+                                        ng-init="guarantee_info.bfirst_gty = guarantee_info.bfirst_gty || '是'"
+                                        ng-model="guarantee_info.bfirst_gty">
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" ng-show="type_code == 'company'">
+                            <label class="col-md-4 control-label label-sm">股东会（或董事会）同意担保</label>
+
+                            <div class="col-md-7">
+                                <select class="form-control input-sm"
+                                        ng-init="guarantee_info.bboard_appr = guarantee_info.bboard_appr || '是'"
+                                        ng-model="guarantee_info.bboard_appr">
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保合同编号</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text" ng-readonly="true"
+                                       ng-model="guarantee_info.contract_no"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">借款申请书编号</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" ng-readonly="true"
+                                       ng-model="guarantee_info.loan_no"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NOT 保证金 -->
+
+                <!-- START 保证 -->
+                <div ng-if="gt_display == '保证'">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保证起始日期</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="date"
+                                       ng-model="guarantee_info.from_date"
+                                       ng-value="current_date"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保证到期日期</label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="date"
+                                           ng-model="guarantee_info.thru_date"
+                                           ng-value="current_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保人客户代码<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <div class="input-group">
+                                        <input class="form-control input-sm" type="text"
+                                               ng-model="guarantee_info.gty_customer_no"
+                                               ng-readonly="true"
+                                               required/>
+                                                            <span class="input-group-addon"
+                                                                  ng-click="show_customer_model('gty_customer')">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">担保人名称<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text"
+                                           ng-model="guarantee_info.gty_customer_name"
+                                           ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保证人对外保证总额</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.foreign_amount"/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保险种类</label>
+
+                            <div class="col-md-7">
+                                <select class="form-control input-sm"
+                                        ng-init="guarantee_info.insurance_categ = guarantee_info.insurance_categ || '个人贷款抵押房屋保险'"
+                                        ng-model="guarantee_info.insurance_categ">
+                                    <option value="个人贷款抵押房屋保险">个人贷款抵押房屋保险</option>
+                                    <option value="借款人意外伤害保险">借款人意外伤害保险</option>
+                                    <option value="财产基本保险">财产基本保险</option>
+                                    <option value="其他保险">其他保险</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保险单编号</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text"
+                                       ng-model="guarantee_info.insurance_code">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保险到期日期</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="date"
+                                       ng-model="guarantee_info.insurance_date"
+                                       ng-value="current_date"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">核保人</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text"
+                                       ng-model="guarantee_info.check_person"
+                                       ng-value="user_name" ng-readonly="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">核保时间</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="date" ng-readonly="true"
+                                       ng-model="guarantee_info.check_date"
+                                       ng-value="current_date"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">保险比例</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.scale_value"/>
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END 保证 -->
+
+                <!-- START 质押 -->
+                <div ng-if="gt_display == '质押'">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">具体担保方式<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text" ng-readonly="true"
+                                           ng-model="guarantee_info.gty_detail"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">质押总金额</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text"
+                                       ng-model="guarantee_info.pledge_value"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END 质押 -->
+
+                <!-- START 抵押 -->
+                <div ng-if="gt_display == '抵押'">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">具体担保方式<span
+                                    class="font-red">*</span></label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text" ng-readonly="true"
+                                       ng-model="guarantee_info.gty_detail"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵押物预评估总价值</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.mrge_perasse_value"/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵押物评估总价值</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.mrge_asse_value"/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵押物认定总价值</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.mrge_finds_value"/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">价值评估方式</label>
+
+                            <div class="col-md-7">
+
+                                <select class="form-control input-sm"
+                                        ng-init="guarantee_info.asse_mode = guarantee_info.asse_mode || '财务资产'"
+                                        ng-model="guarantee_info.asse_mode">
+                                    <option value="财务资产" selected="selected">财务资产</option>
+                                    <option value="有形动产">有形动产</option>
+                                    <option value="不动产">不动产</option>
+                                    <option value="无形不动产">无形不动产</option>
+                                    <option value="无形动产">无形动产</option>
+                                    <option value="流动负债">流动负债</option>
+                                    <option value="长期负债">长期负债</option>
+                                    <option value="或有负债">或有负债</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END 抵押 -->
+
+
+                <!-- START 抵押 AND 质押-->
+                <div ng-if="gt_display == '抵押' || gt_display == '质押' ">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵/质押不算比例部分总价值</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.no_scale_value"/>
+                                    <span class="input-group-addon">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵/质押率</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" step="0.01"
+                                           ng-model="guarantee_info.scale_value"/>
+
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵/质押起始日期</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" type="text"
+                                       ng-model="guarantee_info.from_date"
+                                       ng-value="current_date"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">抵/质押到期日期</label>
+
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text"
+                                           ng-model="guarantee_info.thru_date"
+                                           ng-value="current_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">使用权人客户代码</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text"
+                                           ng-model="guarantee_info.own_customer_no"
+                                           ng-readonly="true"/>
+                                                        <span class="input-group-addon"
+                                                              ng-click="show_customer_model('own_customer')">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">使用权人</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" ng-readonly="true"
+                                       ng-model="guarantee_info.own_customer_name"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">共有权人客户代码</label>
+
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text"
+                                           ng-model="guarantee_info.share_customer_no"
+                                           ng-readonly="true"/>
+                                                        <span class="input-group-addon"
+                                                              ng-click="show_customer_model('share_customer')">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">共有权人</label>
+
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" ng-readonly="true"
+                                       ng-model="guarantee_info.share_customer_name"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END 抵押 AND 质押-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">登记机构</label>
+
+                        <div class="col-md-7">
+                            <input class="form-control input-sm" ng-readonly="true" type="text"
+                                   ng-model="guarantee_info.branch_name"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">登记人</label>
+
+                        <div class="col-md-7">
+                            <input class="form-control input-sm" ng-readonly="true" type="text"
+                                   ng-model="guarantee_info.user_name"/>
+                        </div>
+                    </div>
+                </div>
+</fieldset>
+                <div class="col-md-6" ng-hide='!guarantee_info.contract_no'>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">登记证号</label>
+
+                        <div class="col-md-7">
+                            <input class="form-control input-sm"  type="text"
+                                   ng-model="guarantee_info.register_number"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-hide='!guarantee_info.contract_no'>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label label-sm">登记日期</label>
+
+                        <div class="col-md-7">
+                            <input class="form-control input-sm"  type="text"
+                                   ng-model="guarantee_info.register_date"
+                                   pattern="\d{4}-\d{2}-\d{2}"placeholder="--YYYY-MM-DD格式输入---" maxlength="10" minlength="10"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <!-- 客户搜索 -->
+    <div class="modal fade" id="guarantree_customer_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">客户搜索</h4>
+                </div>
+                <div class="modal-body">
+                    <div name="custQueryCond">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">编号:</label>
+
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <input class="form-control input-sm" type="text"
+                                                   ng-model="cust_search.cust_no"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">名称:</label>
+
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <input class="form-control input-sm" type="text"
+                                                   ng-model="cust_search.cust_name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">类型:</label>
+
+                                    <div class="col-md-7">
+                                        <select class="form-control input-sm" disabled
+                                                ng-model='cust_search.cust_type'>
+                                            <option value='resident'>个人客户</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">证件类型:</label>
+
+                                    <div class="col-md-7">
+                                        <select class="form-control input-sm" ng-model="cust_search.cert_type">
+                                            <option>身份证</option>
+                                            <option>户口本</option>
+                                            <option>护照</option>
+                                            <option>军官证</option>
+                                            <option>士兵证</option>
+                                            <option>其他个人证件</option>
+                                            <option>香港身份证</option>
+                                            <option>澳门身份证</option>
+                                            <option>台湾身份证</option>
+                                            <option>港澳居民来往内地通行证</option>
+                                            <option>台湾同胞来往内地通行证</option>
+                                            <option>临时身份证</option>
+                                            <option>外国人居留证</option>
+                                            <option>警官证</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">证件号码:</label>
+
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <input class="form-control input-sm" type="text"
+                                                   ng-model="cust_search.cert_no"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-10">
+                                <button class="btn btn-primary" ng-click="customer_search()">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div name="resultTable">
+                        <table name="custListTable" class="table">
+                            <div class="table table-striped table-advance table-hover flip_content"
+                                 style="overflow-x:auto; overflow-y:auto;">
+                                <thead style="white-space:nowrap;">
+                                <tr>
+                                    <th ng-repeat='th in customerListTH' ng-bind='th'></th>
+                                </tr>
+                                </thead>
+                                <tbody style="white-space:nowrap;">
+                                <tr ng-repeat="d in custTableData" ng-mousedown="choseCustomer(d)" ng-show="d.type_code=='resident'" >
+                                    <td ng-bind="d.id"></td>
+                                    <td ng-bind="d.name"></td>
+                                    <td ng-bind="d.no"></td>
+                                    <td ng-bind="d.ric"></td>
+                                    <td >个人客户</td>
+                                </tr>
+                                <tr ng-repeat="d in custTableData" ng-mousedown="choseCustomer(d)" ng-show="d.type_code=='company'" >
+                                    <td ng-bind="d.id"></td>
+                                    <td ng-bind="d.name"></td>
+                                    <td ng-bind="d.no"></td>
+                                    <td ng-bind="d.ric"></td>
+                                    <td >对公客户</td>
+                                </tr>
+                                </tbody>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-disabled="confirmBtnDisabled"
+                            ng-click="customer_confirm_select()">确定
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="customer_cancel_select()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿<div class="form-horizontal" role="form" name="loanForm" ng-controller="guarantyController">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">抵质押物种类</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7" placeholder="请选择" ng-model="p_type" ng-disabled=true>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm"  ng-click="show_new_pledge_modal(this)" ng-disabled="ltSelected">...</button> 
+                </div>
+            </div>
+        </div>
+        <div ng-controller='pledgeController' ng-include src=detail_page > </div>
+  <!-- 新增抵质押物信息界面 -->
+            <div class="modal fade " name="new_pledge_modal" role="dialog">
+               <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" id="bt" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">请选择抵质押物类型</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="row" name="for_pledge_mortgage_tree"> </div>
+                            </form>
+                        </div> <!-- modal-body -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="pledgeModalConfirm()">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="pledgeModalClose()">取消</button>
+                        </div> <!-- modal-footer -->
+                    </div> <!-- modal-content -->
+                </div> <!-- modal-dialog -->
+            </div> <!-- modal -->
+
+            <script type="text/javascript">
+                var choose_pledge_type = function(elem, pt,page){
+                    angular.element($(elem)).scope().choose_pledge($(elem).attr('id').split('_a')[0], pt,page);
+                }
+				
+            </script>
+	
+	
+	
+	
+  
+</div>

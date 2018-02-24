@@ -1,0 +1,229 @@
+<div ng-controller='loanMoneyPay'>
+<table id="addContractId" class ="table table-bordered" style="text-align:center;" >
+    <tr>
+        <td>合同编号</td>
+        <td>起始日</td>
+        <td>到期日</td>
+        <td>贷款金额</td>
+        <td>是否卡授信</td>
+        <td>贷款月利率</td>
+        <td>操作</td>
+    </tr>
+    <tr ng-repeat="item in havecontractList">
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].contract_no" /> </td>
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].begin_date" /> </td>
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].end_date" /> </td>
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].amount" /> </td>
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].is_credit_card" /> </td>
+        <td> <input type="text" style="width:100%;" disabled="true"   ng-model = "havecontractList[$index].debt_rate" /> </td>
+        <td> <button ng-click="payDetail(item)"> 支付信息</button> </td>
+
+    </tr>
+</table>
+<form name="loanMoneyPay"  ng-submit='submitPayMethod(loanMoneyPay.$valid)'  class="form-horizontal" role="form" >
+  <h2 style="text-align:center;">{{ '合同编号:'+no }}</h2>
+   <div class="form-body"> 
+       <div class="row">
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label class="col-md-3 control-label label-sm">还款来源<font color="#FF0000">*</font></label>
+                       <div class="col-md-7">
+                           <div class="input">
+                               <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.repayment_from'  required />
+                           </div>
+                      </div>
+                </div>
+           </div>
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label class="col-md-3 control-label label-sm">交易具体内容<font color="#FF0000">*</font></label>
+                       <div class="col-md-7">
+                          <div class="input">
+                              <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="payment.paydetail" required />
+                          </div>
+                     </div>
+               </div>
+           </div>
+       </div>   
+       <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                  <label class="col-md-3 control-label label-sm">支付方式<font color="#FF0000">*</font></label>
+                     <div class="col-md-7">
+                         <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model='payment.payment_method'  required >
+                                <option>自主支付</option>
+                                <option>委托支付</option>
+                            </select>
+                        </div>
+                    </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">支付金额<font color="#FF0000">*</font></label>
+                      <div class="col-md-7">
+                          <div class="input">
+                             <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.amount' required />
+                          </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="col-md-3 control-label label-sm">结算方式<font color="#FF0000">*</font></label>
+                  <div class="col-md-7">
+                     <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model='payment.settle_type' required >
+                            <option>转账</option>
+                            <option>现金</option>
+                            <option>银行承兑汇票</option>
+                            <option>其他结算方式</option>
+                        </select>
+                     </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请书号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-model='applicationId'  disabled/>
+                        </div>
+                    </div>
+                </div>
+           </div>
+     </div>
+      <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">委托支付付款方<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.comm_payer '  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">委托支付收款方<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.comm_payee'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">收款账号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.payee_account'   required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <div class="row">
+          <div class="col-md-6">
+             <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">支付凭证种类<font color="#FF0000">*</font></label>
+                 <div class="col-md-7">
+                    <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model='payment.vou_type' >
+                            <option>对公业务委托书</option>
+                            <option>转账支票</option>
+                            <option>个人业务委托书</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">凭证号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.vou_no' />
+                        </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="row">
+        <div class="col-md-6">
+           <div class="form-group">
+              <label class="col-md-3 control-label label-sm">收款行别<font color="#FF0000">*</font></label>
+                 <div class="col-md-7">
+                    <div class="input">          
+                       <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model='payment.bank_type' required >
+                            <option>他行</option>
+                            <option>本行</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+             <div class="form-group">
+                 <label class="col-md-3 control-label label-sm">收款行行号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.bank_no' />
+                        </div>
+                    </div>
+               </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+           <div class="form-group">
+              <label class="col-md-3 control-label label-sm">收费方式<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+                   <div class="input">        
+                      <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model='payment.fee_type' >
+                            <option>联动</option>
+                            <option>现金</option>
+                            <option>不收费</option>
+                      </select>
+                   </div>
+                </div>
+            </div>
+       </div>
+    </div>
+    <div class="row">
+          <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">收款银行名称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model='payment.bank_name'  />
+                        </div>
+                    </div>
+                </div>
+          </div>
+     </div>
+  </div>
+  <div class="row">
+           <div class="col-md-12">
+               <div class="form-group">
+                   <label class="col-md-3 control-label label-sm">贷款用途<font color="#FF0000">*</font></label>
+                       <div class="col-md-7">
+                           <div class="input">
+                               <textarea class="form-control input-sm"  ng-disabled='disabled_flag' ng-model='payment.purpose_type'  rows="3" required ></textarea>
+                           </div>
+                      </div>
+                </div>
+           </div>
+       </div>
+
+        <button type="submit" class="btn btn-primary" >保存</button>
+</form>
+</div>

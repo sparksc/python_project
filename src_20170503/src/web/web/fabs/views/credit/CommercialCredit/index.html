@@ -1,0 +1,79 @@
+<script src="views/credit/CommercialCredit/commercialController.js" type="text/javascript"></script>
+
+<div class="form-horizontal" role="form" name="loanForm" ng-controller="commTaskController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSubmit()" class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onCancel()" class="btn btn-primary" >取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style='height:300px;overflow:scroll'>
+            <table class = 'table table-hover' >     
+                   <thead>
+                        <th style='min-width: 92px;' ng-repeat="head in task_head" ng-bind='head'></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in task">
+                            <td><a href='#' ng-click='showCust(data.party)' ng-bind='data.party.id'></a>
+                               </td>
+                            <td ng-bind='data.party.name'></td>
+                            <td ng-bind='data.party.corp_name'></td>
+                            <td><a href='#' ng-click='showGuaranty(data.guaranty)' >海南区西卓子山街冷库东侧南加油站北侧商房</a>
+                               </td> 
+                            <td >2234</td>
+                            <td >123</td>
+                            <td >9000</td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td >980</td>
+                            <td >20141203-20161202</td>
+                            <td ng-bind='data.transaction.amount'></td>
+                            <td >980</td>
+                            <td >60.48%</td>
+                            <td >1</td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ng-bind='data.amount'></td>
+                            <td ng-bind='data.amount'></td>
+                            <td ng-bind='data.amount'></td>
+                            <td>
+                               <div class="btn-group">
+                                  <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    点击操作 <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                      <li ng-hide= 'data.status'>
+                                          <a ng-click="loanInfo(data,'new')">贷款申请</a>
+                                      </li>
+                                      <li>
+                                          <a ng-click="loanInfo(data,'check')">贷款详情</a>
+                                      </li>
+                                      <li >
+                                         <a ng-click="cancelApplication(d.id)">取消申请</a>
+                                      </li>
+                                      <li ng-show="d.sign_comment_flag">
+                                        <a ng-click="viewSignCommentDetail(d.id, d.sign_comment_id)">查看签署意见</a>
+                                      </li>
+                                   </ul>
+                                 </div>
+                             </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+         <hr/>
+  
+        </div> 
+</div>

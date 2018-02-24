@@ -1,0 +1,22 @@
+M      web/web/views/reportforms LcSearch.html
+M      web/web/views/reportforms PosSearch.html
+M      web/web/views/reportforms CardSearch.html
+M      web/web/views/reportforms InsSearch.html
+M      web/web/views/reportforms LcustSearch.html
+M      web/web/views/reportforms DepaSearch.html
+M      web/web/views/reportforms MachSearch.html
+M      web/web/views/reportforms EbankSearch.html
+M      web/web/views/reportforms ThirdSearch.html
+M      web/web/views/reportforms GoldSearch.html
+M      web/web/views/reportforms LoanSearch.html
+M      web/web/views/reportforms DepcSearch.html
+
+M      sqs/sqs/scripts qcard.py
+M      sqs/sqs/scripts qlcust.py
+M      sqs/sqs/scripts qdepcust.py
+M      sqs/sqs/scripts qinsurance.py
+M      sqs/sqs/scripts qebank.py
+M      sqs/sqs/scripts qloan.py
+M      sqs/sqs/scripts qpos.py
+M      sqs/sqs/scripts qthird.py
+M      sqs/sqs/scripts qmachine.py

@@ -1,0 +1,88 @@
+fabs.views
+===
+
+Structure:
+
+    views
+    ├── README
+    ├── __init__.py
+    ├── user.py
+
+
+Sample :
+
+    from flask import Blueprint, request, json, abort, current_app, jsonify
+
+    from ..services import UsersService
+    from . import route
+
+    usersService = UsersService()
+
+    bp = Blueprint('users', __name__, url_prefix='/users')
+
+    @route(bp, '/')
+    def list():
+        """Returns a list of usersService instances."""
+        return usersService.all()
+
+
+获取当前UserSession：
+
+    from flask import g
+    user_session = g.web_session
+    user  = user_session.user
+    # user_session @see fabs.model.UserSession
+
+
+路由请用@route：
+
+    from . import route
+    bp = Blueprint('users', __name__, url_prefix='/users')
+    @route(bp,'/auth', methods=['POST'])
+
+
+路由提供以下基本规则参考(https://en.wikipedia.org/wiki/Representational_state_transfer):
+
+    协议:
+
+        Https
+        @暂未实现
+    地址:
+
+        //[host]/todo/api/v1.0/tasks/[task_id]
+    方法:
+
+        *----------*---------------------------------------------*-------------*
+        |HTTP 方法 |  URL                                        |   动作      |
+        *----------*---------------------------------------------*-------------*
+        |GET       | https://[host]/form/api/v1.0/tasks          | 检索任务列表|
+        |GET       | https://[host]/form/api/v1.0/tasks/[task_id]| 检索某个任务|
+        |POST      | https://[host]/form/api/v1.0/tasks          | 创建新任务  |
+        |PUT       | https://[host]/form/api/v1.0/tasks/[task_id]| 更新任务    |
+        |DELETE    | https://[host]/form/api/v1.0/tasks/[task_id]| 删除任务    |
+        *----------*---------------------------------------------*-------------*
+    过滤:
+
+        ?limit=10：指定返回记录的数量
+        ?offset=10：指定返回记录的开始位置
+        ?sortby=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序
+        ?animal_type_id=1：指定筛选条件
+    状态码:
+
+        200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）
+        201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功
+        204 NO CONTENT - [DELETE]：用户删除数据成功
+        400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的
+        404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的
+        500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功
+    错误处理:
+
+        { error: Invalid API key }
+    返回:
+
+        GET /collection：返回资源对象的列表（数组）
+        GET /collection/resource：返回单个资源对象
+        POST /collection：返回新生成的资源对象
+        PUT /collection/resource：返回更新后完整的资源对象
+        DELETE /collection/resource：返回一个空文档
+

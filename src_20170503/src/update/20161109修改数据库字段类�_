@@ -1,0 +1,1 @@
+把M_MANAGER_ADD_SCO里的数据库里的年和月都由int改成vchar类型

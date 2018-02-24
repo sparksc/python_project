@@ -1,0 +1,230 @@
+<div ng-controller="staff_relationController">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-body">
+		    <fieldset name="custQueryCond">
+		 
+                <div class="row">
+                     <div class="col-md-4 col-md-offset-1">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">员工姓名:</label>
+                             <div class="col-md-7">
+                                 <div class="input">
+                                     <input class="form-control input-sm"  type="text"  ng-model="cust_search.name"/></input>
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+                     <div class="col-md-4 col-md-offset-1">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label label-sm">员工工号:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm"  type="text"  ng-model="cust_search.user_name"/></input>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="row">
+                     <div class="col-md-4 col-md-offset-1">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">核心工号:</label>
+                             <div class="col-md-7">
+                                 <div class="input">
+                                     <input class="form-control input-sm"  type="text"  ng-model="cust_search.staff_sop_code"/></input>
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+                     <div class="col-md-4 col-md-offset-1">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label label-sm">信贷工号:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm"  type="text"  ng-model="cust_search.staff_cms_code"/></input>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+		        <div class="row">
+			    <div class="col-md-10">
+                                <div class="form text-right">
+                                    <button type="button" ng-click="add()" class="btn btn-default">新增</button>
+                                    <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+                                </div><br>
+		            </div>
+                        </div>
+                    
+                    </fieldset>
+                </div>
+            </form>
+        <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th> 
+			                  </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="row.length-2 <= $index">
+                                {{d}}
+                                </td>
+                              	  <td class="text-nowrap">
+					<button type="button" ng-click="to_edit(row)" class="btn btn-default">编辑</button>
+					<button type="button" ng-click="delete(row)" class="btn btn-default">删除</button>
+				  </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+
+<div class="modal fade" id="s_r_modal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               修改
+            </h4>
+         </div>
+        <div class="input-group">
+         <span class="input-group-addon">员工工号</span>
+	<input class="form-control" ng-model="target[1]" readonly="true"></input>
+        </div><br>
+        <div class="input-group">
+         <span class="input-group-addon">员工姓名</span>
+	<input class="form-control" ng-model="target[0]" readonly="true"></input>
+        </div><br>
+       <div class="input-group">
+         <span class="input-group-addon">核心工号</span>
+         <input type="text" class="form-control" ng-model="target[2]" >
+        </div><br>     <div class="input-group">
+         <span class="input-group-addon">信贷工号</span>
+         <input type="text" class="form-control" ng-model="target[3]" >
+        </div><br>
+         <div class="input-group">
+         <span class="input-group-addon">是否客户经理</span>
+         <select type="text" class="form-control" ng-model="target[4]" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否综合柜员</span>
+         <select type="text" class="form-control" ng-model="target[5]" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否会计主管</span>
+         <select type="text" class="form-control" ng-model="target[6]" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否支行行长</span>
+         <select type="text" class="form-control" ng-model="target[7]" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="update(target)" >
+               提交更改
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="s_r_modal1" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel1" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModalLabel1">
+               新增
+            </h4>
+         </div>
+        <div class="input-group">
+         <span class="input-group-addon">员工工号</span>
+	<select class="form-control" ng-model="ntarget[0]" ng-options="''+option[0]+'|'+option[1] for option in newdata">
+    <option></option>
+    </select>
+        </div><br>
+        <div class="input-group">
+         <span class="input-group-addon">核心工号</span>
+         <input type="text" class="form-control" ng-model="ntarget['staff_sop_code']" >
+        </div><br>     <div class="input-group">
+         <span class="input-group-addon">信贷工号</span>
+         <input type="text" class="form-control" ng-model="ntarget['staff_cms_code']" >
+        </div><br>
+         <div class="input-group">
+         <span class="input-group-addon">是否客户经理</span>
+         <select type="text" class="form-control" ng-model="ntarget['is_khjl']" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否综合柜员</span>
+         <select type="text" class="form-control" ng-model="ntarget['is_zhgy']" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否会计主管</span>
+         <select type="text" class="form-control" ng-model="ntarget['is_kjzg']" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>       
+        <div class="input-group">
+         <span class="input-group-addon">是否支行行长</span>
+         <select type="text" class="form-control" ng-model="ntarget['is_zhhz']" >
+         <option>是</option>
+         <option>否</option>
+         </select>
+        </div><br>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="add_save(ntarget)" >
+               保存
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+        </div>
+    </div> 
+</div>

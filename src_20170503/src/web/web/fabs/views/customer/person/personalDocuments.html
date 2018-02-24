@@ -1,0 +1,163 @@
+<div class="form-horizontal" role="form" id="personalDocuments" ng-show="display_info == 'personalDocuments'">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#personalDocumentsModal"ng-click="new_record()">新增</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td>{{data.certificate_number}}</td>
+                            <td>{{data.customer_name}}</td>
+                            <td>{{data.relationship}}</td>
+                            <td>{{data.register_branch}}</td>
+                            <td>{{data.register_teller}}</td>
+                            <td>{{data.register_date}}</td>
+                            <td>{{data.update_date}}</td>
+                            <td style="white-space:nowrap;">
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#personalDocumentsModal" ng-click="view_record($index)">详情</button> 
+                                <button type="button" class="btn btn-primary btn-xs" ng-click="delete_record($index)">删除</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='personalDocumentsModal' role="dialog">
+       <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">个人文件新增</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">文件名称<font color="#FF0000">*</font></label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">文档重要性<font color="#FF0000">*</font></label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option value="">一般</option>
+                                        <option>重要</option>
+                                        <option>非常重要</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">编制单位</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">编制日期<font color="#FF0000">*</font></label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">备注</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <textarea  class="form-control" rows="3"  type="text"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记人</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记单位</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">更新日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="save_data(modal_data)">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+</div>

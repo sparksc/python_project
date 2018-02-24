@@ -1,0 +1,170 @@
+﻿<div class="form-horizontal" role="form" name="loanForm" ng-controller="loanBaseController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSave()" ng-show = 'btn_edit_flag' class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click="onEdit()" ng-hide = 'btn_edit_flag' class="btn btn-primary" >修改</button>
+                        <button type="button" ng-click="onSubmit()" ng-show = 'btn_edit_flag' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onCancel()" ng-show = 'btn_edit_flag' class="btn btn-primary" >取消</button>
+                    
+                    </div>
+				</div>
+			</div>
+		</div>
+              
+        <div class="row" >
+		 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">审批意见流水号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="审批意见流水号"   ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户名称" ng-model="customer.name"  ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+        <div class="row" >
+			<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户编号"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">业务品种</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="业务品种"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">批复金额</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="批复金额"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">主要担保方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="主要担保方式"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">最终审批意见类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="最终审批意见类型"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">币种</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="币种"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="登记机构"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="登记人"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="登记日期"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">更新日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="额度项下业务最迟到期日期"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div> <!-- modal -->
+
+    <!--  <script type="text/javascript">
+        var choose_business_type = function(elem, typeCode, typeName,typePage){
+            //angular.element($(elem)).scope().choose_business_type($(elem).attr("title"))
+            angular.element($(elem)).scope().choose_business_type(typeCode, typeName,typePage);
+        }
+    </script>
+  -->
+</div>

@@ -1,0 +1,98 @@
+<div class="form-horizontal" role="form" name="acceptForm"  ng-controller="accBillPreController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSubmit()"  class="btn btn-primary" >提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 申请基本信息-->
+         
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户编号" ng-model="pre_apply.no" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户名称" ng-model="pre_apply.name" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">业务种类</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" ng-model="pre_apply.loan_type" disabled=true>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">是否敞口</label>
+                       <div class="col-md-7">
+                        <select class="form-control" ng-model="pre_apply.bill_type">
+                            <option>敞口</option>
+                            <option>全额</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+           </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">票据类别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control" ng-model='pre_apply.bill_kind' >
+                                     <option>纸票</option>
+                                     <option>电票</option>
+                               </select>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">期限</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                        <input type="text" class="form-control" ng-model="pre_apply.term" ng-blur="term(pre_apply.term)" >
+                      <span class="input-group-addon">月</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">担保方式</label>
+                    <div class="col-md-7">
+                        <select  class="form-control" ng-model="pre_apply.main_gua">
+                            <option>抵押</option>
+                            <option selected>质押</option>
+                            <option>保证</option>
+                            <option>信用</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+  <div>

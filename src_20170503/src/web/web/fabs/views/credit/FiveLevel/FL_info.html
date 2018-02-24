@@ -1,0 +1,1071 @@
+<div class="form-horizontal"  role="form" >
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button type="button" ng-click="onSave()"  class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click="onSubmit()" ng-hide = 'app_st=="05"||app_st=="06"' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onClear()" ng-show = false class="btn btn-primary" >清空</button>
+                        <button type="button" ng-click="onEdit()" ng-hide = 'btn_edit_flag||app_st=="05"||app_st=="06"' class="btn btn-primary" >修改</button>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button class="btn btn-primary" data-toggle="collapse" href="#examineComment" ng-show='FC.credit_level.id'>签署结果</button>
+                         <div class="collapse" id="examineComment" style="position:absolute;background-color:White;z-index:1024;">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">意见:</label>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" rows="6" ng-model="result" ng-disabled="submitedFlag"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">同意</button>
+                                        <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right" ng-disabled="submitedFlag">不同意</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">分类申请号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="FC.credit_level.id" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">审批状态</label>
+                    <div class="col-md-7">
+
+                        <input type="text" class="form-control col-md-7" ng-model="FC.application.status" ng-disabled=true>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="FC.party.no" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="FC.party.name" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">分类方法</label>
+                    <div class="col-md-7">
+                        <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.cate_type" ng-disabled=true>
+                            <option value=''>请选择</option>
+                            <option value='01'>大额企事业客户贷款</option>
+                            <option value='02'>小额企事业客户贷款</option>
+                            <option value='03'>大额自然人贷款</option>
+                            <option value='04'>小额自然人贷款</option>
+                            <option value='05'>分期还款贷款</option>
+                            <option value='06'>信用卡透支</option>
+                            <option value='07'>进口押汇</option>
+                            <option value='08'>出口押汇</option>
+                            <option value='09'>打包放款</option>
+                            <option value='10'>银行承兑汇票及贴现</option>
+                            <option value='11'>垫款</option>
+                        </select>
+                    </div>
+                    <button type="button" class="col-md-1 btn btn-primary" ng-hide="app_st=='05'||app_st=='06'" ng-click="show_FC_type()" >...</button>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">上次分类级别</label>
+                    <div class="col-md-7">
+                        <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.form5" ng-disabled=true>
+                            <option value='正常'  >正常</option>
+                            <option value ='关注'>关注</option>
+                            <option value ='次级'>次级</option>
+                            <option value ='可疑'>可疑</option>
+                            <option value ='损失'>损失</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">系统初分等级</label>
+                    <div class="col-md-7">
+                        <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.credit_level.sys_cate_level" ng-disabled=true>
+                            <option value ='' >请点击"分类测算"</option>
+                            <option value='正常'>正常</option>
+                            <option value ='关注' >关注</option>
+                            <option value ='次级' >次级</option>
+                            <option value='可疑'>可疑</option>
+                            <option value='损失' >损失</option>
+                        </select>
+                    </div>
+                    <button type="button" ng-click="onEvaluate()"ng-hide="app_st=='05'||app_st=='06'"  class="col-md-2 btn btn-primary" >分类测算</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">申请分类等级</label>
+                    <div class="col-md-7">
+                        <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.credit_level.app_cate_level" >
+                            <option value='正常' >正常</option>
+                            <option value='关注'>关注</option>
+                            <option value='次级'>次级</option>
+                            <option value='可疑'>可疑</option>
+                            <option value='损失' >损失</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">认定分类等级</label>
+                    <div class="col-md-7">
+                        <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.cate_id" >
+                            <option value='正常' >正常</option>
+                            <option value='关注'>关注</option>
+                            <option value='次级'>次级</option>
+                            <option value='可疑'>可疑</option>
+                            <option value='损失'>损失</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div name="FiveLevelBaseInfoForm" >
+            <div class="row">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">业务种类</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.product.name" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款形式</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.type" ng-disabled="edit_flag==0">
+                                <option value='新增' >新增</option>
+                                <option value='借新还旧' >借新还旧</option>
+                                <option value='换旧增新'>换旧增新</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款币种</label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model="FC.lend_transaction.currency_code" ng-disabled="edit_flag==0">
+                                <option value="CNY">人民币</option>
+                                <option value="USD">美元</option>
+                                <option value="EUR">欧元</option>
+                                <option value="GBP">英镑</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款金额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.amount" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款余额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.balance" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">欠息金额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.interest_balance" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">保证金比例</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.gty_percent" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">主要担保方式</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.gty_main_method" ng-disabled="edit_flag==0">
+                                <option value='信用'>信用</option>
+                                <option value='保证'>保证</option>
+                                <option value='抵押'>抵押</option>
+                                <option value='质押'>质押</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款开始日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.from_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.thur_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">展期到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.extend_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">逾期天数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.pass_days" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">天</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">连续违约次数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.default_times" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">次</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款状态</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.status" ng-disabled="edit_flag==0">
+                                <option value='登记'>登记</option>
+                                <option value='发放'>发放</option>
+                                <option value='销户'>销户</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.lend_transaction.purpose_type" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">实际用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="FC.usage_cur" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否挪用</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.bmisuse" ng-disabled="edit_flag==0">
+                                <option value='是' >是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否垫款</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="FC.badvance" ng-disabled="edit_flag==0">
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">还款来源</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="FC.lend_transaction.repayment_from" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">财务分析</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="FC.financial_memo" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">担保分析</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="FC.gty_memo" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <!-- 分类factors -->
+            <!-- 大额企事业客户贷款 -->
+            <div name="largeComInfo" ng-show="FC.cate_type=='01'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子01-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 小额企事业客户贷款 -->
+            <div name="smallComInfo" ng-show="FC.cate_type=='02'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子02-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 大额自然人贷款 -->
+            <div name="largePerInfo" ng-show="FC.cate_type=='03'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子03-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 小额自然人贷款 -->
+            <div name="smallPerInfo" ng-show="FC.cate_type=='04'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子04-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分期还款贷款 -->
+            <div name="installmentInfo" ng-show="FC.cate_type=='05'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子05-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 信用卡透支 -->
+            <div name="creditOverdrawInfo" ng-show="FC.cate_type=='06'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子06-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 进口押汇 -->
+            <div name="importDocInfo" ng-show="FC.cate_type=='07'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子07-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 出口押汇 -->
+            <div name="exportDocInfo" ng-show="FC.cate_type=='08'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子08-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 打包放款 -->
+            <div name="packingFinInfo" ng-show="FC.cate_type=='09'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子09-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 银行承兑汇票及贴现 -->
+            <div name="billDiscountInfo" ng-show="FC.cate_type=='10'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子10-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 垫款 -->
+            <div name="advanceInfo" ng-show="FC.cate_type=='11'">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-1</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f1" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-2</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f2" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-3</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f3" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-4</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f4" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-5</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f5" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">分析因子11-6</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="factors.f6" ng-disabled="edit_flag==0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           -->
+
+        </div>
+
+    </div>
+    <!-- 新增五级分类信息界面 -->
+    <div class="modal fade " name="new_FC_type" role="dialog">
+       <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">请选择分类方法</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="row" name="for_FC_tree"> </div>
+                    </form>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="FC_type_confirm()">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="FC_type_close()">取消</button>
+                </div> <!-- modal-footer -->
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+
+    <script type="text/javascript">
+        var choose_FC_type = function(elem, pt){
+            //console.log(elem);
+            angular.element($(elem)).scope().choose_FC($(elem).attr('id').split('_a')[0], pt);
+        }
+    </script>
+
+
+
+
+</div>

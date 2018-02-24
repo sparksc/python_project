@@ -1,0 +1,386 @@
+<div class="form-horizontal"  role="form" >
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button type="button" ng-click="onSave()"  class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click="onSubmit()"  class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onEdit()"  class="btn btn-primary" >修改</button>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button class="btn btn-primary" data-toggle="collapse" href="#examineComment" ng-show='data.repossession.id'>签署结果</button>
+                         <div class="collapse" id="examineComment" style="position:absolute;background-color:White;z-index:1024;">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">意见:</label>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" rows="6" ng-model="result" ng-disabled="submitedFlag"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">同意</button>
+                                        <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right" ng-disabled="submitedFlag">不同意</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">申请书号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="data.application.id" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">审批状态</label>
+                    <div class="col-md-7">
+
+                        <input type="text" class="form-control col-md-7" ng-model="data.application.status" ng-disabled=true>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="data.party.no" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="data.party.name" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">入账金额</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.in_amount" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">利息</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.in_accrual" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">税费</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.in_tax" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">截至当前本金余额</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.in_balance" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">已扣收租金</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.received_rent" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">原抵入本金</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.principal" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">资产名称</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.gty_name" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">数量</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.gty_area" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">贷款时的评估价</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.gty_amount_credit" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">抵入时的评估价</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.gty_amount_rep" ng-disabled='edit_flag'>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">抵入方式</label>
+                    <div class="col-md-7">
+                         <select type="text" class="form-control col-md-7" ng-model="data.repossession.arrived_in_type" ng-disabled="edit_flag">
+                             <option value='协议抵入'>协议抵入</option>
+                             <option value='诉讼抵入'>诉讼抵入</option>
+                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">抵入时间</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="data.repossession.date" ng-disabled="edit_flag">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">位置</label>
+                    <div class="col-md-7">
+                         <textarea class="form-control"  ng-model="data.repossession.gty_address" ng-disabled="edit_flag"  rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">备注</label>
+                    <div class="col-md-7">
+                         <textarea class="form-control"  ng-model="data.repossession.remark" ng-disabled="edit_flag"  rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <hr />
+        <div name="FiveLevelBaseInfoForm" >
+            <div class="row">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">业务种类</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" ng-model="data.product.name" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款金额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" ng-model="data.lend_transaction.amount" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">表内利息</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.balance" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">表外利息</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.interest_balance" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">本息合计</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.lend_transaction.gty_percent" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">主要担保方式</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="data.lend_transaction.gty_main_method" ng-disabled="true">
+                                <option value='信用'>信用</option>
+                                <option value='保证'>保证</option>
+                                <option value='抵押'>抵押</option>
+                                <option value='质押'>质押</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款开始日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="data.lend_transaction.from_date" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7"  ng-model="data.lend_transaction.thur_date" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">展期到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.extend_date" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">逾期天数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.pass_days" ng-disabled="true">
+                                <span class="input-group-addon">天</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">连续违约次数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.default_times" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">次</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款状态</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.status" ng-disabled="edit_flag==0">
+                                <option value='登记'>登记</option>
+                                <option value='发放'>发放</option>
+                                <option value='销户'>销户</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.lend_transaction.purpose_type" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">实际用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.usage_cur" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否挪用</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.bmisuse" ng-disabled="edit_flag==0">
+                                <option value='是' >是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否垫款</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="repossession.badvance" ng-disabled="edit_flag==0">
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

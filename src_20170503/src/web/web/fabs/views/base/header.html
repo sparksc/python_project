@@ -1,0 +1,74 @@
+<div ng-controller="headerController">
+    <header class="xd-pageTop xd-topBG">
+        <div class="xd-logo pull-left"></div>
+        <div class="xd-mainSearch pull-left">
+            <!-- <from>
+                 <input type="search" class="" placeholder="输入业务代码">
+                 <button type="submit"><span class="iconfont icon-sousuo"></span></button>
+             </from>-->
+        </div>
+        <div class="dropdown pull-right">
+            <a href="javascript:;" class="xd-userBtn xd-titleBG xd-txt-titleBlue" data-toggle="dropdown">
+                <span> {{user_session.user_name}}({{user_session.user_code}})</span><span
+                    class="iconfont icon-xia"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#logout_modal" data-toggle="modal"><span class="iconfont icon-xiugai"></span>修改密码</a></li>
+                <li><a href="javascript:;" ng-click="loginOut()"><span class="iconfont icon-tuichu"></span>退出登录</a></li>
+            </ul>
+        </div>
+        <!--<div class="clearfix"></div>-->
+    </header>
+
+
+    <!-- 弹框 -->
+    <div id="logout_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header xd-bodyBG">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        密码修改
+                    </h4>
+                </div>
+                <form ng-submit="password_change()">
+                    <div class="modal-body">
+                        <div class="xd-inputModule">
+                            <div for="" class="xd-inputLabel pull-left">新密码:</div>
+                            <div class="xd-inputBox pull-left">
+                                <input type="password" class="form-control" ng-model="new_password_1" required>
+                            </div>
+                            <div class="xd-clr"></div>
+                        </div>
+                        <div class="xd-inputModule">
+                            <div for="" class="xd-inputLabel pull-left">重复密码:</div>
+                            <div class="xd-inputBox pull-left">
+                                <input type="password" class="form-control" ng-model="new_password_2" required>
+                            </div>
+                            <div class="xd-clr"></div>
+                        </div>
+                        <div class="xd-clr"></div>
+                        <div class="text-center" ng-if="password_change_msg" >
+                            提示：<span style="color:red;">{{password_change_msg}}</span>
+                        </div>
+                        <div class="xd-clr"></div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">关闭
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            确定
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框end -->
+</div>

@@ -1,0 +1,255 @@
+<fieldset ng-disabled="guarantee_info.contract_no">
+<form name="myForm" ng-submit="MrgeBuildingSave()">
+   
+        <input type="submit"class="btn btn-primary" value="保存" ng-show="save == '保存'"/>
+        <button type="button" class="btn btn-primary" ng-show="save == '修改'" ng-click="pledgechange()">修改</button>
+    	
+    </br>
+    <fieldset ng-disabled="save == '修改'">
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label  class="col-md-3 control-label label-sm">房产类型<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                <select required name="bldg_type" class="form-control  input-sm"
+                        ng-init="modal_data.bldg_type = modal_data.bldg_type || '商用房'"
+                        type="text" ng-model='modal_data.bldg_type'>
+
+							<option value="商用房">商用房</option>
+							<option value="住宅">住宅</option>
+							<option value="车库">车库</option>
+							<option value="商住两用">商住两用</option>
+							<option value="大棚">大棚</option>
+							<option value="厂房">厂房</option>
+							<option value="办公楼">办公楼</option>
+							<option value="厂房+办公楼">厂房+办公楼</option>
+							<option value="其他房产">其他房产</option>
+				</select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">房产地址<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+                 <input required name="bldg_address" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_address'/>
+
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">建筑面积<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                  <div class="input-group">
+				        <input required name="bldg_area" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_area'/>
+                        <span class="input-group-addon">平方米</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">建筑结构<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+               <select required name="bldg_struct" class="form-control  input-sm"
+                       ng-init="modal_data.bldg_struct = modal_data.bldg_struct || '混合'"
+                       type="text" ng-model='modal_data.bldg_struct'>
+							<option value="混合">混合</option>
+							<option value="钢混">钢混</option>
+							<option value="砖混">砖混</option>
+							<option value="砖木">砖木</option>
+							<option value="框架">框架</option>
+							<option value="其他">其他</option>
+							
+				</select>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">产权证号<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+				<input required name="bldg_cert_no" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_cert_no'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">房屋建成时间<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+
+						<input required name="bldg_fin_date" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_fin_date' title="--请输入年--" placeholder="--请输入年YYYY--" maxlength="4" minlength="4"/>
+
+                </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">房产用途<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+				<input required name="bldg_use_status" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_use_status'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">房屋使用现状<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+               <select required name="bldg_usage" class="form-control  input-sm"
+                       ng-init="modal_data.bldg_usage = modal_data.bldg_usage || '出租'"
+                       type="text" ng-model='modal_data.bldg_usage'>
+							<option value="出租">出租</option>
+							<option value="自用">自用</option>
+							<option value="闲置">闲置</option>
+							<option value="占用">占用</option>
+							<option value="在建">在建</option>
+							<option value="其他">其他</option>							
+				</select>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押物预评估价值<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input required name="bldg_pre_eval_value" class="form-control  input-sm" type="text" ng-model='modal_data.bldg_pre_eval_value'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押物评估价值</label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_eval_value'/>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押物认定价值</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_conf_value'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押不算比例部分价值</label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_except_value'/>
+                        <span class="input-group-addon">元</span>
+                    </div>
+
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押不算比例部分面积</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_except_amount'/>
+                      <span class="input-group-addon">平方米</span>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">担保金额</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_gty_amount'/>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押登记证号</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_id'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押登记日期</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_date'
+                         ng-blur="mort_reg_date(modal_data.mort_reg_date)" title="日期格式错误！"     />
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">评估机构</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.eval_org_id'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">评估时间</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="text" ng-model='modal_data.eval_date'
+                         ng-blur="eval_date(modal_data.eval_date)" title="日期格式错误！"/>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地证号</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.land_cert_no'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">土地取得方式</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="text" ng-model='modal_data.land_obtain_method'/>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-md-3 control-label label-sm">土地出让到期时间</label>
+            <div class="col-md-7">
+                <input class="form-control  input-sm" type="test" ng-model='modal_data.land_expire_date'  title="--请输入年月--" placeholder="--请输入年月YYYYMM--" maxlength="6" minlength="6"/>
+            </div>
+        </div>
+
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">购入日期</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="test" ng-model='modal_data.bought_date'  title="--请输入年--" placeholder="--请输入年YYYY--" maxlength="4" minlength="4"/>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">原单价</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+				       <input class="form-control  input-sm" type="text" ng-model='modal_data.org_unit_price'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押情况</label>
+                <div class="col-md-7">
+                  <input class="form-control  input-sm" type="text" ng-model='modal_data.mort_status'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-md-3 control-label label-sm">商品房买卖合同编号</label>
+            <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.bldg_contract_no'/>
+            </div>
+        </div>
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">备注</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.note'/>
+              </div>
+          </div>
+        </div>
+    </fieldset>
+</form>
+</fieldset>

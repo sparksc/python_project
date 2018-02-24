@@ -1,0 +1,92 @@
+<!-- 对公—贷款承诺 -->
+<div ng-include="'views/credit/loan/baseInformation.html'"/>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请书号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">项目编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">竞标项目说明</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费比例(‰)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">手续费交付方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	</div>
+ <div class="row">
+        <button type="button" class="btn btn-primary" ng-hide="editFlag">保存</button>
+        <button type="button" class="btn btn-primary" ng-hide="editFlag">取消</button>
+        <button type="button" class="btn btn-primary" ng-show="False">修改</button>
+    </div>
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

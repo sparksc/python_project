@@ -1,0 +1,259 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="discountController">
+        <div class="col-md-12">
+            <div name="queryForm" class="">
+                <fieldset name="queryCondition">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">业务类型:</label>
+                                <div class="col-md-7">
+                                       <input class="form-control input-sm" type="text" value ='贴现' ng-disabled = 'true'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm"> 申请状态:</label>
+                                <div class="col-md-7">
+                                     <select class="form-control input-sm" ng-model="applicationStatus">
+                                        <option value='新增申请'>全部</option>
+                                        <option value='未发送申请书'>未发送申请书</option>
+                                        <option value='需补充资料申请书'>需补充资料申请书</option>
+                                        <option value='审议中申请书'>审议中申请书</option>
+                                        <option value='审议通过申请书'>审议通过申请书</option>
+                                        <option value='审批中申请书'>审批中申请书</option>
+                                        <option value='已归档申请书'>已归档申请书</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">客户名称:</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="queryCond.cust_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!--
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">主要担保方式:</label>
+                                <div class="col-md-7">
+
+                                        <input class="form-control input-sm" type="text" value = '质押'/>
+                                </div>
+                            </div>
+                        </div>
+                -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">申请日期:</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="queryCond.start_date"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">到期日期:</label>
+                                <div class="col-md-7">
+                                        <input class="form-control input-sm" type="text" ng-model="queryCond.end_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-8">
+                            <button type="submit" class="btn btn-primary" ng-click="queryApplication()">查询</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset name="toolbar">
+                        <button class="btn btn-primary" ng-click="newApplication()">新增申请</button>
+                </fieldset>
+
+                <fieldset name="queryResult" >
+                    <div class="row">
+
+                        <table class="table">
+                            <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                                <thead style="white-space:nowrap;">
+                                    <tr>
+                                        <th ng-repeat='th in tableHead' ng-bind='th'> </th>
+                                    </tr>
+                                </thead>
+                                <tbody style="white-space:nowrap;">
+                                    <tr ng-repeat="d in tableData">
+                                        <td ng-bind="d.id"></td>
+                                        <td ng-bind="d.party.name"></td>
+                                        <td ng-bind="d.product.name"></td>
+                                        <td ng-bind="d.main_gua_type"></td>
+                                        <td ng-bind="d.application_status"></td>
+                                        <td ng-bind="d.currency"></td>
+                                        <td ng-bind="d.amount"></td>
+                                        <td ng-bind="d.apply_user"></td>
+                                        <td ng-bind="d.apply_branch"></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                    点击操作 <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a ng-click="applicationDetail(d)">查看申请详情</a>
+                                                    </li>
+
+                                                    <li >
+                                                        <a ng-click="cancelApplication(d.id)">取消申请</a>
+                                                    </li>
+                                                                                                    </ul>
+                                                </div>
+                                            </div>  
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                        </table>
+                        <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <!-- 取消申请确认modal-->
+        <div class="modal fade " name="cancelConfirmModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">取消申请确认</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>您确定要取消此次申请吗？</h3>
+                    </div> <!-- modal-body -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="cancelConfirmed()">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div> <!-- modal-footer -->
+                </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+        <!-- 客户搜索modal-->
+        <div class="modal fade " name="searchCustomerModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">客户搜索</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div name="custQueryCond">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">编号:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="cust_search.cust_no"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">名称:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="cust_search.cust_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">类型:</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control input-sm" ng-model="cust_search.cust_type">
+                                                <option value='company'>对公客户</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">证件类型:</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control input-sm" ng-model="cust_search.cert_type">
+                                                <option >组织机构代码证</option>
+                                                <option >营业执照</option>
+                                                <option >其他企业证件</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">证件号码:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="cust_search.cert_no"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-10">
+                                  <button class="btn btn-primary" ng-click="searchCustomer()">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="resultTable">
+                                <table name="custListTable" class="table">
+                                    <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                                        <thead style="white-space:nowrap;">
+                                            <tr> 
+                                                <th ng-repeat='th in customerListTH' ng-bind='th'> </th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody style="white-space:nowrap;">
+                                            <tr ng-repeat="d in custTableData" ng-mousedown="choseCustomer(d)"  ng-show="d.type_code=='company'" >
+                                                <td ng-bind="d.no"></td>
+                                                <td ng-bind="d.name"></td>
+                                                <td >组织机构代码证</td>
+                                                <td ng-bind="d.org_id"></td>
+                                                <td>对公客户</td>
+                                            </td>
+                                        </tbody>
+                                    </div>
+                                </table>
+                        </div>
+                    </div> <!-- modal-body -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-disabled="confirmBtnDisabled" ng-click="custSearchConfirm()">确定</button>
+                        <button type="button" class="btn btn-default"  ng-click="custSearchCancel()">取消</button>
+                    </div> <!-- modal-footer -->
+                </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+
+    </div>
+</div>
+

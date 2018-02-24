@@ -1,0 +1,186 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="acct_custhookSearchController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+               </div>
+              <div class="row">
+                  <div class="col-md-4 col-md-offset-1">
+                     <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">机构号:</label>
+                          <div class="col-md-7">
+                              <select class="form-control input-sm" ng-change="find_users()" ng-options="option as (option.branch_code+'-'+option.branch_name) for option in model1 " ng-model="cust_search.ORG_NO">
+                                    <option></option>
+                              </select>
+                          </div>
+                      </div>  
+                  </div>
+
+                   <div class="col-md-4 col-md-offset-1">
+                       <div class="form-group">
+                            <label class="col-md-5 control-label label-sm">账号:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.ACCOUNT_NO"/>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 col-md-offset-1">
+                      <div class="form-group">
+                           <label class="col-md-5 control-label label-sm">员工号:</label>
+                           <div class="col-md-7">
+                               <select class="form-control input-sm" ng-model="cust_search.MANAGER_NO" ng-options="option as (option.user_name+'-'+option.name) for option in model2">
+                                    <option></option>
+                              </select>
+                           </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-4 col-md-offset-1">
+                      <div class="form-group">
+                           <label class="col-md-5 control-label">挂钩状态</label>
+                           <div class="col-md-7">
+                               <select class="form-control" ng-model="cust_search.STATUS">
+                                   <option ></option>
+                                   <option value="正常">正常</option>
+                                   <option value="删除">删除</option>
+                                   <option value="录入待复核">录入待复核</option>
+                                   <option value="修改待复核">修改待复核</option>
+                                   <option value="删除待复核">删除待复核</option>
+                               </select>
+                           </div>
+                           </div>
+                  </div>
+              </div>
+             <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                    <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                    <a href="{{excelurl}}" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+            </fieldset>
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                             <thead style="white-space:nowrap;">
+                                 <tr>
+                                     <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap" > </th>
+                                 </tr>
+                             </thead>
+                             <tbody style="white-space:nowrap;">
+                                 <tr ng-repeat="row in data.rows">
+                                   <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="$index>=row.length-2"> 
+                                   {{d}}
+                                   <td>  
+                                 </tr>  
+                             </tbody> 
+                             </table>                                                                                                                                                                   
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+    <div class="modal fade" id="accounthookSearchModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">账户归属查询</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">转移后机构:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control input-sm" ng-model="add_org" ng-change="find_users2()" ng-options="option as option.branch_name for option in model1 "/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">营销类型:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="add_status" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">客户号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <input class="form-control input-sm" ng-model="add_cust_no" readonly="true" type="text"/>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                         <div class="form-group col-md-12">
+                             <label class="col-md-2 control-label label-sm">客户经理:</label>
+                             <div class="col-md-10">
+                                 <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_manager_no" type="text"/>
+                                 </div>
+                             </div>
+                         </div>                                                                                                                                                                                                                                                                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">管理起始日期:</label>
+                          <div class="col-md-7">
+                              <input date-range-picker options="{singleDatePicker: true}" type="text" class="form-control input-sm" ng-model="add_start_date">
+                              </input>
+                          </div> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">管理结束日期:</label>
+                          <div class="col-md-7">
+                              <input date-range-picker options="{singleDatePicker: true}" type="text" class="form-control input-sm" ng-model="add_end_date">
+                              </input>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">管理比例:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_percentage" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">关系状态:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_status" type="text"/>
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>	
+    </div>
+</div>

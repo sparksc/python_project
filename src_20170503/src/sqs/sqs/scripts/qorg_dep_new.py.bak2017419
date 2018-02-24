@@ -1,0 +1,63 @@
+# -*- coding:utf-8 -*-
+
+from decimal import Decimal
+import sys
+default_encoding = 'utf-8'
+if sys.getdefaultencoding() != default_encoding:
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
+from objectquery import ObjectQuery
+"""
+机构存款指标
+"""
+class Query(ObjectQuery):
+
+    def group_by(self):
+        return [0,1],(3,4,5,6,7,8,9,10)
+
+    def prepare_object(self):
+        self.filterlist = ['DATE_ID','org']
+        filterstr,vlist = self.make_eq_filterstr()
+        sql ="""
+        select date_id,ORG_CODE,ORG_NAME,sum(nvl(pri_last_avg,0))/100.00,sum(nvl(pub_last_avg,0))/100.00, sum(nvl(FIN_LAST_AVG,0))/100.00,sum(nvl(LAST_AVG,0))/100.00,
+        sum(nvl(PRI_THIS_AVG,0)-nvl(PRI_LAST_AVG,0))/100.00,sum(nvl(PUB_THIS_AVG,0)-nvl(pub_last_avg,0))/100.00,sum(nvl(FIN_THIS_AVG,0)-nvl(FIN_LAST_AVG,0))/100.00,sum(nvl(THIS_AVG,0)-nvl(LAST_AVG,0))/100.00 
+        from REPORT_MANAGER_DEP  where 1=1 %s group by DATE_ID,ORG_CODE,ORG_NAME order by ORG_CODE
+            """%(filterstr)
+        row = self.engine.execute(sql.encode('utf-8'),vlist).fetchall()
+        print sql
+        needtrans ={}
+        rowlist=[]
+        for i in row:
+            t=list(i[0:3])
+            for j in i[3:]:
+                if j is None:j=0
+                j=self.amount_trans_dec(j)
+                t.append(j)
+            rowlist.append(t)    
+        return self.translate(rowlist,needtrans)    
+
+    def make_eq_filterstr(self):
+        filterstr =""
+        vlist = []
+        for k,v in self.args.items():
+            print k,v
+            if k == 'login_branch_no':
+                bb = self.deal_branch_query_auth(v)
+                if bb != False :
+                    filterstr = filterstr+" and ORG_CODE in ( %s )"%bb
+
+            if v and k in self.filterlist:
+                if k == 'org':
+                    vvv = self.dealfilterlist(v)
+                    filterstr = filterstr +" and ORG_CODE in ( %s ) "%(vvv)
+                else: 
+                    filterstr = filterstr+" and %s = ?"%k
+                    vlist.append(v)
+        return filterstr,vlist
+
+    def column_header(self):
+        return ["统计日期","机构编号","机构名称","对私存量日均存款","对公存量日均存款","理财存量日均","合计值(存款理财)","对私增量日均存款","对公增量日均存款","理财增量日均","合计值(增量含理财)"]
+
+    @property
+    def page_size(self):
+        return 15

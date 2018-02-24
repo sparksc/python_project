@@ -1,0 +1,371 @@
+<!--投资业务审批单-->
+<form name="myForm" ng-submit="onSubmit()">
+
+    <input type="submit" class="btn btn-primary" ng-show="applicationId"/>
+    <button type="button" class="btn btn-primary" ng-show="save == '修改'" ng-click="saveapprove()">保存</button>
+    <button type="button" class="btn btn-primary" ng-show="save == '保存'" ng-click="changeapprove()">修改</button>
+
+
+</br>
+
+<fieldset ng-disabled="save == '保存'">
+<fieldset ng-disabled="act_status == '禁止'">
+
+<fieldset ng-disabled="act_status != '审议'">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label ">受理部门<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input ">
+                        <input class=" form-control" type="text" placeholder="资金营运部" ng-disabled='disabled_flag'
+                               value='资金营运部' required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label">业务种类<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <select class=" form-control" ng-model="form_data.application_info.bus_type"
+                            ng-init="form_data.application_info.bus_type = form_data.application_info.bus_type || '同业存款/存单'"
+                            required>
+                        <option>同业存款/存单</option>
+                        <option>信托收益权</option>
+                        <option>资管计划</option>
+                        <option>理财</option>
+                        <option>债券</option>
+                        <option>股权</option>
+                        <option>货币基金</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label">业务情况介绍<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input ">
+                        <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                               ng-model="form_data.application_info.show_how" required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label ">金额<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input-group ">
+                        <input type="text" class="form-control " ng-disabled='disabled_flag' ng-model="money.amount"
+                               ng-blur="amount(money.amount)" pattern="{{pattern.amount}}" title="金额错误！" required/>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label ">收益率<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input-group ">
+
+                        <input class="form-control" type="text" ng-disabled='disabled_flag'
+                               ng-model="form_data.application_info.return_rate" required/>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label ">期限<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input ">
+                        <input class="form-control" type="text" ng-disabled='disabled_flag'
+                               ng-model="form_data.application_info.term"
+                               required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label">担保措施<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input">
+                        <input type="text" class="form-control" ng-disabled='disabled_flag'
+                               ng-model="form_data.application_info.guarantee_measures" required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-3 control-label">结息方式<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input">
+                        <input type="text" class="form-control" ng-disabled='disabled_flag'
+                               ng-model="form_data.application_info.interest_bearing" required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</fieldset>
+<hr/>
+<div ng-show="act_status == '审议'">
+<fieldset ng-disabled="act_status == '审议'">
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label ">起息日</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class="form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.from_date"
+                           ng-blur="from_date(form_data.application_info.from_date)" title="日期格式错误！"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label ">到期日</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class="form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.thur_date"
+                           ng-blur="thur_date(form_data.application_info.thur_date)" title="日期格式错误！"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=row"">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label  label-sm">利率</label>
+
+            <div class="col-md-7">
+                <div class="input-group ">
+                    <input class=" form-control input-sm" type="text"
+                           ng-model="form_data.application_info.product_rate"/>
+                    <span class="input-group-addon">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label ">交易对手</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class=" form-control" type="text" ng-model="form_data.application_info.opponent_name"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">户名</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.open_name"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">账号</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.account"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">开户行</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.openning_bank"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">大额号</label>
+
+            <div class="col-md-7">
+                <div class="input ">
+                    <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                           ng-model="form_data.application_info.big_num" minlength="12" maxlength="12"
+                           pattern="\d{12}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</fieldset>
+</div>
+<div ng-show="act_status == '审批' || act_status == '禁止' ">
+    <fieldset ng-disabled="act_status == '审议'">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">起息日<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.from_date"
+                                   ng-blur="from_date(form_data.application_info.from_date)" title="日期格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">到期日<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.thur_date"
+                                   ng-blur="thur_date(form_data.application_info.thur_date)" title="日期格式错误！" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=row"">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label  label-sm">利率<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input-group ">
+                            <input class=" form-control input-sm" type="text"
+                                   ng-model="form_data.application_info.product_rate" required/>
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">交易对手<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-model="form_data.application_info.opponent_name" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">户名<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.open_name" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">账号<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.account" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">开户行<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.openning_bank" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">大额号<font color="#FF0000">*</font></label>
+
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag'
+                                   ng-model="form_data.application_info.big_num" minlength="12" maxlength="12"
+                                   pattern="\d{12}" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+</div>
+</fieldset>
+</fieldset>
+</form>

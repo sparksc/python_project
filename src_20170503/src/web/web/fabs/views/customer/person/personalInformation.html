@@ -1,0 +1,1143 @@
+<form name='personalInformation' class="form-horizontal" ng-submit='submit(personalInformation.$valid)'  role="form" ng-show="display_info == 'personalInformation'" style="overflow-x:yes; overflow-y:yes;">
+        <div class="xd-contentData-foot">
+                <a href="javascript:;" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="save()">保存</a>
+                <a href="javascript:;" class="btn btn-default" ng-show="disabled_flag==false" >提交</a>
+                <a href="javascript:;" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="clear()">清除</a>
+                <a href="javascript:;" class="btn btn-primary" ng-show="disabled_flag==true" ng-click="edit()">修改</a>
+        </div>
+        <div class="xd-inputModule">
+                <div for="" class="xd-inputLabel pull-left">客户代码:</div>
+                <div class="xd-inputBox pull-left">
+                    <input type="text" class="form-control" ng-disabled='true' ng-model="form_data.customer.no">
+                </div>
+                <div class="xd-clr"></div>
+        </div>
+        <div class="xd-inputModule">
+                <div for="" class="xd-inputLabel pull-left">性别<font color="#FF0000">*</font></div>
+                <div class="xd-inputBox pull-left">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.gender" required >
+                            <option></option>
+                            <option>男</option>
+                            <option>女</option>
+                            <option>未知的性别</option>
+                            <option>未说明的性别</option>
+                        </select>
+                </div>
+                <div class="xd-clr"></div>
+        </div>
+
+
+
+
+
+
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="save()">保存</button> 
+                <button type="submit" class="btn btn-primary" ng-show="disabled_flag==false" >提交</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="clear()">清除</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==true" ng-click="edit()">修改</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户姓名<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.customer.name" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">性别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.gender" required >
+                            <option></option>
+                            <option>男</option>
+                            <option>女</option>
+                            <option>未知的性别</option>
+                            <option>未说明的性别</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出生年月日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="form_data.customer.birthday" ng-blur="birthday()"  required pattern="{{pattern.date}}" title="日期错误！"/>                        </div>
+                    </div>   
+                </div>   
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件类型<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.certificate.cert_type" required >
+                            <option></option>
+                            <option>身份证</option>
+                            <option>户口本</option>
+                            <option>护照</option>
+                            <option>军官证</option>
+                            <option>士兵证</option>
+                            <option>其他个人证件</option>
+                            <option>香港身份证</option>
+                            <option>澳门身份证</option>
+                            <option>台湾身份证</option>
+                            <option>港澳居民来往内地通行证</option>
+                            <option>台湾同胞来往内地通行证</option>
+                            <option>临时身份证</option>
+                            <option>外国人居留证</option>
+                            <option>警官证</option>
+                            <option>组织机构代码证</option>
+                            <option>营业执照</option>
+                            <option>其他企业证件</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag'  ng-model="form_data.certificate.cert_no" required pattern="{{pattern.idcard}}" title="证件号码错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件到期日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="test" ng-disabled='disabled_flag' ng-model="form_data.certificate.thru_date" required  pattern="{{pattern.date}}" title="日期错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">籍贯</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.customer.birth_place" />
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">手机号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="form_data.mobile_phone.phone_number" ng-blur="phone_number(form_data.mobile_phone.phone_number)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">联系号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.telephone.phone_number" pattern="{{pattern.telephone}}" title="联系号码错误！"/>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">民族<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.ethnicity" required >
+                                <option></option> 
+                                <option>汉族</option>
+                                <option>满族</option>
+                                <option>蒙古族</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">政治面貌</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.politics_status" >
+                                <option></option>
+                                <option>党员</option>
+                                <option>群众</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">婚姻情况<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.marital_status" ng-change="gt_display=form_data.customer.marital_status" ng-blur="marital_status()"  required >
+                                <option></option>
+                                <option>未婚</option>
+                                <option>已婚</option>
+                                <option>离异</option>
+                                <option>丧偶</option>
+                                <option>未说明</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">学历<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled='disabled_flag' ng-model="form_data.customer.education" required >
+                            <option></option>
+                            <option>研究生</option>
+                            <option>大学本科</option>
+                            <option>大学专科</option>
+                            <option>中专/中等技校</option>
+                            <option>技术学院</option>
+                            <option>高中</option>
+                            <option>初中
+                            <option>小学</option>
+                            <option>文盲或半文盲</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">毕业学校(取得最高学历)</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.customer.school" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3 label-sm">毕业年份</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" placeholder="格式为YYYY"ng-disabled='disabled_flag'  ng-model="form_data.customer.end_date" ng-blur="end_date()"  pattern="{{pattern.year}}" title="请填入4位数字的年份！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">学位</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.degree">
+                            <option></option>
+                            <option>博士</option>
+                            <option>硕士</option>
+                            <option>学士</option>
+                            <option>其他</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">是否为本行员工</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.if_our_employees" >
+                            <option></option>
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">健康状况</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.health_status">
+                                <option></option>
+                                <option>健康</option>
+                                <option>一般</option>
+                                <option>不健康</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+           </div>
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">电子邮箱</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input  class="form-control  input-sm" type="email" ng-disabled='disabled_flag' ng-model="form_data.customer.email" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+ <div class="row">
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">传真</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input  class="form-control  input-sm" type="" ng-disabled='disabled_flag' ng-model="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-6">
+                
+           </div>
+         </div>
+					
+
+                <!--  <div ng-show="gt_display == 0"> -->
+   <h4 align="center">配偶情况</h4>
+     <div ng-show="spou_btn_disabled" >
+        <button type="button" class="btn btn-primary" ng-show="add_btn_disabled" ng-click="add()">查找</button>
+        <button type="button" class="btn btn-primary" ng-hide="add_btn_disabled" ng-click="queryspou()">新增</button>
+     </div>
+        <div class="row">
+           <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">配偶姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="form_data.spouse.current_name" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">配偶证件类型</label>
+                    <div class="col-md-7">
+                       <div class="input">
+                           <select class="form-control input-sm"   ng-disabled='true' ng-model="form_data.certificate.cert_type" >
+                                <option></option>
+                            <option>身份证</option>
+                            <option>户口本</option>
+                            <option>护照</option>
+                            <option>军官证</option>
+                            <option>士兵证</option>
+                            <option>其他个人证件</option>
+                            <option>香港身份证</option>
+                            <option>港澳居民来往内地通行证</option>
+                            <option>台湾同胞来往内地通行证</option>
+                            <option>临时身份证</option>
+                            <option>外国人居留证</option>
+                            <option>警官证</option>
+                            <option>组织机构代码证</option>
+                            <option>营业执照</option>
+                            <option>其他企业证件</option>
+                        </select>
+                  </div>
+            </div>
+        </div>
+        </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">配偶证件号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                           <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="form_data.spouse.ric" pattern="{{pattern.idcard}}" title="证件号码错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+           <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">配偶联系电话</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                           <input class="form-control input-sm" type="text" ng-disabled='spouse_disabled_flag' ng-model="form_data.spouse.telephone.phone_number" ng-blur="telephone_phone_number_len()" pattern="{{pattern.telephone}}" title="联系号码错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">配偶手机</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='spouse_disabled_flag' ng-model="form_data.spouse.mobile_phone.phone_number" pattern="{{pattern.mobilephone}}" title="手机号码错误！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+	<h4 align="center">家庭情况</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">户籍地址<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.reg_address"   required/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">居住状况<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <div class="input">
+                                <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="form_data.family.live_status"  required >
+                                    <option></option>
+                                    <option>自置</option>
+                                    <option>按揭</option>
+                                    <option>亲属楼宇</option>
+                                    <option>集体宿舍</option>
+                                    <option>租房</option>
+                                    <option>共有住宅</option>
+                                    <option>其他</option>
+                                    <option>未知</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家庭地址<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="form_data.family.family_address" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">居住地址邮编<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.family_postcode" pattern="{{pattern.postalcode}}" title="邮政编码错误！" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label class="col-md-3 control-label label-sm">家庭联系电话</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="form_data.family.family_tel" pattern="{{pattern.telephone}}" title="家庭联系电话错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家庭人口数</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag'  ng-model="form_data.family.family_number" pattern="{{pattern.num}}" title="请输入正确数字！" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </div>  
+        <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家庭固定资产</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.money.family_fixed_assets" pattern="{{pattern.amount}}" title="固定资产金额错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">房产面积</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.house_area" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+	
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家庭主要养殖</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input   class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.family_culture" />
+                        </div>
+                    </div>
+		        </div>
+	        </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家庭年收入</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.money.family_year_income"  pattern="{{pattern.amount}}" title="年收入金额错误！" />
+				            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">主要收入来源<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.main_source" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">对外投资情况</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.investment_out_info" />
+                        </div>
+                    </div>
+		       </div>
+	        </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">对外担保情况</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.family.guarantee_out_info" />
+                        </div>
+                    </div>
+		      </div>
+	     </div>
+	</div>
+	<h4 align="center">工作信息</h4>
+    
+        <div class="row">
+            
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位工作起始年</label> 
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_begin_time" ng-blur="company_begin_time()"  pattern="{{pattern.date}}" title="起始年份错误！"/>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-6">
+                <!--<div class="form-group">
+                    <label class="col-md-3 control-label label-sm">工作单位客户代码</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag'  ng-model="form_data.emp.customer_id" />
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职业</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.customer.job" >
+                                <option></option>
+                                <option>国家机关、党群组织、企业、事业单位负责人</option>
+                                <option>专业技术人员</option>
+                                <option>办事人员和有关人员</option>
+                                <option>商业、服务业人员</option>
+                                <option>农、林、牧、渔、水利业生产人员</option>
+                                <option>生产、运输设备操作人员及有关人员</option>
+                                <option>军人</option>
+                                <option>不便分类的其他从业人员</option>
+                                <option>未知</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职务</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.emp.duties">
+                                <option></option>
+                                <option>高级领导(行政级别局级及局级以上领导或大公司高级管理人员)</option>
+                                <option>中级领导(行政级别局级以下领导或大公司中级管理人员)</option>
+                                <option>一般员工</option>
+                                <option>其他</option>
+                                <option>未知</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"ng-model="form_data.emp.headship" required >
+                                <option></option>
+                                <option>高级</option>
+                                <option>中级</option>
+                                <option>初级</option>
+                                <option>无</option>
+                                <option>未知</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位所属行业</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.emp.company_field">
+                            <option></option>
+                            <option value="A">农、林、牧、渔业</option>
+                            <option value="B">采矿业</option>
+                            <option value="C">制造业</option>
+                            <option value="D">电力、燃气及水的生产和供应业</option>
+                            <option value="D">建筑业</option>
+                            <option value="D">交通运输、仓储和邮政业</option>
+                            <option value="D">信息传输、计算机服务和软件业</option>
+                            <option value="D">批发和零售业</option>
+                            <option value="D">住宿和餐饮业</option>
+                            <option value="D">金融业</option>
+                            <option value="D">房地产业</option>
+                            <option value="D">租赁和商务服务业</option>
+                            <option value="D">科学研究、技术服务和地质勘查业</option>
+                            <option value="D">水利、环境和公共设施管理业</option>
+                            <option value="D">居民服务和其他服务业</option>
+                            <option value="D">教育</option>
+                            <option value="D">卫生、社会保障和社会福利业</option>
+                            <option value="D">文化、体育和娱乐业</option>
+                            <option value="D">公共管理和社会组织</option>
+                            <option value="D">国际组织</option>
+                            <option value="D">待定</option>
+                         </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位名称</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位传真</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_fax" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位性质</label>
+                    <div class="col-md-7">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.emp.company_type">
+                                <option></option>
+                                <option>国有</option>
+                                <option>国有控股</option>
+                                <option>集体</option>
+                                <option>集体控股</option>
+                                <option>私营</option>
+                                <option>联营</option>
+                                <option>个体</option>
+                                <option>股份</option>
+                                <option>港澳台三资</option>
+                                <option>外资</option>
+                                <option>合资</option>
+                            </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位地址</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_addr"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位地址邮编</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_addr_postcode" pattern="{{pattern.postalcode}}" title="邮政编码错误！"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位电话</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_phone" pattern="{{pattern.telephone}}" title="电话号码错误！"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">参加工作时间</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.begin_job_date" ng-blur="begin_job_date()"  pattern="{{pattern.date}}" title="日期错误！"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位工作合同终止日期</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.end_job_date" ng-blur="end_job_date()" pattern="{{pattern.date}}" title="日期错误！"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">开始任职时间</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.job_begin_time" ng-blur="job_begin_time()"  pattern="{{pattern.date}}" title="日期错误！"/>
+                    </div>
+                </div>
+            </div>
+      <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">单位联系人</label>
+                    <div class="col-md-7">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.company_contact" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">工资账号</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.salary_account" pattern="{{pattern.card}}" title="工资账号错误！"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">工资账号开户银行</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.salary_bank"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">在我行开立账户情况</label>
+                    <div class="col-md-7">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.emp.our_bank_info">
+                                <option></option>
+                                <option>住房贷款</option>
+                                <option>理财客户</option>
+                                <option>其他个人贷款客户</option>
+                                <option>大额储蓄</option>
+                                <option>无</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+	
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">持卡情况</label>
+                    <div class="col-md-7">
+                        <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.has_card_info"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm"> 负债情况 </label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea  class="form-control" rows="3"  type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.debt_status" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">主要工作事迹</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea  class="form-control" rows="3"  type="text" ng-disabled='disabled_flag' ng-model="form_data.emp.important_event" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">月收入情况<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input   class="form-control  input-sm" type="test" ng-disabled='disabled_flag' ng-model="form_data.money.monthly_income"   pattern="{{pattern.amount}}" title="金额错误！"  required/>
+				<span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+
+	    <h4 align="center">个体工商户及公司客户业主信息</h4>
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">与我行合作关系<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"ng-model="form_data.per_bus.partnership" required >
+                                <option></option>
+                                <option>非常密切</option>
+                                <option>密切</option>
+                                <option>一般</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户种类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.per_bus.cust_type"  required >
+                                <option></option>
+                                <option>个人</option>
+                                <option>工业</option>
+                                <option>商业</option>
+                                <option>建筑业（房地产）</option>
+                                <option>农业</option>
+                                <option>乡镇企业</option>
+                                <option>私营企业</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+         <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户所属领域</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.per_bus.c_profession">
+                                <option></option>
+                                <option>生产流通</option>
+                                <option>非生产流通</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">企业规模</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.per_bus.enterprise_size">
+                                <option></option>
+                                <option>大型</option>
+                                <option>中型</option>
+                                <option>小型</option>
+                                <option>微型</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经营方式</label>
+                    <div class="col-md-7">
+                       <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.per_bus.operate_type" >
+                            <option></option>
+                            <option>批发</option>
+                            <option>零售</option>
+                        </select>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<h4 align="center">个人所属行业及与我行关联关系</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">贷款卡号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.per_card.loan_card" pattern="{{pattern.card}}" title="贷款卡号错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">核心客户号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.per_card.core_cust_id" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业门类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_top,'big')" ng-hide="disabled_flag" ng-model="industry_top" required>
+                                <option ng-repeat=" inds_top in industry_topList | orderBy:'industry_d' " value="{{inds_top.industry_d+'-'+inds_top.type_name}}">{{inds_top.industry_d+'-'+inds_top.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="form_data.per_card.industry_top" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业大类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_big,'mid')"ng-hide="disabled_flag" ng-disabled='disabled_flag' ng-model="industry_big" required >
+                                <option ng-repeat=" inds_big in industry_bigList | orderBy:'industry_d'" value="{{inds_big.industry_d+'-'+inds_big.type_name}}">{{inds_big.industry_d+'-'+inds_big.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="form_data.per_card.industry_big" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业中类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_mid,'small')"ng-hide="disabled_flag"  ng-disabled="disabled_flag" ng-model="industry_mid" required >
+                                <option ng-repeat=" inds_mid in industry_midList | orderBy:'industry_d'" value="{{inds_mid.industry_d+'-'+inds_mid.type_name}}">{{inds_mid.industry_d+'-'+inds_mid.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="form_data.per_card.industry_mid" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业小类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-change="industry_select(industry_small,'over')"ng-hide="disabled_flag" ng-disabled="disabled_flag" ng-model="industry_small" required >
+                                <option ng-repeat=" inds_small in industry_smallList | orderBy:'industry_d'" value="{{inds_small.industry_d+'-'+inds_small.type_name}}">{{inds_small.industry_d+'-'+inds_small.type_name}}</option>
+                            </select>
+                            <input class="form-control input-sm" type="text" ng-show="disabled_flag" ng-disabled='disabled_flag' ng-model="form_data.per_card.industry_small" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">与我行关联关系<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.per_card.relation_us" required >
+                                <option></option>
+                                <option>内部人</option>
+                                <option>持股%5以上的股东</option>
+                                <option>内部人及股东的近亲属</option>
+                                <option>一般关联关系</option>
+                                <option>无关联关系</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记机构<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="test"  ng-disabled="true" ng-model="form_data.per_card.reg_institution" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.customer.remark" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--
+	<h4 align="center">登记信息</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_teller"  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记单位</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_branch" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">更新日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+</form>
+

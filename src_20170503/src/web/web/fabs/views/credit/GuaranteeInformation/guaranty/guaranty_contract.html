@@ -1,0 +1,644 @@
+<!-- 担保合同详情页面 -->
+<form id="bbg" class="form-horizontal" role="form" ng-show="display_info == 'personalInformation'" style="overflow-x:yes; overflow-y:yes;">
+</form>
+<form id="personalInformation" class="form-horizontal" role="form" ng-show="display_info == 'personalInformation'" style="overflow-x:yes; overflow-y:yes;">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="save()">保存</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="submit()">提交</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==false" ng-click="clear()">清除</button> 
+                <button type="button" class="btn btn-primary" ng-show="disabled_flag==true" ng-click="edit()">修改</button> 
+            </div>
+        </div>
+        <br>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保合同书号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="form_data.customer.id"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="form_data.customer.id"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">客户姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.customer.name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  ng-model="form_data.certificate.cert_type">
+                            <option>身份证</option>
+                            <option>户口本</option>
+                            <option>护照</option>
+                            <option>军官证</option>
+                            <option>士兵证</option>
+                            <option>其他个人证件</option>
+                            <option>香港身份证</option>
+                            <option>澳门身份证</option>
+                            <option>台湾身份证</option>
+                            <option>港澳居民来往内地通行证</option>
+                            <option>台湾同胞来往内地通行证</option>
+                            <option>临时身份证</option>
+                            <option>外国人居留证</option>
+                            <option>警官证</option>
+                            <option>组织机构代码证</option>
+                            <option>营业执照</option>
+                            <option>其他企业证件</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+			</div>
+			 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag' ng-model="form_data.certificate.cert_no" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+           
+
+           
+			 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">业务品种</label>
+                    <div class="col-md-7">
+                         <div class="input">
+                                        <select class="form-control input-sm" ng-model="queryCond.lend_type">
+                                            <option ng-repeat="lt in lendType" value='lt'>  </option>
+                                        </select>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		 <div class="row">
+           <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">主要担保方式:</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm" ng-model="queryCond.guarantee_type">
+                                        <option value=''>全部</option>
+                                        <option value='保证'>保证</option>
+                                        <option value='质押'>质押</option>
+                                        <option value='抵押'>抵押</option>
+                                        <option value='信用'>信用</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+			 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请状态</label>
+                    <div class="col-md-7">
+                         <div class="input">
+                                     <div class="col-md-7">
+                                     <input class="form-control input-sm" type="text"/>
+                                </div>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		
+		
+		<!-- 抵押 -->
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保信息编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">抵押人证件类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">抵押人证件号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">抵押人名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">抵押人贷款卡编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同签订日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同生效日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同到期日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">币种</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保总金额</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">其他特别约定</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">核保时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">接待人姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">接待人职务</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保意见</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">核保人（一）</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		  <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">更新时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+		
+		
+		<!-- 质押 -->
+		<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保信息编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出质人证件类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出质人证件号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出质人名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出质人贷款卡编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同签订日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同生效日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">合同到期日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">币种</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保总金额</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">其他特别约定</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">核保时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">接待人姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">接待人职务</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">担保意见</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">核保人（一）</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.register_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">登记时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		  <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">更新时间</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.opt.update_date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+		
+    </div>
+</form>
+

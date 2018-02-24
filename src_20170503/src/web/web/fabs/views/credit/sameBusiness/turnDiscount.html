@@ -1,0 +1,106 @@
+<!--转贴现业务 -->
+
+  <div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">合同编号<font color="#FF0000">*</font></label>
+           <div class="col-md-7">
+               <div class="input">
+                   <input class=" form-control" type="text" disabled="true" ng-model="form_data.application_info.credit_con_no"  required/>
+               </div>
+           </div>
+        </div>
+   </div>
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">受理部门<font color="#FF0000">*</font></label>
+           <div class="col-md-7">
+               <div class="input ">
+                   <input class=" form-control" type="text" placeholder="资金营运部"  ng-disabled=true value="资金营运部" required />
+               </div>
+           </div>
+        </div>
+   </div>
+</div>
+<div class="row" >
+   <div class="col-md-6">
+       <div class="form-group">
+          <label class="col-md-3 control-label">票据类型<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <select class="form-control" ng-model="form_data.application_info.pj_type" required>
+                    <option>纸票</option>
+                    <option>电票</option>
+                </select>
+            </div>
+        </div>
+     </div>
+     <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">对手名称<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+               <div class="input ">
+                   <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.application_info.opponent_name"  required />
+               </div>
+           </div>
+        </div>
+   </div>
+</div>
+<div class="row" >
+      <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">转贴现金额<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+               <div class="input-group ">
+                    <input type="text" class="form-control " ng-disabled='disabled_flag'  ng-model="money.amount" ng-blur="amount(money.amount)"  pattern="{{pattern.amount}}" title="金额错误！" required/>
+                    <span class="input-group-addon">元</span>
+               </div>
+           </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">转贴现利率<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+               <div class="input-group ">
+                   <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.application_info.product_rate"  required />
+                    <span class="input-group-addon">%</span>
+               </div>
+           </div>
+        </div>
+     </div>
+</div>
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">起息日<font color="#FF0000">*</font></label>
+             <div class="col-md-7">
+               <div class="input ">
+                   <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.application_info.apply_date" ng-blur="from_date(form_data.application_info.apply_date)" title="日期格式错误！"  required />
+               </div>
+           </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">到期日<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                <div class="input ">
+                    <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.application_info.thur_date" ng-blur="thur_date(form_data.application_info.thur_date)" title="日期格式错误！" required />
+               </div>
+           </div>
+        </div>
+   </div>
+</div>
+<div class="row" >
+      <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-3 control-label ">利息</label>
+            <div class="col-md-7">
+               <div class="input-group ">
+                   <input class=" form-control" type="text" ng-disabled=true ng-model="form_data.application_info.interest"  />
+                    <span class="input-group-addon">元</span>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>

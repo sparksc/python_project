@@ -1,0 +1,29 @@
+<div class="form-horizontal" role="form" id="associatedPerson" ng-show="display_info == 'associatedPerson'">
+    <div class="form-body">
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td>{{data.customer_name}}</td>
+                            <td>{{data.relationship}}</td>
+                            <td>{{data.register_branch}}</td>
+                            <td>{{data.register_teller}}</td>
+                            <td>{{data.register_date}}</td>
+                            <td>{{data.update_date}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-xs"  ng-click="tracing_customer(data)">追溯客户</button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

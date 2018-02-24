@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Message type="Group" xmlns:tns="http://www.if-solutions.com/CbsMessageSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<Head type="Group">
+			<Channel name="信贷渠道" type="Field">
+<![CDATA[CREDIT]]>			</Channel>
+			<Service code="CBS_TRAN_INPUT" name="一般贷款放款" timeOut="0" type="Field">
+<![CDATA[CBS_TRAN_INPUT]]>			</Service>
+			<Tran type="Field">
+<![CDATA[120101]]>			</Tran>
+			<Final type="Field">
+<![CDATA[true]]>			</Final>
+			<Teller code="00510" name="XX" type="Field">
+<![CDATA[00510]]>			</Teller>
+			<Author type="List"/>
+			<Auth type="List"/>
+		</Head>
+		<RequestBodyData type="Group">
+			<Field name="交易码" type="string">
+<![CDATA[120101]]>			</Field>
+			<Field name="机构号" type="string">
+<![CDATA[047308]]>			</Field>
+			<Field name="柜员号" type="string">
+<![CDATA[00510]]>			</Field>
+			<Field name="客户编号" type="string"/>
+			<Field name="户名" type="string">
+<![CDATA[刘永霞]]>			</Field>
+			<Field name="合同序号" type="string">
+<![CDATA[1]]>			</Field>
+			<Field name="合同编号" type="string">
+<![CDATA[1451258831]]>			</Field>
+			<Field name="合同金额" type="string">
+<![CDATA[111100]]>			</Field>
+			<Field name="放款金额" type="string">
+<![CDATA[111100]]>			</Field>
+			<Field name="币种" type="string">
+<![CDATA[人民币]]>			</Field>
+			<Field name="放款日期" type="string"/>
+			<Field name="到期日期" type="string"/>
+			<Field name="还款方式" type="string">
+<![CDATA[一次性还款]]>			</Field>
+			<Field name="还款周期" type="string">
+<![CDATA[None]]>			</Field>
+			<Field name="还款周期频率" type="string">
+<![CDATA[None]]>			</Field>
+			<Field name="首期还款日期" type="string"/>
+			<Field name="合规利率" type="string"/>
+			<Field name="利率浮动方式" type="string"/>
+			<Field name="浮动值" type="string"/>
+			<Field name="执行利率" type="string">
+<![CDATA[None]]>			</Field>
+			<Field name="逾期利率上浮比例" type="string"/>
+			<Field name="逾期利率" type="string"/>
+			<Field name="用途违规罚息率" type="string"/>
+			<Field name="欠息复利上浮比例" type="string"/>
+			<Field name="欠息复利利率" type="string"/>
+			<Field name="结息方式" type="string"/>
+			<Field name="结息周期" type="string"/>
+			<Field name="结息周期频率" type="string"/>
+			<Field name="首次结息日期" type="string"/>
+			<Field name="起息日期" type="string"/>
+			<Field name="主担保方式" type="string"/>
+			<Field name="贷款产品" type="string">
+<![CDATA[惠民贷款]]>			</Field>
+			<Field name="贷款用途" type="string"/>
+			<Field name="结算账号/卡号" type="string">
+<![CDATA[6229730100000010946]]>			</Field>
+			<Field name="扣款账号" type="string">
+<![CDATA[6229730100000010946]]>			</Field>
+			<Field name="行业类别" type="string"/>
+			<Field name="行业类别代码" type="string"/>
+			<Field name="抵押担保资料号" type="string"/>
+			<Field name="理财产品签约号" type="string"/>
+			<Field name="原授信合同号" type="string"/>
+		</RequestBodyData>
+	</Message>

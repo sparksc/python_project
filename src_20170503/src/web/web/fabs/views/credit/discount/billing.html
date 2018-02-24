@@ -1,0 +1,507 @@
+<div style="margin:0px;"ng-controller="billController"  >
+<form name="bill" id="Bill" ng-submit='submit(bill.$valid)'>
+    <div class="row"  >
+        <input type="button" name="Button" value="查询" class="button_form" ng-click="queryInfo()" >
+        <input type="button" name="check_bill" value="批量验票" class="button_form" ng-click="check_bill()">
+
+    <div align="center">
+                     <span class="btn btn-file ">
+                       <input type="file" class="default" name="file" id="file"></input>
+                        <label class="btn btn-primary" ng-click="upload()" id="file_btn">上传</label>
+                     </span>
+       </div>
+
+              <table class="table">
+                  <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                      <thead style="white-space:nowrap;">
+                          <tr>
+                              <th ng-repeat='th in tableHead' ng-bind='th'> </th>
+                          </tr>
+                      </thead>
+                      <tbody style="white-space:nowrap;">
+                          <tr ng-repeat="d in tableData">
+                              <td ng-bind="d.bill_no"></td>
+                              <td ng-bind="d.bill_type"></td>
+                              <td ng-bind="d.bill_amount"></td>
+                              <td>
+                                <button class="btn btn-primary"ng-click="check_one_bill(d)" ng-disabled="d.checked =='是'"  >复核 </button>
+                              </td>
+                              <td>
+                                  <div class="btn-group">
+                                      <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">点击操作 <span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                          <li>
+                                              <a ng-click="billInfoDetail(d)">查看票据详情</a>
+                                          </li>
+                                           <li>
+                                              <a ng-click="delbillInfo(d.id)">删除票据信息</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                  </div>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </div>
+              </table>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票据种类</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control "  ng-model="form_data.bill_kill" >
+                                <option  selected="selected">银行承兑汇票</option>
+                                <option >商业承兑汇票</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票据类别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select name="select" class="form-control " ng-disabled="true" ng-model="form_data.bill_type" required  >
+                                <option>电票</option>
+                                <option>纸票</option>
+                            </select>
+                       </div>
+                    </div>
+                 </div>
+           </div>
+       </div>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票据号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_no" required pattern="{{pattern.num}}" ng-blur="bill_no(form_data.bill_no)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票面金额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="money.bill_amount" ng-blur="bill_amount(money.bill_amount)" required pattern="{{pattern.amount}}"/>
+                            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_from_date" ng-blur="bill_from_date(form_data.bill_from_date)"  required  pattern="{{pattern.date}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票据到期日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_due_date" ng-blur="bill_due_date(form_data.bill_due_date)" required pattern="{{pattern.date}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_person" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">收款人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.payee" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人支付行行号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_pay_branch_no"  required ng-blur="check(form_data.bill_pay_branch_no)" pattern="{{pattern.bank}}"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人开户行<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.bill_start_branch"  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贴现日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.discount_date" ng-blur="discount_date(form_data.discount_date)" required pattern="{{pattern.date}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贴现利率(月)<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.discount_rate" required pattern="{{pattern.amount}}"/>
+                            <span class="input-group-addon">‰</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">申请人帐号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.proposer_acc" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">承兑人级别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.accptor_rank" required >
+                                <option></option>
+                                <option>国有银行</option>
+                                <option>股份制商业银行</option>
+                                <option>城市商业银行</option>
+                                <option>农村商业银行</option>
+                                <option>农村合作银行</option>
+                                <option>城市信用社</option>
+                                <option>农村信用社</option>
+                                <option>外国银行</option>
+                                <option>其他银行</option>
+                                <option>国有企业</option>
+                                <option>其他企业</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              <div class="row" >
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">在途天数<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  " type="text" ng-disabled='disabled_flag' ng-model="form_data.use_date" pattern="{{pattern.num}}"/>
+                            <span class="input-group-addon">天</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4 ">贴现利息</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control  " type="text"  ng-focus="calinvest()" ng-disabled='true'  ng-model="money.discount_interest" ng-blur="discount_interest(money.discount_interest)"/>
+                            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贴现类型<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                                <select class="form-control "  ng-model="form_data.discount_type" required >
+                                    <option selected = "selected">普通贴现</option>
+                                    <option>买方付息贴现</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">验票方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.check_bill_type" >
+                                <option></option>
+                                <option>大额</option>
+                                <option>传真</option>
+                                <option>上门</option>
+                                <option>电话</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">申请人开户行</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.proposer_start_branch"/>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贴现到期日</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag'  ng-model="form_data.discount_due_date" ng-blur="discount_due_date(form_data.discount_due_date)" pattern="{{pattern.date}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+              <div class="row">
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人帐号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag'  ng-model="form_data.bill_person_acc"/>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">增值税发票号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.more_bill_no" />
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">是否有增值税发票</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                                <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.is_more_bill" >
+                                    <option></option>
+                                    <option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">是否有真实的贸易背景</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.is_deal_bg" >
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+               <div class="row">
+              <div class="col-md-6">
+                <div class="form-group"> 
+                   <label class="col-md-4 control-label ">票据是否经过查询</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                                <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.is_bill_check"  >
+                                    <option></option>
+                                    <option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">承兑人编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.accptor_no" />
+                    </div>
+                </div>
+            </div>
+            </div>
+           </div>
+              <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">承兑银行地址</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.accptor_addr" />
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">承兑协议编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.accptor_agreement_no" />
+                    </div>
+                </div>
+              </div>
+            </div>
+           </div>
+             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">联系方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.phone" pattern="{{pattern.mobilephone}}"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贸易合同金额</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="money.deal_amount" ng-blur="deal_amount(money.deal_amount)" pattern="{{pattern.amount}}"/>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+              </div>
+            </div>
+           </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                   <label class="col-md-4 control-label ">是否有追索权</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                                <select class="form-control " ng-disabled="disabled_flag" ng-model="form_data.is_ror" >
+                                    <option></option>
+                                    <option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">支付行</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag'   ng-model="form_data.pay_branch"/>
+                    </div>
+                </div>
+            </div>
+            </div>
+              <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贸易合同号码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.deal_no"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">付息企业名称1</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.pay_com1"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+           </div>
+             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贸易合同日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.deal_date" ng-blur="deal_date(form_data.deal_date)" pattern="{{pattern.date}}"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">付息企业名称2</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                        <input class="form-control " type="text" ng-disabled='disabled_flag' ng-model="form_data.pay_com2"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+           </div>
+          <br>
+            <td height="26">
+          <div align="center">
+        <button type="submit" name="Button" value="增加" class="button_form">增加</button>
+        &nbsp;
+        <input type="button" name="Submit" value="清除" class="button_form" ng-click="clear()">
+        &nbsp;
+        <input type="button" name="Submit2" value="修改" class="button_form" ng-click="edit()">
+        &nbsp;
+      </div>
+          </td>
+</form>
+    </div>
+              
+                                         

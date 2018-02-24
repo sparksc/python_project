@@ -1,0 +1,43 @@
+<div class="form-horizontal" role="form" name="personLevelForm"  ng-controller="creditLevelPersonController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSubmit()" ng-show = 'btn_edit_flag' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onCancel()" ng-show = 'btn_edit_flag' class="btn btn-primary" >取消</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class = "table table-bordered">
+            <tr class = "info">
+                <td ng-repeat="name in tableHead">{{name}} </td>
+            </tr>
+            <tr ng-repeat="target in dataList">
+                <td>{{target.name}} </td>
+                <td>{{}} </td>
+                <td>
+                    <select>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>201109 </td>
+                <td>月报 </td>
+                <td>查看 </td>
+            </tr>
+            <tr>
+                <td>201109 </td>
+                <td>月报 </td>
+                <td>查看 </td>
+            </tr>
+        </table>
+        
+        
+
+    </div>
+   
+</div>

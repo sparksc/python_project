@@ -1,0 +1,77 @@
+16-10-08 16:35
+154.188.1.104 /home/develop/src/sqs/sqs/rpt_templates custhk1.xlsx
+修改内容：增加数据项从{{10}}到{{15}}
+
+16-10-10 09:28
+154.188.1.104/home/develop/src/web/web/fabs/views/reportforms   man_creditcomController.js
+
+16-10-11 20:27
+154.188.1.104/home/develop/src/web/web/fabs/views/reportforms	man_creditcom_salController.js
+154.188.1.104/home/develop/src/web/web/fabs/views/reportforms	man_creditcom.html
+154.188.1.104/home/develop/src/sqs/sqs/scripts			qcom_card_sal.py
+
+16-10-12 10:38
+存款业务计划数参数
+154.188.1.104/home/develop/src/web/web/fabs/views/reportforms	deposit_plan_parameter.html
+154.188.1.104/home/develop/src/web/web/fabs/views/reportforms	deposit_plan_parameter
+WLJX-260
+src/web/web/fabs/views/reportforms:
+ebank_plan_parameterCtrl.js
+ebank_plan_parameter.html
+src/sqs/sqs/scripts:
+qebank_plan_parameter.py
+
+WLJX-259
+src/web/web/fabs/views/reportforms
+loan_plan_parameterCtrl.js
+loan_plan_parameter.html
+qloan_plan_parameter.py
+
+WLJX-258
+deposit_plan_parameterCtrl.js
+deposit_plan_parameter.html
+qdeposit_plan_parameter.py
+
+src/web/web/fabs
+index.html
+
+src/web/web/fabs/services
+villageinput_service.js
+
+src/web/server/fabs/model
+village_input.py
+
+/src/web/server/fabs/services
+__init__.py
+village_input.py
+
+
+/src/web/server/fabs/views
+village_input.py
+
+src/web/web/fabs/static/standing_book
+
+贷款业务计划数参数.xlsx
+电子银行业务计划数参数.xlsx
+存款业务计划数参数.xlsx
+-------------------------2016/10/21end---------------------------------------------------
+
+---2016/10/24/star-----------------------------------------------------------------------
+	104:src/web/web/fabs/views/reportforms
+man_dep_score.html
+man_dep_score_newCtrl.js
+	/src/sqs/sqs/scripts
+qman_dep_sco_new.py
+
+
+
+
+
+-----------2016/10/25/star/交易码折算率--------------------------------------------------
+	104:src/web/web/fabs/views/reportforms
+transaction_codeCtrl.js
+transaction_code.html
+	/src/sqs/sqs/scripts
+qtransaction_code.py
+	src/web/web/fabs/static/standing_book
+

@@ -1,0 +1,115 @@
+<div style="margin:0px;"<div style="margin:0px;">
+    <div class="row" ng-controller="MainManController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+               </div>
+              <!--<div class="row">
+                  <div class="col-md-4 col-md-offset-1">
+                     <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">机构号:</label>
+                          <div class="col-md-7">
+                              <select class="form-control input-sm" ng-change="find_users()" ng-options="option as option.branch_name for option in model1 " ng-model="cust_search.org"/>
+                          </div>
+                      </div>  
+                  </div>
+              </div>-->
+              <div class="row">
+                  <!--<div class="col-md-4 col-md-offset-1">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">员工号:</label>
+                          <div class="col-md-7">
+                              <select class="form-control input-sm" ng-model="cust_search.manager" ng-options="option as (option.user_name +'|'+option.name) for option in model2"/>
+                          </div>
+                      </div>  
+                  </div>-->
+                  <div class="col-md-4 col-md-offset-1">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">客户号:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.cust_no"/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                   <div class="col-md-4">
+                       <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">类型:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.typ">
+                                        <option value=""></option>
+                                        <option value="存款">存款</option>       
+                                        <option value="理财">理财</option>
+                                    </select>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+                  <div class="col-md-3 col-md-offset-9">
+                      <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                  </div>
+             </div>
+            </fieldset>
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header track by $index' ng-hide="data.header.length == $index"  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length == $index">
+                                {{d}}
+                                </td>
+                                <td class="text-nowrap">
+                                    <button class="btn btn-primary btn-sm" ng-click="change(row)">更改主办客户经理</button> 
+                                </td>
+                              </tr> 
+                          </tbody>
+                      </table>
+            </div>
+            <div style="text-align:center">
+                <font size="2" color="red">{{tableMessage}}</font>
+            </div>
+                  <ul class="pager">
+                  <li> 总共{{total_count}}条</>
+                  <li> 当前第{{cur_page}}页</>
+                      <li ng-repeat="action in data.actions | filter:'!release'">
+                         <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                 </ul>
+            <div class="modal fade text-center" id="change_modal" >
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width:500px;">
+                        <div class="modal-header">
+                            <h4 class="modal-title">更改主办客户经理</h4>
+                        </div>
+                        <div class="modal-body">
+                                <div class="row">
+                                   <div class="col-md-10">
+                                        <div class="form-group">
+                                           <label class="col-md-4 control-label label-sm ">主办客户经理:</label>
+                                           <div class="col-md-8"> 
+                                                <div class="input">
+                                                    <select type="text" class="form-control" ng-model="staff" ng-options="option as (option.user_name+'|'+option.name) for option in manlist" />
+                                                </div>
+                                           </div>
+                                        </div>
+                                       </div>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn blue" ng-click="save()">确认更改</button>
+                                       <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                                   </div>
+                        <div>
+                    </div>
+                </div>
+            </div>
+   </div>
+</div>
+

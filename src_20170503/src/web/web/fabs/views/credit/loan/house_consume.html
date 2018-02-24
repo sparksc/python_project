@@ -1,0 +1,324 @@
+<!-- 个人房屋消费 -->
+<div ng-include="'views/credit/loan/baseInformation.html'"/>
+
+
+<!-- 个人房屋消费贷款部分 -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房屋形式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.house_form">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">楼盘授信申请合同号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.house_credit_id">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房屋类别</label>
+            <div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.house_kind">
+                            <option>住房</option>
+                            <option>商房</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">首次购入日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.first_pay">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">原单价(元/平方米)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.org_unit_price">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房产现状</label>
+           <div class="col-md-7">	
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.house_status">
+                            <option>出租</option>
+                            <option>占用</option>
+                            <option>闲置</option>
+                            <option>自用</option>
+                            <option>其他</option>
+                        </select>
+						</div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">中介编号</label>
+            <div class="col-md-7">
+               <input type="text" class="form-control"  placeholder="" ng-model="form_data.agent_no">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">中介名称</label>
+            <div class="col-md-7">
+            <!-- -->
+                <input type="text" class="form-control"  ng-model="$parent.data.agent_name" placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款成数(%)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.loan_percent">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">首付金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.init_pay_amount">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">建筑面积(平米)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.bldg_area">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否中介担保</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.bagent_gty">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">资料在本申请书内编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.gty_id">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房屋详址</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.house_address">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房屋产籍号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.house_record_id">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否一手房</label>
+            <div class="col-md-7">
+                <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.isnew">
+                            <option>0否</option>
+                            <option>1是</option>
+                        </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">附加面积</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.add_area">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">单价</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.unit_price">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">总价</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.total_prices">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">首付比例</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.first_pay_pro">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">物业费</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.manage_fee">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+
+            <label class="col-md-4 control-label">房屋类别</label>
+				 <div class="col-md-7">
+            <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.house_type">
+                            <option>01经济适用房</option>
+                            <option>02商品房</option>
+                            <option>03别墅</option>
+                            <option>04其他</option>
+                        </select>
+        </div>
+	</div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">商品房买卖合同编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.bargain_id">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">售房者(开发商)代码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.trader_id">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">售房者全称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.trader_name">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">销售许可证编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" ng-model="form_data.sell_code">
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否与本行建立合作关系</label>
+            <div class="col-md-7">
+              <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.own_rel">
+                            <option>0否</option>
+                            <option>1是</option>
+                        </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">房产现状</label>
+            <div class="col-md-7">
+                <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.house_status_b">
+                            <option>1期房</option>
+                            <option>2现房</option>
+                        </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

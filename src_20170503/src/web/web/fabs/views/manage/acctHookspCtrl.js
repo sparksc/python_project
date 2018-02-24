@@ -1,0 +1,186 @@
+/**
+ * accthooksp Controller
+ * 移交审批
+ */
+function accthkspController($scope,$rootScope, $filter, SqsReportService,branchmanageService,accthkService,gsgxckService) {
+    $scope.dict = {
+        "first": "首页",
+        "previous": "上一页",
+        "next": "下一页",
+        "last": "末页",
+        "release": "释放",
+    };
+
+    $scope.flag=false;
+    $scope.tableMessage = "请点击查询";
+    $scope.cust_search = {};
+    $scope.cust_search.deal_status = '待审批';
+    $scope.cust_search.branch_code = $rootScope.user_session.branch_code;
+
+    $scope.checkedAllFlag = false;
+    $scope.onAction = function(conversation_id, action) {
+        SqsReportService.action(conversation_id, action).success(function(resp) {
+            $scope.data = resp;
+            $scope.checkedAllFlag = false;
+            $scope.parse_paginfo($scope.data.actions);
+        });
+    };
+
+    $scope.onAction1 = function(conversation_id, action) {
+        SqsReportService.action(conversation_id, action).success(function(resp) {
+            $scope.detail_data = resp;
+        });
+    };
+
+    $scope.parse_paginfo = function(actions){
+
+        for (var i in actions){
+            var action = actions[i];
+            var act = action.action;
+            var info = action.conversation_id;
+            var pairs = info.split("&")
+            for(var j in pairs){
+                if (pairs[j].indexOf('total_count')!=-1){
+                    $scope.total_count = pairs[j].split('=')[1];
+                }
+                if (pairs[j].indexOf('page')!=-1){
+                    var page = pairs[j].split('=')[1];
+                    if ( act === "previous"){
+                        $scope.cur_page = parseInt(page) + 1;
+                    }
+                    if ( act === "next"){
+                        $scope.cur_page = parseInt(page) - 1;
+                    }
+                }
+            }
+
+        }
+    }
+    $scope.search = function() {
+        $("div[name='loading']").modal("show");
+        if($scope.cust_search.deal_status=='待审批'){
+            $scope.flag=true;}
+        else{
+            $scope.flag=false;}
+        params = $scope.cust_search;
+        console.log(params)
+        $scope.data = {};
+        params.login_branch_no = $rootScope.user_session.branch_code;
+        params.login_teller_no = $rootScope.user_session.user_code;
+        $scope.tableMessage = "正在查询";
+        $scope.total_count = 0;
+        $scope.cur_page = 1;
+        SqsReportService.info('cust_hook_batch', params).success(function(resp) {
+            $("div[name='loading']").modal("hide");
+            $scope.data = resp;
+            $scope.data.header.push("详情");
+            console.log($scope.data.header);
+            if (($scope.data.rows || []).length > 0) {
+                $scope.parse_paginfo($scope.data.actions);
+                $scope.tableMessage = "";
+            } else {
+                $scope.tableMessage = "未查询到数据";
+            }
+        });
+        $scope.choseArr=[];
+    };
+    $scope.detail = function(id){
+        params ={'BATCH_ID':$scope.data.rows[id][0]}
+        SqsReportService.info('accountzy', params).success(function(resp) {
+            $scope.detail_data = resp;
+            console.log("$scope.detail_data",$scope.detail_data);
+            $('#tab_'+ $scope.tabId + '_content').find("#trans_detail_modal").modal("show");
+        });
+    };
+    $scope.find_users = function(){
+        branchmanageService.users({'branch_id':$scope.cust_search.org.role_id}).success(function(reps){
+            $scope.model2 =reps.data;
+       });
+    };
+    $scope.find_users2 = function(){
+        branchmanageService.users({'branch_id':$scope.add_org.role_id}).success(function(reps){
+            $scope.model5 =reps.data;
+       });
+    };
+
+    var element = angular.element('#custHookBatchMoveModal');
+    function find_branchs(){
+    branchmanageService.branchs({'name':$scope.search_name}).success(function (reps) {
+            $scope.model1=reps.data;
+    })
+    }
+    find_branchs();
+   
+    $scope.choseArr = [];
+    $scope.checked_row = function(row_id, rows){
+          if($scope.choseArr.indexOf(row_id)==-1){
+             $scope.choseArr.push(row_id);
+          }else{
+             $scope.choseArr.splice($scope.choseArr.indexOf(row_id), 1);
+          }
+
+
+          $scope.checkedAllFlag = true;
+          angular.forEach(rows, function(item){
+               if($scope.choseArr.indexOf(item[0])==-1){
+                  $scope.checkedAllFlag = false;
+              }
+          });
+    }
+    $scope.isChecked = function(row_id){
+         return $scope.choseArr.indexOf(row_id) != -1; 
+    }
+    $scope.checkedAll = function(checkedFlag, rows){
+         angular.forEach(rows, function(item){
+             if(checkedFlag){
+                 if($scope.choseArr.indexOf(item[0])==-1){
+                    $scope.choseArr.push(item[0]);
+                 }
+             }else{
+                 $scope.choseArr.splice($scope.choseArr.indexOf(item[0]), 1);
+             }
+         });
+    }
+
+    $scope.approve = function() {
+        $scope.newdata = {};
+        gsgxckService.batch_account_move_check({'update_key':$scope.choseArr,'reason':$scope.reason,'deal_status':'同意'}).success(function(resp){
+            alert(resp.data); 
+            add_element.modal('hide');
+            $scope.search();
+            $scope.checkedAllFlag = false;
+            $scope.choseArr =[];
+        });
+        //accthkService.approve({'newdata':$scope.newdata,'update_key':$scope.choseArr}).success(function(resp){
+        //    alert(resp.data);
+        //$scope.search();
+        //});
+    }
+    $scope.deny = function() {
+        $scope.newdata = {};
+        gsgxckService.batch_account_move_check({'update_key':$scope.choseArr,'reason':$scope.reason,'deal_status':'不同意'}).success(function(resp){
+            alert(resp.data); 
+            add_element.modal('hide');
+            $scope.search();
+            $scope.checkedAllFlag = false;
+            $scope.choseArr =[];
+        });
+        //accthkService.deny({'newdata':$scope.newdata,'update_key':$scope.choseArr}).success(function(resp){
+        //    alert(resp.data);
+        //$scope.search();
+        //});
+    }
+    var add_element=angular.element('#sp_modal');
+    $scope.get=function(){
+        if($scope.choseArr.length == 0) 
+        {
+            alert('请先选择审批信息');
+            return;
+        }
+        $scope.reason="";
+        add_element.modal('show');
+    }
+};
+
+accthkspController.$inject = ['$scope','$rootScope', '$filter', 'SqsReportService','branchmanageService','accthkService','gsgxckService'];
+angular.module('YSP').service('accthkspController', accthkspController);

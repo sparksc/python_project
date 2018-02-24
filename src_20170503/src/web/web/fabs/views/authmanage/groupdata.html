@@ -1,0 +1,176 @@
+<div ng-controller="groupdataCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-body">
+		    <fieldset name="custQueryCond">
+		 
+<!--
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1 ">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">岗位查询</label>
+                             <div class="col-md-7">
+                                <div class="input">
+                                   <input class="form-control " id="post_search" data-provide="typeahead" type="text"  ng-model="cust_search.group_name" >
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+-->
+
+                     <div class="col-md-5 col-md-offset-1">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">岗位名</label>
+                             <div class="col-md-7">
+                                 <div class="input">
+                                     <select class="form-control "  type="text"  ng-model="cust_search.group_name" ng-options="option.post_name as option.post_name for option in post_model">
+                                        <option></option>
+                                     </select>
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+                       
+                </div>
+                <div class="row search_margin">
+                     <div class="col-md-5 col-md-offset-1">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">模块名称</label>
+                             <div class="col-md-7">
+                                 <div class="input">
+                                     <select class="form-control "  type="text"  ng-model="cust_search.data_type" ng-options="option.key as option.value for option in edata.data">
+                                        <option></option>
+                                     </select>
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+
+                     <div class="col-md-5">
+                         <div class="form-group">
+                             <label class="col-md-5 control-label label-sm">权限类型</label>
+                             <div class="col-md-7">
+                                 <div class="input">
+                                     <select class="form-control"  type="text"  ng-model="cust_search.auth_type" ng-options="option.key as option.value for option in authdata.data">
+                                        <option></option>
+                                     </select>
+                                 </div>
+                             </div>
+                          </div>
+                     </div>
+                 </div>
+			    <div class="col-md-10 search_margin">
+                     <div class="form text-right">
+                          <button type="button" ng-click="search()" class="btn btn-primary">查询</button>
+                          <button type="button" ng-click="add()" class="btn btn-primary">新增</button>
+                     </div>
+		        </div>        
+            </fieldset>
+                </div>
+            </form>
+            <div class="col-md-12" name="resultTable">
+                <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th> 
+			                  </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="$index<2">
+                                     {{d}}
+                                </td>
+                              	<td class="text-nowrap">
+					                <button type="button" ng-click="to_edit(row)" class="btn btn-primary">编辑</button>
+					                <button type="button" ng-click="to_delete(row)" class="btn btn-primary">删除</button>
+				                </td>
+                              </tr> 
+                          </tbody>
+                  </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                  </ul>
+            </div>
+            <div style="text-align:center">
+                  <font size="2" color="red">{{tableMessage}}</font>
+            </div>
+       </div>
+
+
+        
+        <div class="modal fade" id="groupdata">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <form class ="form-horizontal" ng-submit="func_submit()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">{{titlestr}}</h4>
+                </div>
+                <div class="modal-body">
+<!--
+                    <div class="row" ng-hide="ishow">
+                        <div class="col-md-10 form-group">
+                             <label class="col-md-5 control-label label-sm">岗位查询:</label>
+                             <div class="col-md-7">
+                                <div class="input-group">
+                                    <input class="form-control " ng-model="search_post_name" >
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="find_posts()" type="button">
+                                            查询
+                                        </button>
+                                    </span>
+                                </div>
+                              </div>
+                         </div>
+                    </div>
+-->
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                           <label class="col-md-5 control-label label-sm">岗位名称:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <select required class="form-control" ng-model="add_date.group_id" ng-options="option.post_id as option.post_name for option in post_model" ng-disabled="ishow">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                           <label class="col-md-5 control-label label-sm">模块名称:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <select required class="form-control" ng-model="add_date.data_type" ng-options="option.key as option.value for option in edata.data">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                           <label class="col-md-5 control-label label-sm">权限类型:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <select required class="form-control" ng-model="add_date.auth_type" ng-options="option.key as option.value for option in authdata.data">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+		        <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" >保存</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">关闭</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>

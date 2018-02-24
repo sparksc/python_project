@@ -1,0 +1,239 @@
+<fieldset ng-disabled="guarantee_info.contract_no">
+<form name="myForm" ng-submit="MrgeVchSave()">
+   
+        <input type="submit"class="btn btn-primary" value="保存" ng-show="save == '保存'"/>
+        <button type="button" class="btn btn-primary" ng-show="save == '修改'" ng-click="pledgechange()">修改</button>
+   
+    </br>
+    <fieldset ng-disabled="save == '修改'">
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">交通工具类型</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_type'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">交通工具品牌</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_brand'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">交通工具型号</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_model'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">交通工具牌照号</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_id'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">交通工具登记证号码</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_reg_id'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">发动机号码</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.engine_id'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">外观颜色</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.color'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">车架号</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.frame_id'/>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">是否缴纳当年强制保险</label>
+              <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.bpay_year_ins'>
+							<option value="是" selected="selected">是</option>
+							<option value="否">否</option>
+				</select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">是否有当年车船使用税证</label>
+                <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.bhas_year_cert'>
+							<option value="是" selected="selected">是</option>
+							<option value="否">否</option>
+				</select>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">是否正常缴纳购置税</label>
+              <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.bpay_purchase_tax'>
+							<option value="是" selected="selected">是</option>
+							<option value="否">否</option>
+				</select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">年检是否正常</label>
+                <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.byear_check'>
+							<option value="是" selected="selected">是</option>
+							<option value="否">否</option>
+				</select>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">是否有行驶证</label>
+              <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.btravel_licence'>
+							<option value="是" selected="selected">是</option>
+							<option value="否">否</option>
+				</select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">交通工具现状</label>
+                <div class="col-md-7">
+	            <select class="form-control  input-sm" type="text" ng-model='modal_data.vch_status'>
+							<option value="自用" selected="selected">自用</option>
+							<option value="出租">出租</option>
+							<option value="营运">营运</option>
+							<option value="其他">其他</option>
+				</select>
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">行驶里程</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.milage'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押物预评估价值</label>
+                <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.vch_pre_eval_value'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">交通工具评估总价值<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+				<input required name="vch_eval_value" class="form-control  input-sm" type="text" ng-model='modal_data.vch_eval_value'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">交通工具认定总价值<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+				<input required name="vch_conf_value" class="form-control  input-sm" type="text" ng-model='modal_data.vch_conf_value'/>
+               </div>
+          </div>
+    </div>		
+   <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押不算比例部分价值</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_except_value'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押不算比例部分面积</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.vch_except_amount'/>
+               </div>
+          </div>
+    </div>		
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">担保金额<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                <input required name="vch_gty_amount" class="form-control  input-sm" type="text" ng-model='modal_data.vch_gty_amount'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押登记证号<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+                <input required name="mort_reg_id" class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_id'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押登记日期<font color="#FF0000">*</font>label>
+              <div class="col-md-7">
+                <input required name="mort_reg_date" class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_date'
+                       ng-blur="mort_reg_date(modal_data.mort_reg_date)" title="日期格式错误！"/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">评估机构</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.eval_org_id'/>
+               </div>
+          </div>
+    </div>		
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">评估时间</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.eval_date'
+                       ng-blur="eval_date(modal_data.eval_date)" title="日期格式错误！"/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押情况</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.mort_status'/>
+               </div>
+          </div>
+    </div>
+	<div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">购入日期</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.bought_date'
+                       ng-blur="bought_date(modal_data.bought_date)" title="日期格式错误！"/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">购入金额</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.bought_price'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">备注</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.note'/>
+              </div>
+          </div>
+
+   </div>
+    </fieldset>
+ </form>
+</fieldset>

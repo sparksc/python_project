@@ -1,0 +1,752 @@
+
+<!--放款界面 -->
+<div class="form-horizontal" role="form" name="loanDetailForm"  ng-controller="lendDetailController">
+    <div class="form-body">
+        <form id="loan_form" >
+            <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">交易流水</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model="num" ng-disabled=true>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">客户编号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" placeholder="客户编号" ng-model="data.party.no" ng-disabled=true>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">客户名称<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" placeholder="客户名称" ng-model="data.party.name" disabled=true>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">申请书号</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" placeholder="01581982" ng-model='data.lend_transaction.transaction_id' disabled=true >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">借款合同号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" placeholder="332423"  ng-model="data.contract.contract_no" disabled=true>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">业务品种<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" ng-model="data.product.name" disabled=true >
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款形式</label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model='data.lend_transaction.loan_type' disabled =true >
+                                <option >借新还旧</option>
+                                <option >新增</option>
+                                <option >还旧借新</option>
+                                <option >续贷</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">业务币种<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model="data.lend_transaction.currency_code" disabled =true>
+                                <option value="CNY">人民币</option>
+                                <option value="USD">美元</option>
+                                <option value="EUR">欧元</option>
+                                <option value="GBP">英镑</option>
+                                <option value="GB">港币</option>
+                                <option value="RSFL">瑞士法郎</option>
+                                <option value="RY">日元</option>
+                                <option value="JY">加元</option>
+                                <option value="AY">澳元</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">放款金额<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control"  ng-model="data.lend_transaction.amount" placeholder="" disabled=true  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+              </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">审议通过日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control"  placeholder="" ng-model="data.application_info.apply_date" disabled=true >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">申请日期</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control"  ng-model="data.application_info.apply_date" disabled=true >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款期限</label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model='data.application_info.term_month' disabled=true >
+                            <option >短期</option>
+                            <option >中期</option>
+                            <option >长期</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款起始日<font color="#FF0000">*</font></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control"   ng-model="data.lend_transaction.from_date" required disabled=true >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款到期日<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model="data.lend_transaction.thur_date" required disabled=true  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 还款相关 -->
+            <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">还款方式<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+            
+                            <input type="text" class="form-control" ng-model="data.lend_transaction.repayment_method" required disabled=true  >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">还款周期<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                                <select class="form-control" ng-model='data.lend_transaction.repayment_times' required disabled=true >
+                                <option >按月还款</option>
+                                <option >按季还款</option>
+                                <option >按年归还</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">还款周期频率<font color="#FF0000">*</font></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control"  placeholder="" ng-model='data.lend_transaction.rep_per_fre'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">首次还款日期<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.first_rep_date'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">还款期数</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" placeholder="" ng-model="data.lend_transaction.rep_period">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">还款来源</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.repayment_from" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 利率相关 -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">合规利率(月)<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.compliance_rate" placeholder=""  >
+                                <span class="input-group-addon">‰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">产品利率<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.product_rate" placeholder=""   >
+                                <span class="input-group-addon">‰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">产品利率浮动类型<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model="data.lend_transaction.product_float_type">
+                                <option >不浮动</option>
+                                <option >比例浮动</option>
+                                <option >定值浮动</option>
+                                <option >固定利率</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">产品利率浮动值<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" ng-model="data.lend_transaction.product_rate_float"  placeholder=""   >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">执行利率<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.execute_rate" placeholder=""   >
+                                <span class="input-group-addon">‰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">逾期加罚比例<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.overdue_rate_more" placeholder=""  >
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">逾期利率<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.overdue_rate" >
+                                <span class="input-group-addon">‰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">挪用加罚比例</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="data.lend_transaction.shift_fine_rate"  >
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">挪用利率</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.shift_rate" placeholder=""   >
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">欠息复利上浮比例<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.debt_interest" placeholder=""  >
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">欠息复利利率<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.debt_interest_and" placeholder=""  >
+                                <span class="input-group-addon">‰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 利息相关-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">计息方式<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model="data.lend_transaction.interest_method">
+                                <option>不计息</option>
+                                <option>利随本清</option>
+                                <option>按周期结息</option>
+                                <option></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">结息周期<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model='data.lend_transaction.interest_period' >
+                            <option >按月结息</option>
+                            <option >按季结息</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">结息周期频率<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" placeholder="" ng-model='data.lend_transaction.int_per_fre' >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">首次结息日期<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.first_int_date'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">自动还款账号</label>
+                        <div class="col-md-7">
+                           <input type="text" class="form-control" ng-model='data.lend_transaction.repayment_account_no' >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">保证金比例</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" ng-model='data.lend_transaction.gty_percent' placeholder="" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">保证金金额</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" ng-model='data.lend_transaction.gty_amount' >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">主要担保方式<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-show='data.transaction.transaction_id' ng-model="data.lend_transaction.main_gua_type"  >
+                                <option>信用</option>
+                                <option>保证</option>
+                                <option>抵押</option>
+                                <option>质押</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">是否有其他担保方式</label>
+                        <div class="col-md-7">
+                            <select class="form-control"  >
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">是否银团贷款</label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model='data.lend_transaction.isgroup_loan' >
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款用途<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control"  ng-model="data.lend_transaction.purpose_type" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+               <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">授信卡号</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.credit_no' >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">授信类型</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.credit_type'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">行业门类<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.industry_top' >
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">行业大类<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.industry_big' >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">行业中类<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.industry_mid' >
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">行业小类<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.industry_small' >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+               <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">抵押担保资料编号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.gua_doc_no'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">原授信合同编号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.credit_con_no'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">理财产品签约号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control" ng-model='data.lend_transaction.money_pru_no'  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">担保方式细分</label>
+                        <div class="col-md-7">
+                         <select   class="form-control">
+                             <option></option>  
+                             <option>质押贷款</option>
+                             <option>房地产抵押贷款</option>
+                             <option>其他抵押贷款</option>
+                             <option>联保贷款</option>
+                             <option>其他保证贷款</option>
+                             <option>信用/免担保贷款</option>
+                             <option>组合担保</option>
+                             <option>其他</option>
+                         </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款性质</label>
+                        <div class="col-md-7">
+                           <select  class="form-control" ng-model='data.lend_transaction.loan_field' >
+                                <option></option> 
+                                <option>流动资金贷款</option>
+                                <option>个人经营性贷款</option>
+                                <option>个人综合消费贷款</option> 
+                                <option>住房按揭类贷款</option> 
+                                <option>商用房按揭类贷款</option> 
+                                <option>固定资产贷款</option> 
+                                <option>银团贷款</option>
+                                <option>项目贷款</option>
+                                <option>在建工程贷款</option>
+                           </select> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">贷款领域</label>
+                        <div class="col-md-7">
+                            <select   class="form-control" >
+                                <option></option> 
+                                <option>涉农-农户</option>
+                                <option>涉农-农村企业</option>
+                                <option>涉农-城市企业</option>
+                                <option>微利下岗一次</option>
+                                <option>微利下岗二次</option>
+                                <option>非微利下岗</option>
+                                <option>抵押物在异地的贷款</option>
+                                <option>个人消费-汽车</option>
+                                <option>个人消费-耐用品</option>
+                                <option>个人消费-综合类</option>
+                                <option>个人消费-助学贷款</option>
+                                <option>地方政府融资平台贷款</option>
+                                <option>保障性安居工程贷款</option>
+                                <option>地产开发贷款</option> 
+                                <option>房产开发贷款</option>
+                                <option>经营性物业贷款</option>
+                                <option>土地承包经营权抵押</option>
+                                <option>农村住房财产权抵押</option>
+                                <option>林权抵押</option> 
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">战略新型产业类型</label>
+                        <div class="col-md-7">
+                          <select class="form-control"  onkeydown=enterKey() name=strategyIndustryType> 
+                            <option selected value=""></option>
+                             <option value=01>节能环保</option> 
+                             <option value=02>新一代信息技术</option>
+                             <option value=03>生物</option>
+                             <option value=04>高端装备制造</option>
+                             <option value=05>新能源</option>
+                             <option value=06>新材料</option> 
+                             <option value=07>新能源汽车</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">工业转型升级标识</label>
+                        <div class="col-md-7">
+                            <select class="form-control"  >
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">营销柜员号<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control"  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">营销柜员名称<font color="#FF0000">*</font></label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <input type="text" class="form-control"  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div name='loanForm' ng-include src=LoanPage ></div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">备注<br/>(限100个汉字)</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" ng-model="data.application_info.remark" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,426 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="ebank_replaceController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label label-sm">导入日期:</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm"  type="text"  ng-model="cust_search.DATE" placeholder="请输入合法日期如20170310."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-md-offset-1 ">
+                         <div class="form-group">
+                              <label class="col-md-4 control-label label-sm ">机构号:</label>
+                              <div class="col-md-6">
+                                    <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.BRANCH_CODE" disabled="true">
+                              </div>
+                              <button type="button" class="btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                         </div>
+                         <div name="sameBusiness" ng-include src=Page ></div>
+                              <div class="modal fade " name="loan_type_modal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title">机构信息</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="row" name="for_lt_tree"> </div>
+                                                </form>
+                                            </div> <!-- modal-body -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                            </div> <!-- modal-footer -->
+                                        </div> <!-- modal-content -->
+                                    </div>
+                              </div>
+                         </div>
+                </div>
+                <div class="row">
+                         <div class="col-md-4 col-md-offset-1 "> 
+                            <div class="col-md-10 ">
+                                <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />
+                            </div>
+                         </div>
+                    </div>
+
+            <div class="row">
+                  <div class="col-md-6 col-md-offset-8">
+                    <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                    <!--<button class="btn btn-primary btn-sm" ng-click="add()">新增</button>-->
+                    <a href="{{excelurl}}" class="btn btn-primary btn-sm">excel导出</a>
+                    <button type="button" class="btn btn-primary btn-sm"  ng-click="upload_excel()">excel导入</button>
+                  </div>
+             </div>
+            </fieldset>
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header track by $index'  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" >
+                                {{d}}
+                                </td>
+                                <td>
+                                  <!--   <button class="btn btn-primary btn-sm" ng-click="edit(row)">修改</button>
+                                     <button class="btn btn-primary btn-sm" ng-click="del(row)">删除</button>-->
+                                </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+       </div>
+        <div class="modal fade" id="ebank_replace_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">录入</h4>
+                </div>
+                <div class="modal-body">
+                     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">导入日期:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[0]" type="text" placeholder="请输入合法日期如20170310."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control" ng-model="newstaffdata[1]" ng-options="option.branch_code as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="change_name(newstaffdata[1])" >
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="ebank_replace_new_add_button" class="btn blue" ng-click="add_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>	
+    </div>
+    <div class="modal fade" id="ebank_replace_edit_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">导入日期:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[0]" type="text" placeholder="请输入合法日期如20170310." ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[1]" type="text"  ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">行社名称:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[2]" type="text" ng-readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">ATM本行笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[3]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">ATM他代本笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[4]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">ATM本带它笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[5]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">ATM笔数小计:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[6]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">POS本行笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[7]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">POS他代本笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[8]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">POS本带它笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[9]" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">POS笔数小计:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[10]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">个人网银笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[11]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">企业网银笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[12]" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">网银笔数小计:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[13]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">手机银行笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[14]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电话银行笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[15]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">短信银行笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[16]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">自助终端笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[17]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子支付笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[18]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">支付宝、财付通单卡单日超过5笔的交易（T列）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[19]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子渠道交易笔数1合计:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[20]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子渠道交易笔数2合计（剔除T列）:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[21]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">柜面渠道交易笔数:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[22]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行交易笔数替代率1:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[23]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行交易笔数替代率2:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[24]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行交易金额替代率1:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[25]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">电子银行交易金额替代率2:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newstaffdata[26]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="ebank_replace_save_edit_button" class="btn blue" ng-click="edit_save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>	
+    </div>
+ 
+</div>

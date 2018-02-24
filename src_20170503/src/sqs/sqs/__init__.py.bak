@@ -1,0 +1,61 @@
+# -*- coding:utf-8 -*-
+from proc_template import *
+from flask import current_app
+def read_style(name):
+    f = open(name)
+    mg = None
+    for row in f:
+        mg = json.loads(row)
+    f.close()
+    return mg
+
+class Report():
+    def __init__(self, code, args, report_conf={}):
+        self.conf = report_conf
+        self.code = code
+        self.args = args
+        self.module = self.import_module(self.code)
+    def get_list_data(self):
+        query = self.module.Query(self.code, self.args, self.conf)
+        return query.prepare_object()
+
+    def get_data(self):
+        query = self.module.Query(self.code, self.args, self.conf)
+        data = query.do_query()
+        if hasattr(query,"conversation_id"):
+            if ":" in  query.conversation_id: #访问2个文件，一个是数据，一个是样式合并信息
+                sname = query.conversation_id.split(":")[1] 
+
+                current_app.logger.debug(sname)
+                mg = read_style(sname)
+                data.merge_style =  mg
+            #print query.conversation_id,"********************##################"
+        return  data
+
+    def get_report_by_url(self, report_url):
+        return '{}'
+
+    def get_convo_url(self, conversation_id, action):
+        return '{}'
+
+    def get_module(self, code):
+        return "sqs.scripts.q" + code
+
+    def import_module(self, code):
+        return __import__(self.get_module(code), fromlist=["scripts"])
+
+
+def get_report(report_name, args={}, report_conf={}):
+    report_helper = Report(report_conf)
+    return report_helper.get_data(report_name, args)
+
+
+def get_report_by_url(report_url, report_conf={}):
+    report_helper = Report(report_conf)
+    return report_helper.get_data_by_url(report_url)
+
+
+def get_report_convo(conversation_id, action, report_conf={}):
+    report_helper = Report(report_conf)
+    report_url = report_helper.get_convo_url(conversation_id, action)
+    return report_helper.get_data_by_url(report_url)

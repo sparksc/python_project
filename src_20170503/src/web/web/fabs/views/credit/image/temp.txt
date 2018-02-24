@@ -1,0 +1,262 @@
+        <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>货款档案及资料影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel2" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel2" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel2" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>货后影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel3" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel3" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel3" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>催收影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel4" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel4" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel4" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div> 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>合同面签影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel1" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel1" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel1" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>货款档案及资料影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel2" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel2" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel2" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>货后影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel3" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel3" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel3" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>催收影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel4" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src=""></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel4" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel4" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div> 
+

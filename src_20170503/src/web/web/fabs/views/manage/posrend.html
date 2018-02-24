@@ -1,0 +1,207 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="posrendController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="col-md-4 control-label label-sm ">机构号:</label>
+                        <div class="col-md-6"> 
+                            <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.ORG_NO" disabled="true">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                     </div>
+                  </div>
+                    <div name="sameBusiness" ng-include src=Page ></div>
+                     <div class="modal fade " name="loan_type_modal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree"> </div>
+                                    </form>
+                                </div> <!-- modal-body -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                </div> <!-- modal-footer -->
+                             </div> <!-- modal-content -->
+                     </div> <!-- modal-dialog -->
+                    </div>
+                   <div class="col-md-4">
+                       <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">商户号:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.CUST_NO"/>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4">
+                       <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">商户名:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.CUST_NAME"/>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="col-md-4">
+                       <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">类型:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.TYPE">
+                                        <option value=""></option>
+                                        <option value="信付通">信付通</option>       
+                                        <option value="委托银商">委托银商</option>       
+                                        <option value="助农">助农</option>       
+                                        <option value="行内">行内</option>       
+                                        <option value="自签传统">自签传统</option>
+                                    </select>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4">
+                       <div class="form-group">
+                            <label class="col-md-4 control-label label-sm">地址信息:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.NOTE"/>
+                              </div>
+                            </div>
+                      </div>
+                   </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label label-sm">是否隐藏:</label>
+                        <div class="col-md-7">
+                            <div class="input">
+                                <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.hide">
+                                <option value="0">隐藏</option>
+                                <option value="1">未隐藏</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div> 
+              </div>
+              <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                    <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                    <a href="{{excelurl}}" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+            </fieldset>
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                             <thead style="white-space:nowrap;">
+                                 <tr>
+                                     <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap" > </th>
+                                 </tr>
+                             </thead>
+                             <tbody style="white-space:nowrap;">
+                                 <tr ng-repeat="row in data.rows">
+                                   <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length-1 == $index"> 
+                                   {{d}}
+                                   </td>  
+                                   <td class="text-nowrap">
+                                       <button style='display:$scope.display1' class="btn btn-primary btn-sm" ng-click="hide(row)">隐藏</button>
+                                       <button style='display:$scope.display2' class="btn btn-primary btn-sm" ng-click="show(row)">显示</button>
+                                       <button class="btn btn-primary btn-sm" ng-click="allot(row)">分配</button>
+                                   </td>
+                                 </tr>  
+                             </tbody> 
+                             </table>                                                                                                                                                                   
+                  <ul class="pager">
+                  <li> 总共{{total_count}}条</>
+                  <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+    <div class="modal fade" id="move_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">分配</h4>
+                </div>
+                
+                <div class="modal-body">
+                         <div class="row">
+                              <div class="col-md-12">
+                                   <div class="form-group">
+                                      <label class="col-md-2 control-label label-sm ">机构号:</label>
+                                      <div class="col-md-8">
+                                        <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.org_tar" disabled="true">
+                                      </div>
+                                        <!--<button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal1(this)" ng-disabled="ltSelected">...</button>-->
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-md-2 control-label label-sm"></label>
+                            </div>
+                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工号:</label>
+                                <div class="col-md-8">
+                                    <div class="input">
+                                    <select class="form-control input-sm" ng-model="add_manager" ng-options="option as (option.user_name+' | '+option.name) for option in model5"/>
+                                    <option></option>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn blue" ng-click="do_allot()">保存</button>
+                        <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+      <!--              <div name="sameBusiness1" ng-include src=Page ></div>
+                    <div class="modal fade " name="loan_type_modal1" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button  class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree1"> </div>
+                                    </form>
+                                </div> 
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm1()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose1()">取消</button>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>-->
+    </div>
+</div>

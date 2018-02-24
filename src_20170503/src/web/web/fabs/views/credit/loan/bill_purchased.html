@@ -1,0 +1,197 @@
+<!-- 对公-出口押汇表 -->
+<div ng-include="'views/credit/loan/baseInformation.html'"/>
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">信用证号码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发票号码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">银行编号(BP)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">受益人</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">联系方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">公司运编号</label>
+            <div class="col-md-7">
+               <input type="text" class="form-control"  placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发票币种</label>
+            <div class="col-md-7">
+            <!-- -->
+                <input type="text" class="form-control"  ng-model="$parent.data.transaction_info.amount" placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发票金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">议付日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">议付币种</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">议付金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">押汇日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+   
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">押汇天数</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">到期日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">其他说明</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">不符点</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">提单编号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

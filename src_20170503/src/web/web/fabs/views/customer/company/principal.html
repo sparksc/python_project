@@ -1,0 +1,432 @@
+    <form name="principal"   ng-submit="save_data(principal.$valid)">
+<div class="form-horizontal" role="form" id="principal" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" ng-click="associPerson('principal', customer_id)">新增负责人</button>
+                <button type="button" class="btn btn-primary" ng-click="refresh()">刷新</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td>{{data.cust.name}}</td>
+                            <td>{{data.cust.ric}}</td>
+                            <td>{{data.principal.principal_type}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#principalModal" ng-click="view_data(data)">详情</button>
+                                <button type="button" class="btn btn-primary">清除
+</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id ='principalModal' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">姓名<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.name" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">负责人类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.principal_type">
+                            <option>法定代表人</option>
+                            <option>实际控制人</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.cust.cert_type">
+                            <option value="">居民身份证</option>
+                            <option>军官证</option>
+                            <option>外国护照</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+	    <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">证件号码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.ric" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">性别</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.cust.gender">
+                            <option>男</option>
+                            <option>女</option>
+                            <option>未知</option>
+                            <option>未提供</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">年龄</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.age" pattern="{{pattern.num}}" title="年龄格式错误" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">出生日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.birthday"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+
+	<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">文化程度</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.education">
+                            <option>研究生</option>
+                            <option>大学本科生</option>
+                            <option>大学专科或专科学校</option>
+                            <option>中等专业学校或中等技术学校</option>
+                            <option>技术学校</option>
+                            <option>高中</option>
+                            <option>初中</option>
+                            <option>小学</option>
+                            <option>文盲</option>
+                            <option>未知</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">专业类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.professional">
+                            <option>文科</option>
+                            <option>理科</option>
+                            <option>工科</option>
+                            <option>经济类</option>
+                            <option>管理类</option>
+                            <option>法律类</option>
+                            <option>医药类</option>
+                            <option>艺术类</option>
+                            <option>体育类</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行政级别</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.administrative"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">学习经历</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.learn_his" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">政治面貌</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.politics_status">
+                            <option>党员</option>
+                            <option>群众</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职称</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.headship">
+                            <option>高级会计师</option>
+                            <option>高级工程师</option>
+                            <option>无</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">职务</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.duties">
+                            <option>董事长</option>
+                            <option>总经理</option>
+                            <option>经理</option>
+                            <option>厂长</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">就职日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.inaug_date" pattern="{{pattern.date}}" title="日期格式错误！" ng-blur="inaug_date()"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">籍贯</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.birth_place"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">爱好</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.hobby"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">户口所在地</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.birthday_place"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">现住址</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.now_live_place"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">工作简历</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.work_history"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">奖励及处分</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.reward_dis"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">近三年工作业绩</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.recent_results" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">不良记录</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.bad_remark"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">持有护照</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.have_no">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">家人在国外</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.foreign_family">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">是否是董事会成员</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.is_directors_members">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">有无证件复印件</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.principal.is_cert_copy">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">联系电话</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.phone" pattern="{{pattern.telephone}}" title="联系号码错误！"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">兼职情况</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.part_time"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">与法人代表关系</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.relation_lay"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">分工情况</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.division_labor"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.principal.remark" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+</div>
+</form>

@@ -1,0 +1,207 @@
+<div class="form-horizontal" role="form" name="realityForm">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-5">
+                <button type="button" class="btn btn-primary" ng-show="editFlag" ng-click="save()">保存</button> 
+                <button type="button" class="btn btn-primary" ng-hide="editFlag" ng-click="edit()">修改</button> 
+                <button type="button" class="btn btn-primary" ng-show="editFlag" ng-click="cancel()">清除</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label label-sm">开发商名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control input-sm" placeholder="" ng-model="data.real_estate_developers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label label-sm">建房单位</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control input-sm" placeholder="" ng-model="data.build_unit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">房屋总价</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="" ng-model="data.build_price">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">首付金额</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">首付比例</label>
+        
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">按揭贷款成数</label>
+        
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">房产套内面积<br/>/建筑面积</label>
+        
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="">
+                            <span class="input-group-addon">平方米</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">房屋地址</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">是否开发商担保</label>
+        
+                    <div class="col-md-7">
+                        <select class="form-control input-sm">
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">自营贷款金额</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">自营贷款利率</label>
+        
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="">
+                            <span class="input-group-addon">‰</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">自营贷款借款<br/>合同号</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">公积金贷款金额</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">公积金贷款利率</label>
+        
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">其他担保方式</label>
+        
+                    <div class="col-md-7">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">其他说明<br/> (限100个汉字)</label>
+        
+                    <div class="col-md-8">
+                        <textarea class="form-control input-sm" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="form-horizontal" role="form" name="discountSearchForm" ng-controller="discountSearchController">
+    <div class="form-body">
+        <fieldset name="queryCondition">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control input-sm" ng-model="discount_about" >
+                    <option value="contract_no">贴现合同号</option>
+                    <option value="bill_no">票号</option>
+                    <option value="batch_no">批量票号</option>
+                </select>
+            </div>
+            <div class="col-md-3"  >
+                <button type="button" ng-show="discount_about!='batch_no'"class="btn btn-primary" ng-click="searchDiscount()" >查询</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#imagePrint"  ng-click="discountPrint()" >打印</button>
+            </div>
+
+        </div>
+        <br>
+        <div class="row" ng-show = "discount_about != 'batch_no'" >
+                <div class="col-md-3"  >
+                    <div class="input-group">
+                     <span class="input-group-addon">编号:</span><input type="text" class="form-control " ng-model="discount_no" />
+                     </div>
+                </div>
+        </div>
+        <br>
+        <div class="row" ng-if="discount_about == 'contract_no'" >
+                <div class="col-md-3"  >
+                    <div class="input-group">
+                     <span class="input-group-addon">起始时间:</span><input type="text" class="form-control " ng-model="$parent.start_time" />
+                     </div>
+                </div>
+                <div class="col-md-3"  >
+                    <div class="input-group">
+                     <span class="input-group-addon">终止时间:</span><input type="text" class="form-control " ng-model="$parent.end_time" />
+                     </div>
+                </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                    <input class="form-control input-sm"  ng-show="discount_about=='batch_no'"  id = "batch_bill_search" type="file"  />
+            </div>
+            <div class="col-md-3" >
+                <button type="button" class="btn btn-primary"  ng-show="discount_about=='batch_no'" ng-click="batchBill()">上传</button>
+            </div>
+        </div>
+        </fieldset>
+        <hr/>
+        <br>
+        <table ng-if="table_show" class ="table table-bordered" style="text-align:center;" >
+            <tr>
+                <td>票号</td>
+                <td>正面</td>
+                <td>反面</td>
+                <td>查询查复</td>
+                <td>凭证</td>
+                <td>备注</td>
+                <td>复核</td>
+            </tr>
+            <tr ng-repeat="it in discount_imgList">
+               <td style="vertical-align: middle;"> {{it.bill_no}} </td> 
+               <td style="vertical-align: middle;" > 
+                        <img style="width:200px;height:200px;" data-toggle="modal"  data-target="#imageShowId"  ng-click="imgShow(it.front_url)" src="{{it.front_url}}"/> 
+                        <br> <button class="btn btn-primary" data-toggle="modal"  data-target="#imagePrint"  ng-click="imgPrint(it.front_url)"> 打印</button>  
+               </td> 
+               <td style="vertical-align: middle;" > 
+                        <img style="width:200px;height:200px;" data-toggle="modal"  data-target="#imageShowId"  ng-click="imgShow(it.back_url)" src="{{it.back_url}}"/>
+                        <br> <button class="btn btn-primary" data-toggle="modal"  data-target="#imagePrint"  ng-click="imgPrint(it.back_url)"> 打印</button> 
+               </td> 
+               <td style="vertical-align: middle;" > 
+                        <img style="width:200px;height:200px;" data-toggle="modal"  data-target="#imageShowId"  ng-click="imgShow(it.check_url)" src="{{it.check_url}}"/> 
+                        <br> <button class="btn btn-primary" data-toggle="modal"  data-target="#imagePrint"  ng-click="imgPrint(it.check_url)"> 打印</button> 
+               </td> 
+               <td style="vertical-align: middle;" > 
+                        <img style="width:200px;height:200px;" data-toggle="modal"  data-target="#imageShowId"  ng-click="imgShow(it.cert_url)" src="{{it.cert_url}}"/> 
+                        <br> <button class="btn btn-primary" data-toggle="modal"  data-target="#imagePrint"  ng-click="imgPrint(it.cert_url)"> 打印</button> 
+               </td> 
+               <td style="vertical-align: middle;" > 
+                        <textarea style="width:200px;height:100px;" ng-model="it.img_remark" > </textarea>
+               </td> 
+               <td style="vertical-align: middle;" >  
+                    <button type="button" class="btn btn-primary" ng-disabled="it.img_check=='通过'" ng-click="checkImage(it.bill_no,'通过',it.img_remark,$index)" class="btn btn-primary">通过</button>
+                    <button type="button" class="btn btn-primary" ng-click="checkImage(it.bill_no,'不符',it.img_remark,$index)" class="btn btn-primary"> 不符</button>
+               </td>
+            </tr>
+</table>
+
+        <div ng-repeat="img in imgList">
+            <iframe id='iframe' width='100%' height='600px'   scroll="no"></iframe>
+        </div>
+
+
+    <!--  弹出打印界面  -->
+    <div class="modal fade" id ='imagePrint' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">打印</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id='iframe' width='100%' height='600px' src="{{printUrl}}"  scroll="no"></iframe>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+
+    <!--  显示图片原样  -->
+    <div class="modal fade" id ='imageShowId' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">图片</h4>
+            </div>
+            <div class="modal-body">
+                <img  src="{{img_show}}"/>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button> </button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+
+    </div>
+</div>

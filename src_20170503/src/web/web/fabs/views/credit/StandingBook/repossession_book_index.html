@@ -1,0 +1,186 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="repossessionBookController">
+        <div class="col-md-12">
+            <div name="queryForm" class="">
+                <fieldset name="queryCondition">
+                     <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">客户编号:</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="queryCond.cus_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">借款合同号:</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="queryCond.transaction_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset name="toolbar">
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10 col-md-offset-1">
+                            <button type="button" class="btn btn-primary" ng-click="newStandBook()">新增台账</button>
+                            <button type="submit" class="btn btn-primary" ng-click="queryStandBook()">查询</button>
+                            <button type="button" class="btn btn-primary" ng-click="exportBook()">导出台账</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset name="queryResult" >
+                    <div class="row">
+
+                        <table class="table">
+                            <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                                <thead style="white-space:nowrap;">
+                                    <tr>
+                                        <th ng-repeat='th in tableHead' ng-bind='th'> </th>
+                                    </tr>
+                                </thead>
+                                <tbody style="white-space:nowrap;">
+                                    <tr ng-repeat="d in tableData">
+                                        <td ng-bind="d.book.id"></td>
+                                        <td ng-bind="d.application.handle_branch"></td>
+                                        <td ng-bind="d.party.name"></td>
+                                        <td ng-bind="d.lend_transaction.amount"></td>
+                                        <td ng-bind="d.repossession.date"></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                    点击操作 <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                   <li ng-show="d.app_status=='暂存'">
+                                                        <a ng-click="onDelete(d.app_id)">撤销</a>
+                                                    </li>
+                                                   <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a ng-click="onDetail(d)">查看/编辑详情</a>
+                                                    </li>
+                                                  </ul>
+                                                </div>
+                                            </div>  
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                        </table>
+                        <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <!-- 客户贷款搜索modal-->
+        <div class="modal fade " name="searchLoanModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">贷款搜索</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div name="custQueryCond">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">交易ID:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="loan_search.transaction_id"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">客户名称:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="loan_search.cust_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">客户类型:</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control input-sm" ng-model="loan_search.cust_type">
+                                                <option value='person'>个人客户</option>
+                                                <option value='org'>公司客户</option>
+                                                <option value='group'>集团客户</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">担保方式:</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control input-sm" ng-model="loan_search.gty_type">
+                                                <option>保证</option>
+                                                <option>保证金</option>
+                                                <option>抵押</option>
+                                                <option>质押</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-md-offset-9">
+                                  <button class="btn btn-primary" ng-click="searchLoan()">查询</button>
+                                </div>
+                                <div class="col-md-1">
+                                  <button class="btn btn-primary" ng-click="clearLoanSearch()">清空</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="resultTable">
+                                <table name="loanListTable" class="table">
+                                    <div class="table table-striped table-advance table-hover flip_content" style="overflow-x:auto; overflow-y:auto;">
+                                        <thead style="white-space:nowrap;">
+                                            <tr> 
+                                                <th ng-repeat='th in loanListTH' ng-bind='th'> </th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody style="white-space:nowrap;">
+                                            <tr ng-repeat="d in loanTableData" ng-mousedown="choseLoan(d)" >
+                                                <td ng-bind="d.application.id"></td>
+                                                <td ng-bind="d.party.no"></td>
+                                                <td ng-bind="d.party.name"></td>
+                                                <td ng-bind="d.lend_transaction.transaction_id"></td>
+                                                <td ng-bind="d.application.status"></td>
+                                            </td>
+                                        </tbody>
+                                    </div>
+                                </table>
+                        </div>
+                    </div> <!-- modal-body -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-disabled="confirmBtnDisabled" ng-click="loanSearchConfirm()">确定</button>
+                        <button type="button" class="btn btn-default"  ng-click="loanSearchCancel()">取消</button>
+                    </div> <!-- modal-footer -->
+                </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+    </div>
+</div>
+

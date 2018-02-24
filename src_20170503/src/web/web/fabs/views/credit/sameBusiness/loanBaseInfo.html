@@ -1,0 +1,114 @@
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">合同编号</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control"  ng-model="form_data.application_info.credit_con_no" ng-disabled=true />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">产品名称</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control"  ng-model="form_data.application_info.pj_type" ng-disabled='disabled_flag'/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发行总额</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control"  ng-model="money.all_amount" ng-disabled='disabled_flag' ng-blur="all_amount(money.all_amount)"/>
+                    <span class="input-group-addon">元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发行价格</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7"  ng-model="money.amount" ng-disabled='disabled_flag' ng-blur="amount(money.amount)"/>
+                    <span class="input-group-addon">元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">发行日</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control" ng-model="form_data.application_info.handle_date" ng-blur="handle_date(form_data.application_info.handle_date)" ng-disabled='disabled_flag'/>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">起息日</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control"  ng-model="form_data.application_info.apply_date" ng-blur="from_date(form_data.application_info.apply_date)" title="日期格式错误！" ng-disabled='disabled_flag'/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">兑付日</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control"  ng-model="form_data.application_info.thur_date" ng-blur="thur_date(form_data.application_info.thur_date)" title="日期格式错误！" ng-disabled='disabled_flag' />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">公告日</label>
+            <div class="col-md-7">
+                <div class="input">
+                    <input type="text" class="form-control"  ng-model="form_data.application_info.first_drawing_date" ng-blur="first_drawing_date(form_data.application_info.first_drawing_date)" title="日期格式错误！" ng-disabled='disabled_flag' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label">票面利率</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-disabled='disabled_flag' ng-model="form_data.application_info.product_rate"/>
+                    <span class="input-group-addon">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-4 control-label ">调整利息</label>
+            <div class="col-md-7">
+               <div class="input-group ">
+                   <input class=" form-control" type="text" ng-disabled='disabled_flag' ng-model="form_data.application_info.interest"  />
+                    <span class="input-group-addon">元</span>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>

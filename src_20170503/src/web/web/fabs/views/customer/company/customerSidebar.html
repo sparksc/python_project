@@ -1,0 +1,33 @@
+<div class="panel-group" id="custSidebar" ng-control="">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#custSidebar" href="#custBaseInfo">
+                    对公客户信息
+                </a>
+            </h4>
+        </div>
+        <div id="custBaseInfo" class="panel-collapse collapse in">
+            <ul class="list-group">
+                <a href="#" class="list-group-item" ng-click="displayInfo('companyInformation')">基本信息</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('socialInsurance')">董事会成员</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('principal')">主要负责人</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('controlledCompany')">公司结构信息</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('investmentManagement')">投资联营</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('capitalStructure')">资本组成结构</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('clientCurriculum')">客户履历</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('otherAsset')">相关文档</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('financialStatements')">财务报表</a>
+                <a href="#" class="list-group-item" ng-click="displayInfo('companyImage')">客户影像资料</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--
+    <ul>
+        <li><button type="button" class="btn btn-link" ng-click="displayInfo('')">个人提供相关资料</button></li>
+       <li><button type="button" class="btn btn-link" ng-click="displayInfo('')">个人信用评级信息</button></li>
+    </ul>
+</div>
+-->

@@ -1,0 +1,247 @@
+<div class="form-horizontal" role="form" id="employmentsRecord" ng-show="display_info == 'employmentsRecord'">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#employmentsRecordModal" ng-click="new_record()">新增</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th  style="white-space:nowrap;" ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td style="white-space:nowrap;">{{data.begin_date}}</td>
+                            <td style="white-space:nowrap;">{{data.end_date}}</td>
+                            <td style="white-space:nowrap;">{{data.company}}</td>
+                            <td style="white-space:nowrap;">{{data.department}}</td>
+                            <td style="white-space:nowrap;">{{data.title}}</td>
+                            <td style="white-space:nowrap;">{{data.register_date}}</td>
+                            <td style="white-space:nowrap;">{{data.update_date}}</td>
+                            <td style="white-space:nowrap;">
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#employmentsRecordModal" ng-click="view_data($index)">详情</button> 
+                                <button type="button" class="btn btn-primary btn-xs" ng-click="delete_record($index)">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='employmentsRecordModal' role="dialog">
+       <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">开始日期</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text" ng-model="modal_data.begin_date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">结束日期</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text" ng-model="modal_data.end_date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">所在单位</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text" ng-model="modal_data.company"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">单位性质</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm" ng-model="modal_data.company_type">
+                                        <option>事业、机关</option>
+                                        <option>军队</option>
+                                        <option>国有企业</option>
+                                        <option>集体企业</option>
+                                        <option>三资企业</option>
+                                        <option>个人独资企业</option>
+                                        <option>个体</option>
+                                        <option>其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">单位电话</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text" ng-model="modal_data.telphone"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">单位地址</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text" ng-model="modal_data.address"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">单位地址邮编</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text" ng-model="modal_data.post_code"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">所在部门</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text" ng-model="modal_data.department"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">担任职务</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text" ng-model="modal_data.title"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">月收入</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text" ng-model="modal_data.income"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">备注</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <textarea  class="form-control" rows="3"  type="text"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记人</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="modal_data.register_teller" />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记单位</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="modal_data.register_branch" />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="modal_data.register_date" />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">更新日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="modal_data.update_date" />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="save_data(modal_data)">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+</div>
+
+

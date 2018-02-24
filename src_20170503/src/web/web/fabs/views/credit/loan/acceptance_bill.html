@@ -1,0 +1,586 @@
+<!-- 承兑汇票 -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款人客户代码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请书号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">经办机构</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">经办人</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">通过日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">业务币种</label>
+            <div class="col-md-7">
+                <select class="form-control" ng-model="$parent.data.transaction_info.currency_code">
+                    <option value="CNY">人民币</option>
+                    <option value="USD">美元</option>
+                    <option value="EUR">欧元</option>
+                    <option value="GBP">英镑</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">申请金额</label>
+            <div class="col-md-7">
+            <!-- -->
+                <input type="text" class="form-control"  ng-model="$parent.data.transaction_info.amount" placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">货款形式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">货款期限</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">银承起始日</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">银承终止日</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">执行利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">逾期加罚比例</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">逾期利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">挪用加罚比例</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">挪用利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">计息方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">计息方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款期数</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">自动还款账号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否银团贷款</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">借款合同号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="row">
+<div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否敞口签票</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">主要担保方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">是否有其他担保方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贷款用途</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+ <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">还款来源</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">备注<br/></label>
+            <div class="col-md-9">
+                <textarea class="form-control" ng-model="$parent.data.application_info.remark" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">基本授信使用</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">转登日期</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+	</div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业门类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业大类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	</div>
+<div class="row">
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业中类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">行业小类</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	 <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">营销柜员号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">营销柜员名称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">战略新型产业类型</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+	  <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">工业转型升级标志</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control"   placeholder="" >
+            </div>
+        </div>
+    </div>
+ <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">贸易合同号</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                     <input type="text" class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-md-4 control-label">货物名称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">手续费比例</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                     <input type="text" class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">手续费金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">手续费交付方式</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                     <input type="text" class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">是否我行汇票</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+ <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">付款行全称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">出票人开户银行</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+	
+	
+</div>
+
+<div class="row">
+ <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">出票人账号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">出票人全称</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+	
+	
+</div>
+
+<div class="row">
+ <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">质押票号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">保证金账号</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+	 <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">保证金额</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">保证金比例</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+	
+	
+</div>
+
+
+
+<div class="row">
+ <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">保证金计息方式</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">保证金执行利率</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+	
+	
+<div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">是否为滚动签发</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+   </div>
+		
+ <div class="row">
+        <button type="button" class="btn btn-primary" ng-hide="editFlag">保存</button>
+        <button type="button" class="btn btn-primary" ng-hide="editFlag">取消</button>
+        <button type="button" class="btn btn-primary" ng-show="False">修改</button>
+    </div>
+<script type="text/javascript">
+    function submit_form(){
+        var data = new FormData();
+        file = $('#jfyang_file').get(0).files[0];
+        data.append('upload_file',file);
+        $.ajax({
+            url:'http://192.168.10.119:3000/img/',
+            type:'POST',
+            data:data,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+   function getObjectURL(file) {
+        var url = null ; 
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    } 
+</script>

@@ -1,0 +1,38 @@
+<form  ng-controller='examineController' name='examine_form' ng-submit='save()' class="form-horizontal" role="form"  style="overflow-x:yes; overflow-y:yes;">
+    <div class="form-body">
+        <div ng-show=" flag==false ">
+        <button type="submit"  class="btn btn-primary"  >保存</button>
+
+        <button type="button" ng-click='edit()' class="btn btn-primary" >修改</button>
+        <button type="button" ng-click="saveReport()" ng-show = 'examine_approve.id' class="btn btn-primary"  >生成报告</button>
+        </div>
+        <hr/>
+         <div class="row" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款意见类型</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" ng-model="examine_approve.credit_type" ng-disabled="edit_flag" ng-change='changeRemark()' >
+                                <option value='个人经营性贷款'>个人经营性贷款</option>
+                                <option value='流动资金贷款'>流动资金贷款</option>
+                                <option value='担保公司担保贷款'>担保公司担保贷款</option>
+                                <option value='保费贷款'>保费贷款</option>
+                                <option value='签发银行承兑汇票'>签发银行承兑汇票</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">签署意见</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control"  ng-model="examine_approve.remark" ng-disabled="edit_flag"  rows="11"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+            <iframe id='examine_report' width='100%' height='600px' style='display:none' scroll="no"></iframe>
+    </div>
+</form>

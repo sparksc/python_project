@@ -1,0 +1,327 @@
+<div class="form-horizontal"  role="form" >
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button type="button" ng-click="onSave()"  class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click="onEdit()"  class="btn btn-primary" >修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">台账申请号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="book.litigation_book.id" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户代码</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="book.party.no" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户姓名</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-model="book.party.name" ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">合同号</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7" ng-model="book.contract.contract_no" ng-disabled=true>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">当前状态</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7" ng-model="book.litigation_book.status" ng-disabled=true>
+                    </div>
+                </div>
+            </div>
+           <div class="col-md-6" ng-hide='book.litigation_book.id'>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">起诉时间</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7" ng-model="book.litigation_book.from_date" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show='book.litigation_book.id' class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">下一流程</label>
+                    <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="book.litigation_book_log.name" ng-disabled="edit_flag">
+                                <option value='立案' >立案</option>
+                                <option value='开庭未判' >开庭未判</option>
+                                <option value='执行调解' >执行调解</option>
+                                <option value='判决'>判决</option>
+                                <option value='借款人上诉'>借款人上诉</option>
+                                <option value='申请执行' >申请执行</option>
+                                <option value='正在执行'>正在执行</option>
+                                <option value='经侦报案' >经侦报案</option>
+                                <option value='和解结案' >和解结案</option>
+                                <option value='撤诉' >撤诉</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记时间</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7" ng-model="book.litigation_book_log.date" ng-disabled="edit_flag" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div name="FiveLevelBaseInfoForm" >
+            <div class="row">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">业务种类</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.product.name" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款形式</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.type" ng-disabled="true">
+                                <option value='新增' >新增</option>
+                                <option value='借新还旧' >借新还旧</option>
+                                <option value='换旧增新'>换旧增新</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款币种</label>
+                        <div class="col-md-7">
+                            <select class="form-control" ng-model="book.lend_transaction_info.currency_code" ng-disabled="true">
+                                <option value="CNY">人民币</option>
+                                <option value="USD">美元</option>
+                                <option value="EUR">欧元</option>
+                                <option value="GBP">英镑</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款金额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.amount" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款余额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.balance" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">欠息金额</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.interest_balance" ng-disabled="true">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">保证金比例</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.gty_percent" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">主要担保方式</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.gty_main_method" ng-disabled="edit_flag==0">
+                                <option value='信用'>信用</option>
+                                <option value='保证'>保证</option>
+                                <option value='抵押'>抵押</option>
+                                <option value='质押'>质押</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款开始日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.from_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.thur_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">展期到期日期</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.extend_date" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">逾期天数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.pass_days" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">天</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">连续违约次数</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.default_times" ng-disabled="edit_flag==0">
+                                <span class="input-group-addon">次</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">贷款用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.lend_transaction_info.purpose_type" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">实际用途</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-7" placeholder="" ng-model="book.usage_cur" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否挪用</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="book.bmisuse" ng-disabled="edit_flag==0">
+                                <option value='是' >是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">是否垫款</label>
+                        <div class="col-md-7">
+                            <select type="text" class="form-control col-md-7" placeholder="" ng-model="book.badvance" ng-disabled="edit_flag==0">
+                                <option value='是'>是</option>
+                                <option value='否'>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">还款来源</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="book.lend_transaction_info.repayment_from" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">财务分析</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="book.financial_memo" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">担保分析</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control col-md-10" placeholder="" ng-model="book.gty_memo" ng-disabled="edit_flag==0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

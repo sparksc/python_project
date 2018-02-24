@@ -1,0 +1,64 @@
+<!---
+  电子档案影像
+-->
+
+<div class="form-horizontal" role="form" name="imageForm" ng-controller="imageController">
+
+    <div class="form-body" ng-if = "image_about != 'invest'">
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-click="searchEle()" >查询</button>
+            </div>
+            <div class="col-md-3">
+                    <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary"  ng-click="addPdf()">上传</button>
+            </div>
+
+        </div>
+        <div ng-repeat="pdf in pdf_list">
+            <iframe id='iframe' width='100%' height='600px' src="{{pdf.url}}"  scroll="no"></iframe>
+        </div>
+    </div>
+
+    <div class="form-body" ng-if = "image_about == 'invest'" >
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control input-sm" ng-model="$parent.invest_about" >
+                        <option value="invest_con">投资合同</option>
+                        <option value="gua_info">担保资料</option>
+                        <option value="face_info">面签资料</option>
+                        <option value="contact_info">联系人名片</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-click="investSearch()" >查询</button>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                  <input class="form-control input-sm" id = "invest_arch" type="file" multiple="multiple" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary"  ng-click="investUpload()">上传</button>
+            </div>
+        </div>
+
+        <div ng-repeat="pdf in pdf_list">
+            <iframe id='iframe' width='100%' height='600px' src="{{pdf.url}}"  scroll="no"></iframe>
+            <br>
+            <a class="btn btn-primary" ng-click="pdfDelete(pdf.url)" >删除</a>
+        </div>
+        <div class="xd-imgBox">
+            <div class="pull-left xd-modalImg" ng-repeat="img in img_list">
+                <img src="{{img.url}}" >
+                <br>
+                <a class="btn btn-primary" ng-click="imageDelete($index,img.url)" >删除</a>
+            </div>
+        </div>
+    </div>
+
+</div>

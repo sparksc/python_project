@@ -1,0 +1,302 @@
+<form name="myForm" ng-submit="onSubmit()">
+<div class="row">
+    <input type="submit" class="btn btn-primary"/>
+    <button type="button" ng-click="onSave()" class="btn btn-primary">保存</button>
+    <button type="button" ng-click="onEdit()" class="btn btn-primary">修改</button>
+
+</div>
+</br>
+<div class="row" name="applicationButtonGroup">
+    <div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-3 pull-right">
+                <button class="btn btn-primary" data-toggle="collapse" href="#examineComment"
+                        ng-show='data.auditsale.id'>签署结果
+                </button>
+                <div class="collapse" id="examineComment"
+                     style="position:absolute;background-color:White;z-index:1024;">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">意见:</label>
+
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="6" ng-model="result"
+                                          ng-disabled="submitedFlag"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">
+                                同意
+                            </button>
+                            <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right"
+                                    ng-disabled="submitedFlag">不同意
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">核销申请编号<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.party.au_number"required />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">客户代码</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.party.number"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">账号</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.auditsale.con_id" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">通过日期</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.pass_date" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">业务品种<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <select required class="form-control input-sm"
+                        ng-init="  '对私贷款展期'"
+                        ng-model="data.auditsale.biz_type">
+                    <option value="对私贷款展期">对私贷款核销</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">经办机构</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.org_id" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">经办人</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.auditsale.opt_by" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">申报金额<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.ext_money"  required/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">合同编号<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7" ng-model="data.auditsale.cus_number"  required/>
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">借款日期</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="data.auditsale.bou_date"  />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">登记机构<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.reg"  required/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">登记人<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.reg_name"  required/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">登记日期<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7" ng-model="data.auditsale.reg_date"  required/>
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">回收金额</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="data.auditsale.ret_money" />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">回收日期</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7" ng-model="data.auditsale.ret_date" />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">核销金额</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="data.auditsale.au_money" />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">核销类型<font color="#FF0000">*</font></label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7" ng-model="data.auditsale.au_type"  required/>
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">核销日期</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="data.auditsale.au_date"  />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">核销单位</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-7" ng-model="data.auditsale.au_unit"  />
+                    <span class="input-group-addon">%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">借据号</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.cus_id" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">批准部门</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control col-md-7" ng-model="data.auditsale.pass_unit"  />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-3 control-label">申请备注</label>
+
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="data.auditsale.other" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</form>

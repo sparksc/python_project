@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js" data-ng-app="YSP"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js" data-ng-app="YSP"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" data-ng-app="YSP">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <title data-ng-bind="'温岭农村商业银行| ' + $state.current.data.pageTitle"></title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper-3.2.7.min.css">
+    <link rel="stylesheet" href="assets/css/iconfont.css">
+
+    <link href="assets/scripts/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css"/>
+
+    <link id="ng_load_plugins_before"/>
+
+    <link rel="shortcut icon" href="jsp.jpg"/>
+
+    <!-- start resources for datepicker -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- end resources for datepicker -->
+</head>
+
+
+<body class="xd-bodyBG" ng-controller="AppController" onload="zoom()">
+
+<!-- 状态效果 -->
+<div ng-spinner-bar class="page-spinner-bar">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>  
+
+
+
+
+<div ng-if="is_login" class="xd-h100">
+    <!-- 头部 -->
+    <div data-ng-include="'views/base/header.html'"
+         class="page-header navbar navbar-fixed-top"  style="z-index:1050;">
+    </div>
+
+    <div class="clearfix">
+    </div>
+
+    <div class="xd-pageMain xd-bodyBG" id="page_sidebar">
+        <!-- 左边菜单栏-->
+        <asid class="pull-left xd-mainLeft xd-pre" data-ng-include="'views/base/sidebar.html'"
+              data-ng-controller="sidebarController">
+        </asid>
+
+        <section class="pull-left xd-mainRight" ng-controller="pageContentController">
+            <div class="xd-rightPanel">
+                <a href="javascript:;" id="body_switch" class="xd-bodySwitch xd-txt-titleBlue xd-switchBG btn"><span
+                        class="iconfont icon-triangle-left"></span></a>
+
+                <div id="main-page-content" class="xd-bg-white xd-contentPanel">
+                    <div id="navtab" class="xd-contentTitle xd-panelTopBG "></div>
+                    <div class="xd-dataPanel">
+                        <div id="xd-bar">
+                        </div>
+
+                        <div class="xd-dataContent">
+                            <div id="TabContent"></div>
+                        </div>
+                        <div class="xd-clr"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="xd-clr"></div>
+    </div>
+</div>
+
+<div class="xd-loginPanel" ng-if="!is_login" ng-controller="loginCtrl">
+    <div class="xd-loginBox">
+        <div class="xd-loginHead xd-loginBG">
+            <div class="xd-logo"></div>
+        </div>
+        <div class="xd-loginMain">
+            <form id="loginForm" name="loginForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-md-3 control-label">用户名</label>
+
+                    <div class="col-md-8">
+                        <input type="text" ng-model="username" class="form-control input-lg" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-md-3 control-label">密&nbsp;&nbsp;码</label>
+
+                    <div class="col-md-8">
+                        <input type="password" ng-model="password" class="form-control input-lg" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+
+                    <div class="col-md-8">
+                        <button type="submit" ng-click="doLogin()" class="btn  btn-lg btn-primary  xd-loginBtn  pull-right">登&nbsp;&nbsp;录
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" name="loading" role="dialog" aria-hidden="true" data-backdrop="static">
+    <center>
+        <img style="top:50%;margin-top:300px;" src="views/base/loading.gif"/>
+    </center>
+</div><!--modal-->
+
+
+<!-- 底部 -->
+<div ui-view="footer" class="page-footer"></div>
+<div data-ng-include="'views/base/footer.html'" data-ng-controller="footerController" class="page-footer">
+</div>
+
+<div class="message" ng-show="message_count>0">
+   <div  class="alert alert-danger">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;<a  data-dismiss="alert" ng-click="menuForward({'name':'收件箱','location':'views/mbox/index.html'})">您收件箱有{{message_count}}条未读消息，请注意查收！<a>
+   </div>
+</div>
+
+<script src="assets/js/jquery-1.12.0.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/swiper-3.2.7.jquery.min.js"></script>
+
+<script src='assets/scripts/zTree_v3/js/jquery.ztree.all-3.5.min.js' type='text/javascript'></script>
+
+
+<!-- 全局 ANGULARJS PLUGINS -->
+<script src="assets/plugins/angular/angular.min.js" type="text/javascript"></script>
+<script src="assets/plugins/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
+<script src="assets/plugins/angular-touch/angular-touch.min.js" type="text/javascript"></script>
+<script src="assets/plugins/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
+<script src="assets/plugins/ocLazyLoad/dist/ocLazyLoad.min.js" type="text/javascript"></script>
+<script src="assets/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+<script src="assets/plugins/angular-resource/angular-resource.min.js" type="text/javascript"></script>
+<!-- Customer -->
+
+
+<script src="assets/scripts/application.js" type="text/javascript"></script>
+<script src="assets/scripts/appfunction.js" type="text/javascript"></script>
+<script src='assets/scripts/fabsobject.directive.js' type='text/javascript'></script>
+<script src="assets/scripts/checklist-model.js" type="text/javascript"></script>
+<script src="assets/scripts/branchpicker.directive.js" type="text/javascript"></script>
+<script src="views/base/footerController.js" type="text/javascript"></script>
+<script src="views/base/headerController.js" type="text/javascript"></script>
+<script src="views/base/sidebarController.js" type="text/javascript"></script>
+<script src="services/permission_service.js" type="text/javascript"></script>
+<script src="views/system_manager/users/user_controller.js" type="text/javascript"></script>
+<script src="views/system_manager/pagemaintenance/pagemaincontroller.js" type="text/javascript"></script>
+<script src="views/system_manager/pagemaintenance/usercontroller.js" type="text/javascript"></script>
+
+<script src="views/system_manager/permission/permission_controler.js" type="text/javascript"></script>
+
+<script src="views/credit/loanService.js" type="text/javascript"></script>
+<script src="views/base/pageContentController.js" type="text/javascript"></script>
+<script src="views/customer/person/customerController.js" type="text/javascript"></script>
+<script src="views/customer/company/customerController.js" type="text/javascript"></script>
+<script src="views/task/taskController.js" type="text/javascript"></script>
+<script src="views/credit/CommercialCredit/commercialController.js" type="text/javascript"></script>
+
+<script src="views/credit/personCredit/personCredit.js" type="text/javascript"></script>
+<script src="views/credit/companyCredit/companyCredit.js" type="text/javascript"></script>
+
+
+<script src="views/credit/credit.js" type="text/javascript"></script>
+
+<script src="views/credit/creditApplicationController.js" type="text/javascript"></script>
+
+<script src="views/credit/examineApplicationController.js" type="text/javascript"></script>
+<script src="views/credit/CommercialCredit/commercialController.js" type="text/javascript"></script>
+<script src="views/credit/acceptanceBill/acceptanceBillController.js" type="text/javascript"></script>
+<script src="views/credit/acceptanceBill/listBillController.js" type="text/javascript"></script>
+<script src="views/credit/discount/discountController.js" type="text/javascript"></script>
+<script src="views/credit/sameBusiness/sameBusinessController.js" type="text/javascript"></script>
+<script src="views/credit/invest/investController.js" type="text/javascript"></script>
+<script src="views/loan/contractRegistrationController.js" type="text/javascript"></script>
+<script src="views/credit/image/imageController.js" type="text/javascript"></script>
+<script src="views/credit/creditLevel/creditLevel.js" type="text/javascript"></script>
+<script src="views/uniteCredit/uniteCredit.js" type="text/javascript"></script>
+<script src="views/mainSearch/searchController.js" type="text/javascript"></script>
+
+<script src="views/credit/GuaranteeInformation/guaranteeInformationController.js" type="text/javascript"></script>
+<script src="views/credit/GuaranteeInformation/guaranty/guarantyController.js" type="text/javascript"></script>
+<script src="views/credit/CreditContract/guaranteeContractController.js" type="text/javascript"></script>
+<script src="views/credit/CreditApproval/approvalController.js" type="text/javascript"></script>
+<script src="views/credit/loanMoneyPay/loanMoneyPay.js" type="text/javascript"></script>
+<script src="views/systemMange/batchController.js" type="text/javascript"></script>
+<script src="views/credit/FiveLevel/afterLoanController.js" type="text/javascript"></script>
+<script src="views/credit/StandingBook/standingBookController.js" type="text/javascript"></script>
+<script src="views/credit/Repossession/repossessionController.js" type="text/javascript"></script>
+<script src="views/credit/Extension/extensionController.js" type="text/javascript"></script>
+<script src="views/credit/Adjustment/adjustmentController.js" type="text/javascript"></script>
+<script src="views/credit/Auditsale/auditsaleController.js" type="text/javascript"></script>
+<script src="views/credit/pageDistribute/pageController.js" type="text/javascript"></script>
+<script src="views/mbox/mboxController.js" type="text/javascript"></script>
+
+
+<script src="assets/scripts/app.js" type="text/javascript"></script>
+<script src="assets/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="assets/scripts/editform.js" type="text/javascript"></script>
+<!--<script src="views/loan/loanApplicationController.js" type="text/javascript"></script> -->
+
+<script src="views/credit/credit.js" type="text/javascript"></script>
+<script src="views/credit/companyCredit/companyCredit.js" type="text/javascript"></script>
+<script src="views/credit/creditApplicationController.js" type="text/javascript"></script>
+<script src="views/credit/personCredit/personCredit.js" type="text/javascript"></script>
+<script src="views/credit/examineApplicationController.js" type="text/javascript"></script>
+<script src="views/credit/CommercialCredit/commercialController.js" type="text/javascript"></script>
+<script src="views/credit/acceptanceBill/acceptanceBillController.js" type="text/javascript"></script>
+<script src="services/accthk_service.js" type="text/javascript"></script>
+<script src="views/credit/acceptanceBill/listBillController.js" type="text/javascript"></script>
+<script src="views/credit/discount/discountController.js" type="text/javascript"></script>
+<script src="views/credit/sameBusiness/sameBusinessController.js" type="text/javascript"></script>
+<script src="views/credit/invest/investController.js" type="text/javascript"></script>
+<script src="views/loan/contractRegistrationController.js" type="text/javascript"></script>
+<script src="views/credit/image/imageController.js" type="text/javascript"></script>
+<script src="views/credit/creditLevel/creditLevel.js" type="text/javascript"></script>
+<script src="views/uniteCredit/uniteCredit.js" type="text/javascript"></script>
+<script src="views/mainSearch/searchController.js" type="text/javascript"></script>
+<script src="views/credit/GuaranteeInformation/guaranteeInformationController.js" type="text/javascript"></script>
+<script src="views/credit/GuaranteeInformation/guaranty/guarantyController.js" type="text/javascript"></script>
+<script src="views/credit/CreditContract/guaranteeContractController.js" type="text/javascript"></script>
+<script src="views/credit/CreditApproval/approvalController.js" type="text/javascript"></script>
+<script src="views/credit/loanMoneyPay/loanMoneyPay.js" type="text/javascript"></script>
+<script src="views/systemMange/batchController.js" type="text/javascript"></script>
+<script src="views/credit/FiveLevel/afterLoanController.js" type="text/javascript"></script>
+<script src="views/credit/StandingBook/standingBookController.js" type="text/javascript"></script>
+<script src="views/credit/Repossession/repossessionController.js" type="text/javascript"></script>
+<script src="views/credit/Extension/extensionController.js" type="text/javascript"></script>
+<script src="views/credit/Adjustment/adjustmentController.js" type="text/javascript"></script>
+<script src="views/credit/Auditsale/auditsaleController.js" type="text/javascript"></script>
+<script src="views/credit/pageDistribute/pageController.js" type="text/javascript"></script>
+<script src="views/mbox/mboxController.js" type="text/javascript"></script>
+<script src="services/customerinfo_service.js" type="text/javascript"></script>
+
+
+<script src="services/t_para_service.js" type="text/javascript"></script>
+<script src="services/position.js" type="text/javascript"></script>
+<script src="services/ReportInfoService.js" type="text/javascript"></script>
+<script src="services/SqsReportService.js" type="text/javascript"></script>
+<script src="services/contract_check_service.js" type="text/javascript"></script>
+<script src="services/per_service.js" type="text/javascript"></script>
+<script src="services/con_check_service.js" type="text/javascript"></script>
+<script src="services/targetpermission_service.js" type="text/javascript"></script>
+<script src="services/branchmanagepermission_service.js" type="text/javascript"></script>
+<script src="services/mbox_service.js" type="text/javascript"></script>
+<script src="services/dkgsgxxz_service.js" type="text/javascript"></script>
+<script src="services/bgu_service.js" type="text/javascript"></script>
+<script src="services/bgs_service.js" type="text/javascript"></script>
+<script src="services/parameterpermission_service.js" type="text/javascript"></script>
+<script src="services/handinput_service.js" type="text/javascript"></script>
+<script src="services/bankinput_service.js" type="text/javascript"></script>
+<script src="services/depappoint_service.js" type="text/javascript"></script>
+<script src="services/staffrealtion_service.js" type="text/javascript"></script>
+<script src="services/paraset_service.js" type="text/javascript"></script>
+<script src="services/basicsalary_service.js" type="text/javascript"></script>
+<script src="services/eduallowance_service.js" type="text/javascript"></script>
+<script src="services/gsgxck_service.js" type="text/javascript"></script>
+<script src="services/gsgxdk_service.js" type="text/javascript"></script>
+<script src="views/report/customerinfo/customerinfoCtrl.js" type="text/javascript"></script>
+<script src="services/large_lossService.js" type="text/javascript"></script>
+<script src="services/dict_data_service.js" type="text/javascript"></script>
+<script src="services/staff_statusService.js" type="text/javascript"></script>
+<script src="services/cdgggx_service.js" type="text/javascript"></script>
+<script src="services/monsalaryService.js" type="text/javascript"></script>
+<script src="services/reportmag_Service.js" type="text/javascript"></script>
+<script src="services/manscoinput_service.js" type="text/javascript"></script>
+<script src="services/custhk_service.js" type="text/javascript"></script>
+<script src="services/subbranchdepfeeinput_service.js" type="text/javascript"></script>
+<script src="services/custHookMagService.js" type="text/javascript"></script>
+<script src="services/villageinput_service.js" type="text/javascript"></script>
+<script src='services/choose_service.js' type='text/javascript'></script>
+
+
+<script src='views/tpara/tparatypeCtrl.js' type='text/javascript'></script>
+<script src='views/tpara/treportypeCtrl.js' type='text/javascript'></script>
+<script src='views/tpara/tparaheaderCtrl.js' type='text/javascript'></script>
+<script src='views/tpara/tparadetailCtrl.js' type='text/javascript'></script>
+<script src='views/report/EBankInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/CreditCardAccountInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/EBankInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/LoanDetailInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/SavingAccountInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/CustomerDetailInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/CustomerBaseInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/DemandDepositInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgjbxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbrajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/YganjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbranjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgyanjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgybranjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgyajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgybrajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlbrajjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlanjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlbranjxxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/DepositInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/BankingAccountInfoCtrl.js' type='text/javascript'></script>
+<script src='views/report/SqsDemoCtrl.js' type='text/javascript'></script>
+<script src='views/report/XtengCtrl.js' type='text/javascript'></script>
+<script src='views/report/CkyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/DkyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/GyyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZyyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/DyyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/LcyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/LcacctlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/PosyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/AdbyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/TerminalyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/StockyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/GoldyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/AtmyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/CreditcardyxlrCtrl.js' type='text/javascript'></script>
+<script src='views/report/BranchManageCtrl.js' type='text/javascript'></script>
+<script src='views/report/CkcustlrCtrl.js' type='text/javascript'></script>
+<script src='views/loan_manage_xinchang/DkyxlrCtrl.js' type='text/javascript'></script>
+
+<script src='views/report/JgzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/YganzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgyajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgybrajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgyanzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/ZhgybranzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlbrajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlanzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/KhjlbranzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbrajzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbranzbCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgckgscxCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbrckgscxCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgdkgscxCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgbrdkgscxCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/newdepappointCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/newfinappointCtrl.js' type='text/javascript'></script>
+<script src='views/report/CkgsgxxzCtrl.js' type='text/javascript'></script>
+<script src='views/report/DkgsgxxzCtrl.js' type='text/javascript'></script>
+<script src='views/report/CkgsdbwhCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/selfdepappointCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/alldepappointCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/allfinappointCtrl.js' type='text/javascript'></script>
+<script src='views/appoint/opindepappointCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CkgsplzyCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DkgsplzyCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DkgsdbwhCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CdgggxlrCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CdgggxlrCkCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CdgggxSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/acct_custhookSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/cust_hookSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/accounthookSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/custHookMagCtrl.js' type='text/javascript'></script>
+<script src='views/manage/custHookMagBatchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/custHookspCtrl.js' type='text/javascript'></script>
+<script src='views/manage/acctHookspCtrl.js' type='text/javascript'></script>
+<script src='views/manage/etcfpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/wyfpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/deprendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/lcrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/ebankrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/thirdrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/posrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/machrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/ebankfpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/custrendCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepcPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LoanPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LcPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LcustPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LcustSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/EbankPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CardPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/InsPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/ThirdPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/MachPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/PosPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepaPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/GoldPreMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/staffAllHookMoveCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LoanSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepaSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepcSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LcSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/EbankSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/CardSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/InsSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/ThirdSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/MachSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/PosSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/GoldSearchCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepSpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/NotDepSpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepSingleCtrl.js' type='text/javascript'></script>
+<script src='views/manage/SingleSpCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepaSwcCtrl.js' type='text/javascript'></script>
+<script src='views/manage/LcSwcCtrl.js' type='text/javascript'></script>
+<script src='views/manage/DepCustCtrl.js' type='text/javascript'></script>
+<script src='views/manage/MainManCtrl.js' type='text/javascript'></script>
+<script src='views/manage/staffAllHookMoveCtrl.js' type='text/javascript'></script>
+<script src='views/system_manager/staff_statusController.js' type='text/javascript'></script>
+<script src='views/reportforms/JGDKController.js' type='text/javascript'></script>
+<!-- start resources for datepicker -->
+<script src='assets/plugins/moment/moment.js' type='text/javascript'></script>
+<script src='assets/plugins/bootstrap-daterangepicker/daterangepicker.js' type='text/javascript'></script>
+<script src='assets/plugins/angular-daterangepicker/js/angular-daterangepicker.js' type='text/javascript'></script>
+<!-- end resources for datepicker -->
+
+<!-- start Management -->
+<script src='views/system_manager/FingerprintManagementCtrl.js' type='text/javascript'></script>
+<script src='views/system_manager/PasswordManagementCtrl.js' type='text/javascript'></script>
+<script src='views/system_manager/BranchManagementCtrl.js' type='text/javascript'></script>
+<script src='views/system_manager/DeviceManagementCtrl.js' type='text/javascript'></script>
+<script src='views/system_manager/RegionManagementCtrl.js' type='text/javascript'></script>
+<script src='views/pe_contract_check/contract_check_controller.js' type='text/javascript'></script>
+<script src='views/system_manager/performance/per_con/per_controller.js' type='text/javascript'></script>
+<script src='views/system_manager/performance/con_look/conLook_controller.js' type='text/javascript'></script>
+<script src='views/system_manager/performance/con_set/conSet_controller.js' type='text/javascript'></script>
+<script src='views/system_manager/branch_group_user/bgu_controller.js' type='text/javascript'></script>
+<script src='views/system_manager/branch_group_staff/bgs_controller.js' type='text/javascript'></script>
+<script src='views/con_check/con_check_controller.js' type='text/javascript'></script>
+<script src='views/target_library/target_controller.js' type='text/javascript'></script>
+<script src='views/pe_contract_check/contract_check_controller.js' type='text/javascript'></script>
+<script src='views/report/pos_inputController.js' type='text/javascript'></script>
+<script src='views/report/atm_inputController.js' type='text/javascript'></script>
+<script src='views/system_manager/staff_relationController.js' type='text/javascript'></script>
+<script src='views/report/large_lossCtrl.js' type='text/javascript'></script>
+<script src="services/pos_inputService.js" type="text/javascript"></script>
+<script src="services/atm_inputService.js" type="text/javascript"></script>
+<script src='views/branch_manage/branch_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/index_query/parameter/parameter/parameter_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/index_query/parameter/input/hand/hand_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/index_query/parameter/input/phone/bank_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/index_query/parameter/input/loan/loan_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/index_query/parameter/input/e_bank/ebank_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/booking_management/parameter/paraset_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/pos_name/posname_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/pos_lev/poslev_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/salary/salary_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/edu/edu_controller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/basic/basic_messcontroller.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/base_pay/parameter/basic/basic_mess_virtualctrl.js' type='text/javascript'></script>
+<script src='views/report/BrjbxcCtrl.js' type='text/javascript'></script>
+<script src='views/report/YgjbxcCtrl.js' type='text/javascript'></script>
+
+
+
+<script src='views/credit/adujstDatapype/aCreditCtrl.js' type='text/javascript'></script>
+<script src='services/adjust_credit.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/month_salary/monsalaryCtrl.js' type='text/javascript'></script>
+<script src='views/performance_appraisal/month_salary/selfmonsalaryCtrl.js' type='text/javascript'></script>
+
+<script src='views/report/DkkhxdhCtrl.js' type='text/javascript'></script>
+<script src='services/dkkhxdh_service.js' type='text/javascript'></script>
+<script src='views/reportforms/org_depController.js' type='text/javascript'></script>
+<script src='views/reportforms/org_loanController.js' type='text/javascript'></script>
+<script src='views/reportforms/org_ebankController.js' type='text/javascript'></script>
+<script src='views/reportforms/org_midController.js' type='text/javascript'></script>
+<script src='views/reportforms/org_intController.js' type='text/javascript'></script>
+<script src='views/reportforms/reportmagC.js' type='text/javascript'></script>
+<script src='views/reportforms/man_depController.js' type='text/javascript'></script>
+<script src='views/reportforms/man_ebankController.js' type='text/javascript'></script>
+<script src='views/reportforms/man_dep_scoreCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loan_scoCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_scoCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_comCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_sco_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_per_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_add_comCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_add_scoCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_ebank_scoreCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loanController.js' type='text/javascript'></script>
+<script src='views/reportforms/man_intController.js' type='text/javascript'></script>
+<script src='views/reportforms/man_midController.js' type='text/javascript'></script>
+<script src='views/reportforms/org_credit_cardCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_credit_cardCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_creditcomController.js' type='text/javascript'></script>
+<script src='views/reportforms/com_dep_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_midCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_loan_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_ebank_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_int_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/subbranch_depfee_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/branch_depfee_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_depfee_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_bad_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_credit_cardCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/village_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/loan_person_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/loan_public_inputCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_card_repCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ManDepCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ManLoanCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ManMidCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ManOtherCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/TellerBusCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/TellerMidCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/TellerOtherCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ManRwdCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/TellerRwdCtrl.js' type='text/javascript'></script>
+<script src='services/loan_efile_input.js' type='text/javascript'></script>
+<script src='views/reportforms/man_creditcomCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/deposit_plan_parameterCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/loan_plan_parameterCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ebank_plan_parameterCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_dep_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loan_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_loan_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_creditcard_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_ebank_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_dep_score_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/transaction_codeCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_ebank_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_ebank_score_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_add_sal_newCtrl.js' type='text/javascript'></script>
+<script src='services/postmanagepermission_service.js' type='text/javascript'></script>
+<script src='views/authmanage/groupdataCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_all_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_mid_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_dep_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_loan_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_creditcard_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_ebank_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loan_sco_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_dep_timesCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loan_timesCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loan_ten_daysCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_dep_newCtrl1.js' type='text/javascript'></script>
+<script src='views/reportforms/org_dep_timesCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_dep_try_sal_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/com_bad_salnewCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/staff_sal_reportCtrl.js' type='text/javascript'></script>
+<script src="services/staff_sal_service.js" type="text/javascript"></script>
+<script src='views/reportforms/staff_sal_bigNewCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/staff_sal_hzreportCtrl.js' type='text/javascript'></script>
+<script src="services/staff_sal_hzservice.js" type="text/javascript"></script>
+<script src='views/reportforms/staff_sal_hzbigNewCtrl.js' type='text/javascript'></script>
+<script src="views/reportforms/compsleepCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/persleepCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/phonesleepCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/epaysleepCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/man_dep_hookCtrl.js" type="text/javascript"></script>
+<script src="services/staff_count_service.js" type="text/javascript"></script>
+<script src="views/reportforms/salary_countCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/crmCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/quarter_term_sale_atmCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/quarter_term_sale_mbankCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/man_loan_rewardsCtrl.js" type="text/javascript"></script>
+<script src='views/reportforms/addharvestCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/insuranceCtrl.js' type='text/javascript'></script>
+<script src='services/addharvestService.js' type='text/javascript'></script>
+<script src='services/insuranceService.js' type='text/javascript'></script>
+<script src='views/reportforms/quarter_term_sale_mbank_baseCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/quarter_term_sale_mbank_base_addCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/quarter_term_sale_mbank_resultCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/quarter_term_sale_mbank_result_sumCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/delegate_formCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/account_formCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/delegate_handCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/account_rankCtrl.js' type='text/javascript'></script>
+<script src='services/delegate_formService.js' type='text/javascript'></script>
+<script src='services/delegate_handService.js' type='text/javascript'></script>
+<script src='services/account_formService.js' type='text/javascript'></script>
+<script src='services/account_rankService.js' type='text/javascript'></script>
+<script src='views/reportforms/org_peo_countCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/teller_levelCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/branch_grade_reportCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_grade_reportCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/handmainCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/bank_profit_earningCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_grade_jdgCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/user_levelCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/user_extra_scoreCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/burankCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_loanconCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_levelCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/etc_importCtrl.js' type='text/javascript'></script>
+<script src='services/burankService.js' type='text/javascript'></script>
+<script src='services/handmainService.js' type='text/javascript'></script>
+<script src='services/man_gradejdgService.js' type='text/javascript'></script>
+<script src='services/org_levelService.js' type='text/javascript'></script>
+<script src='services/teller_levelService.js' type='text/javascript'></script>
+<script src='services/branch_grade_reportService.js' type='text/javascript'></script>
+<script src='services/user_levelService.js' type='text/javascript'></script>
+<script src='services/bank_pe_inputService.js' type='text/javascript'></script>
+<script src='services/user_extrascoreService.js' type='text/javascript'></script>
+<script src='views/reportforms/international_levelCtrl.js' type='text/javascript'></script>
+<script src='services/international_levelService.js' type='text/javascript'></script>
+<script src='views/reportforms/fin_sumCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/man_funong_cardCtrl.js' type='text/javascript'></script>
+<script src='services/branch_funong_cardService.js' type='text/javascript'></script>
+<script src='views/reportforms/branch_funong_cardCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/org_funong_cardCtrl.js' type='text/javascript'></script>
+<script src='services/ebills_managerService.js' type='text/javascript'></script>
+<script src='views/ebills/ebills_hookCtrl.js' type='text/javascript'></script>
+<script src='views/ebills/ebills_hook_cunkuanCtrl.js' type='text/javascript'></script>
+<script src='views/ebills/ebills_hook_hisCtrl.js' type='text/javascript'></script>
+<script src='views/ebills/ebills_hook_org_standCtrl.js' type='text/javascript'></script>
+<script src='views/ebills/report_ebills_hook_orgCtrl.js' type='text/javascript'></script>
+<script src="views/ebills/ebills_hook_onorgCtrl.js" type="text/javascript"></script>
+<script src="views/ebills/cunkuan_onorgCtrl.js" type="text/javascript"></script>
+<script src="views/ebills/wandian_org_standCtrl.js" type="text/javascript"></script>
+<script src="views/ebills/wandian_cunkun_orgCtrl.js" type="text/javascript"></script>
+<script src='views/reportforms/meregeutil.js' type='text/javascript'></script>
+<script src='views/reportforms/man_out_balanceCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/ebank_replaceCtrl.js' type='text/javascript'></script>
+<script src='services/ebank_replaceService.js' type='text/javascript'></script>
+<script src='views/reportforms/man_all_sco_newCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/teller_volCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/teller_vol_detailCtrl.js' type='text/javascript'></script>
+<script src='views/report/org_flow_discountCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/teller_volume_adjustCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/caution_depCtrl.js' type='text/javascript'></script>
+<script src='views/reportforms/lobby_manager_trans_countCtrl.js' type='text/javascript'></script>
+<script src='services/counter_fine_amount_service.js' type='text/javascript'></script>
+<script src='services/hall_manager_handerServer.js' type='text/javascript'></script>
+<script src="services/tellerVolumeAdjustservice.js" type="text/javascript"></script>
+<script src="views/reportforms/counter_volume_businessCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/counter_exam_numCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/counter_otherwork_dayCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/counter_lieve_daysCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/manager_numCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/manager_otherwork_dayCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/manager_lieve_daysCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/report_branch_manch_handerCtrl.js" type="text/javascript"></script>
+<script src="services/countexam_basevolservice.js" type="text/javascript"></script>
+<script src="views/reportforms/count_exam_base_volCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/ocr_org_rate_errorCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/ocr_sale_rate_errorCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/ocr_first_errorCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/cash_error_rateCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/counter_reasonCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/huiPu_branchTarget_handerCtrl.js" type="text/javascript"></script>
+<script src="services/huiPu_branTar_hander_service.js" type="text/javascript"></script>
+<script src="views/report/dep_parent_inputCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/teller_vol_branchCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/man_ebank_score_add_pointsCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/credit_bad_repCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/hook_search_mainCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/AliCardSearchCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/AliPaySearchCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/CEbkSearchCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/PEbkSearchCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/MobileSearchCtrl.js" type="text/javascript"></script>
+<script src="views/hook_search/EPaySearchCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/teller_volume_adjustCtrl.js" type="text/javascript"></script>
+<script src="views/reportforms/middle_businessCtrl.js" type="text/javascript"></script>
+<script src="views/report/DepositProfitSimCtrl.js" type="text/javascript"></script>
+<script src="views/report/LoanProfitSimCtrl.js" type="text/javascript"></script>
+
+<!-- end Management -->
+
+<script type="text/javascript">
+    function zoom(){
+        document.body.style.zoom = "100%"
+    }
+</script>
+</body>
+</html>

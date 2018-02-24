@@ -1,0 +1,451 @@
+        <h3 align="center">贴现业务申请表</h4>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">借款人名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='true' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">借款客户代码<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请书号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          <br>
+           <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">业务品种<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                       <div class="input ">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                            <option></option>
+                            <option>贴现</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+             </div>
+               <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经办机构</label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" >
+                            <option></option>
+                            <option>海南支行</option>
+                        </select>
+                    </div>
+                </div>
+               </div>
+             </div>
+            </div>
+            <br>
+               <div class="row">
+               <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">经办人<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                       <div class="input ">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                            <option></option>
+                            <option>00530-王鑫</option>
+                        </select>
+                    </div>
+                </div>
+             </div>
+            </div> 
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">通过日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请币种<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                      <div class="input">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                            <option></option>
+                            <option>人民币</option>
+                            <option>英镑</option>
+                            <option>港币</option>
+                            <option>瑞士法郎</option>
+                            <option>美元</option>
+                            <option>加元</option>
+                            <option>澳元</option>
+                            <option>欧元</option>
+                            <option>日元</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+             </div>
+            </div>
+           <br>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">申请金额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm " type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">贷款形式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" >
+                                <option></option>
+                                <option>新增</option>
+                                <option>借新还旧</option>
+                                <option>还旧借新</option>
+                                <option>续贷</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">借款人帐号</label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  />
+                        </div>
+                    </div>
+                </div>
+               </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">贴现日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">贴现到期日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">期限类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" >
+                                <option></option>
+                                <option>短期</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          <br>
+          <div class="row"> 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">主要担保方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag" >
+                                <option></option>
+                                <option>质押</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">转登日期</label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag'  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">贴现用途</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">还款来源</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag'  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br> 
+           <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">基本授信使用</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">营销柜员号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">营销柜员名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  input-sm" type="text" ng-disabled='disabled_flag' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业门类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                                <option></option>
+                                <option>A-农业</option>
+                                <option>B-采掘业</option>
+                                <option>C-制造业</option>
+                                <option>D-建筑业</option>
+                                <option>T-国际组织</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业大类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                                <option></option>
+                                <option>A01-农业</option>
+                                <option>B01-采掘业</option>
+                                <option>C01-制造业</option>
+                                <option>D01-建筑业</option>
+                                <option>T01-国际组织</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业中类<font color="#FF0000">*</font></label>
+                     <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                                <option></option>
+                                <option>A011-农业</option>
+                                <option>B012-采掘业</option>
+                                <option>C013-制造业</option>
+                                <option>D014-建筑业</option>
+                                <option>T015-国际组织</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+             <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">行业小类<font color="#FF0000">*</font></label>
+                     <div class="col-md-7">
+                         <div class="input">
+                             <select class="form-control input-sm" ng-disabled="disabled_flag"  required >
+                                <option></option>
+                                <option>A0001-农业</option>
+                                <option>B0002-采掘业</option>
+                                <option>C0003-制造业</option>
+                                <option>D0004-建筑业</option>
+                                <option>T0005-国际组织</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">战略新型产业类型</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  >
+                                <option></option>
+                                <option>节能环保</option>
+                                <option>新一代信息技术</option>
+                                <option>生物</option>
+                                <option>高端装备制造</option>
+                                <option>新能源</option>
+                                <option>新材料</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">工业转型升级标识</label>                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  >                             <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+           </div> 
+          </br>
+      
+
+      <br>
+      <h4 align="center">贴 现 票 据 汇 总 信 息</h4>
+      </br>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">票据数量<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag' required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">票据总金额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">           
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag' required />
+                        </div>
+                    </div> 
+                 </div>
+            </div>      
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">票据最早到期日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input ">    
+                            <input class="input-sm form-control" type="text" ng-disabled='disabled_flag' required />
+                        </div>
+                    </div> 
+                 </div>
+            </div>    
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">是否与我行签订速帖协议<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled="disabled_flag"  >
+                                <option></option>
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          <td height="26">
+          <div align="center">
+        <input type="submit" name="Button" value="提交到流程" class="button_form" onClick="setQuery('search')">
+        &nbsp;
+        <input type="submit" name="Submit" value="保存" class="button_form" onClick="setQuery('insert')">
+        &nbsp;
+        <input type="button" name="Submit2" value="清空" class="button_form" onClick="clearAll(this.form)">
+      </div>
+          </td>
+          

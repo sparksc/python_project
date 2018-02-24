@@ -1,0 +1,104 @@
+Index: custhk.py
+===================================================================
+--- custhk.py	(版本 2029)
++++ custhk.py	(工作副本)
+@@ -424,6 +424,14 @@
+             g.db_session.add(CustHook(**temp))        
+ 
+         return u'导入成功'
++    
++    def sql2dict(self,sql,cursor):
++        cursor.execute( sql )
++        d = {}
++        while row:
++            d[str(row[0])] = list(row)
++            row = cursor.fetchone()
++        return d
+ 
+     def upload_per_cust(self, filepath,):
+         """
+@@ -437,6 +445,41 @@
+         print u'总行数', str(nrows)
+         line = 2 
+         try:
++            sql = """
++                select fu.user_nanme,bb.branch_code from user_branch ub, f_user fu, branch bb where bb.role_id = ub.branch_id and ub.user_id = fu.role_id 
++            """
++            connection  = g.db_session.bind.raw_connection()
++            cursor  = connection.cursor()
++            cursor.execute( sql )
++            tbs = self.sql2dict(sql,cursor)
++
++            sql = """
++                select org_no||'-'||cust_no,id,cust_in_no
++                from cust_hook ch
++                where ch.typ='存款'
++                    and ch.status='待手工'
++            """
++            cust_orgs = self.sql2dict(sql,cursor)
++
++            usql1 = """
++                    update  cust_hook ch 
++                        set status='录入待审批'
++                            ,manager_no=?
++                    where ch.id = ?
++            """
++            usql2 = """
++                    update  account_hook ah 
++                        set status='录入待审批'
++                            ,manager_no=?
++                    where ah.org_no=? 
++                        and cust_in_no =? 
++                        and typ = '存款'
++                        and status='待手工'
++                        and follow_cust='客户号优先'
++            """
++            update_rows1 = []
++            update_rows2 = []
++            connection.begin()
+             for r in range(2,nrows):
+                 rlen = len(sheet.row_values(r))
+                 print u'总列数', str(rlen)
+@@ -479,8 +522,11 @@
+                     err_message = err_message + u'客户经理号码未输入'
+                     raise Exception(err_message)
+ 
+-                to_teller_branch = g.db_session.execute("select bb.branch_code from user_branch ub, f_user fu, branch bb where bb.role_id = ub.branch_id and ub.user_id = fu.role_id and fu.user_name = '%s'"%(manager_no)).fetchone()
+-                print str(line), to_teller_branch
++                tb = tbs.get(str(manager_no))
++                if tb is None :
++                    err_message = err_message + u',客户经理号码错误'
++                    raise Exception(err_message)
++                to_teller_branch = tb[1]
+ 
+                 if to_teller_branch is None:
+                     err_message = err_message + u',客户经理号码错误'
+@@ -490,15 +536,24 @@
+                     err_message = err_message + u',客户经理非本网点'
+                     raise Exception(err_message)
+                 
+-                old_data = g.db_session.query(CustHook).filter(CustHook.org_no == org_no, CustHook.cust_no == cust_no, CustHook.typ == u'存款', CustHook.status == u'待手工').first()
++                kk = str(org_no).strip() + "-" +str(cust_no).strip()
++                old_data = cust_orgs.get(kk)
+                 if old_data is None:
+                     err_message = err_message + u',不存在待认定关系'
+                     raise Exception(err_message)
++                """
++                g.db_session.query(CustHook).filter(CustHook.id == old_data[1]).update({CustHook.status:'录入待审批', CustHook.manager_no:manager_no})
++                g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no, AccountHook.cust_in_no == old_data[2], AccountHook.typ == u'存款', AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').update({CustHook.status:'录入待审批', CustHook.manager_no:manager_no})
++                """
++                update_rows1.append( [manager_no, old_data[1]] )
++                update_rows2.append( [manager_no, org_no, old_data[2]])
+ 
+-                g.db_session.query(CustHook).filter(CustHook.id == old_data.id).update({CustHook.status:'录入待审批', CustHook.manager_no:manager_no})
+-                g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no, AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.typ == u'存款', AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').update({CustHook.status:'录入待审批', CustHook.manager_no:manager_no})
++            cursor.executemany(usql1, update_rows1)
++            cursor.executemany(usql2, update_rows2)
++            connection.commit()
+         except Exception,e:
+-            g.db_session.rollback()
++            connection.rollback()
++            #g.db_session.rollback()
+             print Exception,':',e
+             return str(e)
+ 

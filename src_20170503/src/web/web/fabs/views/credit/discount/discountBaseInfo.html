@@ -1,0 +1,231 @@
+<!--贷款申请-->
+<form class="form-horizontal" role="form" name="loanForm" ng-submit="onSubmit(loanForm.$valid)"  ng-controller="discountBaseInfoController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6" ng-hide='approveActivityFlag' >
+                        <button type="submit" ng-if ='end_loan_display' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onEdit()" ng-hide='btn_edit_flag' class="btn btn-primary" >修改</button>
+                        <button type="button" ng-click="onSave()" ng-show="btn_edit_flag" class="btn btn-primary" >保存</button>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button class="btn btn-primary" data-toggle="collapse" href="#examineComment" ng-show="approveActivityFlag">签署结果</button>
+                        <div class="collapse" id="examineComment" style="position:absolute;background-color:White;z-index:1024;">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">意见:</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control" rows="6" ng-model="result" ng-disabled="submitedFlag"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button ng-click="approve()" class="btn btn-success col-md-5" ng-disabled="submitedFlag">同意</button>
+                                <button ng-click="reject()" class="btn btn-danger col-md-5 pull-right" ng-disabled="submitedFlag">不同意</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">客户编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户编号" ng-model="data.customer.no" ng-disabled=true required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">客户名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户名称" ng-model="data.customer.name" ng-disabled=true required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">业务品种</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control col-md-7"  ng-model=" product_name" ng-disabled=true required>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">调查报告剩余有效期至</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control input-sm" ng-disabled="true" ng-model="end_date" title="日期格式错误！">
+                       </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">申请日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control input-sm" ng-disabled='disabled_flag' ng-model="data.application_info.apply_date"  ng-blur="apply_date(data.application_info.apply_date)" pattern="{{pattern.date}}" title="日期格式错误！" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">业务币种</label>
+                    <div class="col-md-7">
+                        <select class="form-control" ng-disabled='disabled_flag' ng-model="data.transaction_info.currency_code" required >
+                            <option value="CNY">人民币</option>
+                            <option value="USD">美元</option>
+                            <option value="EUR">欧元</option>
+                            <option value="GBP">英镑</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <div class="row"> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">贴现金额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" ng-disabled='disabled_flag'  ng-model="money.amount" ng-blur="amount(money.amount)"  pattern="{{pattern.amount}}" title="金额错误！" required>
+                            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">担保方式</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input type="text" class="form-control" value="质押" ng-model="data.application_info.main_gua_type" disabled=true >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        -->
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">贴现用途</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-disabled='disabled_flag'  placeholder="经营周转" value="经营周转"  ng-model="data.application_info.purpose_type" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">还款来源</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-disabled='disabled_flag'  placeholder="经营收入" value="经营收入" ng-model="data.application_info.repayment_from" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">经办机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-disabled='disabled_flag'  ng-model="data.application_info.handle_branch" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">经办人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" ng-disabled='disabled_flag'  ng-model="data.application_info.handle_person" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">备注<br/>(限100个汉字)</label>
+                    <div class="col-md-9">
+                        <textarea class="form-control" ng-disabled='disabled_flag'  ng-model="data.application_info.remark" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- 下一步流程-->
+    <div class="modal fade " name="next_step_modal" role="dialog">
+       <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">下一步流程</h4>
+                </div>
+                <div class="modal-body">
+                     <div ng-repeat = 'next in next_step'>
+                         <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">流程:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.activity.activity_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">岗位:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.role"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="row">
+                                  <div  class='col-md-2'  ng-repeat='user in next.users'>
+                                        <span>{{user.user_name}}{{user.name}}</span>
+                                   </div>
+                           </div>
+                       </div>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >确定</button>
+                </div> <!-- modal-footer -->
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+    <script type="text/javascript">
+        var choose_business_type = function(elem, typeCode, typeName,typePage,guaType){
+            //angular.element($(elem)).scope().choose_business_type($(elem).attr("title"))
+            angular.element($(elem)).scope().choose_business_type(typeCode, typeName,typePage,guaType);
+        }
+    </script>
+</form>

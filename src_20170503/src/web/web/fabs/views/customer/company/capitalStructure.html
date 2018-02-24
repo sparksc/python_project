@@ -1,0 +1,248 @@
+<form name="capitalStructure" ng-submit="submit(capitalStructure.$valid)">
+<div class="form-horizontal" role="form" id="capitalStructure" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" ng-click="associPerson('capitalStructure',customer_id)">新增个人成员</button>
+                <button type="button" class="btn btn-primary" ng-click="associCompany('capitalStructure',customer_id)">新增公司成员</button>
+                <button type="button" class="btn btn-primary" ng-click="refresh()">刷新</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th style="white-space:nowrap;" ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td style="white-space:nowrap;">{{data.capitalStructure.id}}</td>
+                            <td style="white-space:nowrap;">{{data.cust.name}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.invest_cur}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.invest_pract}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.invest_asset}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.invest_other}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.invest_amount}}</td>
+                            <td style="white-space:nowrap;">{{data.capitalStructure.fact_amount}}</td>
+                            <td style="white-space:nowrap;">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#capitalStructureModal" ng-click="view_data(data)">详情</button>
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="delete_record()">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='capitalStructureModal' role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="capitalStructure">
+		   			<div class="row">
+            			<div class="col-md-6">
+           				     <div class="form-group">
+                   				 <label class="col-md-3 control-label label-sm">股东客户代码<font color="#FF0000">*</font></label>
+                 				 <div class="col-md-7">
+                        			<div class="input">
+                            			<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.no" required />
+                        			</div>
+                    			</div>
+                			</div>
+            			</div>
+            			<div class="col-md-6">
+                			<div class="form-group">
+                    			<label class="col-md-3 control-label label-sm">股东名称<font color="#FF0000">*</font></label>
+                    			<div class="col-md-7">
+                        			<div class="input">
+                           				<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.name" required />
+                       				</div>
+                   				</div>
+            				</div>
+						</div>
+                    </div>
+                    <div class="row">
+            			<div class="col-md-6">
+                			<div class="form-group">
+                    			<label class="col-md-3 control-label label-sm">股东类型</label>
+                   				<div class="col-md-7">
+                       				<select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.capitalStructure.cust_type">
+                           				<option>公司客户</option>
+                           				<option>个人客户</option>
+                       				</select>
+                   				</div>
+                			</div>
+            			</div>
+            			<div class="col-md-6">
+                			<div class="form-group">
+                    			<label class="col-md-3 control-label label-sm">出资币种</label>
+                    			<div class="col-md-7">
+                        			<select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.capitalStructure.invest_cur_type">
+                            			<option>人民币</option>
+                            			<option>美元</option>
+                            			<option>港币</option>
+                            			<option>英镑</option>
+                            			<option>瑞士法郎</option>
+                                        <option>日元</option>
+                                        <option>加元</option>
+                                        <option>澳元</option>
+                                        <option>欧元</option>
+                        			</select>
+                    			</div>
+                			</div>
+            			</div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">证件类型</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.capitalStructure.id_type">
+                                        <option>组织机构代码</option>
+                                        <option>营业执照</option>
+                                        <option>贷款卡</option>
+                                        <option>身份证</option>
+                                        <option>居民户口簿</option>
+                                        <option>护照</option>
+                                        <option>军人身份证</option>
+                                        <option>武装警察身份证</option>
+                                        <option>港澳台居民身份证</option>
+                                        <option>边民出入境通行证</option>
+                                        <option>临时身份证</option>
+                                        <option>其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+            			<div class="col-md-6">
+                			<div class="form-group">
+                    			<label class="col-md-3 control-label label-sm">证件号码<font color="#FF0000">*</font></label>
+                    			<div class="col-md-7">
+                        			<div class="input">
+                            			<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.cust.ric" required  pattern="{{pattern.idcard}}" title="证件号码错误！"/>
+                       				</div>
+                    			</div>
+                			</div>
+            			</div>
+					</div>
+        			<div class="row">
+            			<div class="col-md-6">
+                			<div class="form-group">
+                    			<label class="col-md-3 control-label label-sm">货币</label>
+                    			<div class="col-md-7">
+                        			<div class="input-group">
+                            			<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.invest_cur" pattern="{{pattern.amount}}" title="金额错误！" ng-blur="money_invest_cur(money.invest_cur)" />
+                                        <span class="input-group-addon">元</span>
+                        			</div>
+                    		</div>
+                		</div>
+            		</div>
+            		<div class="col-md-6">
+                		<div class="form-group">
+               		     	<label class="col-md-3 control-label label-sm">实物</label>
+                    		<div class="col-md-7">
+                        		<div class="input-group">
+                            		<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-blur="money_invest_pract(money.invest_pract)"  ng-model="money.invest_pract" pattern="{{pattern.amount}}" title="金额错误！" />
+                                    <span class="input-group-addon">元</span>
+                        		</div>
+	                    	</div>
+	               	 	</div>
+    	        	</div>
+        	    	<div class="col-md-6">
+            	    	<div class="form-group">
+                	    	<label class="col-md-3 control-label label-sm">净资产</label>
+                    		<div class="col-md-7">
+                        		<div class="input-group">
+                            		<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.invest_asset" ng-blur="money_invest_asset(money.invest_asset)"pattern="{{pattern.amount}}" title="金额错误！" />
+                                    <span class="input-group-addon">元</span>
+	                        	</div>
+        	            	</div>
+            	    	</div>
+	            	</div>
+    	        	<div class="col-md-6">
+        	        	<div class="form-group">
+            	        	<label class="col-md-3 control-label label-sm">其他</label>
+                	    	<div class="col-md-7">
+                    	    	<div class="input-group">
+                        	    	<input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.invest_other" ng-blur="money_invest_other(money.invest_other)"pattern="{{pattern.amount}}" title="金额错误！" />
+                                    <span class="input-group-addon">元</span>
+	                        	</div>
+        	            	</div>
+            	    	</div>
+	            	</div>
+    	    	    <div class="col-md-6">
+        	    	    <div class="form-group">
+		                    <label class="col-md-3 control-label label-sm">出资金额<font color="#FF0000">*</font></label>
+        		            <div class="col-md-7">
+                		        <div class="input-group">
+                        		    <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="money.invest_amount" required />
+                                    <span class="input-group-addon">元</span>
+		                        </div>
+                		    </div>
+		                </div>
+        		    </div>
+		            <div class="col-md-6">
+		                <div class="form-group">
+        		            <label class="col-md-3 control-label label-sm">实际到位金额<font color="#FF0000">*</font></label>
+                		    <div class="col-md-7">
+		                        <div class="input-group">
+        		                    <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="money.fact_amount" required ng-blur="money_fact_amount(money.fact_amount)" pattern="{{pattern.amount}}" title="金额错误！" />
+                                    <span class="input-group-addon">元</span>
+                		        </div>
+		                    </div>
+        		        </div>
+		            </div>
+        		    <div class="col-md-6">
+		                <div class="form-group">
+        		            <label class="col-md-3 control-label label-sm">出资比例<font color="#FF0000">*</font></label>
+                		    <div class="col-md-7">
+		                        <div class="input-group">
+        		                    <input class="form-control input-sm" type="text" ng-disabled='true' ng-model="form_data.capitalStructure.invest_percentage" required />
+                                    <span class="input-group-addon">%</span>
+                		        </div>
+		                    </div>
+        		        </div>
+		            </div>
+		        </div>
+
+        		<div class="row">
+		            <div class="col-md-6">
+        		        <div class="form-group">
+                		    <label class="col-md-3 control-label label-sm">出资说明</label>
+		                    <div class="col-md-7">
+        		                <div class="input">
+                		            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.capitalStructure.invest_desc" />
+		                        </div>
+        		            </div>
+		                </div>
+        		    </div>
+		        </div>
+
+        		<div class="row">
+		            <div class="col-md-6">
+		                <div class="form-group">
+		                    <label class="col-md-3 control-label label-sm">备注</label>
+        		            <div class="col-md-7">
+		                        <div class="input">
+        		                    <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.capitalStructure.memo" />
+                		        </div>
+		                    </div>
+        		        </div>
+		            </div>
+                </form>
+            </div> <!-- modal-body -->
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+</div>
+</form>

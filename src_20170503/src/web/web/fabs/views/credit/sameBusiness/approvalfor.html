@@ -1,0 +1,39 @@
+<!--投资业务审批单-->
+
+<div class="row" >
+    <div class="col-md-6">
+        <div class="form-group">
+           <label class="col-md-4 control-label ">受理部门<font color="#FF0000">*</font></label>
+           <div class="col-md-7">
+               <div class="input ">
+                   <input class=" form-control" type="text" placeholder="资金营运部" ng-disabled='disabled_flag' ng-model=""  required />
+               </div>
+           </div>
+        </div>
+   </div>
+   <div class="col-md-6">
+       <div class="form-group">
+          <label class="col-md-4 control-label">业务种类<font color="#FF0000">*</font></label>
+            <div class="col-md-7">
+                <select class="form-control" ng-model='data' required>
+                    <option>买入资管计划</option>
+                    <option>贴现利率下浮审批</option>
+                    <option>买入二级资本债</option>
+                    <option>承诺函信托收益权转让协议</option>
+                    <option>买入信贷资产</option>
+                </select>
+            </div>
+        </div>
+      </div>
+    </div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="col-md-2 control-label">业务情况说明<br/>(限100个汉字)</label>
+            <div class="col-md-9">
+                <textarea class="form-control"  ng-model="$parent.data.application_info.remark" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

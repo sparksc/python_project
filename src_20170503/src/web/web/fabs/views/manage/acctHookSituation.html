@@ -1,0 +1,175 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="accthkspController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+               </div>
+              <div class="row">
+                  <div class="col-md-5 ">
+                     <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">移交员工号:</label>
+                          <div class="col-md-5">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.from_teller_no"/>
+                              </div>
+                          </div>
+                     </div>
+                  </div>
+                  <div class="col-md-5 ">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">挂钩类型:</label>
+                          <div class="col-md-5">
+                              <div class="input">
+                                <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.hook_typ">
+                                    <option value=""></option>
+                                    <option value="账号">账号</option>
+                                    <option value="客户号">客户号</option>
+                                </select>
+                              </div>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-5 ">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">业务类型:</label>
+                          <div class="col-md-5">
+                              <div class="input">
+                                <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.typ">
+                                    <option value=""></option>
+                                    <option value="贷款">贷款</option>
+                                    <option value="存款">存款</option>
+                                    <option value="理财">理财</option>
+                                    <option value="机具">机具</option>
+                                    <option value="POS">POS</option>
+                                    <option value="信用卡">信用卡</option>
+                                    <option value="电子银行">电子银行</option>
+                                    <option value="代理保险">代理保险</option>
+                                    <option value="第三方存管">第三方存管</option>
+                                </select>
+                              </div>
+                          </div>
+                    </div>
+                  </div>  
+              </div>    
+              <div class="row">
+                  <div class="col-md-3 pull-right" >
+                        <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                        <!--<button class="btn btn-primary btn-sm" id="sp_btn" ng-show="flag" ng-click="get()">审核</button>-->
+                        <!--<button class="btn btn-primary btn-sm" data-toggle="collapse" href="#examine" >审核</button>
+                        <div class="pannel-collapse collapse" id="examine" style="position:absolute;background-color:white;z-index:999;">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"> 意见：</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" rows="6" ng-model="reason"> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-md-5" ng-click="approve()">通过</button>
+                                <button class="btn btn-danger col-md-5 pull-right" ng-click="deny()">不通过</button>
+                            </div>
+                        </div>-->
+                  </div>
+              </div>
+            </fieldset>
+          </div>
+
+    <div class="modal fade" id="sp_modal_pop">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">审核</h4>
+                </div>
+                <div class="modal-body">
+                     <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"> 意见：</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" rows="6" ng-model="reason"> </textarea>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="approve()">通过</button>
+                    <button type="button" class="btn blue" ng-click="deny()">不通过</button>
+                    <button type="button" class="btn default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                 <!--<th class="text-nowrap"><input type="checkbox" ng-model="checkedAllFlag" ng-checked="checkedAllFlag" ng-click="checkedAll(checkedAllFlag,data.rows)">
+                                  </th>-->
+                                  <th ng-repeat='th in data.header track by $index' ng-hide="data.header.length == $index"  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                               <!--<td class="text-nowrap">
+                                    <input type="checkbox"  ng-value="row[0]"  ng-click="checked_row(row[0], data.rows)" ng-checked="isChecked(row[0])">            
+                                </td>-->
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length == $index">
+                                {{d}}
+                                </td>
+                                <td class="text-nowrap">
+                                    <button class="btn btn-primary btn-sm" ng-click="detail($index)">详情</button> 
+                                </td>
+                              </tr> 
+                          </tbody>
+                      </table>
+                  <ul class="pager">
+                  <li> 总共{{total_count}}条</>
+                  <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+          <div style="text-align:center">
+            <font size="2" color="red">{{tableMessage}}</font>
+          </div>
+    <div class="modal fade text-center" id="trans_detail_modal" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:800px;">
+                <div class="modal-header">
+                    <h4 class="modal-title">详情</h4>
+                </div>
+                <div class="modal-body">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  </th>
+                                  <th ng-repeat='th in detail_data.header track by $index' ng-hide="detail_data.header.length == $index"  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in detail_data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length == $index">
+                                {{d}}
+                                </td>
+                              </tr> 
+                          </tbody>
+                      </table>
+                  <ul class="pager">
+                    <li ng-repeat="detail_action in detail_data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction1(detail_action.conversation_id,detail_action.action)">{{dict[detail_action.action]}}</a>
+                    </li>
+                </ul>
+
+                <div>
+            </div>
+        </div>
+    </div>
+ 
+    </div>
+</div>
+

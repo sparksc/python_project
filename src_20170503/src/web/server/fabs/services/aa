@@ -1,0 +1,180 @@
+account_form.py:            kw = {'real_data':item[2],'type_name':u'助理会计等级指标标准值和等级值参数','min_header_key':'mis_lowrank','max_header_key':'mis_highrank','header_name':'分值','weight':weights[1][0]}
+account_form.py:            kw = {'real_data':item[4],'type_name':u'助理会计等级指标标准值和等级值参数','min_header_key':'lowyear','max_header_key':'highyear','header_name':'分值','weight':weights[4][0]}
+account_form.py:            kw = {'real_data':item[5],'type_name':u'助理会计等级指标标准值和等级值参数','min_header_key':'integration_lowrank','max_header_key':'integration_highrank','header_name':'分值','weight':weights[5][0]}
+account_form.py:            kw = {'real_data':item[6],'type_name':u'助理会计等级指标标准值和等级值参数','min_header_key':'etc_lowrank','max_header_key':'etc_highrank','header_name':'分值','weight':weights[6][0]}
+account_form.py:            kw = {'real_data':item[9],'type_name':u'助理会计等级指标标准值和等级值参数','min_header_key':'low_experience','max_header_key':'high_experience','header_name':'分值','weight':weights[9][0]}
+account_form.py:            kw = {'real_data':alllist[i][9][0],'type_name':u'助理会计等级划分参数','min_header_key':'low_integration','max_header_key':'high_integration','header_name':'等级'}
+account_form.py:        min_header_key = kwargs.get('min_header_key')
+account_form.py:        min_param = g.db_session.query(T_Para_Detail.detail_value).\
+account_form.py:            filter(T_Para_Header.header_key == min_header_key).\
+account_form.py:        if min_header_key in ['net_lownum','mis_lowrank','all_lowrank','lowyear','integration_lowrank','etc_lowrank','low_experience','low_integration']:
+account_form.py:            for i in range(0,len(min_param)):
+account_form.py:                if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+accthk.py:            cust_in_no = newdata['cust_in_no']
+accthk.py:            cust_in_no = newdata['cust_in_no']
+accthk.py:                   'cust_in_no':cust_in_no
+accthk.py:            m = g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no,AccountHook.account_no == account_no,AccountHook.typ == typ,AccountHook.status.in_([u'待手工'])).first()
+accthk.py:                    g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no,AccountHook.account_no == account_no,AccountHook.typ == typ,AccountHook.status.in_([u'待手工'])).delete()
+accthk.py:                    g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no,AccountHook.account_no == account_no,AccountHook.typ == typ,AccountHook.status.in_([u'待手工'])).update({AccountHook.percentage:per,AccountHook.manager_no:manager_no})
+approve.py:            write_cell(sh, 1, 9, unicode('%s'%(lend_trans.main_gua_type)))
+approve.py:              write_cell(sh, 1, 4, unicode('%s'%(app.main_gua_type)))
+approve.py:              write_cell(sh, 1, 3, unicode('%s'%(app.main_gua_type)))
+approve.py:              write_cell(sh, 2, 14, unicode('%s'%(rst.main_flag)))
+atm_input.py:                g.db_session.add(CustHook(manager_no=org_no,org_no=org_no,percentage=100,hook_type='管户',start_date=today.strftime('%Y%m%d'),end_date=20991231,status='待手工',etl_date=today.strftime('%Y%m%d'),src='存量导入',typ='机具',cust_no=atm_no,cust_in_no=atm_no,note=addr,sub_typ=typ))
+atm_input.py:                    'cust_in_no':atm_no,
+branchmanagepermission.py:            .filter(Branch.branch_code.in_(slist)).order_by(User.user_name).all()
+branchmanagepermission.py:            .filter(Branch.branch_code.in_(slist))
+branchmanagepermission.py:                g.db_session.query(AccountHook).filter(AccountHook.org_no == old_data.org_no,AccountHook.typ == old_data.typ,AccountHook.status == u'待手工',AccountHook.follow_cust == u'客户号优先', AccountHook.cust_in_no == old_data.cust_in_no).update(datadict)
+branchmanagepermission.py:                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == old_data.typ, CustHook.status == u'待手工').update(datadict)
+common.py:        targets = g.db_session.query(Target).filter(Target.code.in_(tuple(items))).all()
+contract.py:            cont = g.db_session.query(Contract).filter(Contract.contract_id ==contract.get('contract_id')).update({'amount':contract.get('amount'),'contract_effect_date':contract.get('begin_date'),'contract_due_date':contract.get('end_date')})
+contract.py:                    begin_date=contract.get('begin_date'),
+contract.py:                g.db_session.query(Debt).filter(Debt.id == cont.debt[0].id).update({'amount':contract.get('amount'),'begin_date':contract.get('begin_date'),'end_date':contract.get('end_date'),'is_credit_card':contract.get('is_credit_card'),'debt_rate':contract.get('debt_rate')})
+contract.py:            contract_info.update({'debt_id':debt.id,'begin_date':debt.begin_date,'end_date':debt.end_date,'amount':debt.amount,'is_credit_card':debt.is_credit_card,'debt_rate':debt.debt_rate})
+credit.py:        main_gua = kwargs.get('main_gua')
+credit.py:                        main_gua_type = main_gua,
+credit.py:        main_gua = kwargs.get('main_gua')
+credit.py:                        main_gua_type = main_gua,
+credit.py:                    t = t.filter(Activity.activity_name.in_(activity_name))\
+credit.py:                         .filter(Activity.activity_status.in_(activity_status))
+credit.py:                    'main_gua_type':a.Application.main_gua_type if bool(a.Application) else '',
+custhk.py:        self.ckyy = ['manager_no','percentage','start_date','end_date','cust_no','src','typ','cust_in_no','etl_date','org_no','note','hook_type','status']
+custhk.py:        cust_in_no = ""
+custhk.py:            cust_in_no = newdata['cust_in_no']
+custhk.py:            cust_in_no = newdata['cust_in_no']
+custhk.py:                   'cust_in_no':cust_in_no
+custhk.py:        is_other_status = g.db_session.query(CustHook).filter(CustHook.org_no == org_no,CustHook.cust_in_no == cust_in_no,CustHook.status != u'待手工',CustHook.typ == typ).first()
+custhk.py:        to_cust = g.db_session.query(CustHook).filter(CustHook.org_no == org_no,CustHook.cust_in_no == cust_in_no,CustHook.status == u'待手工',CustHook.typ == typ).first()
+custhk.py:                    acct = g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == ctt['cust_in_no'], AccountHook.org_no == ctt['org_no'], AccountHook.typ == ctt['typ'], AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').all()
+custhk.py:                               'cust_in_no':at.cust_in_no,
+custhk.py:            g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == ctt['cust_in_no'], AccountHook.org_no == ctt['org_no'], AccountHook.typ == ctt['typ'], AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').delete()
+custhk.py:                g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == ctt['cust_in_no'], AccountHook.org_no == ctt['org_no'], AccountHook.typ == ctt['typ'], AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').update(datadict)
+custhk.py:                g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == ctt['cust_in_no'], AccountHook.org_no == ctt['org_no'], AccountHook.typ == ctt['typ'], AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').delete()
+custhk.py:        hk_typ = g.db_session.query(CustHook).filter(CustHook.org_no == org_no, CustHook.cust_in_no == cust_in_no, CustHook.typ == typ, CustHook.hook_type == u'管户').first()
+custhk.py:        cust_in_no = old_data.cust_in_no
+custhk.py:            g.db_session.execute(" delete from account_hook where org_no = '%s' and manager_no = '%s' and src = '前端录入' and status = '录入待审批' and follow_cust = '客户号优先' and cust_in_no = '%s'"%(org_no,manager_no,a.cust_in_no))
+custhk.py:                print t.cust_in_no
+custhk.py:                g.db_session.execute("delete from account_hook  where cust_in_no = '%s' and org_no='%s' and manager_no='%s' "%(cust_in_no,org_no,manager_no))
+custhk.py:                g.db_session.execute("update account_hook set percentage='%s' where cust_in_no = '%s' and org_no='%s' and status='待手工' "%(per,cust_in_no,org_no))
+custhk.py:                g.db_session.execute("update account_hook set status='待手工',manager_no='%s' where cust_in_no = '%s' and org_no='%s' and manager_no='%s'"%(org_no,cust_in_no,org_no,manager_no))
+custhk.py:                g.db_session.execute("update account_hook set percentage='%s',manager_no='%s' where account_no in( select a.account_no from f_balance f join d_account c on c.id=f.account_id join account_hook a on a.account_no=c.account_no join cust_hook t on t.cust_in_no=f.cst_no join d_org o on o.id=f.org_id join d_sales_temp d on d.sale_code=t.manager_no where f.acct_type=1 and date_id='%s' and cust_no='%s') and org_no='%s' and manager_no='%s' "%(date_id,percentage,manager_no,cust_no,org_no,manager_no))
+custhk.py:                g.db_session.query(AccountHook).filter(AccountHook.org_no == org_no, AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.typ == u'存款', AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').update({CustHook.status:'录入待审批', CustHook.manager_no:manager_no})
+custhk.py:                g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == old_data.cust_in_no,AccountHook.org_no == old_data.org_no, AccountHook.manager_no == old_data.manager_no, AccountHook.typ == old_data.typ, AccountHook.follow_cust == u'客户号优先', AccountHook.status == u'录入待审批').update(datadict)
+custhk.py:                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == old_data.typ, CustHook.status == u'录入待审批').update(datadict)
+custhk.py:            cust_in_no = old_data.cust_in_no
+custhk.py:                ch = g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == old_data.typ, CustHook.status == u'待手工').first()
+custhk.py:                        at = g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.org_no == old_data.org_no, AccountHook.typ == old_data.typ, AccountHook.status == u'待手工', AccountHook.follow_cust == u'客户号优先').first()
+custhk.py:                            g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.org_no == old_data.org_no, AccountHook.typ == old_data.typ, AccountHook.status == u'录入待审批', AccountHook.follow_cust == u'客户号优先').delete()
+custhk.py:                            g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.org_no == old_data.org_no, AccountHook.typ == old_data.typ, AccountHook.status == u'录入待审批', AccountHook.follow_cust == u'客户号优先').update({'status':u'待手工','manager_no':old_data.org_no})
+custhk.py:                        g.db_session.query(AccountHook).filter(AccountHook.cust_in_no == old_data.cust_in_no, AccountHook.manager_no == manager_no, AccountHook.org_no == old_data.org_no, AccountHook.typ == old_data.typ,  AccountHook.status == u'录入待审批',AccountHook.follow_cust == u'客户号优先').update(datadict)
+custhk.py:                    g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == old_data.typ).update(datadict)
+custhk.py:        cust_in_no = cust_hook.cust_in_no
+custhk.py:        g.db_session.query(AccountHook).filter(AccountHook.cust_in_no==cust_in_no,AccountHook.org_no==org_no,AccountHook.hook_type==u'管户', AccountHook.typ == typ).update({'hook_type':u'分润'})
+custhk.py:        g.db_session.query(AccountHook).filter(AccountHook.cust_in_no==cust_in_no,AccountHook.org_no==org_no, AccountHook.manager_no == manager_no, AccountHook.typ == typ).update({'hook_type':u'管户'})
+custHookMag.py:            cust_in_no = old.cust_in_no
+custHookMag.py:            print old.id, org_no, cust_in_no
+custHookMag.py:            ebk = g.db_session.query(CustHook).filter(CustHook.org_no == org_no, CustHook.cust_in_no == cust_in_no, CustHook.typ == u'电子银行', CustHook.status == u'正常').first()
+custHookMag.py:            loan = g.db_session.query(CustHook).filter(CustHook.org_no == org_no, CustHook.cust_in_no == cust_in_no, CustHook.typ == u'贷款', CustHook.status == u'正常').first()
+custHookMag.py:            dep = g.db_session.query(CustHook).filter(CustHook.org_no == org_no, CustHook.cust_in_no == cust_in_no, CustHook.typ == u'存款', CustHook.status == u'正常').first()
+customer.py:        begin_job_date =emp.get('begin_job_date')
+customer.py:        if begin_job_date:
+customer.py:            begin_job_date = datetime.strptime(begin_job_date, u"%Y-%m-%d")
+customer.py:                                main_source=rt.get(u'主要收入来源'),
+dict_data.py:            q = g.db_session.query(Dict_Data).filter(Dict_Data.dict_type.in_(l_dict_type)).all()
+discount.py:        main_gua = kwargs.get('main_gua')
+discount.py:                        main_gua_type = main_gua,
+gsgxck.py:            account_hooks = g.db_session.query(AccountHook).filter(AccountHook.id.in_(hook_ids)).all()
+gsgxck.py:            cust_hooks = g.db_session.query(CustHook).filter(CustHook.id.in_(hook_ids)).all()
+gsgxck.py:                            join cust_hook ch on ah.cust_in_no = ch.cust_in_no and ah.ORG_NO = ch.ORG_NO and ch.id in (%s) \
+gsgxck.py:                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == u'电子银行').update(datadict)
+gsgxck.py:                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no).update(datadict)
+gsgxck.py:            g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.typ == old_data.typ,AccountHook.follow_cust == u'客户号优先',AccountHook.cust_in_no == old_data.cust_in_no).update(datadict)
+gsgxck.py:                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == u'电子银行').update(datadict)
+gsgxck.py:            templist=g.db_session.query(CustHook).filter(CustHook.manager_no == old_data.manager_no,CustHook.org_no == old_data.org_no,CustHook.cust_in_no == old_data.cust_in_no)
+gsgxck.py:                g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.cust_in_no == old_data.cust_in_no).update(datadict)
+loan.py:                                'main_gua_type':application_info.get('main_gua_type'),
+man_gradejdg.py:        min_header_keys = kwargs.get('min_header_key')
+man_gradejdg.py:            for n in range(0,len(min_header_keys)):
+man_gradejdg.py:                min_header_key = min_header_keys[n]
+man_gradejdg.py:                min_param = g.db_session.query(T_Para_Detail.detail_value).\
+man_gradejdg.py:                        filter(T_Para_Header.header_key == min_header_key).\
+man_gradejdg.py:                if min_header_key in ['min_ave_dbal','min_ave_dloan','min_loan_num','min_loan_exp','Min_YWScore','Min_MYScore','Min_HL','Min_LG','net_lownum','lowyear','low_experience']:
+man_gradejdg.py:                    if float(real_data) >= float(min_param[0][0]):
+man_gradejdg.py:                    for i in range(1,len(min_param)):
+man_gradejdg.py:                        if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+man_gradejdg.py:                elif min_header_key == 'MIN_DAILY_AVE_LOAN':
+man_gradejdg.py:                    if float(real_data) > float(min_param[0][0]):
+man_gradejdg.py:                    for i in range(1,len(min_param)):
+man_gradejdg.py:                        if float(real_data) > float(min_param[i][0]) and float(real_data) <= float(max_param[i][0]):
+man_gradejdg.py:                elif min_header_key in ['MIN_FOR_GRAD_BAD','Min_FWScore','mis_lowrank','all_lowrank','integration_lowrank','etc_lowrank']:
+man_gradejdg.py:                    for i in range(0,len(min_param)):
+man_gradejdg.py:                        if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+man_gradejdg.py:                elif min_header_key == 'Min_CCScore':
+man_gradejdg.py:                    for i in range(0,len(min_param)-1):
+man_gradejdg.py:                        if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+man_gradejdg.py:                    if float(real_data) >= float(min_param[len(min_param)][0]):
+man_gradejdg.py:                        fscore.append(score[len(min_param)][0])
+man_gradejdg.py:                elif min_header_key in ['min_abv_ave','Min_WScore']:
+man_gradejdg.py:                    if float(real_data) >= float(min_param[len(max_param)-1][0]):
+man_gradejdg.py:                        fscore.append(score[len(min_param)-1][0])
+man_gradejdg.py:                    for i in range(1,len(min_param)-1):
+man_gradejdg.py:                        if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+man_gradejdg.py:        min_header_key = ['min_loan_exp']
+man_gradejdg.py:        para1 = {'type_name':'客户经理等级指标标准值和等级值参数','real_data':real_data,'min_header_key':min_header_key,'max_header_key':max_header_key,'header_name':'分值'}
+man_gradejdg.py:        min_header_key = ['min_abv_ave']
+man_gradejdg.py:        para5 = {'type_name':'客户经理违规积分附扣分项参数','real_data':ave1,'min_header_key':min_header_key,'max_header_key':max_header_key,'header_name':'扣分（分）'}
+man_gradejdg.py:        min_param = g.db_session.query(T_Para_Detail.detail_value).filter(T_Para_Detail.detail_key == 'min_score').order_by(T_Para_Detail.para_row_id).all()
+man_gradejdg.py:        min_cun = g.db_session.query(T_Para_Detail.detail_value).filter(T_Para_Detail.detail_key == 'min_ave_dbal').order_by(T_Para_Detail.para_row_id).first()
+man_gradejdg.py:            if float(ave_dbal) > float(min_cun[0]) and float(score) >= float(min_param[0][0]) and float(score) < float(max_param[0][0]):
+man_gradejdg.py:            for i in range(1,len(min_param)):
+man_gradejdg.py:                if float(score) >= float(min_param[i][0]) and float(score) < float(max_param[i][0]):
+permission.py:        g.db_session.query(UserGroup).filter(UserGroup.user_id == user_id).filter(UserGroup.group_id.in_(old_groups)).delete(synchronize_session=False)
+permission.py:        q = g.db_session.query(GroupMenu).filter(GroupMenu.group_id.in_(group_ids)).options(load_only("menu_id"))
+pos_input.py:                status='待手工',etl_date=install_date,src='存量导入',typ='POS',cust_no=merchant_no,cust_in_no=pos_no,note=merchant_addr,sub_typ=typ))
+pos_input.py:                    'cust_in_no':pos_no.strip(),
+postmanagepermission.py:            .filter(Branch.post_code.in_(slist))
+service.py:        return self.__model__.query.filter(self.__model__.id.in_(ids)).all()
+staff_sal_count_bak.py:if __name__=='__main__':
+staff_sal_count.py:if __name__=='__main__':
+standing_book.py:            sheet.write(i,7,index.get('repossession').get('in_amount'))
+standing_book.py:            sheet.write(i,8,index.get('repossession').get('in_accrual'))
+standing_book.py:            sheet.write(i,9,index.get('repossession').get('in_tax'))
+standing_book.py:            sheet.write(i,10,index.get('repossession').get('in_balance'))
+standing_book.py:            sheet.write(i,17,index.get('repossession').get('arrived_in_type'))
+teller_level.py:            kw = {'real_data':item[3],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_FWScore','max_header_key':'Max_FWScore','header_name':'分值(分)','weight':weights[2][0]}
+teller_level.py:            kw = {'real_data':item[4],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_CCScore','max_header_key':'Max_CCScore','header_name':'分值(分)','weight':weights[3][0]}
+teller_level.py:            kw = {'real_data':item[5],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_MYScore','max_header_key':'Max_MYScore','header_name':'分值(分)','weight':weights[4][0]}
+teller_level.py:            kw = {'real_data':item[6],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_HL','max_header_key':'Max_HL','header_name':'分值(分)','weight':weights[5][0]}
+teller_level.py:            kw = {'real_data':item[8],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_LG','max_header_key':'Max_LG','header_name':'分值(分)','weight':weights[7][0]}
+teller_level.py:            kw = {'real_data':round(real_data,2),'type_name':u'员工违规积分附加分项参数','min_header_key':'Min_WScore','max_header_key':'Max_WScore','header_name':'扣分(分)'}
+teller_level.py:            kw = {'real_data':alllist[i][9][0],'type_name':u'柜员等级划分参数','min_header_key':'Min_JScore','max_header_key':'Max_JScore','header_name':'等级'}
+teller_level.py:        min_header_key = kwargs.get('min_header_key')
+teller_level.py:        min_param = g.db_session.query(T_Para_Detail.detail_value).\
+teller_level.py:            filter(T_Para_Header.header_key == min_header_key).\
+teller_level.py:        if min_header_key in ['Min_FWScore','Min_CCScore','Min_LG','Min_HL','Min_MYScore','Min_YWScore','Min_WScore','Min_JScore']:
+teller_level.py:            for i in range(0,len(min_param)):
+teller_level.py:                if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+unite_credit.py:            len_trans = g.db_session.query(LendTransaction).join(ApplicationTransaction,ApplicationTransaction.transaction_id == LendTransaction.application_transaction_id).filter(ApplicationTransaction.application_id.in_(ids)).all()
+user_extrascore.py:            kw = {'real_data':item[3],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_FWScore','max_header_key':'Max_FWScore','header_name':'分值(分)','weight':weights[2][0]}
+user_extrascore.py:            kw = {'real_data':item[4],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_CCScore','max_header_key':'Max_CCScore','header_name':'分值(分)','weight':weights[3][0]}
+user_extrascore.py:            kw = {'real_data':item[5],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_MYScore','max_header_key':'Max_MYScore','header_name':'分值(分)','weight':weights[4][0]}
+user_extrascore.py:            kw = {'real_data':item[6],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_HL','max_header_key':'Max_HL','header_name':'分值(分)','weight':weights[5][0]}
+user_extrascore.py:            kw = {'real_data':item[8],'type_name':u'柜员等级指标标准值和等级值参数','min_header_key':'Min_LG','max_header_key':'Max_LG','header_name':'分值(分)','weight':weights[7][0]}
+user_extrascore.py:            kw = {'real_data':item[9],'type_name':u'员工违规积分附加分项参数','min_header_key':'Min_WScore','max_header_key':'Max_WScore','header_name':'扣分(分)'}
+user_extrascore.py:            kw = {'real_data':alllist[i][9],'type_name':u'柜员等级划分参数','min_header_key':'Min_JScore','max_header_key':'Max_JScore','header_name':'等级'}
+user_extrascore.py:        min_header_key = kwargs.get('min_header_key')
+user_extrascore.py:        print min_header_key,max_header_key,real_data
+user_extrascore.py:        min_param = g.db_session.query(T_Para_Detail.detail_value).\
+user_extrascore.py:            filter(T_Para_Header.header_key == min_header_key).\
+user_extrascore.py:        if min_header_key in ['Min_FWScore','Min_CCScore','Min_LG','Min_HL','Min_MYScore','Min_YWScore','Min_WScore','Min_JScore']:
+user_extrascore.py:            for i in range(0,len(min_param)):
+user_extrascore.py:                if float(real_data) >= float(min_param[i][0]) and float(real_data) < float(max_param[i][0]):
+village_input.py:        self.ckyy = ['tranid','tranname','begin_dt','end_dt','discount']
+village_input.py:        if data['begin_dt']:
+village_input.py:            data['begin_dt']=str(ndays)
+village_input.py:        self.ckyy = ['tranid','tranname','begin_dt','end_dt','discount']
+village_input.py:        #self.ckyy = ['tranid','tranname','begin_dt','end_dt','discount']
+village_input.py:                begin_dt= sheet.cell(r,2).value
+village_input.py:                if begin_dt ==None or end_dt==None or discount==None :
+village_input.py:                        'begin_dt':begin_dt,
+village_input.py:                #codeid_value=g.db_session.query(TransactionCode).filter(TransactionCode.tranid==tranid.strip(),TransactionCode.tranname==tranname.strip(),TransactionCode.begin_dt==begin_dt.strip()).all()

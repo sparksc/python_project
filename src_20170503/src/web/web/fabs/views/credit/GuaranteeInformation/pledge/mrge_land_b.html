@@ -1,0 +1,322 @@
+
+<fieldset ng-disabled="guarantee_info.contract_no">
+<form name="myForm" ng-submit="MrgeLandSave()">
+    
+        <input type="submit"class="btn btn-primary" value="保存" ng-show="save == '保存'"/>
+        <button type="button" class="btn btn-primary" ng-show="save == '修改'" ng-click="pledgechange()">修改</button>
+  
+    </br>
+    <fieldset ng-disabled="save == '修改'">
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地使用类型</label>
+              <div class="col-md-7">
+                  <select  class="form-control  input-sm"
+                          ng-init="modal_data.land_use_type = modal_data.land_use_type || '商业'"
+                          type="text" ng-model='modal_data.land_use_type'>
+                      <option value="商业">商业</option>
+                      <option value="工业">工业</option>
+                      <option value="物流">物流</option>
+                      <option value="农业">农业</option>
+                      <option value="商住">商住</option>
+                      <option value="综合">综合</option>
+                      <option value="其他">其他</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">土地地址</label>
+                <div class="col-md-7">
+                 <input class="form-control  input-sm" type="text" ng-model='modal_data.land_address'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地面积单位</label>
+              <div class="col-md-7">
+                  <select class="form-control  input-sm"
+                          ng-init="modal_data.land_area_unit = modal_data.land_area_unit || '平方米'"
+                          type="text" ng-model='modal_data.land_area_unit'>
+                      <option value="平方米">平方米</option>
+                      <option value="亩">亩</option>
+                      <option value="其他">其他</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">土地面积</label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input class="form-control  input-sm" type="text" ng-model='modal_data.land_area_unit'/>
+                        <span class="input-group-addon">平方米</span>
+                    </div>
+
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地取得方式</label>
+              <div class="col-md-7">
+                  <select  class="form-control  input-sm"
+                          ng-init="modal_data.land_obtain_method = modal_data.land_obtain_method || '出让'"
+                          type="text" ng-model='modal_data.land_obtain_method'>
+                      <option value="出让">出让</option>
+                      <option value="划拨">划拨</option>
+                      <option value="土地承包经营权">土地承包经营权</option>
+                      <option value="其他">其他</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">土地出让到期时间</label>
+                <div class="col-md-7">
+                 <input class="form-control  input-sm" type="text" ng-model='modal_data.land_expire_date'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地级别</label>
+              <div class="col-md-7">
+                  <select class="form-control  input-sm"
+                          ng-init="modal_data.land_class = modal_data.land_class || '特级'"
+                          type="text" ng-model='modal_data.land_class'>
+                      <option value="特级" selected="selected">特级</option>
+                      <option value="一级">一级</option>
+                      <option value="二级">二级</option>
+                      <option value="三级">三级</option>
+                      <option value="无">无</option>
+                      <option value="其他" >其他</option>n>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">地号</label>
+                <div class="col-md-7">
+                 <input class="form-control  input-sm" type="text" ng-model='modal_data.land_id'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">出让起始时间</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.sale_start_date'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">出让到期时间</label>
+                <div class="col-md-7">
+                 <input class="form-control  input-sm" type="text" ng-model='modal_data.sale_due_date'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">出让价值</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input  class="form-control  input-sm" type="text" ng-model='modal_data.sale_value'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">出让单位</label>
+                <div class="col-md-7">
+                 <input class="form-control  input-sm" type="text" ng-model='modal_data.sale_unit'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">已缴纳土地使用权出让金</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input class="form-control  input-sm" type="text" ng-model='modal_data.bpay_sale_fee'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">是否交清地价</label>
+                <div class="col-md-7">
+                    <select  class="form-control  input-sm"
+                            ng-init="modal_data.bfin_pay = modal_data.bfin_pay || '是'"
+                            type="text" ng-model='modal_data.bfin_pay'>
+
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地状况</label>
+              <div class="col-md-7">
+                  <select class="form-control  input-sm"
+                          ng-init="modal_data.land_status = modal_data.land_status || '生地'"
+                          type="text" ng-model='modal_data.land_status'>
+                      <option value="生地">生地</option>
+                      <option value="熟地">熟地</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">地上有无建筑</label>
+                <div class="col-md-7">
+                    <select class="form-control  input-sm"
+                            ng-init="modal_data.bbuilding = modal_data.bbuilding || '有'"
+                            type="text" ng-model='modal_data.bbuilding'>
+                        <option value="有">有</option>
+                        <option value="无">无</option>
+                    </select>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">地上构筑物占地面积</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.building_area'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">使用现状</label>
+                <div class="col-md-7">
+                    <select class="form-control  input-sm"
+                            ng-init="modal_data.land_use_status = modal_data.land_use_status || '出租'"
+                            type="text" ng-model='modal_data.land_use_status'>
+                        <option value="出租">出租</option>
+                        <option value="占用">占用</option>
+                        <option value="闲置">闲置</option>
+                        <option value="自用">自用</option>
+                        <option value="其他">其他</option>
+                        <option value="在建">在建</option>
+
+                    </select>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">土地证号</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.land_cert_no'/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押物预评估价值</label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input  class="form-control  input-sm" type="text" ng-model='modal_data.land_pre_eval_value'/>
+                        <span class="input-group-addon">元</span>
+                    </div>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押物评估价值<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                <input required name="land_eval_value" class="form-control  input-sm" type="text" ng-model='modal_data.land_eval_value'/>
+
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押物认定价值<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input  required name="land_conf_value"class="form-control  input-sm" type="text" ng-model='modal_data.land_conf_value'/>
+
+                        <span class="input-group-addon">元</span>
+                    </div>
+
+               </div>
+          </div>
+    </div>	
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押不算比例部分价值</label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input class="form-control  input-sm" type="text" ng-model='modal_data.land_except_value'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押不算比例部分面积</label>
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input class="form-control  input-sm" type="text" ng-model='modal_data.land_except_amount'/>
+                        <span class="input-group-addon">平方米</span>
+                    </div>
+               </div>
+          </div>
+    </div>		
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">担保金额<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                  <div class="input-group">
+                      <input required name="land_gty_amount" class="form-control  input-sm" type="text" ng-model='modal_data.land_gty_amount'/>
+                      <span class="input-group-addon">元</span>
+                  </div>
+
+
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押登记证号<font color="#FF0000">*</font></label>
+                <div class="col-md-7">
+                <input required name="mort_reg_id" class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_id'/>
+
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">抵押登记日期<font color="#FF0000">*</font></label>
+              <div class="col-md-7">
+                <input required name="mort_reg_date" class="form-control  input-sm" type="text" ng-model='modal_data.mort_reg_date'
+                       ng-blur="mort_reg_date(modal_data.mort_reg_date)" title="日期格式错误！"  />
+
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">评估机构</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.eval_org_id'/>
+               </div>
+          </div>
+    </div>		
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">评估时间</label>
+              <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.eval_date'
+                       ng-blur="eval_date(modal_data.eval_date)" title="日期格式错误！"/>
+              </div>
+          </div>
+          <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">抵押情况</label>
+                <div class="col-md-7">
+                <input class="form-control  input-sm" type="text" ng-model='modal_data.mort_status'/>
+               </div>
+          </div>
+    </div>
+    <div class="row">
+         <div class="col-md-6 form-group">
+              <label class="col-md-3 control-label label-sm">备注</label>
+              <div class="col-md-7">
+				<input class="form-control  input-sm" type="text" ng-model='modal_data.note'/>
+              </div>
+          </div>
+    </div>
+    </fieldset>
+  </form>
+</fieldset>

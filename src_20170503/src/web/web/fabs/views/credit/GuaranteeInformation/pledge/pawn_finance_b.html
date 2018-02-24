@@ -1,0 +1,140 @@
+<fieldset ng-disabled="guarantee_info.contract_no">
+    <form name="myForm" ng-submit="PawnFinanceSave()">
+        
+            <input type="submit" class="btn btn-primary" value="保存" ng-show="save == '保存'"/>
+            <button type="button" class="btn btn-primary" ng-show="save == '修改'" ng-click="pledgechange()">修改</button>
+        
+        </br>
+        <fieldset ng-disabled="save == '修改'">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">押品类型</label>
+
+                <div class="col-md-7">
+                    <input class="form-control  input-sm" type="text" value="质押-本行理财产品" disabled="disabled"/>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">理财产品名称 </label>
+
+                <div class="col-md-7">
+                    <input name="x1" class="form-control  input-sm" type="text" ng-model='modal_data.finance_name'/>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">年预期收益率 </label>
+
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input name="x2" class="form-control  input-sm" type="text"
+                               ng-model='modal_data.year_expect_rate' pattern="^\d+(\.\d+)?$"/>
+                        <span class="input-group-addon">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">认购金额 </label>
+
+                <div class="col-md-7">
+                    <input name="x3" class="form-control  input-sm" type="text" ng-model='modal_data.purchase_amount'
+                           pattern="^\d+(\.\d+)?$"/>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">理财账号 </label>
+
+                <div class="col-md-7">
+                    <input name="x4" class="form-control  input-sm" type="text"
+                           ng-model='modal_data.finance_account_no'/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">交易流水号<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <input class="form-control  input-sm" type="text" ng-model='modal_data.jrnl_id' required/>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">担保金额<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <input class="form-control  input-sm" type="text" ng-model='modal_data.finance_gty_amount'
+                           pattern="^\d+(\.\d+)?$" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">质押率 <font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <input name="x5" class="form-control  input-sm" type="text" ng-model='modal_data.pledge_rate'
+                               pattern="^\d+(\.\d+)?$" required/>
+                        <span class="input-group-addon">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">质押额<font color="#FF0000">*</font></label>
+
+                <div class="col-md-7">
+                    <input class="form-control  input-sm" type="text" ng-model='modal_data.pledge_amount'
+                           pattern="^\d+(\.\d+)?$" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">理财起始日期 </label>
+
+                <div class="col-md-7">
+                    <input name="x6" class="form-control  input-sm" type="text" ng-model='modal_data.beg_date'
+                           ng-model='modal_data.beg_date' pattern="\d{4}-\d{2}-\d{2}" placeholder="--YYYY-MM-DD格式输入---"
+                           maxlength="10" minlength="10"/>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">理财到期日期 </label>
+
+                <div class="col-md-7">
+                    <input name="x7" class="form-control  input-sm" type="text" ng-model='modal_data.due_date'
+                           ng-model='modal_data.beg_date' pattern="\d{4}-\d{2}-\d{2}" placeholder="--YYYY-MM-DD格式输入---"
+                           maxlength="10" minlength="10"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">质押情况 </label>
+
+                <div class="col-md-7">
+                    <input class="form-control  input-sm" type="text" ng-model='modal_data.pledge_status'/>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-md-3 control-label label-sm">备注</label>
+
+                <div class="col-md-7">
+                    <textarea name="x8" class="form-control  input-sm" type="text" ng-model='modal_data.note'/>
+                </div>
+            </div>
+        </div>
+        </fieldset>
+    </form>
+</fieldset>

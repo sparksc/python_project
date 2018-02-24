@@ -1,0 +1,174 @@
+Index: gsgxck.py
+===================================================================
+--- gsgxck.py	(版本 1871)
++++ gsgxck.py	(工作副本)
+@@ -100,6 +100,11 @@
+ 
+         return u'预提交成功'
+ 
+//+    def batch_account_move_before2(self, **kwargs):
+//+        updatelist = kwargs.get('update_key')
+//+        g.db_session.query(AccountHook).filter(AccountHook.id.in_(updatelist)).update({'status':u'预提交审批'}, synchronize_session=False)
+//+        return u'预提交成功'
+//+
+     """
+         账号全部预提交
+     """
+@@ -134,6 +139,10 @@
+             g.db_session.query(AccountHook).filter(AccountHook.id == pid).update(datadict)
+ 
+         return u'撤销成功'
+//+    def batch_account_move_delete2(self, **kwargs):
+//+        updatelist = kwargs.get('update_key')
+//+        g.db_session.query(AccountHook).filter(AccountHook.id.in_(updatelist)).update({'status':u'正常'}, synchronize_session=False)
+//+        return u'撤销成功'
+// 
+     """
+         账号全部预提交删除
+@@ -195,15 +204,19 @@
+             if (to_teller[0] == u'客户经理' or to_teller[0] == u'外聘客户经理') and to_teller_branch[0] != old_data.org_no:
+                 raise Exception(u'客户经理不允许跨网点转移')
+ 
+//+            """
+//+            更改为一次更新
+//             datadict = {}
+//             status = u'待审批'
+//             datadict['status'] = status
+//             datadict['batch_id'] = cust_hook_batch.id
+//             g.db_session.query(AccountHook).filter(AccountHook.id == pid).update(datadict)
+//+            """
+// 
+//             count = count + 1
+//             typ = old_data.typ
+// 
+//+        g.db_session.query(AccountHook).filter(AccountHook.id.in_(updatelist)).update({'status':u'待审批', 'batch_id': cust_hook_batch.id}, synchronize_session=False)
+//         cust_hook_batch.total_count = count
+ 
+         return u'移交成功'
+@@ -600,6 +613,30 @@
+         return u'预提交成功'
+ 
+     """
++    客户号移交审批部分2
++    """
++    #def batch_cust_move_before2(self, **kwargs,typ):
++    def batch_cust_move_before2(self, **kwargs):
++        updatelist = kwargs.get('update_key')
++        g.db_session.query(CustHook).filter(CustHook.id.in_(updatelist)).update({'status':u'预提交审批'}, synchronize_session=False)
++
++        #电子银行如何特殊处理 TBD
++
++        """
++        old_data  = g.db_session.query(CustHook).filter(CustHook.id == pid).first()
++
++        for pid  in updatelist:
++            datadict = {}
++            status = u'预提交审批'
++            datadict['status'] = status
++            g.db_session.query(CustHook).filter(CustHook.id == pid).update(datadict)
++            if old_data.typ == u'电子银行':
++                g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == u'电子银行').update(datadict)
++         """
++
++        return u'预提交成功'
++
++    """
+         客户全部预提交
+     """
+     def batch_cust_move_before_all(self, **kwargs):
+@@ -637,6 +674,11 @@
+ 
+         return u'撤销成功'
+ 
++    def batch_cust_move_delete2(self, **kwargs):
++        updatelist = kwargs.get('update_key')
++        g.db_session.query(CustHook).filter(CustHook.id.in_(updatelist)).update({'status':u'正常'}, synchronize_session=False)
++        return u'撤销成功'
++
+     """
+         客户全部预提交删除
+     """
+@@ -688,6 +730,8 @@
+         #取接收人的岗位类型
+         to_teller = g.db_session.execute("select gr.group_name from f_user fu, user_group ug, group gr where ug.user_id = fu.role_id and ug.group_id = gr.id and gr.group_type_code = '2000' and fu.user_name = '%s'"%(to_teller_no)).fetchone()
+ 
++        account_hooks_id = {}
++        ebank_cust_hooks_id = {}
+         for pid  in updatelist:
+             old_data  = g.db_session.query(CustHook).filter(CustHook.id == pid).first()
+             if to_teller_branch[0] != old_data.org_no:
+@@ -695,6 +739,8 @@
+ 
+             if (to_teller[0] == u'客户经理' or to_teller[0] == u'外聘客户经理') and to_teller_branch[0] != old_data.org_no:
+                 raise Exception(u'客户经理不允许跨网点转移')
++            """
++            更改为一次提交
+             datadict = {}
+             status = u'待审批'
+             datadict['status'] = status
+@@ -703,10 +749,25 @@
+             g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.typ == old_data.typ,AccountHook.follow_cust == u'客户号优先',AccountHook.cust_in_no == old_data.cust_in_no).update(datadict)
+             if old_data.typ == u'电子银行':
+                 g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == u'电子银行').update(datadict)
++            """
++            
++            accs = g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.typ == old_data.typ,AccountHook.follow_cust == u'客户号优先',AccountHook.cust_in_no == old_data.cust_in_no).all()
++            for acc in accs:
++                account_hooks_id.append(acc.id)
+ 
++            if old_data.typ == u'电子银行':
++                ebanks = g.db_session.query(CustHook).filter(CustHook.cust_in_no == old_data.cust_in_no,CustHook.org_no == old_data.org_no, CustHook.typ == u'电子银行').all()
++                for ebank in ebanks:
++                    ebank_cust_hooks_id.append(ebank.id)
++
+             count = count + 1
+             typ = old_data.typ
+ 
++        print "batch_cust_move:ebank_cust_hooks_id", ebank_cust_hooks_id
++        print "batch_cust_move:account_hooks_id", account_hooks_id
++        g.db_session.query(CustHook).filter(CustHook.id.in_(updatelist)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
++        g.db_session.query(CustHook).filter(CustHook.id.in_(ebank_cust_hooks_id)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
++        g.db_session.query(AccountHook).filter(AccountHook.id.in_(account_hooks_id)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
+         cust_hook_batch.total_count = count
+ 
+         return u'移交成功'
+@@ -736,6 +797,8 @@
+ 
+         #取接收人的岗位类型
+         to_teller = g.db_session.execute("select gr.group_name from f_user fu, user_group ug, group gr where ug.user_id = fu.role_id and ug.group_id = gr.id and gr.group_type_code = '2000' and fu.user_name = '%s'"%(to_teller_no)).fetchone()
++        account_hooks_id = {}
++        ebank_cust_hooks_id = {}
+         for pid  in updatelist:
+             old_data  = g.db_session.query(CustHook).filter(CustHook.id == pid).first()
+             if to_teller_branch[0] != old_data.org_no:
+@@ -746,17 +809,30 @@
+ 
+             if (to_teller[0] == u'客户经理' or to_teller[0] == u'外聘客户经理') and to_teller_branch[0] != old_data.org_no:
+                 raise Exception(u'客户经理不允许跨网点转移')
++
+             datadict = {}
+             templist=g.db_session.query(CustHook).filter(CustHook.manager_no == old_data.manager_no,CustHook.org_no == old_data.org_no,CustHook.cust_in_no == old_data.cust_in_no)
+             for tid in templist:
++                """ 更改为一次更新
+                 status = u'待审批'
+                 datadict['status'] = status
+                 datadict['batch_id'] = cust_hook_batch.id
+                 g.db_session.query(CustHook).filter(CustHook.id == tid.id).update(datadict)
+                 g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.cust_in_no == old_data.cust_in_no).update(datadict)
++                """
++                ebank_cust_hooks_id.append(tid.id)
+                 count = count + 1
++
++            accs = g.db_session.query(AccountHook).filter(AccountHook.manager_no == old_data.manager_no,AccountHook.org_no == old_data.org_no,AccountHook.cust_in_no == old_data.cust_in_no).all()
++            for acc in accs:
++                account_hooks_id.append(acc.id)
+             typ = old_data.typ
+ 
++        print "batch_cust_move:ebank_cust_hooks_id", ebank_cust_hooks_id
++        print "batch_cust_move:account_hooks_id", account_hooks_id
++        g.db_session.query(CustHook).filter(CustHook.id.in_(updatelist)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
++        g.db_session.query(CustHook).filter(CustHook.id.in_(ebank_cust_hooks_id)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
++        g.db_session.query(AccountHook).filter(AccountHook.id.in_(account_hooks_id)).update({'status':u'待审批', 'batch_id':cust_hook_batch.id}, synchronize_session=False)
+         cust_hook_batch.total_count = count
+ 
+         return u'移交成功'

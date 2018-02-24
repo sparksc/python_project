@@ -1,0 +1,166 @@
+<div style="margin: 0px;">
+    <div class="row" ng-controller="prePersonController">
+        <form>
+
+
+            <div class="col-md-11">
+                <div class="form-body">
+                    <!--
+                    required 必填项
+                    <br/>
+                    <label >身份证: </label>
+                    <input type="text" pattern="{{pattern.idcard}}" title="身份号码错误！" required/>
+                    <br/>
+
+                    <label >银行卡号: </label>
+                    <input type="text" pattern="{{pattern.card}}" title="银行卡号错误！"  required/>
+                    <br/>
+
+                    <label >机构信用代码: </label>
+                    <input type="text" pattern="{{pattern.icc}}" title="机构信用代码错误！" required />
+                    <br/>
+
+                    <label >组织机构代码: </label>
+                    <input type="text" pattern="{{pattern.oic}}" title="组织机构代码错误！" required />
+                    <br/>
+
+                    <label >国税登记证号: </label>
+                    <input type="text" pattern="{{pattern.ntrn}}" title="国税登记证号错误！"  />
+                    <br/>
+
+                    <label >地税登记证号: </label>
+                    <input type="text" pattern="{{pattern.ltrn}}" title="地税登记证号错误！"  />
+                    <br/>
+
+                    <label >开户许可证号: </label>
+                    <input type="text" pattern="{{pattern.aol}}" title="开户许可证号错误！"  />
+                    <br/>
+
+                    <label >邮政编码: </label>
+                    <input type="text" pattern="{{pattern.postalcode}}" title="邮政编码错误！"  />
+                    <br/>
+
+                    <label >邮箱: </label>
+                    <input type="email"   />
+                    <br/>
+
+                    <label >电话号码: </label>
+                    <input type="text"   pattern="{{pattern.telephone}}" title="电话号码错误！"  />
+                    <br/>
+
+                    <label >手机号码: </label>
+                    <input type="text"   pattern="{{pattern.mobilephone}}" title="电话号码错误！"  />
+                    <br/>
+
+                    <label >金额: </label>
+                    <input type="text"  pattern="{{pattern.amount}}" title="金额错误！"    />
+                    <br/>
+
+                    <label >日期: </label>
+                    <input type="date"   />
+                    -->
+
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">客户类型<font color="#FF0000">*</font></label>
+
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option>个人</option>
+                                        <option>个体工商户</option>
+                                        <option>公司客户业主</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">证件类型<font
+                                        color="#FF0000">*</font></label>
+
+                                <div class="col-md-7">
+
+                                    <select class="form-control input-sm" ng-model="pre.cert_type">
+                                        <option>身份证</option>
+                                        <option>户口本</option>
+							            <option>护照</option>
+                                        <option>军官证</option>
+                                        <option>士兵证</option>
+                                        <option>其他个人证件</option>
+                                        <option>香港身份证</option>
+                                        <option>澳门身份证</option>
+                                        <option>台湾身份证</option>
+                                        <option>港澳居民来往内地通行证</option>
+                                        <option>台湾同胞来往内地通行证</option>
+                                        <option>临时身份证</option>
+                                        <option>外国人居留证</option>
+                                        <option>警官证</option>
+                                        <option>组织机构代码证</option>
+                                        <option>营业执照</option>
+                                        <option>其他企业证件</option>
+										
+										
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">证件号码<font
+                                        color="#FF0000">*</font></label>
+
+                                <div class="col-md-7">
+                                    <div class="input ">
+                                        <input class="input-sm form-control" type="text" ng-blur="cert_check1()"
+                                               ng-model="pre.cert_no1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">客户名称<font
+                                        color="#FF0000">*</font></label>
+
+                                <div class="col-md-7">
+                                    <div class="input ">
+                                        <input class="input-sm form-control" type="text" ng-blur="name_check()"
+                                               ng-model="pre.name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="col-md-4">
+                                <label> </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary" ng-click="submit()">提交</button>
+                            <button type="button" class="btn btn-primary" ng-click="clear()">清除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

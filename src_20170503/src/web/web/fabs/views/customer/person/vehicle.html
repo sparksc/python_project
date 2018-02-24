@@ -1,0 +1,226 @@
+<div class="form-horizontal" role="form" id="vehicle" ng-show="display_info == 'vehicle'">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VehicleModal">新增</button> 
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td>{{data.certificate_number}}</td>
+                            <td>{{data.customer_name}}</td>
+                            <td>{{data.relationship}}</td>
+                            <td>{{data.register_branch}}</td>
+                            <td>{{data.register_teller}}</td>
+                            <td>{{data.register_date}}</td>
+                            <td>{{data.update_date}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VehicleModal" ng-click="view_data(0)">详情</button> 
+                                <button type="button" class="btn btn-primary">清除</button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='VehicleModal' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{vehicle_modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">统计截止日期</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">车辆牌号</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">车辆状况</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <textarea  class="form-control" rows="3"  type="text"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group form-inline">
+                                <label class="col-md-3 control-label label-sm">车辆品牌</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">车架号</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">发动机号</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input   class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">买入价格</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+										<div class="input">
+                                        <input class="form-control  input-sm" type="text"/> <span class="input-group-addon">元</span>
+										
+                                        
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">付款情况</label>
+                                <div class="col-md-7">
+                                    <select class="form-control input-sm">
+                                        <option>无抵押</option>
+                                        <option>有抵押</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">卖出日期</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <input class="form-control  input-sm" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">备注</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <div class="input">
+                                            <textarea  class="form-control" rows="3"  type="text"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记人</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记单位</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">登记日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label label-sm">更新日期</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text"  />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="save_data(modal_data)">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+</div>

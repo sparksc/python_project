@@ -1,0 +1,225 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="etc_importController">
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-0" >
+                      <div class="form-group">
+                        <label class="col-md-4 control-label label-sm ">归属机构号:</label>
+                        <div class="col-md-6"> 
+                            <input type="text" class="form-control col-md-7" ng-change="find_users()" ng-model="cust_search.org" disabled="true">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                     </div>
+
+                    <div name="sameBusiness" ng-include src=Page ></div>
+                     <div class="modal fade " name="loan_type_modal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree"> </div>
+                                    </form>
+                                </div> <!-- modal-body -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                </div> <!-- modal-footer -->
+                            </div> <!-- modal-content -->
+                        </div> <!-- modal-dialog -->
+                     </div>
+                 </div>
+                 <div class="col-md-4 col-md-offset-0">
+                     <div class=form-group">
+                          <label class="col-md-4 control-label label-sm">签约日期</label>
+                          <div class="col-md-6">
+                              <input  ng-readonly="flase"   type="text" class="form-control input-sm" ng-model="cust_search.DATE_ID" placeholder="请输入合法年份，如20170101."/>
+                          </div>
+                     </div>  
+                 </div>
+                 <div class="col-md-3 ">                                         
+                    <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />
+                 </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 col-md-offset-0">
+                     <div class=form-group">
+                          <label class="col-md-4 control-label label-sm">车牌号</label>
+                          <div class="col-md-6">
+                              <input ng-readonly="flase" type="text" class="form-control input-sm" ng-model="cust_search.license" />
+                          </div>
+                     </div>  
+                 </div>
+                  <div class="col-md-4 col-md-offset-0">
+                     <div class=form-group">
+                          <label class="col-md-4 control-label label-sm">车主</label>
+                          <div class="col-md-6">
+                              <input ng-readonly="flase" type="text" class="form-control input-sm" ng-model="cust_search.owner" />
+                          </div>
+                     </div>  
+                 </div>
+              </div>
+              <div class="row">
+
+              <div class="row">
+                  <div class="col-md-4 col-md-offset-8">
+                    <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                    <button type="button" class="btn btn-primary btn-sm"  ng-click="upload_excel_org()">excel导入</button>
+                    <a href="{{excelurl}}" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+            </fieldset><!--custQueryCond-->
+          </div>
+          <div name="resultTable">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header track by $index'  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="row.length-1 == $index">
+                                {{d}}
+                                </td>
+                                    <td><input type="button" class="btn btn-primary btn-sm"  value="修改" ng-click="edit(row)"/>     
+                              </tr>
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+
+        <div class="modal fade" id="etc_import_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">签约日期:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <input class="form-control"  ng-model="etc_update.date_id" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">车牌号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.cust_net_no" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">车主:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.cust_name" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">卡号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.card_no" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">卡主:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.card_name" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">签约机构:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.sign_org_no" type="text" disabled='true'/>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">签约客户经理编号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="etc_update.sign_teller_no" type="text" disabled='true'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">归属机构:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <!--<select class="form-control" ng-model="etc_update.org_no" ng-options="option.branch_code as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="change_name(etc_update.org_no)" >-->
+                                    <input class="form-control input-sm" ng-model="etc_update.org_no" type="text" >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">归属客户经理编号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <!--<select  class="form-control " ng-model="etc_update.teller_no"  ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model3" ng-change="change_name2(etc_update.teller_no)"/>-->
+                                    <input class="form-control input-sm " ng-model="etc_update.teller_no"  type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="edit_save()">提交修改</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+
+       </div>
+</div>

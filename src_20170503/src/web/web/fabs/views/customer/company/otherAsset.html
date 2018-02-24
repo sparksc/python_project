@@ -1,0 +1,169 @@
+<form name="otherAsset" ng-submit="save_data(otherAsset.$valid)">
+<div class="form-horizontal" role="form" id="otherAsset" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otherAssetModal">新增</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th ng-repeat="head in table_head" ng-bind="head"></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td ng-bind="data.certificate_number"></td>
+                            <td ng-bind="data.customer_name"></td>
+                            <td ng-bind="data.relationship"></td>
+                            <td ng-bind="data.register_branch"></td>
+                            <td ng-bind="data.register_teller"></td>
+                            <td ng-bind="data.register_date"></td>
+                            <td ng-bind="data.update_date"></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otherAssetModal" ng-click="view_data(0)">详情</button>
+                                <button type="button" class="btn btn-primary">清除
+</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id ='otherAssetModal' role="dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+
+	<div class="row">	
+ 	    <div class="col-md-6">
+		<div class="form-group">
+   		    <label class="col-md-3 control-label label-sm">标题<font color="#FF0000">*</font></label>
+		    <div class="col-md-7">
+	  	        <div class="input">
+			    <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.file_title" required />
+			</div>
+               	    </div>
+                </div>
+	    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">文件类型<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.otherAsset.file_type" required >
+		            <option></option>
+                            <option>营业执照</option>
+                            <option>资质</option>
+                            <option>法人证</option>
+                            <option>居民身份证</option>
+                            <option>照片</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">文件重要级别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.otherAsset.file_importance" required >
+		            <option></option>
+                            <option>非常重要</option>
+                            <option>比较重要</option>
+                            <option>重要</option>
+                            <option>一般重要</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">文档类别</label>
+                    <div class="col-md-7">
+                        <select class="form-control input-sm" ng-disabled="disabled_flag" ng-model="form_data.otherAsset.file_kind">
+                            <option>权证类</option>
+                            <option>要件类</option>
+                            <option>管理类</option>
+                            <option>保全类</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">编制名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.written_name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">编制日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.written_date" required pattern="{{pattern.date}}" title="日期错误！" ng-blur="written_date()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">附件名称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.att_file_name" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">附件内容</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.file_content"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">文档来源</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control input-sm" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.file_souce"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label label-sm">备注</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <textarea class="form-control  input-sm" rows="3" type="text" ng-disabled='disabled_flag' ng-model="form_data.otherAsset.remark" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </form>
+            </div> <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+    </div> <!-- modal -->
+</div>
+</form>

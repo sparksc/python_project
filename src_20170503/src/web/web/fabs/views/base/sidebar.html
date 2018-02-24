@@ -1,0 +1,157 @@
+<!-- 左侧 -->
+<nav class="btn-group btn-group-md" data-toggle="buttons">
+    <a href="#leftNav3" class="btn btn-primary xd-navBG xd-txt-titleBlue active">
+        <input type="radio" name="options">功能导航
+    </a>
+</nav>
+<div>
+    <div id="leftNav1" class="hidden" ng-controller="taskController">
+        <div class="xd-leftNav xd-bg-white">
+            <div class="swiper-container s1">
+                <div class="swiper-wrapper">
+                    <ul class="swiper-slide">
+                        <li>
+                            <a class="xd-title xd-titleBG xd-txt-titleBlue" href="#demo1"
+                               data-toggle="collapse">今日待办事项<span
+                                    class="pull-right iconfont icon-triangle-bottom"></span></a>
+
+                            <div id="demo1" class="collapse in">
+                                <p class="xd-list2" ng-show="taskCreditList[0]">
+                                    <span>转贷大表待处理</span><a href="javascript:;" ng-click="dealCredit(taskCreditList)"
+                                                           class="btn btn-primary btn-xs">处理</a>
+                                </p>
+
+                                <p class="xd-list2" ng-repeat="task in taskList">
+                                    <span> {{task.cust_name}} {{task.product_name}} {{task.amount||0.00}}元</span><a
+                                        href="javascript:;"
+                                        class="btn btn-primary btn-xs" ng-click="taskApplication(task)">
+                                    {{task.activity.activity_name}}</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="xd-title xd-titleBG xd-txt-titleBlue" href="#demo2"
+                               data-toggle="collapse">15天内已办事项<span
+                                    class="pull-right iconfont icon-triangle-bottom"></span></a>
+
+                            <div id="demo2" class="collapse in">
+                                <p class="xd-list2" ng-show="staskCreditList[0]">
+                                    <span>转贷大表待处理</span><a href="javascript:;" ng-click="dealCredit(taskCreditList)"
+                                                           class="btn btn-primary btn-xs">处理</a>
+                                </p>
+
+
+                                <p class="xd-list2" ng-repeat="task in staskList">
+                                    <span> {{task.cust_name}} {{task.product_name}} {{task.amount||0.00}}元</span><a
+                                        href="javascript:;"
+                                        class="btn btn-info btn-xs  btn-gray" ng-click="taskApplication(task)">
+                                    {{task.activity.activity_name}}</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+    <div id="leftNav2" class="hidden" ng-controller="customerController">
+        <div class="xd-mainSearch pull-left">
+            <from>
+                <input type="search" class="" placeholder="输入姓名……" ng-model="search_customer_name">
+                <button type="submit"><span class="iconfont icon-sousuo" ng-click="query_customer()"></span></button>
+            </from>
+        </div>
+        <div class="dropdown pull-right xd-addBtn">
+            <a href="javascript:;" class="btn xd-txt-white" data-toggle="dropdown"><span
+                    class="iconfont icon-tianjia"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;" ng-click="addPersonCustomer()">个人客户新增</a></li>
+                <li><a href="javascript:;" ng-click="addCompanyCustomer()">对公客户新增</a></li>
+            </ul>
+        </div>
+        <div class="xd-leftNav xd-search xd-bg-white">
+            <div class="swiper-container s2">
+                <div class="swiper-wrapper">
+                    <ul class="swiper-slide">
+                        <li>
+                            <p class="xd-list3" ng-repeat="cust in customer_list">
+                                <span>{{cust.party.name}}<wbr>{{cust.party.ric}}</span><a href="javascript:;"
+                                                                                          class="btn btn-primary btn-xs xd-mr5"
+                                                                                          ng-click="loanApplication(cust.party)">申请</a><a
+                                    href="javascript:;" class="btn btn-primary btn-xs"
+                                    ng-click="customerInfoDetail(cust.party)">明细</a>
+                            </p>
+                            <p class="xd-list3" ng-repeat="cust in org_list">
+                                <span>{{cust.party.company_cn_name}} <wbr>{{cust.party.org_id}} </span><a
+                                    href="javascript:;"
+                                    class="btn btn-primary btn-xs xd-mr5"
+                                    ng-click="loanApplication(cust.party)">申请</a><a
+                                    href="javascript:;" class="btn btn-primary btn-xs"
+                                    ng-click="customerInfoDetail(cust.party)">明细</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+    <div id="leftNav3">
+        <div class="xd-leftNav xd-bg-white">
+            <div class="swiper-container s3">
+                <div class="swiper-wrapper" style="overflow:scroll">
+                    <ul class="swiper-slide">
+                        <li ng-repeat="menu_item in menus | orderBy:'id'">
+                            <a class="xd-title xd-titleBG xd-txt-titleBlue" ng-click="menuForward(menu_item)">
+                                <span class="title" >{{menu_item.name}}</span>
+
+                            <span class="pull-right iconfont icon-triangle-bottom"
+                                  ng-show="menu_item.children&&menu_item.active"></span>
+                            <span class="pull-right iconfont icon-triangle-left"
+                                  ng-show="menu_item.children&&!menu_item.active"></span>
+
+                                <div class="xd-clr"></div>
+                            </a>
+
+                            <div class="collapse in" ng-show="menu_item.active" ng-if="menu_item.children"
+                                 ng-repeat="child in menu_item.children | orderBy:'id'">
+                                <a class="xd-list2 xd-listBG xd-txt-gray" ng-click="menuForward(child)">
+                                    <span class="title" style="max-width:190px" title="{{child.name}}" >{{child.name}}</span>
+                                <span class="pull-right iconfont icon-triangle-bottom"
+                                      ng-show="child.children&&child.active"></span>
+                                <span class="pull-right iconfont icon-triangle-left"
+                                      ng-show="child.children&&!child.active"></span>
+
+                                    <div class="xd-clr"></div>
+                                </a>
+
+                                <div class="collapse in" ng-show="child.active" ng-if="child.children"
+                                     ng-repeat="secode in child.children | orderBy:'id'">
+                                    <a class="xd-list-list xd-txt-gray" ng-click="menuForward(secode)" title="{{secode.name}}" >
+                                        <span class="title">{{secode.name}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左侧end -->
+
+<script src="assets/js/sidebar.js"></script>
+
+
+
+<script type="text/javascript">
+    var choose_business_type = function (elem, typeCode, typeName, typePage, guaType) {
+        //angular.element($(elem)).scope().choose_business_type($(elem).attr("title"))
+        angular.element($(elem)).scope().choose_business_type(typeCode, typeName, typePage, guaType);
+    }
+</script>
+
+

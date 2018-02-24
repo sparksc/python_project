@@ -1,0 +1,630 @@
+<form class="form-horizontal" role="form" name="loanApplicationForm" ng-submit='onSave(loanApplicationForm.$valid)' ng-controller='accBillLoanApplicationController' >
+    <div class="form-body">
+        <form id="acc_bill_loan_form" >
+            <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6" ng-hide = 'approve_flag'>
+                        <button type="button" ng-show='edit_flag'  ng-click="onEdit()" class="btn btn-primary"> 修改</button>
+                        <button type="submit" ng-hide='edit_flag'  class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click='onSubmit()' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-show='data.lend_transaction.transaction_id' ng-click='onContract()' class="btn btn-primary" >生成合同</button>
+                    </div>
+                    <div class="col-md-3 pull-right" ng-show='approve_flag' >
+                        <button class="btn btn-primary" data-toggle="collapse" href="#examineComment" >签署结果</button>
+                        <div class="collapse" id="examineComment" style="position:absolute;background-color:White;z-index:1024;">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">意见:</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control" rows="6" ng-model="result" ng-disabled="submitedFlag"></textarea>
+                                     </div>
+                                </div>  
+                            </div>  
+                            <div class="row">
+                                <button type='button' ng-click="approve()" class="btn btn-success col-md-5" >同意</button>
+                                <button type='button' ng-click="reject()" class="btn btn-danger col-md-5 pull-right" >不同意</button> 
+                            </div>
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>
+    <!--<div class="form-body">-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">客户编号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-model="data.customer.no"  ng-disabled=true   />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">客户名称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='true' ng-model="data.customer.name"  disabled=truedisabled=true  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">借款合同号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" disabled='true' ng-model='data.contract.contract_no' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">业务品种<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  " disabled='true'  type="text" ng-model="product_name" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">申请日期<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text"  ng-model="data.application_info.apply_date" ng-disabled='true' ng-blur="apply_date(data.application_info.apply_date)"  pattern="{{pattern.date}}" title="日期格式错误！"   />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">通过日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control "  disabled="true"   ng-model="data.application_info.first_drawing_date" ng-blur="first_drawing_date(data.application_info.first_drawing_date)" title="日期格式错误！">
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">申请币种<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control" ng-model="data.transaction_info.currency_code" disabled='true' >
+                          <option value="CNY">人民币</option>
+                          <option value="USD">美元</option>
+                          <option value="EUR">欧元</option>
+                          <option value="GBP">英镑</option>
+                       </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">放款金额<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input  name='amount' type="text" class="form-control " ng-disabled='edit_flag'  ng-model="money.amount" ng-blur="amount(money.amount)"  pattern="{{pattern.amount}}" title="金额错误!" required >
+                <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">票据类别<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select class="form-control" ng-hide='data.lend_transaction.transaction_id' ng-model='data.application_info.bill_kind' ng-disabled='true' >
+                             <option>纸票</option>
+                             <option>电票</option>
+                       </select>
+                        <select class="form-control" ng-show='data.lend_transaction.transaction_id'  ng-model='data.lend_transaction.bill_kind' ng-disabled='true' >
+                             <option>纸票</option>
+                             <option>电票</option>
+                       </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贷款期限<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                          <div class="input-group">
+                          <input type="text" class="form-control"  ng-model='data.application_info.term_month'  ng-disabled='true' />
+                          <span class="input-group-addon">月</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">银承起始日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.from_date" ng-blur="from_date(data.lend_transaction.from_date)" title="日期格式错误！" name='from_date' required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">银承终止日<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                         <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.thur_date" ng-blur="thur_date(data.lend_transaction.thur_date)" title="日期格式错误！" name='thur_date' required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">执行利率（月）<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                          <input type="text" class="form-control" ng-disabled='edit_flag' ng-model="data.lend_transaction.execute_rate" placeholder=""   >
+                          <span class="input-group-addon">‰</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">逾期加罚比例<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-disabled='edit_flag'  ng-model="data.lend_transaction.overdue_rate_more" placeholder=""  >
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">    
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">逾期利率（月）<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                             <input type="text" class="form-control" ng-disabled='edit_flag' name='overdue_rate' ng-model="data.lend_transaction.overdue_rate" required >
+                            <span class="input-group-addon">‰</span>
+                       </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">挪用加罚比例<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-disabled='edit_flag' name='shift_fine_rate' ng-model="data.lend_transaction.shift_fine_rate" required  />
+                             <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">    
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">挪用利率（月）</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                             <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.shift_rate"  />
+                             <span class="input-group-addon">‰</span>
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">计息方式<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag' name='interest_method'  ng-model="data.lend_transaction.interest_method" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">还款方式<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <select  class="form-control" ng-disabled='edit_flag' ng-hide='data.lend_transcation.transaction_id' ng-model="data.application_info.repayment_method">
+                            <option>一次性还款</option>
+                            <option>等本</option>
+                            <option>等额</option>
+                        </select>
+                        <select  class="form-control" ng-show='data.lend_transcation.transaction_id' ng-disabled='edit_flag' ng-model="data.lend_transaction.repayment_method">
+                            <option>一次性还款</option>
+                            <option>等本</option>
+                            <option>等额</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">还款期数</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.rep_period"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">自动还款账号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control" type="text" ng-disabled='edit_flag'  ng-model="data.lend_transaction.repayment_account_no" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">是否银团贷款</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control" type="text" ng-disabled='edit_flag'  ng-model="data.lend_transaction.isgroup_loan" />
+                        </div>
+                    </div>
+                </div>
+              </div>
+           </div>
+           <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">是否敞口签票<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                            <select  class="form-control  " disabled='true' ng-hide='data.lend_transaction.transaction_id' ng-model="data.application_info.bill_type" >
+                                <option>全额</option>
+                                <option>敞口</option>
+                            </select>
+                            <select  class="form-control  "disabled='true' ng-show='data.lend_transaction.transaction_id' ng-model="data.lend_transaction.bill_type"  >
+                                <option>全额</option>
+                                 <option>敞口</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">主要担保方式</label>
+                    <div class="col-md-7">
+                         <select class="form-control" disabled="true" ng-hide='data.lend_transaction.transaction_id'  ng-model="data.application_info.main_gua_type" >
+                            <option>抵押</option>
+                            <option>质押</option>
+                            <option>保证</option>
+                          </select>
+                         <select class="form-control" disabled="true" ng-show='data.lend_transaction.transaction_id'  ng-model="data.lend_transaction.main_gua_type" >
+
+                            <option>抵押</option>
+                            <option>质押</option>
+                            <option>保证</option>
+                          </select>
+
+                      </div>
+                  </div>
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">汇票用途<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control" name='purpose_type1'  type="text" ng-hide='data.lend_transaction.transaction_id'  ng-disabled='edit_flag' ng-model="data.application_info.purpose_type" required />
+                            <input class="form-control  " type="text"  ng-show='data.lend_transaction.transaction_id'  ng-disabled='edit_flag'  ng-model="data.lend_transaction.purpose_type" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">还款来源<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  "  name='repayment_from' type="text" ng-hide='data.lend_transaction.transaction_id'  ng-disabled='edit_flag'  ng-model="data.application_info.repayment_from" required />
+                            <input class="form-control  " name='repayment_from' type="text" ng-show='data.lend_transaction.transaction_id'  ng-disabled='edit_flag' ng-model="data.application_info.repayment_from" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">基本授信使用</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag'  ng-model='data.lend_transaction.credit_type' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">行业门类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" ng-disabled='edit_flag' name='industry_top' ng-change="industry_select(industry_top,'big')"  ng-model="industry_top" required>
+                        <option ng-repeat=" inds_top in industry_topList | orderBy:'industry_d'" value="{{inds_top.industry_d+'-'+inds_top.type_name}}">{{inds_top.industry_d+'-'+inds_top.type_name}}</option>
+                    </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">行业大类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" name='industry_big' ng-change="industry_select(industry_big,'mid')" ng-disabled='edit_flag' ng-model="industry_big" required>
+                    <option ng-repeat=" inds_big in industry_bigList | orderBy:'industry_d' " value="{{inds_big.industry_d+'-'+inds_big.type_name}}">{{inds_big.industry_d+'-'+inds_big.type_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">行业中类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <select class="form-control input-sm" name='industry_mid' ng-change="industry_select(industry_mid,'small')"  ng-disabled='edit_flag' ng-model="industry_mid" required >
+                        <option ng-repeat=" inds_mid in industry_midList | orderBy:'industry_d' " value="{{inds_mid.industry_d+'-'+inds_mid.type_name}}">{{inds_mid.industry_d+'-'+inds_mid.type_name}}</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">行业小类<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                           <select class="form-control input-sm" name='industry_small' ng-change="industry_select(industry_small,'over')" ng-disabled='edit_flag' ng-model="industry_small" required >
+                        <option ng-repeat=" inds_small in industry_smallList | orderBy:'industry_d' " value="{{inds_small.industry_d+'-'+inds_small.type_name}}">{{inds_small.industry_d+'-'+inds_small.type_name}}</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">营销柜员号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model='data.lend_transaction.market_teller_no'  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">营销柜员名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model='data.lend_transaction.market_teller'  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">战略新型产业类型</label>
+                    <div class="col-md-7">
+                         <select class="form-control" ng-model='data.lend_transaction.strate_product' ng-disabled='edit_flag'  >
+                            <option>节能环保</option>
+                            <option>新一代信息技术</option>
+                            <option>生物</option>
+                            <option>高端装备制造</option>
+                            <option>新能源</option>
+                            <option>新材料</option>
+                            <option>新能源汽车</option>
+                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">工业转型升级标识</label>
+                    <div class="col-md-7">  
+                        <select class="form-control" ng-model='data.lend_transaction.product_update' ng-disabled='edit_flag'  >
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">贸易合同号</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.trade_contract_no"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">货物名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.goods_name"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">是否我行汇票</label>
+                        <div class="col-md-7">
+                            <select  class="form-control  " ng-disabled='edit_flag'  ng-model="data.lend_transaction.isown" >
+                                <option>否</option>
+                                <option>是</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">付款行全称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " type="text"  name='pay_bank_name' ng-disabled='edit_flag' ng-model="data.lend_transaction.pay_bank_name"  required  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人开户银行</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  " type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.accp_accounts_bank"   />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人账号<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control  " name='accp_accounts' type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.accp_accounts" ng-blur="acc_name(data.lend_transaction.accp_accounts)" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">出票人全称<font color="#FF0000">*</font></label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control  " name='bill_person' type="text" ng-disabled='edit_flag' ng-model="data.lend_transaction.accp_name"  required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">经办机构</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input class="form-control" type="text" disabled='true' ng-model="data.application_info.handle_branch"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">经办人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                             <input class="form-control" type="text" disabled =true  ng-model="data.application_info.handle_person"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="form-group">
+                  <label class="col-md-2 control-label ">备注<br/>(限100个汉字)</label>
+                  <div class="col-md-10">
+                     <textarea class="form-control" ng-disabled='edit_flag' ng-model="data.application_info.remark" rows="3"></textarea>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        </form>
+    </div>
+
+    <!-- 下一步流程-->
+    <div class="modal fade " name="next_step_modal" role="dialog">
+       <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">下一步流程</h4>
+                </div>
+                <div class="modal-body">
+                     <div ng-repeat = 'next in next_step'>
+                         <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">流程:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.activity.activity_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">岗位:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.role"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="row">
+                                  <div  class='col-md-2'  ng-repeat='user in next.users'>
+                                        <span>{{user.user_name}}{{user.name}}</span>
+                                   </div>
+                           </div>
+                       </div>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >确定</button>
+                </div> <!-- modal-footer -->
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+</form>

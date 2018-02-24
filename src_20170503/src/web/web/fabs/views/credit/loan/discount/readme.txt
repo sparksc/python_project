@@ -1,0 +1,9 @@
+batch_billing.html 批量票据清单页面
+billing.html     票据清单页面
+discount.html   贴现业务基本页面
+survey.html     调查报告
+report.html     财务报表
+invoice.html    发票清单
+statement.html  原版财务报表
+documentation.html 文档资料
+ntbilling.html 批量导入票据清单

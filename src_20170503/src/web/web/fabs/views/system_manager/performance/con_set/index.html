@@ -1,0 +1,39 @@
+﻿<div ng-controller="conSetController">
+		
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr>
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th>
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="row.length-1 == $index">
+                                {{d}}
+                                </td>
+                                <td><input type="button" value="添加" ng-click="add(row)"></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+    </div>
+
+</div>

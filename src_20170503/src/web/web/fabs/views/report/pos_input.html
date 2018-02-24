@@ -1,0 +1,425 @@
+<div ng-controller="pos_inputController">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+               <div class="form-body">
+                 <div class="row">
+                   <div class="col-md-3 ">
+                      <div class="form-group">
+                        <label class="col-md-5 control-label label-sm">机构号:</label>
+                          <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.ORG_NO"/>
+                              </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-3">
+                     <div class="form-group">
+                       <label class="col-md-5 control-label label-sm">类型:</label>
+                       <div class="col-md-7">
+                         <div class="input">
+                               <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.TYP">
+                                   <option value=""></option>
+                                   <option value="信付通">信付通</option>       
+                                   <option value="委托银商">委托银商</option>       
+                                   <option value="助农">助农</option>       
+                                   <option value="行内">行内</option>       
+                                   <option value="自签传统">自签传统</option>
+                               </select>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-md-3 ">
+                      <input class="form-control input-sm" id = "elec_arch" type="file" multiple="multiple" />  
+                   </div>
+                </div>
+                <div class="row">
+                 <div class="col-md-3 ">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">商户编号:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.MER_NO"/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3 ">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">商户名称:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.MERCHANT_NAME"/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3 ">
+                    <div class="form-group">
+                          <label class="col-md-5 control-label label-sm">终端号:</label>
+                            <div class="col-md-7">
+                              <div class="input">
+                                  <input class="form-control input-sm"  type="text"  ng-model="cust_search.POS_NO"/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                   <div class="col-md-3">
+                     <div class="form-group">
+                       <label class="col-md-5 control-label label-sm" ng-init="cust_search.STATUS='正常' ">状态:</label>
+                       <div class="col-md-7">
+                         <div class="input">
+                               <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="cust_search.STATUS">
+                                   <option value=""></option>
+                                   <option value="正常" selected="selected">正常</option>       
+                                   <option value="撤机">撤机</option>       
+                               </select>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+               </div>
+               <div class="row">
+                        <div class="col-md-12">
+                            <div class="form text-right">
+                                <a href="../fabs/static/standing_book/POS模版.xls" class="btn btn-primary white" >POS模版下载</a>
+
+                                <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                                <button class="btn btn-primary btn-sm" ng-click="add()">添加</button>
+                                <button type="button" class="btn btn-primary btn-sm"  ng-click="upload_excel()">excel导入</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+           <div name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header track by $index'  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length-1 == $index">
+                                {{d}}
+                                </td>
+                                <td>
+                    <button class="btn btn-primary btn-sm" ng-click="edit(row)">编辑</button>
+                                </td>
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                  <li> 总共{{total_count}}条</>
+                  <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+ 
+ 
+
+     
+      <div class="modal fade" id="pos_input_edit_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">编辑</h4>
+                </div>
+                <div class="modal-body">
+                <form name="edit_form" ng-submit="edit_save()">
+                    <fieldset>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_org_no" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户名称:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_name" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户代码:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_no"  readonly="true"  type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">终端号:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_pos_no" readonly="true"  type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户地址:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_add" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系人:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_con" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系电话:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_tel" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">手机号码:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="edit_mer_mob" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">安装时间:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                      <input date-range-picker options="date_opts" class="form-control input-sm" ng-model="edit_mer_date" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">类型:</label>
+                            <div class="col-md-10">
+                              <div class="input">
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="edit_mer_type"required>
+                                        <option value=""></option>
+                                        <option value="信付通">信付通</option>       
+                                        <option value="委托银商">委托银商</option>       
+                                        <option value="助农">助农</option>       
+                                        <option value="行内">行内</option>       
+                                        <option value="自签传统">自签传统</option>
+                                    </select>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">状态:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="edit_status"required>
+                                        <option value="正常">正常</option>       
+                                        <option value="撤机">撤机</option>       
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">销户时间:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                      <input date-range-picker options="date_opts" class="form-control input-sm" ng-model="edit_end_date" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="submit" class="btn btn-primary">提交更改</button>
+            </fieldset>
+           </form>
+                </div>
+            </div>
+        </div>
+   </div>
+
+      <div class="modal fade" id="pos_input_add_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">添加</h4>
+                </div>
+                <form name="add_form" ng-submit="add_save()">
+                    <fieldset>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构号:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_org_no" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户名称:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_name" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户代码:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_no" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">终端号:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_pos_no" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">商户地址:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_add" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系人:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_con" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">联系电话:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_tel" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">手机号码:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <input class="form-control input-sm" ng-model="add_mer_mob" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">安装时间:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                      <input date-range-picker options="date_opts" class="form-control input-sm" ng-model="add_mer_date" type="text"required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">类型:</label>
+                            <div class="col-md-10">
+                              <div class="input">
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="add_mer_type"required>
+                                        <option value=""></option>
+                                        <option value="信付通">信付通</option>       
+                                        <option value="委托银商">委托银商</option>       
+                                        <option value="助农">助农</option>       
+                                        <option value="行内电话">行内电话</option>       
+                                        <option value="自签传统">自签传统</option>
+                                    </select>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">状态:</label>
+                            <div class="col-md-10">
+                                <div class="input"> 
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="add_status"required>
+                                        <option value=""></option>
+                                        <option value="正常">正常</option>       
+                                        <option value="撤机">撤机</option>       
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="submit" class="btn btn-primary">保存</button>
+            </fieldset>
+           </form>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+

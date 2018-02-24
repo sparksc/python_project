@@ -1,0 +1,33 @@
+<div class="form-horizontal" role="form" ng-controller="companyImageService" id="companyImage" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control input-sm" ng-model="about" >
+                    <option>营业执照</option>
+                    <option>税务登记证</option>
+                    <option>织机构代码证</option>
+                    <option>法人身份证</option>
+                    <option>开户许可证</option>
+                    <option>机构信用代码</option>
+                    <option>企业征信报告</option>
+                    <option>贷款卡年检书</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-click="searchImage()" >查询</button>
+            </div>
+            <div class="col-md-3">
+                    <input class="form-control input-sm" id="custImage"  type="file" multiple="multiple" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary"  ng-click="addImage()">上传</button>
+            </div>
+
+        </div>
+
+        <br>
+        <div ng-repeat="img in imgList">
+            <iframe id='iframe' width='100%' height='600px' src="{{img}}"  scroll="no"></iframe>
+        <div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿<div ng-controller="conLookController">
+
+       <div class="col-md-12">
+        <div name="queryForm" class="">
+          <fieldset name="custQueryCond">
+              <div class="row">
+                  <div class="col-md-3 col-md-offset-10">
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr>
+                                  <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th>
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="row.length-1 == $index">
+                                {{d}}
+                                </td>
+                                <td><input type="button" value="设定" ng-click="set(row)"></td>
+                              </tr>
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+    </div>
+
+
+    <div class="modal fade" id="set_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">设定</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">权重:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="weight_model" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">目标值:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                  <input class="form-control input-sm" ng-model="target_model"  type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="save()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>

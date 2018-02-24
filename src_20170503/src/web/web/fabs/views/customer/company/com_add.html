@@ -1,0 +1,65 @@
+<form name="com_add" ng-submit="save_data(com_add.$valid)">
+<div style="margin: 0px;">
+    <div class="row" ng-controller="companyController">
+        <div class="col-md-11"  >
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">客户性质</label>
+                            <div class="col-md-7">
+                                <select class="form-control input-sm">
+                                    <option>企业法人</option>
+                                    <option>企业非法人</option>
+                                    <option>个体工商户</option>
+                                    <option>事业单位</option>
+                                    <option>金融单位</option>
+                                    <option>其他</option>
+                                </select>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                 <div class="row">
+                     <div class="col-md-11">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">组织机构代码证或统一信用代码证<font color="#FF0000">*</font></label>
+                            <div class="col-md-7">
+                                <div class="input ">
+                                    <input class="input-sm form-control" type="text" ng-blur="org_check1()"  ng-model="company.org_id1" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                <br>
+                 <div class="row">
+                     <div class="col-md-11">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">客户名称<font color="#FF0000">*</font></label>
+                            <div class="col-md-7">
+                                <div class="input ">
+                                    <input class="input-sm form-control" type="text" ng-blur="name_check()" ng-model="company.name"  required  />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-11" >
+                    <div class="col-md-4">
+                        <label> </label>
+                    </div>
+                        <button type="submit" class="btn btn-primary" ng-click="submit()" >提交</button>
+                        <button type="button" class="btn btn-primary"  ng-click="clear()">清除</button>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

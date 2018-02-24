@@ -1,0 +1,87 @@
+<!--<div class="form-horizontal" role="form" name="imageForm" ng-controller = "imageControllr">
+        <img src="./images/2/YY.jpg" class="img-thumbnail">
+                interval="myInterval"
+</div>
+-->
+ <div class="form-horizontal" role="form" name="imageForm" ng-controller="commImageController">
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>货前影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner" >
+                           <div  ng-repeat="img in research" class="item {{$index==0?'active':''}}">
+                               <a href="#myModalimg1" data-toggle="modal" ng-click="imgShow('research')"><img src="{{img.url}}"></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a ng-if="research.length>0"class="carousel-control left" href="#myCarousel" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a ng-if="research.length>0"class="carousel-control right" href="#myCarousel" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       
+       <div class="xd-imgModule pull-left">
+           <div class="xd-imgPanel">
+               <h5>合同面签影像</h5>
+               <div class="xd-imgBox">
+                   <div id="myCarousel1" class="carousel slide">
+                       <!-- 轮播（Carousel）项目 -->
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <a href="#myModalimg1" data-toggle="modal"><img src="./assets/images/loginImg.png"></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src="./assets/images/loginImg.png"></a>
+                           </div>
+                           <div class="item">
+                               <a href="#myModalimg1" data-toggle="modal"><img src="./assets/images/loginImg.png"></a>
+                           </div>
+                       </div>
+                       <!-- 轮播（Carousel）导航 -->
+                       <a class="carousel-control left" href="#myCarousel1" 
+                         data-slide="prev">&lsaquo;</a>
+                       <a class="carousel-control right" href="#myCarousel1" 
+                         data-slide="next">&rsaquo;</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+    <div id="myModalimg1" class="modal fade xd-bigImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header xd-bodyBG">
+                    <button type="button" class="close" 
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                       货前影像
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="xd-imgBox">
+                        <div class="pull-left xd-modalImg" ng-repeat = "img in show_img">
+                            <img src="{{img.url}}" alt="First slide">
+                        </div>
+                        <div class="xd-clr"></div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                       确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框end -->
+
+    </div>
+</div>

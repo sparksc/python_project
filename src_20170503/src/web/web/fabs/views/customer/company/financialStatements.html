@@ -1,0 +1,99 @@
+ <div class="row"  >
+<form id="financialStatements" ng-show="display_info == 'financialStatements'" class="form-horizontal" role="form"  style="overflow-x:yes; overflow-y:yes;">
+<div class="modal-header"> 
+                        <!--<h4 class="modal-title">当前客户：</h4>-->
+                    </div >
+                    <div class="modal-body" >
+                        <div name="custQueryCond">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-6 control-label label-sm">报表周期类型:</label>
+                                    <div class="col-md-6">
+											<select class="form-control input-sm" id="type"  ng-model='modal_data.report_period' >
+												<option></option>
+												<option>月报</option>
+												<option>季报</option>
+												<option>半年报</option>
+												<option>年报</option>
+											</select>
+									</div>
+									</div>
+									</div>
+                                
+                              
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-6 control-label label-sm">报表年月:</label>
+                                        <div class="col-md-6">
+                                            <div class="input">
+                                                <input class="form-control input-sm" id="num"  type="text"  ng-model='modal_data.year_month'/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+								  <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-6 control-label label-sm">合并报表:</label>
+                                        <div class="col-md-6">
+											<select class="form-control input-sm"  >
+												<option></option>
+												<option>否</option>
+												<option>是</option>
+											</select>
+                                    </div>
+                                </div>
+								  </div>
+								    <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="input">
+                                                <input  class="form-control input-sm"   type="hidden"  ng-model='modal_data.company_id' value="{{customer.id}}"/>
+                                            </div>
+                                        </div>
+									</div>
+									</div>
+                                <div class="row">
+                                <div class="col-md-3 col-md-offset-10">
+                                  <button class="btn btn-primary" ng-click="query_report_record(customer.id)">查询</button>
+								 <button class="btn btn-primary" type="submit"  ng-click="save_report_record()">新增</button>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+
+    <div class="form-body" id="report_record">
+        <table id="insertFileForm" class = "table table-bordered" >
+		<div align="center">
+            <tr></tr>
+	  <tr >
+                                  <th ng-repeat='th in Listreport' class = "info"  ng-bind='th' align="center"> </th> 
+                              </tr>
+
+            <tr ng-repeat='r in report_datalist' align="center">
+                <td>{{r.year_month}}</td>
+                <td>{{r.report_period}}</td>
+                <td style="color:#0000FF" type="submit" ng-click ="delete_report_record(r.id,r.company_id)">删除</td>
+                <td style="color:#0000FF"  ng-click ="find_statement(r.id)">查看 </td>
+                <td style="color:#0000FF" onmouseover="this.style.cursor='hand'" type="file">
+					 <span class="btn btn-file ">
+					   <input type="file" class="default" name="{{r.id}}" id="file">
+						<select class="form-control input-sm"  ng-model="modal_data[$index].report_id" >
+												<option value="1">资产负债表</option>
+												<option value="6">资产负债表（新）</option>
+												<option value="2">损益表</option>
+												<option value="7">损益表（新）</option>
+											</select>	
+					    </span>
+						<button  ng-click="upload(r.id,modal_data[$index].report_id)" class="btn btn-primary" id="file_btn">上传</button>
+						  
+				</td>
+            </tr >
+			        </div>
+        </table>
+
+    </div> 
+
+</form>
+</div> 
+

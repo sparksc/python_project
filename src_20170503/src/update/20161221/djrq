@@ -1,0 +1,8 @@
+--更新旧数据
+select * from cust_hook where start_date is null
+update cust_hook set start_date = ETL_DATE where START_DATE is null
+update cust_hook set end_date = 29991231 where end_DATE is null
+
+update account_hook set start_date = ETL_DATE where START_DATE is null
+update account_hook set end_date = 29991231 where end_DATE is null
+

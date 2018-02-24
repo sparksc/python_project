@@ -1,0 +1,1223 @@
+<div ng-controller="ebills_hookController">
+    <div class="row">
+       <div class="col-md-12">
+        <form class="col-horizontal">
+          <div class="form-body">
+          <fieldset name="custQueryCond">
+             
+             <div class="row">
+                 <div class="col-md-4 col-md-offset-1">
+                     <div class=form-group">
+                          <label class="col-md-4 control-label label-sm">统计月份</label>
+                          <div class="col-md-6">
+                              <input  ng-readonly="true" date-range-picker options="date_opts"  type="text" class="form-control input-sm" ng-model="cust_search.DATE_ID">
+                              </input>
+                          </div>
+                     </div>  
+                 </div>
+                <!-- <div class="col-md-4 col-md-offset-1">
+                     <div class=form-group">
+                          <label class="col-md-5 control-label label-sm">终止日期</label>
+                          <div class="col-md-7">
+                              <input  ng-readonly="true" date-range-picker options="date_opts"  type="text" class="form-control input-sm" ng-model="cust_search.END_DATE_ID">
+                              </input>
+                          </div>
+                     </div>  
+                 </div>-->
+                <div class="col-md-4 col-md-offset-1">
+                      <div class="form-group">
+                        <label class="col-md-4 control-label label-sm ">机构号</label>
+                        <div class="col-md-6"> 
+                            <input type="text" class="form-control col-md-7" ng-change="find_users()"  ng-model="cust_search.org" disabled="true">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                     </div>
+
+                    <div name="sameBusiness" ng-include src=Page ></div>
+                     <div class="modal fade " name="loan_type_modal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">机构信息</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row" name="for_lt_tree"> </div>
+                                    </form>
+                                </div> <!-- modal-body -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                </div> <!-- modal-footer -->
+                             </div> <!-- modal-content -->
+                     </div> <!-- modal-dialog -->
+                 </div>
+              </div>
+
+                 <div class="col-md-4 col-md-offset-1">
+                     <div class="form-group">
+                         <label class="col-md-4 control-label label-sm">客户经理</label>
+                         <div class="col-md-6">
+                              <div class="input">
+                                  <select type="text" class="form-control" ng-model="cust_search.SALE_CODE" ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model2">
+                                  <option></option>
+                                  </select>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="col-md-4 col-md-offset-1" >
+                     <div class="form-group">
+                         <label class="col-md-4 control-label label-sm">客户名称</label>
+                         <div class="col-md-6">
+                              <div class="input">
+                                  <input type="text" class="form-control" ng-model="cust_search.CORPNAME">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-4 col-md-offset-1" >
+                     <div class="form-group">
+                         <label class="col-md-4 control-label label-sm">新开有效外汇</label>
+                         <div class="col-md-6">
+                           <select  class="form-control" ng-model="cust_search.IS_OPEN_NEW_WH">
+                                  <option values=''></option>
+                                  <option values='是'>是</option>
+                                  <option values='否'>否</option>
+                           </select>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="col-md-4 col-md-offset-1" >
+                     <div class="form-group">
+                         <label class="col-md-4 control-label label-sm">客户经理员工号为空查询</label>
+                         <div class="col-md-6">
+                          <div class="input">
+                           <input  type="checkbox" ng-model="cust_search.check_workno">
+                          </div>
+                         </div>
+                     </div>
+                 </div>
+
+              </div>
+            
+
+                  <div class="col-md-10">
+                    <div class="form text-right">
+                    <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+                    <button type="button" ng-click="internat_modal()" class="btn btn-primary btn-sm">国际业务计算</button>
+                    <a href="{{excelurl}}" target="_black" class="btn btn-primary btn-sm">excel导出</a>
+                  </div>
+             </div>
+             </fieldset>
+          </div>
+          <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr ng-repeat='hrow in data.header'> 
+                              <th ng-repeat='hcol in hrow ' colspan={{isObject(hcol)?(hcol.w?hcol.w:1):1}} rowspan={{isObject(hcol)?(hcol.h?hcol.h:1):1}} class='text-nowrap' >
+                                 {{isObject(hcol)?hcol.name:hcol}}</th>
+
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                                 <tr ng-repeat="row in data.rows">
+                                    <td ng-repeat="d in row track by $index" class="text-nowrap"  ng-hide="$index>=32">
+                                {{d}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" ng-click="edit(row)">编辑</button>
+                                </td>
+                                <td>
+                                    <!--<button class="btn btn-primary btn-sm" ng-click="distribution(row)">分配</button>-->
+                                </td>
+
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                    <li> 总共{{total_count}}条</>
+                    <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div>
+
+<div class="modal fade" id="internation_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+             <h4 class="modal-title">国际业务计算</h4>
+            </div>
+                <div class="modal-body">
+                    <form name="edit_form" ng-submit="inter_count()">
+                        <fieldset>
+                            <div class="row">
+                                <div class="  col-md-12">
+                                    <label class="col-md-2 control-label label-sm">统计日期</label>
+                                    <div class="col-md-4">
+                                        <div class="input">
+                                            <input ng-readonly="true" date-range-picker options="date_opts" class="form-control input-sm" ng-model="internation_date_id" type="text" >
+                                            </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                               <button type="submit" class="btn btn-primary">计算</button>
+                               </div>
+                            </fieldset>
+                       </form>
+            </div>
+         </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ebills_hook_edit_modal_11">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">编辑</h4>
+
+            </div><!--header-->
+            <div class="modal-body">
+                <form name="edit_form" ng-submit="hook_edit_save()">
+                    <fieldset>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">统计月份:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.MONTH" type="text" disabled/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">机构编号:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.ORG_CODE" type="text" ng-blur='org_name(custinfo_ebills.ORG_CODE)' >
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">机构名称:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.ORG_NAME" type="text" disabled='true' >
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">客户名称:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.CORPNAME" type="text"  >
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工号:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.SALE_CODE" type="text" ng-blur="sale_name(custinfo_ebills.SALE_CODE)">
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工姓名:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.SALE_NAME" type="text" disabled='true' >
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口议付:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.EXBPAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口托收:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.EXAGENTAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口光票托收:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.EXCLEANAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易光盘托收:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.NTCLEANAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口汇入汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.EXINREMITAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易汇入汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.NTINREMITAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口汇出汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.IMOUTREMTIAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易汇出汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.NTOUTREMITAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口开证:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.IMLCAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口代收:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.IMICAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">资本项下汇入汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.FIINREMITAMT" type="text" text-transform="amount"/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">资本项下汇出汇款:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.FIOUTREMITAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">保函:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.LGAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口保函:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.IMLGAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">远期:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.USANCEAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">即期:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.SIGHTAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">跨境:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.CROSSBORDERAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币月日均:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.MONTHAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币年日均:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.DAYAMT" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币余额:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="custinfo_ebills.BALANCE" type="text" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">是否新开有效外汇账户:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <select ng-change='is_open(custinfo_ebills.IS_OPEN_NEW_WH)' class="form-control input-sm" ng-model="custinfo_ebills.IS_OPEN_NEW_WH"  >
+                                  <option value="是">是</option>
+                                  <option value="否">否</option>
+                                  </select>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="is_new_open">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">请选择以下的有效外汇新开的类型:</label>
+                                <div class="col-md-10">
+                                  <div class="input">
+                                  <input type='checkbox' ng-model="custinfo_ebills.THATYEAR_INTERACCT">当年新开外汇账户并产生国际业务的账户<br>
+                                  <input type='checkbox' ng-model="custinfo_ebills.LASTYEAR_FIRSTACCT">上年新开外汇账户在本年发生首笔业务的账户<br>
+                                  <input type='checkbox' ng-model="custinfo_ebills.ONEYEAR_AGAINACCT" >一年(含)以上未发生业务有重新启用的账户<br>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" >保存</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="ebills_hook_distribution">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">分配所属机构</h4>
+                </div>
+                <div class="modal-body">
+                         <div class="row">
+                              <div class="col-md-12">
+                                   <div class="form-group">
+                                      <label class="col-md-2 control-label label-sm ">网点号:</label>
+                                      <div class="col-md-6"> 
+                                          <input type="text" class="form-control col-md-6"  ng-model="new_row.ORG_CODE" disabled="true">
+                                      </div>
+                                      <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal1(this)" ng-disabled="ltSelected">...</button>
+
+                                   </div>
+                                  </div>
+                              </div>
+   
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                   <select class="form-control input-sm" ng-model="new_row.SALE_CODE" ng-options="option as (option.user_name +'|'+option.name) for option in model5"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue"  ng-click="info_mantch()">保存</button>
+                    <button type="button" class="btn default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div name="sameBusiness" ng-include src=Page ></div>
+     <div class="modal fade " name="loan_type_modal1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">机构信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="row" name="for_lt_tree1"> </div>
+                    </form>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm1()">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose1()">取消</button>
+                </div> <!-- modal-footer -->
+             </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+       </div>
+    </div>
+
+<div class="modal fade" id="ebills_distri_list" >
+    <div class="modal-dialog" style='width:1000px'>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">编辑</h4>
+
+            </div><!--header-->
+            <div class="modal-body">
+                <form name="edit_form" ng-submit="total_sum_save()">
+                    <fieldset>
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">统计月份:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.MONTH" type="text" disabled/>
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">统计月份:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.MONTH" type="text" disabled/>
+                                  </div>
+                               </div>
+                           </div>
+                        </div>
+
+
+                         <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">机构编号:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.ORG_CODE" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-2 control-label label-sm">机构编号:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.ORG_CODE" type="text" disabled/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">机构名称:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.ORG_NAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-2 control-label label-sm">机构名称:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.ORG_NAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">客户名称:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.CORPNAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-2 control-label label-sm">客户名称:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.CORPNAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工号:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.SALE_CODE" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-2 control-label label-sm">员工号:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.SALE_CODE" type="text" disabled/>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+ 
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">员工姓名:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.SALE_NAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-2 control-label label-sm">员工姓名:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.SALE_NAME" type="text" disabled/>
+                                  </div>
+                               </div>
+                               <label class="col-md-4 control-label label-sm">以下为分配的金额:</label>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口议付:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.EXBPAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">出口议付:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.EXBPAMT" type="text" text-transform="amount"  disabled/>
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.EXBPAMT" type="text" ng-blur="total_sum('6')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.EXAGENTAMT" type="text" text-transform="amount" disabled/>
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">出口托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.EXAGENTAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.EXAGENTAMT" type="text" ng-blur="total_sum('7')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口光票托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.EXCLEANAMT" type="text" text-transform="amount" disabled/>
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">出口光票托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.EXCLEANAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.EXCLEANAMT" type="text" ng-blur="total_sum('8')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易光盘托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.NTCLEANAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">非贸易光盘托收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.NTCLEANAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.NTCLEANAMT" type="text" ng-blur="total_sum('9')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">出口汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.EXINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">出口汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.EXINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.EXINREMITAMT" type="text" ng-blur="total_sum('11')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.NTINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">非贸易汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.NTINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.NTINREMITAMT" type="text" ng-blur="total_sum('12')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.IMOUTREMTIAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">进口汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.IMOUTREMTIAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.IMOUTREMTIAMT" type="text" ng-blur="total_sum('14')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">非贸易汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.NTOUTREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">非贸易汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.NTOUTREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.NTOUTREMITAMT" type="text" ng-blur="total_sum('15')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口开证:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.IMLCAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">进口开证:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.IMLCAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.IMLCAMT" type="text" ng-blur="total_sum('17')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口代收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.IMICAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">进口代收:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.IMICAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.IMICAMT" type="text" ng-blur="total_sum('18')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">资本项下汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.FIINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">资本项下汇入汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.FIINREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.FIINREMITAMT" type="text" ng-blur="total_sum('19')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">资本项下汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.FIOUTREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">资本项下汇出汇款:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.FIOUTREMITAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.FIOUTREMITAMT" type="text" ng-blur="total_sum('20')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">保函:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.LGAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">保函:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.LGAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.LGAMT" type="text" ng-blur="total_sum('21')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">进口保函:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.IMLGAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">进口保函:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.IMLGAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.IMLGAMT" type="text" ng-blur="total_sum('22')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">远期:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.USANCEAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">远期:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.USANCEAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.USANCEAMT" type="text" ng-blur="total_sum('24')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">即期:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.SIGHTAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">即期:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.SIGHTAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.SIGHTAMT" type="text" ng-blur="total_sum('25')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">跨境:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.CROSSBORDERAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">跨境:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.CROSSBORDERAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.CROSSBORDERAMT" type="text" ng-blur="total_sum('26')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币月日均:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.MONTHAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币月日均:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.MONTHAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.MONTHAMT" type="text" ng-blur="total_sum('28')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币年日均:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.DAYAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币年日均:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.DAYAMT" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.DAYAMT" type="text" ng-blur="total_sum('29')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class=" form-group  col-md-12">
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币余额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="original_row.BALANCE" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">外币存款折人民币余额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="new_row.BALANCE" type="text" text-transform="amount" disabled />
+                                  </div>
+                               </div>
+                                <label class="col-md-2 control-label label-sm">分配金额:</label>
+                                <div class="col-md-2">
+                                  <div class="input">
+                                  <input class="form-control input-sm" ng-model="add_row.BALANCE" type="text" ng-blur="total_sum('30')" text-transform="amount" />
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" >保存</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="p_i_modal_edit" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    </div>
+</div>
+

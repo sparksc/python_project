@@ -1,0 +1,27 @@
+命名规范：
+
+Controller
+    模块+Controller OR  模块+子模块+Controller
+    CustomerController  OR  CustomerFamilyController
+
+Service
+    模块+Service OR  模块+子模块+Service
+    CustomerService  OR  CustomerFamilyService
+
+Define:
+    $scope.relationList     # 变量
+    $scope.onAdd            # 增加增加
+    $scope.onDelete         # 增加操作
+
+注释：
+    /**
+       * @name logError
+       * @desc Logs errors
+       * @param {String} msg Message to log
+       * @returns {String}
+       * @memberOf Factories.Logger
+       */
+     function logError(msg) {
+        //code ...
+     }
+

@@ -1,0 +1,64 @@
+<div style="margin: 0px;">
+    <div name="fiveCategoryInfoForm" class="row" ng-controller="extensionBaseController">
+        <div class="col-md-11">
+            <div class="tab-content" name="tabContent">
+                <div ng-include="'views/credit/Extension/extension_info.html'"></div>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <ul class="nav nav-tabs tabs-right pull-right" style="width: 48px;margin: 0px;" name="tab">
+            </ul>
+        </div>
+
+        <!-- 下一步流程-->
+        <div class="modal fade " name="next_step_modal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">下一步流程</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div ng-repeat = 'next in next_step'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">流程:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.activity.activity_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label label-sm">岗位:</label>
+                                        <div class="col-md-7">
+                                            <div class="input">
+                                                <input class="form-control input-sm"  type="text"  ng-model="next.role"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div  class='col-md-2'  ng-repeat='user in next.users'>
+                                    <span>{{user.user_name}}{{user.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- modal-body -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" >确定</button>
+                    </div> <!-- modal-footer -->
+                </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,44 @@
+fabs.services
+===
+
+1. Structure:
+
+
+    services/
+    ├── README
+    ├── __init__.py
+    ├── user.py
+
+
+__init__.py
+
+    from .user import UserService
+
+
+user:
+
+    from flask import  g
+    from ..model.user import *
+
+    class UsersService():
+
+        def add(self, **kwargs):
+            user = UserSession(**kwargs)
+            puser = g.db_session.add(user)
+            return puser
+
+
+
+2. 获取Database Session:
+    from flask import g
+
+    # db_session @see SQLAlchemy sqlalchemy.orm.scoped_session (http://docs.sqlalchemy.org/en/rel_0_9/orm/contextual.htm)
+    db_session = g.db_session
+
+    每一个request请求开始前session自动创建
+    每一个request请求结束后session自动提交并且关闭,所以数据对象操作后无需手动提交
+
+3. TODO:
+        SQLAlchemy Persistent Object Json 延迟加载 前台导航
+
+

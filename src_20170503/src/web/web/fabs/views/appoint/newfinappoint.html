@@ -1,0 +1,169 @@
+<div style="margin:0px;">
+    <div class="row" ng-controller="NewfinappointController" >
+        <div class="col-md-12">
+            <div name="queryForm" class="">
+                <fieldset name="custQueryCond">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">预约时间:</label>
+                                <div class="col-md-7">
+                                    <input ng-readonly="true" date-range-picker options="date_opts" type="text" class="form-control input-sm" ng-model="cust_search.d_date">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label label-sm">客户名称:</label>
+                                <div class="col-md-7">
+                                    <div class="input">
+                                        <input class="form-control input-sm" type="text" ng-model="cust_search.khmc" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-10 btn-group">
+                            <button class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+                            <button class="btn btn-primary btn-sm" ng-click="add()">预约理财</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                        <thead style="white-space:nowrap;">
+                            <tr>
+                                <th ng-repeat='th in data.header' ng-bind='th' class="text-nowrap"> </th>
+                                <th class = "text-nowrap">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody style="white-space:nowrap;">
+                            <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="row.length-1 == $index">
+                                    {{d}}
+                                </td>
+                                <td class="text-nowrap">
+                                    <button type="button" ng-click="delete(row[row.length-1])" class="btn btn-default">取消</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+                <ul class="pager">
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="text-align:center">
+                <font size="2" color="red">{{tableMessage}}</font>
+            </div>
+        <div class="modal fade" id="add_newfinappoint">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                         <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约时间:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input date-range-picker options="{singleDatePicker: true}" class="form-control input-sm" ng-model="newdata.yyrq_dis" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control input-sm" ng-model="newdata.jgbh" ng-options="option.branch_code as (option.branch_code+' - '+option.branch_name) for option in model1" ng-change="find_users(newdata)">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control input-sm" ng-model="newdata.ygbh" ng-options="option.user_name as (option.user_name+' - '+option.name) for option in model2">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约客户名称:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newdata.khmc" type="text" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约办理机构:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select class="form-control input-sm" ng-model="newdata.yybljg_dis" ng-options="option as (option.branch_code+' - '+option.branch_name) for option in model1">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约办理时间:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input date-range-picker options="{singleDatePicker: true}" class="form-control input-sm" ng-model="newdata.yyblrq_dis" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约理财金额:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="newdata.yyckje" type="text" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">预约有效时间(天):</label>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="delay" type="text" readonly="true" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" ng-click="do_save()">预约</button>
+                    <button type="button" class="btn default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+</div>

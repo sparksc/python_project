@@ -1,0 +1,289 @@
+html{height: 100%;}
+body{height: 100%;}
+p{margin-bottom:0;}
+body,a,input,button{font-family:"Microsoft Yahei","Droid Sans Fallback","Arial","Helvetica","sans-serif","宋体";font-size:14px;outline: none;color: #666;}
+ul{list-style-type: none;padding: 0;margin: 0;}
+a{color: #428bca;}
+a:hover{text-decoration:none;}
+table{text-align: center;vertical-align: middle;}
+th{text-align: center;vertical-align: middle;}
+
+
+
+/*全局*/
+/*背景*/
+.xd-topBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6a7895+0,46546e+100 */
+background: #6a7895; /* Old browsers */
+background: -moz-linear-gradient(top,  #6a7895 0%, #46546e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #6a7895 0%,#46546e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #6a7895 0%,#46546e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a7895', endColorstr='#46546e',GradientType=0 ); /* IE6-9 */
+}
+.xd-bodyBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#97a3bd+0,78839f+100 */
+background: #97a3bd; /* Old browsers */
+background: -moz-linear-gradient(top,  #97a3bd 0%, #78839f 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #97a3bd 0%,#78839f 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #97a3bd 0%,#78839f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97a3bd', endColorstr='#78839f',GradientType=0 ); /* IE6-9 */
+}
+.xd-navBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c2c8da+0,9da6c3+100 */
+background: #c2c8da; /* Old browsers */
+background: -moz-linear-gradient(top,  #c2c8da 0%, #9da6c3 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #c2c8da 0%,#9da6c3 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #c2c8da 0%,#9da6c3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2c8da', endColorstr='#9da6c3',GradientType=0 ); /* IE6-9 */
+}
+.xd-titleBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dee3ee+0,cad3e4+100 */
+background: #dee3ee; /* Old browsers */
+background: -moz-linear-gradient(top,  #dee3ee 0%, #cad3e4 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #dee3ee 0%,#cad3e4 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #dee3ee 0%,#cad3e4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dee3ee', endColorstr='#cad3e4',GradientType=0 ); /* IE6-9 */
+}
+.xd-dataTitleBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f7fa+0,eff2f7+100 */
+background: #f5f7fa; /* Old browsers */
+background: -moz-linear-gradient(top,  #f5f7fa 0%, #eff2f7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f5f7fa 0%,#eff2f7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f5f7fa 0%,#eff2f7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f7fa', endColorstr='#eff2f7',GradientType=0 ); /* IE6-9 */
+}
+.xd-panelTopBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f6f9+0,eceff4+100 */
+background: #f4f6f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f4f6f9 0%, #eceff4 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f4f6f9 0%,#eceff4 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f4f6f9 0%,#eceff4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f6f9', endColorstr='#eceff4',GradientType=0 ); /* IE6-9 */
+}
+.xd-listBG{//* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fffff0+0,f8d8c0+100 */
+background: #fffff0; /* Old browsers */
+background: -moz-linear-gradient(top,  #fffff0 0%, #f8d8c0 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #fffff0 0%,#f8d8c0 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #fffff0 0%,#f8d8c0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffff0', endColorstr='#f8d8c0',GradientType=0 ); /* IE6-9 */
+}
+.xd-switchBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4e9ef+0,d0d8e3+100 */
+background: #e4e9ef; /* Old browsers */
+background: -moz-linear-gradient(left,  #e4e9ef 0%, #d0d8e3 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #e4e9ef 0%,#d0d8e3 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #e4e9ef 0%,#d0d8e3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e9ef', endColorstr='#d0d8e3',GradientType=1 ); /* IE6-9 */
+}
+.xd-navBtnBG, .xd-contentTitle .xd-on{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6da3df+0,568cd7+100 */
+background: #6da3df; /* Old browsers */
+background: -moz-linear-gradient(top,  #6da3df 0%, #568cd7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #6da3df 0%,#568cd7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #6da3df 0%,#568cd7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6da3df', endColorstr='#568cd7',GradientType=0 ); /* IE6-9 */
+}
+.xd-loginBG{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b7ba1+0,4f5f85+100 */
+background: #6b7ba1; /* Old browsers */
+background: -moz-linear-gradient(left,  #6b7ba1 0%, #4f5f85 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #6b7ba1 0%,#4f5f85 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #6b7ba1 0%,#4f5f85 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b7ba1', endColorstr='#4f5f85',GradientType=1 ); /* IE6-9 */
+}
+.xd-bg-contentBlue{background:#6197db;}
+.xd-bg-panelBlue{background:#d0d8e3;}
+.xd-bg-white{background:#fff;}
+/*字体色*/
+.xd-txt-contentBlue{color: #6197db;}
+.xd-txt-titleBlue{color: #5b6686;}
+.xd-txt-white{color: #fff;}
+.xd-txt-black{color: #000;}
+.xd-txt-gray{color: #666;}
+/*布局*/
+.xd-pre{position:relative;}
+.xd-mr5{margin-right: 5px;}
+.xd-mr10{margin-right:10px;}
+.xd-mr15{margin-right:15px;}
+.xd-ml5{margin-left: 5px;}
+.xd-ml10{margin-left: 10px;}
+.xd-ml15{margin-left: 15px;}
+.xd-mt5{margin-top:5px;}
+.xd-mt10{margin-top:10px;}
+.xd-mt15{margin-top:15px;}
+.xd-mb5{margin-bottom: 5px;}
+.xd-mb10{margin-bottom: 10px;}
+.xd-mb15{margin-bottom: 15px;}
+.xd-clr{clear: both;}
+.xd-h100{height: 100%;}
+/*滚动条*/
+.swiper-container {width: 100%;height: 100%;}
+.swiper-slide{height: auto !important;-webkit-box-sizing: border-box;box-sizing: border-box;}
+.xd-leftNav .swiper-container{border-radius: 5px;}
+/*模态框*/
+.modal-content{overflow: hidden;background-color: #d0d8e3;}
+.modal-header{color: #fff;}
+.modal-header .close{color: #fff;opacity:1;}
+.modal-footer{border-top:0 none;}
+.modal-body{margin:15px 10px;margin-bottom: 0;border-radius:5px;background:#fff;border:1px solid #b3bacd;padding:15px;}
+.modal-content .xd-inputModule{width:45%;}
+.xd-bigImage .modal-dialog{width:60%;}
+.xd-bigImage .item img{width:100%;height: auto;}
+
+/*框架*/
+.xd-pageMain{height: 100%;padding:84px 10px 30px 10px;}
+.xd-mainLeft{width:264px;margin-right: -100%;text-align: center;padding:0 20px 0 0;}
+.xd-mainRight{width:100%;height: 100%;}
+.xd-rightPanel{margin-left: 264px;}
+.xd-pageBottom{height: 30px;line-height: 30px;padding:0 30px;position: fixed;bottom: 0;left: 0;width: 100%;}
+.xd-unfold .xd-mainLeft{display: none;}
+.xd-unfold .xd-rightPanel{margin-left:10px;}
+.xd-unfold .xd-rightPanel .xd-bodySwitch .iconfont.icon-triangle-left:before{content: "\e605";}
+
+/*头部*/
+.xd-pageTop{height: 74px;position:fixed;z-index: 2;left: 0;top: 0;width:100%;}
+.xd-logo{height: 100%;width:340px;background:url(../images/logo.png) no-repeat 20px center;background-size: auto 43px;}
+.xd-mainSearch{height: 34px;line-height: 34px;background: #fff;border-radius:34px;box-shadow:inset 1px 1px 2px rgba(0,0,0,0.42);margin-top:20px;}
+.xd-mainSearch input[type="search"]{border:0 none;background: none;height: 34px;vertical-align:middle;padding:0  20px;}
+.xd-mainSearch button{border:0 none;vertical-align: middle;background:none;color: #666;}
+.xd-mainSearch button span{padding:0 10px;border-left: 1px solid #ccc;line-height: 20px;}
+.xd-userBtn{display: block;margin-top:20px;padding: 6px;padding-left:20px;border-radius: 54px 0 0 54px;box-shadow:0 0 10px rgba(0,0,0,0.45);}
+.xd-userBtn .xd-userHead{width:38px;height: 38px;margin-right: 15px;border:2px solid #fff;}
+.xd-userBtn .iconfont{margin:0 10px;}
+
+
+/*左侧*/
+.xd-mainLeft{height: 100%;}
+.xd-mainLeft nav .btn{border:1px solid #687295;}
+.xd-mainLeft nav .btn.active{background-color: #56647f;}
+.xd-leftNav{position:absolute;border:1px solid #687295;border-radius: 5px;top: 44px;bottom: 0;left:0;width:244px;padding: 0;overflow:hidden;}
+.xd-leftNav.xd-search{top:88px;}
+.xd-leftNav .btn.btn-gray{background: #eee;border:1px solid #999;color: #999;}
+.xd-leftNav li{line-height: 35px;text-align: left;}
+.xd-leftNav .xd-title{display: block;border-top:1px solid #a0acd5;border-bottom: 1px solid #a0acd5;padding:0 15px;text-align: left;}
+.xd-leftNav li:nth-child(1) .xd-title{border-top:0 none;border-radius: 5px 5px 0 0;}
+.xd-leftNav .xd-list2{padding:0 15px;border-bottom: 1px solid #ccc;display: block;background: #E1E9FF;}
+.xd-leftNav li .xd-list2:nth-last-child(1){border-bottom: 0 none;}
+.xd-leftNav .xd-list2 span{max-width: 152px;height: 35px;overflow:hidden;display:inline-block;vertical-align: middle;}
+.xd-leftNav .xd-list3{padding:5px 15px;border-bottom: 1px solid #ccc;font-size: 12px;}
+.xd-leftNav .xd-list3 span{width: 135px;display:inline-block;vertical-align: middle;line-height:20px;}
+.xd-leftNav .xd-list-list{padding: 0 25px;border-bottom: 1px solid #ccc;display: block;}
+.xd-mainLeft .xd-mainSearch{margin-top:10px;}
+.xd-mainLeft input[type="search"]{width:150px;}
+.xd-mainLeft .xd-addBtn{margin-top:10px;}
+.xd-mainLeft .xd-addBtn .btn{padding: 0;line-height: 35px;}
+.xd-mainLeft .xd-addBtn .iconfont{font-size: 24px;}
+
+/*右边*/
+.xd-rightPanel{padding:10px;height:100%;border:1px solid #697396;border-radius: 5px;background-color: #d0d8e3;position: relative;}
+.xd-rightPanel .xd-bodySwitch{display: block;position: absolute;width: 15px;height: 60px;padding: 0;
+	vertical-align: middle;left: -15px;top:50%;margin-top:-30px;border:1px solid #697396;border-right: 0 none;z-index: 2;border-radius: 5px 0 0 5px;}
+.xd-rightPanel .xd-bodySwitch .iconfont{font-size: 12px;line-height:55px;}
+.xd-contentPanel{border: 1px solid #ccc;border-radius: 5px;height: 100%;}
+.xd-contentTitle{padding-top:10px;padding-left: 20px;border-radius: 5px 5px 0 0;}
+.xd-contentTitle button{color: #666;padding:0 5px 0 12px;line-height:30px;border-radius: 3px 3px 0 0;outline: none;background: none;}
+.xd-contentTitle button .iconfont{padding: 0;line-height:18px;width:18px;text-align: center;color: #666;}
+.xd-contentTitle button .iconfont:hover{box-shadow: inset 0 0 3px rgba(0,0,0,0.45);}
+.xd-contentTitle button.xd-more .iconfont{font-size: 18px;}
+.xd-contentTitle button.xd-more .iconfont:hover{box-shadow: none;outline: none !important;}
+.xd-contentTitle .xd-on{color: #fff;font-size: 12px;}
+.xd-contentTitle .xd-on .iconfont{color: #fff;}
+.xd-moreTagList li{position: relative;padding-right: 20px;}
+.xd-moreTagList .xd-closeBtn{position: absolute;right: 0;z-index: 1001;top: 0;padding:3px 5px;margin-right: 3px;}
+.xd-bar{background-color: #6197db;padding-left:30px;}
+.xd-bar{min-height: 10px;}
+.xd-bar .xd-barBtn{display: block;line-height: 34px;padding:0 15px;font-size: 12px;margin-right: 5px;}
+.xd-bar .xd-barBtn:hover, .xd-bar .xd-barBtn.active{background-color: #4e7abd;color: #fff;}
+.xd-bar a{text-align: center;}
+.xd-bar:empty+.xd-dataPanel{height: 100%;padding-top:52px;margin-top:-52px;}
+.xd-dataPanel{height: 100%;padding:76px 15px 15px 15px;margin-top:-76px;}
+.xd-dataContent{height: 100%;overflow: auto;padding-top:15px;}
+.xd-contentNav{width: 18%;border:1px solid #ccc;border-radius: 5px;line-height: 35px;overflow: hidden;}
+.xd-contentNav a{display: block;font-size: 12px;}
+.xd-dataNav{padding:0 15px;border-top:1px solid #61a1db;border-bottom: 1px solid #61a1db;margin-top:-1px;}
+.xd-contentNav li:nth-last-child(1) .xd-dataNav.collapsed{margin-bottom:-1px;}
+.xd-dataNav-list{border-bottom: 1px solid #ccc;padding:0 20px;color: #666;}
+.xd-dataNav-list.active{background-color: #ededed;}
+.collapse .xd-dataNav-list:nth-last-child(1){border-bottom:0 none;}
+.xd-contentNav+.xd-contentData{width:80%;float: right;}
+.xd-contentData:only-child{}
+.xd-inputModule{margin-bottom:15px;float:left;}
+.xd-inputModule .xd-inputLabel{width: 40%;line-height: 34px;text-align: right;padding:0 15px; }
+.xd-inputModule .xd-inputBox{width:60%;}
+.xd-contentData-foot{border-top:1px solid #6197db;text-align: center;padding:15px 0 10px 0;}
+.xd-contentData-foot .btn{margin:0 5px;}
+.xd-lsitTable thead tr th{border-bottom:1px solid #6197db;}
+.xd-lsitTable tbody tr td{color: #666;border:0 none;font-size:12px;line-height:35px;}
+.xd-lsitTable tbody tr td a{font-size:12px;}
+.xd-lsitTable>tbody>tr:nth-of-type(even){background-color: #f4f6f8;}
+.xd-lsitTable>tbody>tr:nth-of-type(odd){background:none;}
+.xd-lsitTable>tbody>tr:hover{background:#e1e8f6;}
+.xd-reportTable{border: 1px solid #cbd5e6;}
+.xd-reportTable thead tr:nth-of-type(odd){background-color: #e1e8f6;}
+.xd-reportTable thead tr th{border: 1px solid #cbd5e6;text-align: center;vertical-align:middle;}
+.xd-reportTable tbody tr td{border: 1px solid #cbd5e6;text-align: center;vertical-align:middle;}
+.xd-reportTable tbody tr:hover{background-color:#e1e8f6;}
+
+.xd-contentPanel.xd-imagePanel{background: none;border:0 none;}
+.xd-contentPanel .xd-contentTitle{border:1px solid #ccc;border-bottom: 0 none;}
+.xd-contentPanel .xd-bar{border:1px solid #ccc;border-top: 0 none;border-radius:0 0 5px 5px;}
+.xd-contentPanel .xd-dataPanel .xd-bar{margin:0 -15px;}
+.xd-contentPanel .xd-dataPanel .xd-dataContent .xd-bar{position: absolute;top:0;}
+.xd-imgModule{width:50%;padding:0 10px;margin-bottom:15px;}
+.xd-imgPanel{background: #fff;border-radius: 5px;border:1px solid #ccc;}
+.xd-imgModule h5{border-bottom: 3px solid #6197db;line-height:45px;padding:0 25px;font-size: 16px;font-weight: normal;margin: 0;}
+.xd-imgModule .xd-imgBox{padding:15px 35px;}
+.xd-imgModule .xd-imgBox .carousel-inner{border-radius: 5px;overflow: hidden;}
+.xd-imgModule .xd-imgBox .item img{width: 100%;height: auto;}
+.xd-wordPanel{padding:20px 0;background: #ccc;text-align: center;}
+.xd-wordImg{width: 95%;height: auto;box-shadow:1px 2px 10px rgba(0,0,0,0.45);}
+.xd-tableWhite2{width:50%;padding:0 5px;}
+
+/*登录*/
+.xd-loginPanel{width:600px;position: fixed;left: 50%;top:30%;margin-left: -300px;z-index: 3;background:rgba(255,255,255,0.4);padding:10px;border-radius: 5px;box-shadow: 2px 3px 6px rgba(0,0,0,0.45);}
+.xd-loginBox{border-radius: 5px;padding:20px 0;background: #fff;}
+.xd-loginBox .form-group:nth-last-of-type(1){margin-bottom: 0;margin-top:-5px;}
+.xd-loginBox .form-group .btn{padding:7px 30px;}
+.xd-loginHead{height:65px;}
+.xd-loginHead .xd-logo{background: url(../images/logo.png) no-repeat 15px center;background-size: auto 70%;width: auto;}
+.xd-loginImg{width:170px;height: 150px;background:url(../images/loginImg.png) no-repeat;background-size:100% auto;position: absolute;bottom:-64px;right:-61px;z-index: 2;pointer-events:none;}
+.xd-loginBtn{padding-left: 20px;padding-right: 20px;}
+.xd-loginMain{padding-left:200px;padding-top:25px;background: url(../images/loginBG.png) no-repeat left bottom;background-size: 230px auto;}
+.xd-loginMain .control-label{line-height: 46px;padding-top:0;}
+.xd-loginMain .form-group{margin-bottom:25px;}
+.xd-modalImg{width: 50%;padding:10px;}
+.xd-modalImg img{width: 100%;height: auto;}
+
+.message{position:fixed;bottom:23px;right:23px;}
+
+/*媒体查询*/
+@media (min-width:0px){
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:80%;}
+	.xd-unfold .xd-inputModule{width:90%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width: 97%}
+	.xd-inputModule{width:95%;}
+}
+@media (min-width:700px){
+	.xd-unfold .xd-inputModule{width:50%;}
+}
+@media (min-width:800px){
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:50%;}
+	.xd-unfold .xd-inputModule{width:45%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width:80%}
+	.xd-inputModule{width:80%;}
+}
+@media (min-width:1000px){
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:47%;}
+	.xd-unfold .xd-inputModule{width:33%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width:49%;}
+	.xd-inputModule{width:50%;}
+}
+@media (min-width:1200px) {
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:33%;}
+	.xd-unfold .xd-inputModule{width:25%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width:47%;}
+	.xd-inputModule{width:33%;}
+}
+@media (min-width:1400px) {
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:33%;}
+	.xd-unfold .xd-inputModule{width:25%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width:33%;}
+	.xd-inputModule{width:33%;}
+}
+@media (min-width:1600px) {
+	.xd-unfold .xd-contentNav+.xd-contentData .xd-inputModule{width:25%;}
+	.xd-unfold .xd-inputModule{width:20%;}
+	.xd-contentNav+.xd-contentData .xd-inputModule{width:33%;}
+	.xd-inputModule{width:25%;}
+}

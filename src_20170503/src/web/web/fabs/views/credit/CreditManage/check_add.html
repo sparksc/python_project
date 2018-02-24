@@ -1,0 +1,220 @@
+﻿<div class="form-horizontal" role="form" name="loanForm" ng-controller="loanBaseController">
+    <div class="form-body">
+        <div class="row" name="applicationButtonGroup">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="button" ng-click="onSave()" ng-show = 'btn_edit_flag' class="btn btn-primary" >保存</button>
+                        <button type="button" ng-click="onEdit()" ng-hide = 'btn_edit_flag' class="btn btn-primary" >修改</button>
+                        <button type="button" ng-click="onSubmit()" ng-show = 'btn_edit_flag' class="btn btn-primary" >提交</button>
+                        <button type="button" ng-click="onCancel()" ng-show = 'btn_edit_flag' class="btn btn-primary" >取消</button>
+                    
+                    </div>
+				</div>
+			</div>
+		</div>
+              
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">客户名称</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="客户名称" ng-model="customer.name"  ng-disabled=true>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">币种</label>
+                    <div class="col-md-7">
+                        <select class="form-control " ng-model='modal_data.memo_insurance_type'  >
+							<option value="CNY">人民币</option>
+										<option value="USD">美元</option>
+										<option value="EUR">欧元</option>
+										<option value="GBP">英镑</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">申请金额</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="申请金额"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">期限</label>
+                    <div class="col-md-7">
+						 <div class="input-group">
+                            <input   class="form-control  input-sm" type="text" placeholder="期限" /><span class="input-group-addon">平方米</span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">基准年利率</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="基准年利率"  /><span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">浮动类型</label>
+                    <div class="col-md-7">
+                        <select class="form-control " ng-model='modal_data.memo_insurance_type'  >
+							<option >浮动比率</option>
+							<option >浮动点</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">利率浮动值</label>
+                    <div class="col-md-7">
+                       <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="利率浮动值"  /><span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">执行月利率</label>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                            <input type="text" class="form-control" placeholder="执行月利率"  /><span class="input-group-addon">‰</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">保证金金额</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="保证金金额"   /><span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">保证金比例</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="保证金比例"   /><span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">手续费率</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="手续费率"   /><span class="input-group-addon">‰</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">手续费金额</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="手续费金额"   /><span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">意见</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="意见"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记人</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="登记人"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+		 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登记日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="登记日期"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="row" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">更新日期</label>
+                    <div class="col-md-7">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="额度项下业务最迟到期日期"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div> <!-- modal -->
+
+    <!--  <script type="text/javascript">
+        var choose_business_type = function(elem, typeCode, typeName,typePage){
+            //angular.element($(elem)).scope().choose_business_type($(elem).attr("title"))
+            angular.element($(elem)).scope().choose_business_type(typeCode, typeName,typePage);
+        }
+    </script>
+  -->
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Message type="Group" xmlns:tns="http://www.if-solutions.com/CbsMessageSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<Head type="Group">
+			<Channel name="信贷渠道" type="Field">
+<![CDATA[CREDIT]]>			</Channel>
+			<Service code="CBS_RATE_QUERY2" name="贷款利率查询" timeOut="0" type="Field">
+<![CDATA[CBS_RATE_QUERY2]]>			</Service>
+			<Tran type="Field">
+<![CDATA[120191]]>			</Tran>
+			<Final type="Field">
+<![CDATA[true]]>			</Final>
+			<Teller code="00779" name="郭强" type="Field">
+<![CDATA[00779]]>			</Teller>
+			<Author type="List"/>
+			<Auth type="List"/>
+		</Head>
+		<RequestBodyData type="Group">
+			<Field name="交易码" type="string">
+<![CDATA[120191]]>			</Field>
+			<Field name="机构号" type="string">
+<![CDATA[047308]]>			</Field>
+			<Field name="柜员号" type="string">
+<![CDATA[00779]]>			</Field>
+			<Field name="贷款产品" type="string">
+<![CDATA[个人下岗再就业贷款]]>			</Field>
+			<Field name="期限" type="string">
+<![CDATA[1]]>			</Field>
+		</RequestBodyData>
+	</Message>

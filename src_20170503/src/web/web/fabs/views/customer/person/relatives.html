@@ -1,0 +1,220 @@
+<div class="form-horizontal" role="form" id="relatives" >
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" ng-click="associPerson('famrelation',customer.id)">新增家庭成员</button> 
+                <button type="button" class="btn btn-primary" ng-click="refresh(customer.id)">刷新</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 table-container table-responsive table-condensed" style="overflow-x: auto; overflow-y: auto;" >
+                <table class="table table-hover">
+                    <thead>
+                        <th style="white-space:nowrap;" ng-repeat="head in table_head">{{head}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in table_data">
+                            <td style="white-space:nowrap;">{{data.cust_info.ric}}</td>
+                            <td style="white-space:nowrap;">{{data.cust_info.current_name}}</td>
+                            <td style="white-space:nowrap;">{{data.family.cust_rela}}</td>
+                            <td style="white-space:nowrap;">{{data.cust_info.job}}</td>
+                            <td style="white-space:nowrap;">{{data.phone.phone_number}}</td>
+                            <td style="white-space:nowrap;">{{data.family.is_valid}}</td>
+                            <td style="white-space:nowrap;">{{data.sys.update_date}}</td>
+                            <td style="white-space:nowrap;">
+                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#relativesModal" ng-click="display_record(data)">详情</button> 
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="delete_record()">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id ='relativesModal' role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{modal_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="relative">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">证件类型<font color="#FF0000">*</font></label>
+                            <div class="col-md-7" >
+                                <select class="form-control input-sm" ng-model="modal_data.sys.cer_type">
+                                    <option value="">身份证</option>
+                                    <option>户口本</option>
+                                    <option>护照</option>
+                                    <option>军官证</option>
+                                    <option>士兵证</option>
+                                    <option>其他个人证件</option>
+                                    <option>香港身份证</option>
+                                    <option>澳门身份证</option>
+                                    <option>台湾身份证</option>
+                                    <option>港澳居民来往内地通行证</option>
+                                    <option>台湾同胞来往内地通行证</option>
+                                    <option>临时身份证</option>
+                                    <option>外国人居留证</option>
+                                    <option>警官证</option>
+                                    <option>组织机构代码证</option>
+                                    <option>营业执照</option>
+                                    <option>其他企业证件</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">证件号码<font color="#FF0000">*</font></label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <div class="input">
+                                        <input class="form-control  input-sm" type="text" ng-model="modal_data.cust.ric"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">姓名<font color="#FF0000">*</font></label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <div class="input">
+                                        <input   class="form-control  input-sm" type="text"  ng-model="modal_data.cust.current_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">与客户的关系<font color="#FF0000">*</font></label>
+                            <div class="col-md-7">
+                                <select class="form-control input-sm" ng-model="modal_data.fam.cust_rela">
+                                    <option>配偶</option>
+                                    <option>父母</option>
+                                    <option>子女</option>
+                                    <option>其他血亲</option>
+                                    <option>其他嫡亲</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">工作单位</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <div class="input">
+                                        <input   class="form-control  input-sm" type="text" ng-model="modal_data.cus.job"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">联系电话</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <div class="input">
+                                        <input   class="form-control  input-sm" type="text" ng-model="modal_data.phone.phone_number"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">是否有效</label>
+                            <div class="col-md-7">
+                                <select class="form-control input-sm" ng-model="modal_data.fam.is_valid">
+                                    <option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">备注</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <div class="input">
+                                        <textarea  class="form-control" rows="3"  type="text" ng-model="modal_data.cust.comment" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">登记人</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text" ng-model="modal_data.cust.remark" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">登记单位</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text" ng-model="modal_data.sys.register_branch" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">登记日期</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text"  ng-model="modal_data.sys.register_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label label-sm">更新日期</label>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <input class="form-control input-sm" type="text"  ng-model="modal_data.sys.update_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div> <!-- modal-body -->
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="save(modal_data)">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init_modal()">关闭</button>
+            </div> <!-- modal-footer -->
+
+        </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal -->
+</div>
+
+

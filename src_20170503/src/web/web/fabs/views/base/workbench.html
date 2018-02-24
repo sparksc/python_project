@@ -1,0 +1,76 @@
+<div ng-controller="workbenchController">
+    <div class="row">
+       <div class="col-md-12">
+        <form class="col-horizontal">
+
+<!--START TABLE PANE -->
+<div class="row-fluid profile">
+	<div class="span6">
+		<div class="row-fluid" >
+            <!-- BEGIN CONDENSED TABLE PORTLET-->
+            <div class="portlet box purple" >
+				<div class="portlet-title">
+					<div class="caption"><i class="icon-picture"></i>待办事项</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"></a>
+						<a href="javascript:;" class="reload"></a>
+					</div>
+                </div>
+
+                    <table name="approveListTable" class="table">
+                        <thead style="white-space:nowrap;">
+                            <tr> 
+                                <th ng-repeat='th in approve_data.header' ng-bind='th' class="text-nowrap"> </th> 
+                            </tr>
+                        </thead>
+                        <tbody style="white-space:nowrap;">
+                            <tr ng-repeat="row in approve_data.rows">
+                                <td ng-repeat="approve_d in row track by $index" class="text-nowrap"  ng-hide="$index>=43">
+                                {{approve_d}}
+                                </td>
+                            </tr> 
+                        </tbody>
+                     </table>
+
+            </div>
+            <!-- END CONDENSED TABLE PORTLET-->
+        </div>
+    </div>
+
+	<div class="span6">
+		<div class="row-fluid myloaninfo" >
+         <!-- BEGIN CONDENSED TABLE PORTLET-->
+         <div class="portlet box purple">
+            <div class="portlet-title">
+                <div class="caption"><i class="icon-picture"></i>我的业绩</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"></a>
+                        <a href="javascript:;" class="reload"></a>
+                    </div>
+                </div>
+                <div class="portlet-body mcenter">
+                <div class="scroller"  data-height="100%"  data-always-visible="1" data-rail-visible1="1">
+                <table name="hookListTable" class="table">
+                    <thead style="white-space:nowrap;">
+                        <tr> 
+                            <th ng-repeat='th in hook_data.header' ng-bind='th' class="text-nowrap"> </th> 
+                        </tr>
+                    </thead>
+                    <tbody style="white-space:nowrap;">
+                    <tr ng-repeat="row in hook_data.rows">
+                        <td ng-repeat="hook_d in row track by $index" class="text-nowrap"  ng-hide="$index>=43">
+                        {{hook_d}}
+                        </td>
+                    </tr> 
+                    </tbody>
+                </table>
+                </div>
+            </div>
+         </div>
+		</div>
+	</div>
+<!--END TABLE PANE -->
+
+    </div>
+</div>
+

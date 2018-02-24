@@ -1,0 +1,861 @@
+<div ng-controller="basic_messController">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-body">
+		    <fieldset name="custQueryCond">
+                        <div class="row">    
+                               <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label class="col-md-5 control-label label-sm ">机构号:</label>
+                                       <div class="col-md-5"> 
+                                           <input type="text" class="form-control col-md-5" ng-change="find_users()" ng-model="cust_search.org" disabled="true">
+                                       </div>
+                                       <button type="button" class="btn btn-primary btn-sm" ng-click="show_lt_modal(this)" ng-disabled="ltSelected">...</button>
+                                    </div>
+
+                                    <div name="sameBusiness" ng-include src=Page ></div>
+                                    <div class="modal fade " name="loan_type_modal" role="dialog">
+                                       <div class="modal-dialog modal-sm">
+                                           <div class="modal-content">
+                                               <div class="modal-header">
+                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                       <span aria-hidden="true">&times;</span>
+                                                   </button>
+                                                   <h4 class="modal-title">机构信息</h4>
+                                               </div>
+                                               <div class="modal-body">
+                                                   <form class="form-horizontal" role="form">
+                                                       <div class="row" name="for_lt_tree"> </div>
+                                                   </form>
+                                               </div> <!-- modal-body -->
+                                               <div class="modal-footer">
+                                                   <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ztreeBtmConfirm()">确定</button>
+                                                   <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ztreeBtmClose()">取消</button>
+                                               </div> <!-- modal-footer -->
+                                           </div> <!-- modal-content -->
+                                       </div> <!-- modal-dialog -->
+                                    </div>
+                                 </div>
+                            <div class="col-md-3 ">
+                                <div class="fprm-group">
+                                    <label class="col-md-5 control-label label-sm">部门:</label>
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <select type="text" class="form-control" ng-model="cust_search.DEPARTMENT" ng-options="option for option in bb1">
+                                            <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">员工号:</label>
+                                    <div class="col-md-6">
+                                        <div class="input">
+                                            <input type="text" class="form-control input-sm" ng-model="cust_search.SALE_CODE">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">员工名:</label>
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <input type="text" class="form-control input-sm" ng-model="cust_search.STAFF_NAME">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">职务:</label>
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <select type="text" class="form-control" ng-model="cust_search.POSITION" ng-options="option as option for option in zwgz">
+                                            <option></option>
+                                            </select>                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="fprm-group">
+                                    <label class="col-md-5 control-label label-sm">客户经理类别:</label>
+                                    <div class="col-md-6">
+                                        <div class="input">
+                                             <select type="text" class="form-control" ng-model="cust_search.MANAGE_TYPE" ng-options="option as option for option in khjllb" required>
+                                             <option></option>
+                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label label-sm">在职状态:</label>
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <select type="text" class="form-control" ng-model="cust_search.WORK_STATUS" ng-options="option as option for option in zzzt">
+                                            <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-3">
+                             <div class="fprm-group" ng-init=cust_search.IS_VIRTUAL='否'></div>
+                             </div>
+                           <!-- <div class="col-md-3">
+                                <div class="fprm-group" >
+                                    <label class="col-md-5 control-label label-sm" ng-init=cust_search.IS_VIRTUAL='是'>虚拟柜员标志:</label>
+                                    <div class="col-md-7">
+                                        <div class="input">
+                                            <select type="text" class="form-control" ng-model="cust_search.IS_VIRTUAL">
+                                                 <option></option>
+                                                 <option value="是">是</option>
+                                                 <option value="否">否</option>       
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+		                </div>
+			   
+              <br/> 
+               <div class="col-md-10">
+                                <div class="form text-right">
+                                    <button type="button" ng-click="search()" class="btn btn-default">查询</button>
+                               <!--     <button class="btn btn-primary btn-sm" ng-click="add()">新增</button>-->
+                                    <a href="{{excelurl}}" target="_black" class="btn btn-primary btn-sm">excel导出</a>
+                               </div>
+		            </div>
+                
+                    </fieldset>
+                </div>
+            </form>
+        <div class="col-md-12" name="resultTable">
+                    <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  <th ng-repeat='th in data.header' ng-hide="th=='操作'" ng-bind='th' class="text-nowrap"> </th> 
+			                  </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-show="$index >= 0&&$index <= 11||$index >= 20">
+                                {{d}}
+                                </td>
+                      <!--        	  <td class="text-nowrap">
+					<button type="button" ng-click="to_edit(row)" class="btn btn-default">编辑</button>
+					<button type="button" ng-click="to_del(row)" class="btn btn-default">删除</button>
+                    <button class="btn btn-primary btn-sm" ng-click="detail(row)">机构岗位历史</button>
+				  </td>-->
+                              </tr> 
+                          </tbody>
+                    </table>
+                  <ul class="pager">
+                  <li> 总共{{total_count}}条</>
+                  <li> 当前第{{cur_page}}页</>
+                    <li ng-repeat="action in data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+          </div>
+           <div style="text-align:center">
+                            <font size="2" color="red">{{tableMessage}}</font>
+           </div><!--默认显示-->
+
+<div class="modal fade" id="myModal_111" tabindex="-1" role="dialog" 
+   aria-labelledby="myModal_111Label_111" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModal_111Label_111">
+               修改
+            </h4>
+         </div>
+                <form name="edit_form" ng-submit="newupdate(target,edit_form.$valid)">
+                    <fieldset>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">现职务开始时间:</label>
+                          <div class="col-md-10">
+                              <input date-range-picker options="{singleDatePicker: true}" type="text" class="form-control input-sm" ng-model="target[0]" disable='true'>
+                              </input>
+                          </div> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="target[1]"  readonly="true" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工名:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="target[2]" readonly="true" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">人员性质:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[3]" ng-options="option as option for option in ryxz">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">身份证号码:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="target[4]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select  type="text" class="form-control" ng-model="target[5]" ng-options="option as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="find_users(target[5])" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">部门:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[6]" ng-options="option.group_id as option.group_name for option in bb"  required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">职务:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[7]" ng-options="option as option for option in zwgz"  required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">等级:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[8]" ng-options=" option for option in LevelMatch" ng-focus="his_flag()" required>
+                                    <option></option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">客户经理类别:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[9]" ng-options="option as option for option in khjllb" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">安全员标志:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[10]" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">在职状态:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[11]" ng-options="option as option for option in zzzt" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">试聘标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[20]" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">虚拟柜员标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[21]" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">学历:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[22]" ng-options="option as option for option in jycd" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">柜组长:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="target[23]" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <button type="submit" class="btn btn-primary" >
+               提交更改
+            </button>
+            </fielset>
+           </form>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="his_myModal_111_111" tabindex="-1" role="dialog" 
+   aria-labelledby="myModal_111Label_111" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModal_111Label_111">
+               修改
+            </h4>
+         </div>
+                <form name="edit_form" ng-submit="his_edit()">
+                    <fieldset>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">职务开始时间:</label>
+                          <div class="col-md-10">
+                              <input date-range-picker options="{singleDatePicker: true}" type="text" class="form-control input-sm" ng-model="his_cust_ifno.start_date" disable='true'>
+                              </input>
+                          </div> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">职务结束时间:</label>
+                          <div class="col-md-10">
+                              <input date-range-picker options="{singleDatePicker: true}" type="text" class="form-control input-sm" ng-model="his_cust_ifno.end_date" disable='true'>
+                              </input>
+                          </div> 
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="his_cust_ifno.sale_code"  readonly="true" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工姓名:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="his_cust_ifno.SALE_NAME" readonly="true" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">人员性质:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.PROPERTY" ng-options="option as option for option in ryxz">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">身份证号码:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="target[4]" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select  type="text" class="form-control" ng-model="his_cust_ifno.org_code" ng-options="option as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="find_users(his_cust_ifno.org_code)" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">部门:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.group_his" ng-options="option.group_id as option.group_name for option in bb" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">职务:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.position_his" ng-options="option as option for option in zwgz"  required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">等级:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select type="text" class="form-control" ng-model="his_cust_ifno.DEG_LEVEL" ng-options=" option for option in LevelMatch1" ng-focus="his_flag_1()" required>
+                                <option></option>
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">客户经理类别:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.POSITION_TYPE" ng-options="option as option for option in khjllb" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">安全员标志:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.SALE_FALG" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">在职状态:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.WORKSTATUS" ng-options="option as option for option in zzzt" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">试聘标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.IS_TEST" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">虚拟柜员标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="his_cust_ifno.IS_VIRIUAL" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <button type="submit" class="btn btn-primary" >
+               提交更改
+            </button>
+            </fielset>
+           </form>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="myModal_111add_111" tabindex="-1" role="dialog" 
+   aria-labelledby="myModal_111Label_111" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title">
+               新增
+            </h4>
+         </div>     
+                <form name="inputForm" ng-submit="add_save(inputForm.$valid)">
+                    <fieldset>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">现职务时间:</label>
+                          <div class="col-md-7">
+                              <input date-range-picker options="date_opts" type="text" class="form-control input-sm" ng-model="add_date.x1" >
+                              </input>
+                          </div> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">机构:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select  class="form-control" ng-model="add_date.x2" ng-options="option as (option.branch_code+'|'+option.branch_name) for option in model1" ng-change="find_users(add_date.x2)" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">部门:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x3" ng-options="option.group_id as option.group_name for option in bb" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工号:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    
+                                    <input class="form-control input-sm" ng-model="add_date.x4"  type="text" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">员工名:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_date.x5" type="text"/ required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">人员性质:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x6" ng-options="option as option for option in ryxz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">身份证号码:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <input class="form-control input-sm" ng-model="add_date.x7" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">职务:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x8" ng-options="option as option for option in zwgz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">等级:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                <select type="text" class="form-control" ng-model="add_date.x9" ng-options=" option for option in LevelMatch2" ng-focus="his_flag_2()" required>
+                                <option></option>
+                                 </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">客户经理类别:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x10" ng-options="option as option for option in khjllb" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">安全员标志:</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x11" ng-options="option as option for option in aqybz">
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">在职状态:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x12" ng-options="option as option for option in zzzt" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">试聘标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x13" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">虚拟柜员标志:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x14" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">学历:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x15" ng-options="option as option for option in jycd" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label label-sm">柜组长:*</label>
+                            <div class="col-md-10">
+                                <div class="input">
+                                    <select type="text" class="form-control" ng-model="add_date.x16" ng-options="option as option for option in aqybz" required>
+                                    <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <input type="submit" class="btn btn-default" />
+            </fieldset>
+           </form>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        </div>
+    <div class="modal fade text-center" id="history_modal_111" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:1500px;">
+                <div class="modal-header">
+                    <h4 class="modal-title">员工机构岗位历史</h4>
+                </div>
+                <div class="modal-body">
+                      <table name="custListTable" class="table">
+                          <thead style="white-space:nowrap;">
+                              <tr> 
+                                  </th>
+                                  <th ng-repeat='th in detail_data.header track by $index' ng-hide="detail_data.header.length == $index"  ng-bind='th' class="text-nowrap"> </th> 
+                              </tr>
+                          </thead>
+                          <tbody style="white-space:nowrap;">
+                              <tr ng-repeat="row in detail_data.rows">
+                                <td ng-repeat="d in row track by $index" class="text-nowrap" ng-hide="0 == $index">
+                                {{d}}
+                                </td>
+                                 <td>
+                                    <button type="button" ng-click="his_to_edit(row)" class="btn btn-default">编辑</button>
+                                    <!-- <button type="button" ng-click="his_to_del(row)" class="btn btn-default">删除</button>-->
+                                </td>
+                              </tr> 
+                          </tbody>
+                      </table>
+                  <ul class="pager">
+                    <li ng-repeat="action in detail_data.actions | filter:'!release'">
+                        <a href="#" ng-click="onAction1(action.conversation_id,action.action)">{{dict[action.action]}}</a>
+                    </li>
+                </ul>
+                <div style="text-align:center">
+                    <font size="2" color="red">{{tableMessage2}}</font>
+                </div><!--默认显示-->
+
+                <div>
+            </div>
+        </div>
+    </div>
+ 
+    </div> 
+</div>
