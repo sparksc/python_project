@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 # 定义DBDB
-
 from dbdb.binary_tree import BinaryTree
 
 
@@ -10,4 +9,5 @@ class DBDB(object):
 
 
 if __name__ == '__main__':
-    print("d")
+    pass
+
